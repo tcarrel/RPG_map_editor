@@ -63,7 +63,7 @@ Text::Text( const string& sheet_path )
         letter_[ '5' ].set( X( 4 ), Y( 1 ), W, H );
         letter_[ '6' ].set( X( 5 ), Y( 1 ), W, H );
         letter_[ '7' ].set( X( 6 ), Y( 1 ), W, H );
-        letter_[ '9' ].set( X( 7 ), Y( 1 ), W, H );
+        letter_[ '8' ].set( X( 7 ), Y( 1 ), W, H );
         letter_[ '9' ].set( X( 8 ), Y( 1 ), W, H );
         letter_[ ':' ].set( X( 9 ), Y( 1 ), W, H );
         letter_[ ';' ].set( X( 10 ), Y( 1 ), W, H );
