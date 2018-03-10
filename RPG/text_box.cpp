@@ -98,9 +98,8 @@ void Text_Box::render_fill( void )
 void Text_Box::render( Line_of_Text* )
 {
     render_border();
-
     render_fill();
-    /*
+
     for( int line = 0; line < h_; line++ )
     {
         for( unsigned ltr = 0; ltr < words_[line].text.size(); ltr++ )
@@ -111,7 +110,7 @@ void Text_Box::render( Line_of_Text* )
                 letter_[ (uint8_t)words_[ line ].text[ ltr ] ].clip() );
         }
     }
-    */
+
 }
 
 
