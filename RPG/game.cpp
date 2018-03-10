@@ -53,50 +53,37 @@ Play_Data* Game::get_play_data( void )
 
 void Game::main_loop( void )
 {
-    Line_of_Text txt[ 16 ];
+    Line_of_Text txt[ 14 ];
 
-    for( unsigned i = 0; i < 16; i++ )
+    for( unsigned i = 2; i < 16; i++ )
     {
-        txt[ i ].text = string( 16, (uint8_t)173 );
+        txt[ i - 2 ].text = string( 16, (uint8_t)173 );
         for( unsigned j = 0; j < 16; j++ )
         {
-            txt[ i ].text[ j ] = (char)( j + ( i * 16 ) );
-            if( txt[ i ].text[ j ] < 32 )
+            txt[ i - 2 ].text[ j ] = (char)( j + ( ( i - 2 ) * 16 ) );
+            if( txt[ i - 2 ].text[ j ] < 32 )
             {
-                txt[ i ].text[ j ] = ' ';
+                txt[ i - 2 ].text[ j ] = ' ';
             }
-            switch( txt[ i ].text[ j ] )
+            switch( txt[ i - 2 ].text[ j ] )
             {
             default:
                 break;
             case 127:
             case '\a':
-                txt[ i ].text[ j ] = '%';
+                txt[ i - 2 ].text[ j ] = '\"';
                 break;
             }
 
         }
     }
 
-    printf( "%u\n\n", (unsigned char)'\xAD' );
-
-    printf( "Chars:\n" );
-    printf( "======\n" );
-    for( int i = 0; i < 16; i++ )
-    {
-        for( unsigned j = 0; j < txt[ i ].text.size(); j++ )
-        {
-            printf( " %c = %3i\n", txt[ i ].text[ j ], (uint8_t)txt[ i ].text[ j ] );
-        }
-        printf( "%u\n", txt[ i ].text.size() );
-    }
-
-    for( int i = 0; i < 16; i++ )
+    for( int i = 0; i < 14; i++ )
     {
         std::cout << txt[ i ].text.c_str() << std::endl;
     }
 
-    Text_Box box( 0, 0, txt, 16 );
+    Text_Box box( 0, 0, txt, 14 );
 
     while( !events_.quit() )
     {
