@@ -165,6 +165,9 @@
     <ClInclude Include="text_selectable_list.h">
       <Filter>Header Files\Interfaces\Text</Filter>
     </ClInclude>
+    <ClInclude Include="uint8_t_string.h">
+      <Filter>Header Files\Interfaces\Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -242,6 +245,9 @@
     <ClCompile Include="text_selectable_list.cpp">
       <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
+    <ClCompile Include="uint8_t_string.cpp">
+      <Filter>Source Files\Interfaces\Text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -249,9 +255,6 @@
       <Filter>Resource Files\github</Filter>
     </None>
     <None Include="Graphics\text.xcf">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </None>
-    <None Include="Graphics\text2.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
     </None>
     <None Include="Settings\keyboard.mapping.bin">
@@ -269,9 +272,6 @@
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
     <Image Include="Graphics\text.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\text2.bmp">
       <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
     <Image Include="Graphics\Icon.bmp">

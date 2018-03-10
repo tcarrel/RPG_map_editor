@@ -178,6 +178,7 @@
     <ClInclude Include="text_character.h" />
     <ClInclude Include="text_line.h" />
     <ClInclude Include="text_selectable_list.h" />
+    <ClInclude Include="uint8_t_string.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -210,12 +211,12 @@
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="text_character.cpp" />
     <ClCompile Include="text_selectable_list.cpp" />
+    <ClCompile Include="uint8_t_string.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md5" />
     <None Include="Graphics\text.xcf" />
-    <None Include="Graphics\text2.xcf" />
     <None Include="packages.config" />
     <None Include="Settings\keyboard.mapping.bin" />
   </ItemGroup>
@@ -224,7 +225,6 @@
     <Image Include="Graphics\splash1_test.bmp" />
     <Image Include="Graphics\splash2_test.bmp" />
     <Image Include="Graphics\text.bmp" />
-    <Image Include="Graphics\text2.bmp" />
     <Image Include="splash1_test.bmp" />
     <Image Include="splash2_test.bmp" />
     <Image Include="tech_splash.bmp" />
