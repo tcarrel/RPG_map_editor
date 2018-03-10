@@ -24,10 +24,6 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
 #define X(x) ((x % TEXT_CHARACTER_WIDTH) * W)
 #define Y(x) ((x % TEXT_CHARACTER_HEIGHT) * H)
 
-        printf( "XXXXXXXXXXXXXXXXXXXX\n" );
-        printf( "x = %i, y = %i, w = %i, h = %i\n", X( 6 ), Y( 8 ), W, H );
-        printf( "XXXXXXXXXXXXXXXXXXXX\n" );
-
         borders_[ TB_TOP_LEFT ].set( X( 6 ), Y( 6 ), W, H );
         borders_[ TB_TOP_RIGHT ].set( X( 7 ), Y( 6 ), W, H );
         borders_[ TB_BOTTOM_RIGHT ].set( X( 8 ), Y( 6 ), W, H );
