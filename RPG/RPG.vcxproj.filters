@@ -245,7 +245,7 @@
     <None Include="keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
     </None>
-    <None Include="README.md5">
+    <None Include="..\README.md5">
       <Filter>Resource Files\github</Filter>
     </None>
   </ItemGroup>

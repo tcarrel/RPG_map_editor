@@ -212,10 +212,10 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md5" />
     <None Include="gamecontrollerdb.txt" />
     <None Include="keyboard.mapping.bin" />
     <None Include="packages.config" />
-    <None Include="README.md5" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.bmp" />
