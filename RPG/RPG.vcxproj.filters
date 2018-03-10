@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Text">
-      <UniqueIdentifier>{2a95021b-3032-4800-9ca3-bb670d837030}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Splash Screens">
       <UniqueIdentifier>{1993cb1d-76bb-47f9-aaa8-cfd612552add}</UniqueIdentifier>
     </Filter>
@@ -60,6 +57,12 @@
     </Filter>
     <Filter Include="Resource Files\github">
       <UniqueIdentifier>{39a944f9-04b7-47d8-8d5f-ba44826ad8ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics">
+      <UniqueIdentifier>{a36cd117-6c48-4b8f-ac4b-2be171685f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics\Text">
+      <UniqueIdentifier>{2a95021b-3032-4800-9ca3-bb670d837030}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -248,14 +251,14 @@
     <None Include="..\README.md5">
       <Filter>Resource Files\github</Filter>
     </None>
+    <None Include="Graphics\text.xcf">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
+    <None Include="Graphics\text2.xcf">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Icon.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="text.bmp">
-      <Filter>Resource Files\Text</Filter>
-    </Image>
     <Image Include="splash1_test.bmp">
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
@@ -265,8 +268,20 @@
     <Image Include="tech_splash.bmp">
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
-    <Image Include="text2.bmp">
-      <Filter>Resource Files\Text</Filter>
+    <Image Include="Graphics\text.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text2.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\Icon.bmp">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="Graphics\splash2_test.bmp">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="Graphics\splash1_test.bmp">
+      <Filter>Resource Files\Graphics</Filter>
     </Image>
   </ItemGroup>
 </Project>

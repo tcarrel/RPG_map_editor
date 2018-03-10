@@ -214,16 +214,20 @@
   <ItemGroup>
     <None Include="..\README.md5" />
     <None Include="gamecontrollerdb.txt" />
+    <None Include="Graphics\text.xcf" />
+    <None Include="Graphics\text2.xcf" />
     <None Include="keyboard.mapping.bin" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Icon.bmp" />
+    <Image Include="Graphics\Icon.bmp" />
+    <Image Include="Graphics\splash1_test.bmp" />
+    <Image Include="Graphics\splash2_test.bmp" />
+    <Image Include="Graphics\text.bmp" />
+    <Image Include="Graphics\text2.bmp" />
     <Image Include="splash1_test.bmp" />
     <Image Include="splash2_test.bmp" />
     <Image Include="tech_splash.bmp" />
-    <Image Include="text.bmp" />
-    <Image Include="text2.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
