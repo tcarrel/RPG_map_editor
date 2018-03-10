@@ -21,22 +21,22 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
 
 #define W (TEXT_CHARACTER_WIDTH)
 #define H (TEXT_CHARACTER_HEIGHT)
-#define X(x) ((x % (512/TEXT_CHARACTER_WIDTH)) * W)
-#define Y(x) ((x % (512/TEXT_CHARACTER_HEIGHT)) * H)
+#define X(x) ((x % TEXT_CHARACTER_WIDTH) * W)
+#define Y(x) ((x % TEXT_CHARACTER_HEIGHT) * H)
 
         printf( "XXXXXXXXXXXXXXXXXXXX\n" );
-        printf( "x = %i, y = %i, w = %i, h = %i\n", X( 6 ), Y( 7 ), W, H );
+        printf( "x = %i, y = %i, w = %i, h = %i\n", X( 6 ), Y( 8 ), W, H );
         printf( "XXXXXXXXXXXXXXXXXXXX\n" );
 
         borders_[ TB_TOP_LEFT ].set( X( 6 ), Y( 6 ), W, H );
-        borders_[ TB_TOP_RIGHT ].set( X( 6 ), Y( 7 ), W, H );
-        borders_[ TB_BOTTOM_RIGHT ].set( X( 6 ), Y( 8 ), W, H );
-        borders_[ TB_BOTTOM_LEFT ].set( X( 6 ), Y( 9 ), W, H );
+        borders_[ TB_TOP_RIGHT ].set( X( 7 ), Y( 6 ), W, H );
+        borders_[ TB_BOTTOM_RIGHT ].set( X( 8 ), Y( 6 ), W, H );
+        borders_[ TB_BOTTOM_LEFT ].set( X( 9 ), Y( 6 ), W, H );
 
-        borders_[ TB_TOP ].set( X( 6 ), Y( 10 ), W, H );        
-        borders_[ TB_RIGHT ].set( X( 6 ), Y( 13 ), W, H );        
-        borders_[ TB_BOTTOM ].set( X( 6 ), Y( 11 ), W, H );        
-        borders_[ TB_LEFT ].set( X( 6 ), Y( 12 ), W, H );
+        borders_[ TB_TOP ].set( X( 10 ), Y( 6 ), W, H );        
+        borders_[ TB_RIGHT ].set( X( 13 ), Y( 6 ), W, H );        
+        borders_[ TB_BOTTOM ].set( X( 11 ), Y( 6 ), W, H );        
+        borders_[ TB_LEFT ].set( X( 12 ), Y( 6 ), W, H );
 
 #undef W
 #undef H
@@ -167,7 +167,7 @@ void Text_Box::render_border( void )
     {
         //Left
         text_.render(
-            box_.x - 10,
+            box_.x - TEXT_CHARACTER_WIDTH,
             box_.y + ( i * TEXT_ROW_HEIGHT ),
             borders_[ TB_LEFT ].clip() );
         //Right
