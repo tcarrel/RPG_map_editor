@@ -25,6 +25,5 @@ private:
 
     static uint8_t        fill_color_[4];
     static SDL_Renderer*  renderer_;
-    static Text_Character borders_[ ALL_TEXT_BOX_BORDERS ];
     static bool           initialized_;
 };

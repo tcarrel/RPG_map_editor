@@ -5,7 +5,6 @@
 
 /*static*/ uint8_t Text_Box::fill_color_[ 4 ] = { 0x0,0x0,0xff,0x3f };
 /*static*/ SDL_Renderer* Text_Box::renderer_ = NULL;
-/*static*/ Text_Character Text_Box::borders_[ ALL_TEXT_BOX_BORDERS ];
 /*static*/ bool Text_Box::initialized_ = false;
 
 
@@ -18,26 +17,6 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
     {
         initialized_ = true;
         renderer_ = text_.get_renderer();
-
-#define W (TEXT_CHARACTER_WIDTH)
-#define H (TEXT_CHARACTER_HEIGHT)
-#define X(x) ((x % TEXT_CHARACTER_WIDTH) * W)
-#define Y(x) ((x % TEXT_CHARACTER_HEIGHT) * H)
-
-        borders_[ TB_TOP_LEFT ].set( X( 6 ), Y( 6 ), W, H );
-        borders_[ TB_TOP_RIGHT ].set( X( 7 ), Y( 6 ), W, H );
-        borders_[ TB_BOTTOM_RIGHT ].set( X( 8 ), Y( 6 ), W, H );
-        borders_[ TB_BOTTOM_LEFT ].set( X( 9 ), Y( 6 ), W, H );
-
-        borders_[ TB_TOP ].set( X( 10 ), Y( 6 ), W, H );        
-        borders_[ TB_RIGHT ].set( X( 13 ), Y( 6 ), W, H );        
-        borders_[ TB_BOTTOM ].set( X( 11 ), Y( 6 ), W, H );        
-        borders_[ TB_LEFT ].set( X( 12 ), Y( 6 ), W, H );
-
-#undef W
-#undef H
-#undef X
-#undef Y
     }
 
     box_.x = x * TEXT_CHARACTER_WIDTH + TEXT_X_OFFSET;
@@ -120,37 +99,38 @@ void Text_Box::render_border( void )
     // Draw border.
     //Corners
     // Top left
+
     text_.render(
         box_.x - TEXT_CHARACTER_WIDTH,
         box_.y - TEXT_CHARACTER_HEIGHT,
-        borders_[ TB_TOP_LEFT ].clip() );
+        letter_[ CHAR_BOX_TOP_LEFT ].clip() );
 
     // Top right
     text_.render(
         box_.x + box_.w,
         box_.y - TEXT_CHARACTER_HEIGHT,
-        borders_[ TB_TOP_RIGHT ].clip() );
+        letter_[ CHAR_BOX_TOP_RIGHT ].clip() );
     // Bottom left
     text_.render(
         box_.x - TEXT_CHARACTER_WIDTH,
         box_.y + box_.h,
-        borders_[ TB_BOTTOM_LEFT ].clip() );
+        letter_[ CHAR_BOX_BOTTOM_LEFT].clip() );
     // Bottom right
     text_.render(
         box_.x + box_.w,
         box_.y + box_.h,
-        borders_[ TB_BOTTOM_RIGHT ].clip() );
+        letter_[ CHAR_BOX_BOTTOM_RIGHT ].clip() );
     // Top and bottom.
     for( int i = 0; i < w_; i++ )
     {
         text_.render(
             box_.x + ( i * TEXT_CHARACTER_WIDTH ),
             box_.y - TEXT_CHARACTER_HEIGHT,
-            borders_[ TB_TOP ].clip() );
+            letter_[ CHAR_BOX_TOP ].clip() );
         text_.render(
             box_.x + ( i * TEXT_CHARACTER_WIDTH ),
             box_.y + box_.h,
-            borders_[ TB_BOTTOM ].clip() );
+            letter_[ CHAR_BOX_BOTTOM ].clip() );
     }
     // Sides
     for( int i = 0; i < h_; i++ )
@@ -159,11 +139,11 @@ void Text_Box::render_border( void )
         text_.render(
             box_.x - TEXT_CHARACTER_WIDTH,
             box_.y + ( i * TEXT_ROW_HEIGHT ),
-            borders_[ TB_LEFT ].clip() );
+            letter_[ CHAR_BOX_LEFT ].clip() );
         //Right
         text_.render(
             box_.x + box_.w,
             box_.y + ( i * TEXT_ROW_HEIGHT ),
-            borders_[ TB_RIGHT ].clip() );
+            letter_[ CHAR_BOX_RIGHT ].clip() );
     }
 }

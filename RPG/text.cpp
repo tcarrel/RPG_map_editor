@@ -139,7 +139,22 @@ Text::Text( const string& sheet_path )
         letter_[ '}' ].set( X( 12 ), Y( 5 ), W, H );
         letter_[ '~' ].set( X( 13 ), Y( 5 ), W, H );
         letter_[ ' ' ].set( X( 14 ), Y( 5 ), W, H );
-        letter_[ CHAR_INVERTED_EXCLAMATION_MARK ].set( X( 15 ), Y( 5 ), W, H ); // ¡
+        letter_[ CHAR_INVERTED_EXCLAMATION_MARK ].set( X( 15 ), Y( 5 ), W, H );
+        letter_[ CHAR_INVERTED_QUESTION_MARK ].set( X( 15 ), Y( 6 ), W, H );
+        letter_[ CHAR_COIN ].set( X( 0 ), Y( 6 ), W, H );
+        letter_[ CHAR_HAND__LEFT ].set( X( 1 ), Y( 6 ), W, H );
+        letter_[ CHAR_HAND__RIGHT ].set( X( 2 ), Y( 6 ), W, H );
+        letter_[ CHAR_25_PERCENT ].set( X( 3 ), Y( 6 ), W, H );
+        letter_[ CHAR_50_PERCENT ].set( X( 4 ), Y( 6 ), W, H );
+        letter_[ CHAR_75_PERCENT ].set( X( 5 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_TOP_LEFT ].set( X( 6 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_TOP_RIGHT ].set( X( 7 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_BOTTOM_RIGHT ].set( X( 8 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_BOTTOM_LEFT ].set( X( 9 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_TOP ].set( X( 10 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_BOTTOM ].set( X( 11 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_LEFT ].set( X( 12 ), Y( 6 ), W, H );
+        letter_[ CHAR_BOX_RIGHT ].set( X( 13 ), Y( 6 ), W, H );
 
         printf( "letter_\n" );
         printf( "=======\n" );
