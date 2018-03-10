@@ -148,6 +148,7 @@
     <Text Include="Settings\gamecontrollerdb.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="box_contents.h" />
     <ClInclude Include="color_key.h" />
     <ClInclude Include="combat.h" />
     <ClInclude Include="command_base.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="box_contents.cpp" />
     <ClCompile Include="combat.cpp" />
     <ClCompile Include="console_messenger.cpp" />
     <ClCompile Include="event_manager.cpp" />

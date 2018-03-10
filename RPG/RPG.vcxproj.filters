@@ -168,6 +168,9 @@
     <ClInclude Include="uint8_t_string.h">
       <Filter>Header Files\Interfaces\Text</Filter>
     </ClInclude>
+    <ClInclude Include="box_contents.h">
+      <Filter>Header Files\Interfaces\Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -246,6 +249,9 @@
       <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
     <ClCompile Include="uint8_t_string.cpp">
+      <Filter>Source Files\Interfaces\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="box_contents.cpp">
       <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
   </ItemGroup>
