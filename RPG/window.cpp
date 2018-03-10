@@ -60,9 +60,9 @@ Window::Window( void ) :
     SDL_FillRect( surface_, NULL, SDL_MapRGB( surface_->format, 0x0, 0x0, 0x0 ) );
 
     Splash_screen splashes[ 3 ] =
-    { { "Graphics/splash1_test.bmp" ,100},
-      { "Graphics/splash2_test.bmp" ,100},
-      { "Graphics/tech_splash.bmp"  ,100} };
+    { { "Graphics/splash1_test.bmp" ,5},
+      { "Graphics/splash2_test.bmp" ,5},
+      { "Graphics/tech_splash.bmp"  ,5} };
     splash(splashes, 3);
     
     // Create the renderer.
