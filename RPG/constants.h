@@ -9,6 +9,11 @@ const int  JOY_DEAD_ZONE = 9000;
 
 #define ALL_KEYS (0x11d)
 
+#define GAME_CONTROLLER_MAPPING_DATABASE_FILE_PATH \
+"Settings/gamecontrollerdb.txt"
+#define KEYBOARD_MAPPING_SETTINGS_FILE_PATH \
+"Settings/keyboard.mapping.bin"
+
 
 #define TEXT_CHARACTER_WIDTH (32)
 #define TEXT_CHARACTER_HEIGHT (32)
@@ -17,7 +22,7 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_CHARACTERS_PER_ROW (50)
 #define TEXT_MAX_ROWS ( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT )
 
-#define TEXT_SPRITE_SHEET_FILE_NAME "text2.bmp"
+#define TEXT_SPRITE_SHEET_FILE_NAME "Graphics/text2.bmp"
 
 
 #define MAX_MONEY (99999999)

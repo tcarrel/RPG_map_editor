@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="Settings\gamecontrollerdb.txt">
+      <Filter>Resource Files\Settings</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -242,12 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="gamecontrollerdb.txt">
-      <Filter>Resource Files\Settings</Filter>
-    </None>
-    <None Include="keyboard.mapping.bin">
-      <Filter>Resource Files\Settings</Filter>
-    </None>
     <None Include="..\README.md5">
       <Filter>Resource Files\github</Filter>
     </None>
@@ -256,6 +253,9 @@
     </None>
     <None Include="Graphics\text2.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
+    <None Include="Settings\keyboard.mapping.bin">
+      <Filter>Resource Files\Settings</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="Settings\gamecontrollerdb.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color_key.h" />
@@ -213,11 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md5" />
-    <None Include="gamecontrollerdb.txt" />
     <None Include="Graphics\text.xcf" />
     <None Include="Graphics\text2.xcf" />
-    <None Include="keyboard.mapping.bin" />
     <None Include="packages.config" />
+    <None Include="Settings\keyboard.mapping.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\Icon.bmp" />

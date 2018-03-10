@@ -102,7 +102,9 @@ Event_Manager::Event_Manager( Console* c ) :
     joy_to_ctrl[ JOY_L_BUTTON ] = CTRL_L;
     joy_to_ctrl[ JOY_R_BUTTON ] = CTRL_R;
 
-    SDL_RWops* file = SDL_RWFromFile( "keyboard.mapping.bin", "rb" );
+    SDL_RWops* file = SDL_RWFromFile(
+        KEYBOARD_MAPPING_SETTINGS_FILE_PATH,
+        "rb" );
     if( !file )
     {
         // File does not exist, set default keyboard mapping and write to file.
@@ -328,7 +330,7 @@ void Event_Manager::load_mappings( void )
 {
     int qty = SDL_GameControllerAddMappingsFromRW(
         SDL_RWFromFile(
-            "gamecontrollerdb.txt",
+            GAME_CONTROLLER_MAPPING_DATABASE_FILE_PATH,
             "rb" ),
         1 );
 
