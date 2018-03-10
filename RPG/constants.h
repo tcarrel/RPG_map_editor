@@ -24,8 +24,7 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_X_OFFSET ( TEXT_CHARACTER_WIDTH / 2 )
 #define TEXT_Y_OFFSET ( TEXT_CHARACTER_HEIGHT / 2)
 
-#define TEXT_SPRITE_SHEET_FILE_NAME "Graphics/text2.bmp"
-
+#define TEXT_SPRITE_SHEET_FILE_NAME "Graphics/text.bmp"
 
 #define MAX_MONEY (99999999)
 
