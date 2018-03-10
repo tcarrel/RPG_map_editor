@@ -40,8 +40,8 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
 #undef Y
     }
 
-    box_.x = ( x + 1 ) * TEXT_CHARACTER_WIDTH;
-    box_.y = ( y + 1 ) * TEXT_ROW_HEIGHT;
+    box_.x = x * TEXT_CHARACTER_WIDTH + TEXT_X_OFFSET;
+    box_.y = y * TEXT_ROW_HEIGHT + TEXT_Y_OFFSET;
     box_.h = h_ * TEXT_ROW_HEIGHT;
     box_.w = 0;
 

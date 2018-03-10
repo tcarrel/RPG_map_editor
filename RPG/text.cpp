@@ -184,8 +184,8 @@ void Text::render( Line_of_Text* text )
             break;
         }
         text_.render(
-            text->x + ( c * TEXT_CHARACTER_WIDTH ),
-            text->y,
+            text->x + ( c * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET,
+            text->y + TEXT_Y_OFFSET,
             letter_[ text->text[ c ] ].clip() );
     }
 }
