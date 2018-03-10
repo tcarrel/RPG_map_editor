@@ -127,7 +127,7 @@ void Window::update( void )
     }
 
     SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 0xff );
- //   SDL_RenderFillRects( renderer_, borders_, 2 );
+    SDL_RenderFillRects( renderer_, borders_, 2 );
 
     SDL_RenderPresent( renderer_ );
 }
