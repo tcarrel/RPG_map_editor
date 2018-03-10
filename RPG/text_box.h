@@ -20,7 +20,6 @@ private:
     int w_;
     int h_;
     SDL_Rect box_;
-    SDL_Rect fill_;
 
     Line_of_Text* words_;
 

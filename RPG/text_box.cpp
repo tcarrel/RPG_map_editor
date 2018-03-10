@@ -61,18 +61,10 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
 
         box_.w = ( box_.w < size ) ? size : box_.w;
     }
-    //Console::vb_variable_value( "Text_box", "box_.w", box_.w );
     w_ = box_.w;
     box_.w *= TEXT_CHARACTER_WIDTH;
 
-    fill_.x = box_.x + text_.get_x_offset();
-    fill_.y = box_.y + text_.get_y_offset();
-    fill_.w = box_.w;
-    fill_.h = box_.h;
-
-
     Console::vb_variable_value( "Text_Box", "box_", box_ );
-    Console::vb_variable_value( "Text_Box", "fill_", fill_ );
 }
 
 
@@ -89,13 +81,16 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 
 void Text_Box::render_fill( void )
 {
+    SDL_Rect fill = box_;
+    fill.x += text_.get_x_offset();
+    fill.y += text_.get_y_offset();
     SDL_SetRenderDrawColor(
         text_.get_renderer(),
         fill_color_[ 0 ],
         fill_color_[ 1 ],
         fill_color_[ 2 ],
         fill_color_[ 3 ] );
-    SDL_RenderFillRect( text_.get_renderer(), /*&fill_*/ &box_ );
+    SDL_RenderFillRect( text_.get_renderer(), &fill );
 }
 
 
@@ -103,9 +98,9 @@ void Text_Box::render_fill( void )
 void Text_Box::render( Line_of_Text* )
 {
     render_border();
-    /*
-    render_fill();
 
+    render_fill();
+    /*
     for( int line = 0; line < h_; line++ )
     {
         for( unsigned ltr = 0; ltr < words_[line].text.size(); ltr++ )
