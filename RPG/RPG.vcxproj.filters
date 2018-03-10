@@ -58,6 +58,9 @@
     <Filter Include="Header Files\Data">
       <UniqueIdentifier>{52ab6a79-2c33-45f3-a26c-8ff70b295e00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\github">
+      <UniqueIdentifier>{39a944f9-04b7-47d8-8d5f-ba44826ad8ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -241,6 +244,9 @@
     </None>
     <None Include="keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
+    </None>
+    <None Include="README.md5">
+      <Filter>Resource Files\github</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
