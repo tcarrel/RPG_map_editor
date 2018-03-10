@@ -53,16 +53,16 @@ Window::Window( void ) :
         console_->error( "SDL2", "Could not create window.",
                          "Could not create window: " + string(SDL_GetError()) );
     }
-    SDL_SetWindowIcon( window_, SDL_LoadBMP( "Icon.bmp" ) );
+    SDL_SetWindowIcon( window_, SDL_LoadBMP( "Graphics/Icon.bmp" ) );
     SDL_Delay( 100 );
 
     surface_ = SDL_GetWindowSurface( window_ );
     SDL_FillRect( surface_, NULL, SDL_MapRGB( surface_->format, 0x0, 0x0, 0x0 ) );
 
     Splash_screen splashes[ 3 ] =
-    { { "splash1_test.bmp" ,100},
-      { "splash2_test.bmp" ,100},
-      { "tech_splash.bmp"  ,100} };
+    { { "Graphics/splash1_test.bmp" ,100},
+      { "Graphics/splash2_test.bmp" ,100},
+      { "Graphics/tech_splash.bmp"  ,100} };
     splash(splashes, 3);
     
     // Create the renderer.
