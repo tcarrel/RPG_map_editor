@@ -96,10 +96,8 @@ void Text_Box::render( Line_of_Text* )
 
 void Text_Box::render_border( void )
 {
-    // Draw border.
     //Corners
     // Top left
-
     text_.render(
         box_.x - TEXT_CHARACTER_WIDTH,
         box_.y - TEXT_CHARACTER_HEIGHT,
