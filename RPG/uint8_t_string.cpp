@@ -173,7 +173,8 @@ void Uint8_t_String::grow( unsigned u )
     
     unsigned new_capacity = capacity_ + 16;
 
-    //TODO: Make this not horrible.
+    // TODO: Make this not horrible.  It is only used during loading and
+    //initializaion, so it's not a major priority.
     while( ( new_capacity % 16 ) != 1 )
     {
         ++new_capacity;
