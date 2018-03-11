@@ -20,6 +20,13 @@ Line_of_Text::Line_of_Text( const Uint8_t_String& str )
 
 
 
+Line_of_Text::Line_of_Text( const char cstr[] )
+{
+    *this = cstr;
+}
+
+
+
 Line_of_Text::Line_of_Text( const Line_of_Text& copy_from )
 {
     *this = copy_from;
@@ -30,6 +37,14 @@ Line_of_Text::Line_of_Text( const Line_of_Text& copy_from )
 Line_of_Text& Line_of_Text::operator=( const Uint8_t_String& str )
 {
     this->text = str;
+    return *this;
+}
+
+
+
+Line_of_Text& Line_of_Text::operator=( const char cstr[] )
+{
+    this->text = cstr;
     return *this;
 }
 
