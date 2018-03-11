@@ -1,6 +1,9 @@
 #pragma once
 
 #include "stdafx.h"
+#include<cmath>
+
+
 #define SCREEN_X_PIXELS (1920)
 #define SCREEN_Y_PIXELS (1080)
 
@@ -18,10 +21,14 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_CHARACTER_WIDTH (32)
 #define TEXT_CHARACTER_HEIGHT (32)
 #define TEXT_ROW_HEIGHT (32)
-#define TEXT_CHARACTERS_PER_ROW (50)
-#define TEXT_MAX_ROWS ( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT )
+//#define TEXT_CHARACTERS_PER_ROW (50)
 #define TEXT_X_OFFSET ( TEXT_CHARACTER_WIDTH / 2 )
 #define TEXT_Y_OFFSET ( TEXT_CHARACTER_HEIGHT / 2)
+
+const unsigned TEXT_COLUMNS = 
+(int)floor( SCREEN_X_PIXELS / TEXT_CHARACTER_WIDTH ) - 1;
+const unsigned TEXT_ROWS =
+(int)floor( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT ) - 1;
 
 #define TEXT_SPRITE_SHEET_FILE_NAME "Graphics/text.bmp"
 
