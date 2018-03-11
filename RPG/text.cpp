@@ -155,6 +155,10 @@ Text::Text( const string& sheet_path )
         letter_[ CHAR_BOX_BOTTOM ].set( X( 11 ), Y( 6 ), W, H );
         letter_[ CHAR_BOX_LEFT ].set( X( 12 ), Y( 6 ), W, H );
         letter_[ CHAR_BOX_RIGHT ].set( X( 13 ), Y( 6 ), W, H );
+        letter_[ CHAR_ARROW_UP ].set( X( 0 ), Y( 7 ), W, H );
+        letter_[ CHAR_ARROW_DOWN ].set( X( 1 ), Y( 7 ), W, H );
+        letter_[ CHAR_ARROW_LEFT ].set( X( 2 ), Y( 7 ), W, H );
+        letter_[ CHAR_ARROW_RIGHT ].set( X( 3 ), Y( 7 ), W, H );
 
     }
 }
