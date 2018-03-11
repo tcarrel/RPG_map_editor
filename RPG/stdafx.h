@@ -48,6 +48,8 @@
 #include "uint8_t_string.h"
 
 #include "box_contents.h"
+#include "money_display.h"
+
 #include "text_character.h"
 #include "text_line.h"
 #include "text_box.h"

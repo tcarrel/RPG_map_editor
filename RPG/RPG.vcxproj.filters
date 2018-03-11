@@ -177,6 +177,9 @@
     <ClInclude Include="text_selectable_list.h">
       <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
     </ClInclude>
+    <ClInclude Include="money_display.h">
+      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -262,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="text_line.cpp">
       <Filter>Source Files\Interfaces\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="money_display.cpp">
+      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

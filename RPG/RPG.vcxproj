@@ -157,6 +157,7 @@
     <ClInclude Include="event_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="helper_functions.h" />
+    <ClInclude Include="money_display.h" />
     <ClInclude Include="play_data.h" />
     <ClInclude Include="game_over.h" />
     <ClInclude Include="initilizer_of_sdl.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="console_messenger.cpp" />
     <ClCompile Include="event_manager.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="money_display.cpp" />
     <ClCompile Include="play_data.cpp" />
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="game_over.cpp" />
