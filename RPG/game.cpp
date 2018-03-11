@@ -39,6 +39,7 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     text_system_ = new Text;
 
     pause_.init( text_system_, w );
+    Box_Contents::init( text_system_ );
 
 }
 
@@ -57,7 +58,7 @@ void Game::main_loop( void )
 
     for( unsigned i = 2; i < 16; i++ )
     {
-        txt[ i - 2 ].text = string( 16, (uint8_t)173 );
+        txt[ i - 2 ].text = Uint8_t_String( 16, (uint8_t)173 );
         for( unsigned j = 0; j < 16; j++ )
         {
             txt[ i - 2 ].text[ j ] = (char)( j + ( ( i - 2 ) * 16 ) );
@@ -76,11 +77,6 @@ void Game::main_loop( void )
             }
 
         }
-    }
-
-    for( int i = 0; i < 14; i++ )
-    {
-        std::cout << txt[ i ].text.c_str() << std::endl;
     }
 
     Text_Box box( 0, 0, txt, 14 );

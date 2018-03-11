@@ -156,19 +156,6 @@ Text::Text( const string& sheet_path )
         letter_[ CHAR_BOX_LEFT ].set( X( 12 ), Y( 6 ), W, H );
         letter_[ CHAR_BOX_RIGHT ].set( X( 13 ), Y( 6 ), W, H );
 
-        printf( "letter_\n" );
-        printf( "=======\n" );
-        for( int i = 0; i < 256; i++ )
-        {
-            printf(
-                " %c = (%3i) [%i, %i] [%i, %i]\n",
-                i, i,
-                letter_[ i ].x(),
-                letter_[ i ].y(),
-                letter_[ i ].w(),
-                letter_[ i ].h() );
-        }
-
     }
 }
 #undef W
