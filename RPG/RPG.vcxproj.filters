@@ -293,11 +293,14 @@
     <None Include="..\README.md5">
       <Filter>Resource Files\github</Filter>
     </None>
-    <None Include="Graphics\text.xcf">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </None>
     <None Include="Settings\keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
+    </None>
+    <None Include="LICENSE.md5">
+      <Filter>Resource Files\github</Filter>
+    </None>
+    <None Include="Graphics\text_normal.xcf">
+      <Filter>Resource Files\Graphics\Text</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -310,9 +313,6 @@
     <Image Include="tech_splash.bmp">
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
-    <Image Include="Graphics\text.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
     <Image Include="Graphics\Icon.bmp">
       <Filter>Resource Files\Graphics</Filter>
     </Image>
@@ -321,6 +321,9 @@
     </Image>
     <Image Include="Graphics\splash1_test.bmp">
       <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="Graphics\text_normal.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -223,7 +223,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md5" />
-    <None Include="Graphics\text.xcf" />
+    <None Include="Graphics\text_normal.xcf" />
+    <None Include="LICENSE.md5" />
     <None Include="packages.config" />
     <None Include="Settings\keyboard.mapping.bin" />
   </ItemGroup>
@@ -231,7 +232,7 @@
     <Image Include="Graphics\Icon.bmp" />
     <Image Include="Graphics\splash1_test.bmp" />
     <Image Include="Graphics\splash2_test.bmp" />
-    <Image Include="Graphics\text.bmp" />
+    <Image Include="Graphics\text_normal.bmp" />
     <Image Include="splash1_test.bmp" />
     <Image Include="splash2_test.bmp" />
     <Image Include="tech_splash.bmp" />

@@ -30,7 +30,7 @@ const unsigned TEXT_COLUMNS =
 const unsigned TEXT_ROWS =
 (int)floor( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT ) - 1;
 
-#define TEXT_SPRITE_SHEET_FILE_NAME "Graphics/text.bmp"
+#define TEXT_NORMAL_SPRITE_SHEET_FILE_NAME "Graphics/text_normal.bmp"
 
 #define MAX_MONEY (99999999)
 

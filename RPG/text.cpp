@@ -10,7 +10,7 @@
 
 
 
-Text::Text( void ) : Text( TEXT_SPRITE_SHEET_FILE_NAME )
+Text::Text( void ) : Text( TEXT_NORMAL_SPRITE_SHEET_FILE_NAME )
 {}
 
 
@@ -159,7 +159,6 @@ Text::Text( const string& sheet_path )
         letter_[ CHAR_ARROW_DOWN ].set( X( 1 ), Y( 7 ), W, H );
         letter_[ CHAR_ARROW_LEFT ].set( X( 2 ), Y( 7 ), W, H );
         letter_[ CHAR_ARROW_RIGHT ].set( X( 3 ), Y( 7 ), W, H );
-
     }
 }
 #undef W
