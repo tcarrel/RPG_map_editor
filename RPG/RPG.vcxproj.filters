@@ -64,6 +64,12 @@
     <Filter Include="Resource Files\Graphics\Text">
       <UniqueIdentifier>{2a95021b-3032-4800-9ca3-bb670d837030}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Interfaces\Text\Box Contents">
+      <UniqueIdentifier>{1f55c720-f9c4-4878-ab43-9fec91aa952f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Text\Box Contents">
+      <UniqueIdentifier>{48bbc93f-40c1-4b7d-ba5f-e476449f873c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -162,14 +168,14 @@
     <ClInclude Include="scaler.h">
       <Filter>Header Files\Windowing</Filter>
     </ClInclude>
-    <ClInclude Include="text_selectable_list.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
-    </ClInclude>
     <ClInclude Include="uint8_t_string.h">
       <Filter>Header Files\Interfaces\Text</Filter>
     </ClInclude>
     <ClInclude Include="box_contents.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="text_selectable_list.h">
+      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,13 +251,16 @@
     <ClCompile Include="scaler.cpp">
       <Filter>Source Files\Windowing</Filter>
     </ClCompile>
-    <ClCompile Include="text_selectable_list.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
-    </ClCompile>
     <ClCompile Include="uint8_t_string.cpp">
       <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
     <ClCompile Include="box_contents.cpp">
+      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="text_selectable_list.cpp">
+      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="text_line.cpp">
       <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
   </ItemGroup>

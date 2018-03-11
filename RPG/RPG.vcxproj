@@ -212,6 +212,7 @@
     <ClCompile Include="text.cpp" />
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="text_character.cpp" />
+    <ClCompile Include="text_line.cpp" />
     <ClCompile Include="text_selectable_list.cpp" />
     <ClCompile Include="uint8_t_string.cpp" />
     <ClCompile Include="window.cpp" />
