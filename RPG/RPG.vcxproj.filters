@@ -302,6 +302,12 @@
     <None Include="..\LICENSE.md5">
       <Filter>Resource Files\github</Filter>
     </None>
+    <None Include="Graphics\text_grayed.xcf">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
+    <None Include="Graphics\text_highlight.xcf">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="splash1_test.bmp">
@@ -323,6 +329,12 @@
       <Filter>Resource Files\Graphics</Filter>
     </Image>
     <Image Include="Graphics\text_normal.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_grayed.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_highlight.bmp">
       <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
   </ItemGroup>
