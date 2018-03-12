@@ -10,7 +10,9 @@ public:
     Play_Data( void );
 
     unsigned* money_addr( void );
-    void add_money( unsigned );
+    void money_add( unsigned );
+    unsigned money_add( unsigned, unsigned );
+//    bool money_subtract( void );
 
 private:
 

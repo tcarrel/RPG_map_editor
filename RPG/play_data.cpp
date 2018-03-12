@@ -21,8 +21,18 @@ unsigned* Play_Data::money_addr( void )
 
 
 
-void Play_Data::add_money( unsigned amt )
+void Play_Data::money_add( unsigned amt )
 {
     money_ += amt;
     variable_max<unsigned>( money_, MAX_MONEY );
+}
+
+
+
+unsigned Play_Data::money_add( unsigned min, unsigned max )
+{
+    Random r;
+    unsigned amt = r.get( min, max );
+    money_add( amt );
+    return amt;
 }
