@@ -8,6 +8,9 @@ class Text_Box;
 
 class Play_Data;
 
+enum Interface_enum;
+
+
 class Menu : public Interface
 {
 public:
@@ -16,6 +19,7 @@ public:
     void register_data_store( Play_Data* );
     Interface_enum run( void );
 
+    Interface_enum which( void ) { return type_; }
 
 private:
     /*virtual*/ void do_controls( void );
@@ -27,4 +31,6 @@ private:
     Text_Box* funds_box_;
 
     Play_Data* game_data_;
+
+    static const Interface_enum type_;
 };

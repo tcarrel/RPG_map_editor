@@ -4,6 +4,11 @@
 
 
 
+/*static*/ const Interface_enum Pause::type_ = INTERFACE_PAUSE;
+
+
+
+
 Pause::Pause( Console* c ) :
     Interface( c, INTERFACE_PAUSE )
 {}

@@ -2,18 +2,20 @@
 
 class Console;
 
+enum Interface_enum;
+
 class Interface
 {
 public:
 
+    /*
     Interface( Console* c ) :
         Interface( c, _INTERFACE_BASE )
-    {}
+    {}*/
 
     Interface( Console* c, Interface_enum t ) :
         console_(c),
-        ctrl_(NULL),
-        type_(t)
+        ctrl_(NULL)
     {}
 
     static void set_renderer( SDL_Renderer* );
@@ -22,7 +24,7 @@ public:
 
     void set_source( Interface_enum );
     void register_ctrl( bool* );
-    Interface_enum which( void );
+    virtual Interface_enum which( void ) = 0;
 
     ~Interface( void );
 protected:
@@ -34,7 +36,6 @@ protected:
     Console* console_;
     bool* ctrl_;
     bool  ctrl_previous_[ ALL_CTRL ];
-    Interface_enum type_;
     Interface_enum came_from_;
 
 private:

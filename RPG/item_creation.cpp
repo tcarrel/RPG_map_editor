@@ -4,6 +4,10 @@
 
 
 
+/*static*/ const Interface_enum Item_Creation::type_ = INTERFACE_ITEM;
+
+
+
 Item_Creation::Item_Creation( Console* c ) :
     Interface( c, INTERFACE_ITEM )
 {}

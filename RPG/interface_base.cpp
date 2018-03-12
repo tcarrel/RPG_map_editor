@@ -41,13 +41,6 @@ void Interface::set_source( Interface_enum source )
 
 
 
-Interface_enum Interface::which( void )
-{
-    return type_;
-}
-
-
-
 Interface::~Interface( void )
 {
     ctrl_ = NULL;

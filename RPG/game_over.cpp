@@ -4,6 +4,10 @@
 
 
 
+/*static*/ const Interface_enum Game_Over::type_ = INTERFACE_GAME_OVER;
+
+
+
 Game_Over::Game_Over( Console* c ) :
     Interface( c, INTERFACE_GAME_OVER )
 {}

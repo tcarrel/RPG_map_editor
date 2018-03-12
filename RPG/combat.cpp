@@ -4,6 +4,10 @@
 
 
 
+/*static*/ const Interface_enum Combat::type_ = INTERFACE_COMBAT;
+
+
+
 Combat::Combat( Console* c ) :
     Interface( c, INTERFACE_COMBAT )
 {}

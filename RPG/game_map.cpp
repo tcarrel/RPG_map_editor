@@ -1,5 +1,10 @@
 
+
 #include "stdafx.h"
+
+
+
+/*static*/ const Interface_enum Game_Map::type_ = INTERFACE_MAP;
 
 
 

@@ -4,6 +4,11 @@
 
 
 
+/*static*/ const Interface_enum Menu::type_ = INTERFACE_MENU;
+
+
+
+
 Menu::Menu( Console* c ) :
     Interface( c, INTERFACE_MENU )
 {}
