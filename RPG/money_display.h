@@ -13,5 +13,4 @@ public:
 private:
     unsigned* money_;
     unsigned money_prev_;
-    static const char format_[];
 };
