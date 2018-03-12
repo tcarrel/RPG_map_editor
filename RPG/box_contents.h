@@ -35,7 +35,7 @@ public:
 protected:
     void enlarge_by_one( void );
 
-    SDL_Rect size_; // stores values in terms of text row and column numbers.
+    SDL_Rect size_; // Stores values in terms of text row and column numbers.
     Line_of_Text* text_;
 
     static Text* text_system_;

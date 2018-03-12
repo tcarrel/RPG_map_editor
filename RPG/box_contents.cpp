@@ -75,7 +75,7 @@ Box_Contents& Box_Contents::add_text( const string& str )
 
 Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
 {
-
+    text_[ size_.h - 1 ] = u8str;
     return *this;
 }
 
@@ -142,5 +142,12 @@ void Box_Contents::update_width( void )
 
 void Box_Contents::enlarge_by_one( void )
 {
-    
+    Line_of_Text* nwl = new Line_of_Text[ size_.h + 1 ];
+    for( int i = 0; i <= size_.h; i++ )
+    {
+        nwl[ i ] = text_[ i ];
+    }
+    delete[] text_;
+    text_ = nwl;
+    ++size_.h;
 }
