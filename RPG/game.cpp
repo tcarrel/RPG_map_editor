@@ -27,6 +27,7 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     renderer_ = window_.get_renderer();
 
     Interface::set_renderer( renderer_ );
+    Sprite_Sheet::set_renderer( renderer_ );
 
     events_.register_interface( &start_menu_, INTERFACE_START_MENU );
     events_.register_interface( &on_map_,     INTERFACE_MAP );
@@ -40,7 +41,6 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     play_data_ = new Play_Data;
     menu_.register_money( play_data_->money_addr() );
 
-    Sprite_Sheet::set_renderer( renderer_ );
 
     text_system_ = new Text;
 

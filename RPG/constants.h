@@ -13,9 +13,9 @@ const int  JOY_DEAD_ZONE = 9000;
 #define ALL_KEYS (0x11d)
 
 #define GAME_CONTROLLER_MAPPING_DATABASE_FILE_PATH \
-"Settings/gamecontrollerdb.txt"
+"Settings\\gamecontrollerdb.txt"
 #define KEYBOARD_MAPPING_SETTINGS_FILE_PATH \
-"Settings/keyboard.mapping.bin"
+"Settings\\keyboard.mapping.bin"
 
 
 #define TEXT_CHARACTER_WIDTH (32)
@@ -30,7 +30,7 @@ const unsigned TEXT_COLUMNS =
 const unsigned TEXT_ROWS =
 (int)floor( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT ) - 1;
 
-#define TEXT_NORMAL_SPRITE_SHEET_FILE_NAME "Graphics/text_normal.bmp"
+#define TEXT_NORMAL_SPRITE_SHEET_FILE_NAME "Graphics\\text_normal.bmp"
 
 #define MAX_MONEY (99999999)
 

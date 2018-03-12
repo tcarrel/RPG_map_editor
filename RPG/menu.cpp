@@ -12,33 +12,30 @@ Menu::Menu( Console* c ) :
 
 void Menu::register_money( unsigned* money_ptr )
 {
-    monay_ = money_ptr;
+    funds_ = new Money_Display( money_ptr );
+    funds_box_ = new Text_Box( funds_ );
 }
 
 
 
 Interface_enum Menu::run( void )
 {
-    SDL_Rect square;
-    square.x = square.y = 32;
-    square.h = square.w = 32;
-    SDL_SetRenderDrawColor( renderer_, 0xff, 0, 0, 0xff );
-    SDL_RenderFillRect( renderer_, &square );
-
-    square.x = 0;  square.y = 32;
-    square.h = square.w = 32;
-    SDL_SetRenderDrawColor( renderer_, 0xff, 0xff, 0, 0xff );
-    SDL_RenderFillRect( renderer_, &square );
-
-    square.x = 32; square.y = 0;
-    square.h = square.w = 32;
-    SDL_SetRenderDrawColor( renderer_, 0, 0xff, 0, 0xff );
-    SDL_RenderFillRect( renderer_, &square );
-
-    square.x = square.y = 0;
-    square.h = square.w = 32;
-    SDL_SetRenderDrawColor( renderer_, 0, 0, 0xff, 0xff );
-    SDL_RenderFillRect( renderer_, &square );
+    __update();
+    __render();
 
     return type_;
+}
+
+
+
+void Menu::__update( void )
+{
+    funds_->update();
+}
+
+
+
+void Menu::__render( void )
+{
+    funds_box_->render();
 }

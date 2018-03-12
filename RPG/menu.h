@@ -3,6 +3,9 @@
 class Interface;
 class Console;
 
+class Money_Display;
+class Text_Box;
+
 
 class Menu : public Interface
 {
@@ -14,5 +17,9 @@ public:
 
 private:
 
-    unsigned* monay_;
+    void __update( void );
+    void __render( void );
+
+    Money_Display* funds_;
+    Text_Box* funds_box_;
 };

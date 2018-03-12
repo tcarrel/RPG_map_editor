@@ -9,9 +9,8 @@
 
 
 
-Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
-    h_(lines),
-    words_( text )
+Text_Box::Text_Box( Box_Contents* content ) :
+    content_( content )
 {
     if( !Text_Box::initialized_ )
     {
@@ -19,31 +18,23 @@ Text_Box::Text_Box( int x, int y, Line_of_Text* text, int lines ) :
         renderer_ = text_.get_renderer();
     }
 
-    box_.x = x * TEXT_CHARACTER_WIDTH + TEXT_X_OFFSET;
-    box_.y = y * TEXT_ROW_HEIGHT + TEXT_Y_OFFSET;
-    box_.h = h_ * TEXT_ROW_HEIGHT;
-    box_.w = 0;
-
-    Console::vb_variable_value( "Text_box", "words_[0].text.size", words_[0].text.size() );
-
-    for( int i = 0; i < h_; i++ )
-    { 
-
-        int size = words_[ i ].text.size();
-#if 0        
-        Console c;
-        c.vb_variable_value( "Text_Box", "ctor::i", i );
-        char var[32];
-        snprintf( var, 32, "ctor::words_[%i].size", i );
-        c.vb_variable_value( "Text_Box", var, words_[ i ].size );
-#endif
-
-        box_.w = ( box_.w < size ) ? size : box_.w;
-    }
+    box_ = content_->size();
     w_ = box_.w;
+    h_ = content_->lines();
+
+    box_.x *= TEXT_CHARACTER_WIDTH;
+    box_.x += TEXT_X_OFFSET;
+
+    box_.y *= TEXT_CHARACTER_HEIGHT;
+    box_.y += TEXT_Y_OFFSET;
+
+    box_.h *= TEXT_ROW_HEIGHT;
     box_.w *= TEXT_CHARACTER_WIDTH;
 
+    Console::vb_variable_value( "Text_Box", "w_", w_ );
+    Console::vb_variable_value( "Text_Box", "h_", h_ );
     Console::vb_variable_value( "Text_Box", "box_", box_ );
+    Console::vb_variable_value( "Text_Box", "content_->size()", content_->size() );
 }
 
 
@@ -63,6 +54,7 @@ void Text_Box::render_fill( void )
     SDL_Rect fill = box_;
     fill.x += text_.get_x_offset();
     fill.y += text_.get_y_offset();
+
     SDL_SetRenderDrawColor(
         text_.get_renderer(),
         fill_color_[ 0 ],
@@ -74,22 +66,39 @@ void Text_Box::render_fill( void )
 
 
 
-void Text_Box::render( Line_of_Text* )
+void Text_Box::render( void )
 {
     render_border();
     render_fill();
 
-    for( int line = 0; line < h_; line++ )
+    for( unsigned u = 0; u < h_; u++ )
     {
-        for( unsigned ltr = 0; ltr < words_[line].text.size(); ltr++ )
-        {
-            text_.render(
-                box_.x + ( ltr * TEXT_CHARACTER_WIDTH ),
-                box_.y + ( line * TEXT_ROW_HEIGHT ),
-                letter_[ (uint8_t)words_[ line ].text[ ltr ] ].clip() );
-        }
+        line_rendering_ = u;
+        render( content_->get_text() + u );
     }
+}
 
+
+
+void Text_Box::render( Line_of_Text* txt)
+{
+    for(
+        unsigned ltr = 0;
+        (ltr < w_) && ( ltr < txt->text.size() );
+        ltr++ )
+    {
+        render_char( ltr, letter_[ txt->text[ ltr ] ].clip() );
+    }
+}
+
+
+
+void Text_Box::render_char( unsigned u, SDL_Rect* clip )
+{
+    text_.render(
+        box_.x + ( u * TEXT_CHARACTER_WIDTH ),
+        box_.y + ( line_rendering_ * TEXT_ROW_HEIGHT ),
+        clip );
 }
 
 
@@ -119,7 +128,7 @@ void Text_Box::render_border( void )
         box_.y + box_.h,
         letter_[ CHAR_BOX_BOTTOM_RIGHT ].clip() );
     // Top and bottom.
-    for( int i = 0; i < w_; i++ )
+    for( unsigned i = 0; i < w_; i++ )
     {
         text_.render(
             box_.x + ( i * TEXT_CHARACTER_WIDTH ),
@@ -131,7 +140,7 @@ void Text_Box::render_border( void )
             letter_[ CHAR_BOX_BOTTOM ].clip() );
     }
     // Sides
-    for( int i = 0; i < h_; i++ )
+    for( unsigned i = 0; i < h_; i++ )
     {
         //Left
         text_.render(

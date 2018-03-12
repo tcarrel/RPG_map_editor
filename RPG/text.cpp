@@ -27,6 +27,7 @@ Text::Text( const string& sheet_path )
     if( !initialized_ )
     {
         initialized_ = true;
+        Console::vb_variable_value( "Text", "renderer_", text_.get_renderer() );
         /*
         transparent_color magic_pink;
         magic_pink.b = magic_pink.r = 0xFF;

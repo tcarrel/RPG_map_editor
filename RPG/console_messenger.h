@@ -3,6 +3,8 @@
 #include<SDL.h>
 #include<string>
 
+class Uint8_t_String;
+
 using std::string;
 
 class Console
@@ -18,6 +20,7 @@ public:
     static void vb_variable_value( string, string, unsigned );
     static void vb_variable_value( string, string, int );
     static void vb_variable_value( string, string, float );
+    static void vb_variable_value( string, string, Uint8_t_String& );
     static void vb_variable_value( string, string, void* );
     static void vb_variable_value( string, string, SDL_Rect& );
     

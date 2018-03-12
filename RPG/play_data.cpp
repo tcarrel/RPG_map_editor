@@ -8,11 +8,13 @@ Play_Data::Play_Data( void )
 {
     Random random;
     random_seed_ = random.get_seed();
+
+    money_ = random.get( 500, 1500);
 }
 
 
 
-unsigned* Play_Data::money( void )
+unsigned* Play_Data::money_addr( void )
 {
     return &money_;
 }

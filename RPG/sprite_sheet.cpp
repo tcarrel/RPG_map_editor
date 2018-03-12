@@ -71,6 +71,7 @@ bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
     }
 
     new_texture = SDL_CreateTextureFromSurface( renderer_, loaded );
+    Console::vb_variable_value( "Sprite_Sheet", "renderer_", renderer_ );
     if( !new_texture )
     {
         string shrt(
@@ -128,6 +129,7 @@ int Sprite_Sheet::get_width( void )
 
 void Sprite_Sheet::set_renderer( SDL_Renderer* r )
 {
+    Console::vb_variable_value( "Sprite_Sheet", "set_renderer()", r );
     renderer_ = r;
 }
 

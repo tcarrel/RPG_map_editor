@@ -21,19 +21,36 @@ Box_Contents::Box_Contents( void ) :
 
 
 
+Box_Contents::Box_Contents( const unsigned& cu ) :
+    size_{ 0,0,0,0 },
+    text_( new Line_of_Text[ cu ] ),
+    text_qty_( cu )
+{
+    size_.h = cu;
+}
+
+
+
+Box_Contents::Box_Contents( const char cstr[] ) :
+    Box_Contents( Uint8_t_String(cstr) )
+{}
+
+
+
 Box_Contents::Box_Contents( const Uint8_t_String& str ) :
     Box_Contents()
 {
     if( text_ )
     {
         *text_ = str;
-        return;
     }
     else
     {
         text_ = new Line_of_Text( str );
     }
     text_qty_ = 1;
+
+    update_width();
 }
 
 
@@ -50,6 +67,8 @@ Box_Contents& Box_Contents::operator+( const Uint8_t_String& rhs )
     delete[] text_;
     text_ = newl;
     text_ = NULL;
+
+    update_width();
 
     return *this;
 }
@@ -74,16 +93,16 @@ Box_Contents::~Box_Contents( void )
 
 
 
-Line_of_Text& Box_Contents::operator[]( const unsigned& u )
+Uint8_t_String& Box_Contents::operator[]( const unsigned& u )
 {
-    return text_[ u ];
+    return text_[ u ].text;
 }
 
 
 
-Line_of_Text& Box_Contents::operator[]( const int& i )
+Uint8_t_String& Box_Contents::operator[]( const int& i )
 {
-    return this->operator[]( (unsigned)i );
+    return text_[ i ].text;
 }
 
 
@@ -98,4 +117,17 @@ SDL_Rect& Box_Contents::size( void )
 unsigned& Box_Contents::lines( void )
 {
     return text_qty_;
+}
+
+
+
+void Box_Contents::update_width( void )
+{
+    for( unsigned u = 0; u < text_qty_; u++ )
+    {
+        if( size_.w < (int)text_[ u ].text.size() )
+        {
+            size_.w = (int)text_[ u ].text.size();
+        }
+    }
 }

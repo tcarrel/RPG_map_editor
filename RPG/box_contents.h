@@ -10,14 +10,18 @@ class Box_Contents
 {
 public:
     Box_Contents( void );
+    Box_Contents( const unsigned& );
+    Box_Contents( const char[] );
     Box_Contents( const Uint8_t_String& );
 
     ~Box_Contents( void );
 
-    Line_of_Text& operator[]( const unsigned& );
-    Line_of_Text& operator[]( const int& );
+    Uint8_t_String& operator[]( const unsigned& );
+    Uint8_t_String& operator[]( const int& );
 
     Box_Contents& operator+( const Uint8_t_String& );
+
+   // Box_Contents& add_text( const Uint8_t_String& );
 
     SDL_Rect& size( void );
     Line_of_Text* get_text( void );
@@ -33,4 +37,7 @@ protected:
     unsigned text_qty_;
 
     static Text* text_system_;
+
+private:
+    void update_width( void );
 };

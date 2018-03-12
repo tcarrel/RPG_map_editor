@@ -9,7 +9,7 @@ class Play_Data
 public:
     Play_Data( void );
 
-    unsigned* money( void );
+    unsigned* money_addr( void );
     void add_money( unsigned );
 
 private:

@@ -17,10 +17,10 @@ public:
     Uint8_t_String& operator=( const string& );
     Uint8_t_String& operator=( const char[] );
 
-    uint8_t& operator[]( const unsigned& );
-    uint8_t& operator[]( const int& );
+    uint8_t operator[]( const unsigned& );
+    uint8_t operator[]( const int& );
 
-    uint8_t*& c_str( void );
+    uint8_t* c_str( void );
 
     unsigned size( void );
 

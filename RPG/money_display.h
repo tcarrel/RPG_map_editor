@@ -12,5 +12,6 @@ public:
     void update( void* = NULL, const unsigned& = 0);
 private:
     unsigned* money_;
+    unsigned money_prev_;
     static const char format_[];
 };

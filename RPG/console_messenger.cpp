@@ -186,6 +186,23 @@ Console::Console( bool v )
 }
 
 
+/*static*/ void Console::vb_variable_value(
+    string object,
+    string var,
+    Uint8_t_String& str )
+{
+    if( !verbose_ )
+    {
+        return;
+    }
+
+    printf( "\t      \tUint8_t_String %s::%s = %s\n",
+            object.c_str(),
+            var.c_str(),
+            str.c_str() );
+}
+
+
 
 /*static*/ void Console::vb_variable_value( string object, string name, SDL_Rect& rect)
 {
@@ -224,6 +241,7 @@ Console::Console( bool v )
 /*static*/ void Console::vb_variable_value( string, string, unsigned ) {}
 /*static*/ void Console::vb_variable_value( string, string, int ) {}
 /*static*/ void Console::vb_variable_value( string, string, float ) {}
+/*static*/ void vb_variable_value( string, string, Uint8_t_String& ) {}
 /*static*/ void Console::vb_variable_value( string, string, SDL_Rect& ) {}
 /*static*/ void Console::vb_variable_value( string, string, void* ) {}
 /*static*/ void Console::vb_variable_value( string, string&, string&, char* ) {}
