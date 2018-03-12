@@ -82,6 +82,12 @@
     <Filter Include="Source Files\Interfaces\Types\Menu">
       <UniqueIdentifier>{91a89592-cf05-48e5-a031-6c30aa52cc0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interfaces\Types\Pause">
+      <UniqueIdentifier>{055a74a2-e587-429a-95cb-d956d42bd5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Types\Pause">
+      <UniqueIdentifier>{0ebfef8e-5ff7-4b9b-9279-76eeb9ed849c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -183,9 +189,6 @@
     <ClInclude Include="main_menu.h">
       <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
-    <ClInclude Include="pause.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
     <ClInclude Include="menu.h">
       <Filter>Header Files\Interfaces\Types\Menu</Filter>
     </ClInclude>
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="generic_text.h">
       <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="pause.h">
+      <Filter>Header Files\Interfaces\Types\Pause</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +281,6 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
     </ClCompile>
-    <ClCompile Include="pause.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
     <ClCompile Include="menu.cpp">
       <Filter>Source Files\Interfaces\Types\Menu</Filter>
     </ClCompile>
@@ -286,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="generic_text.cpp">
       <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="pause.cpp">
+      <Filter>Source Files\Interfaces\Types\Pause</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

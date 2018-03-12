@@ -41,9 +41,13 @@ private:
     Game_Over      over_;
     Pause          pause_;
     Save_Load_Menu save_load_;
+    
+    Interface*     interface_[ ALL_INTERFACES ];
 
     Play_Data*     play_data_;
 
     SDL_Renderer*  renderer_;
     Text*          text_system_;
+
+    unsigned       current_interface_;
 };

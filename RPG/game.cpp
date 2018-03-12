@@ -29,6 +29,15 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     Interface::set_renderer( renderer_ );
     Sprite_Sheet::set_renderer( renderer_ );
 
+    interface_[ INTERFACE_START_MENU ] = &start_menu_;
+    interface_[ INTERFACE_MAP ] = &on_map_;
+    interface_[ INTERFACE_COMBAT ] = &combat_;
+    interface_[ INTERFACE_MENU ] = &menu_;
+    interface_[ INTERFACE_ITEM ] = &creation_;
+    interface_[ INTERFACE_PAUSE ] = &pause_;
+    interface_[ INTERFACE_GAME_OVER ] = &over_;
+    interface_[ INTERFACE_SAVE_LOAD_MENU ] = &save_load_;
+
     events_.register_interface( &start_menu_, INTERFACE_START_MENU );
     events_.register_interface( &on_map_,     INTERFACE_MAP );
     events_.register_interface( &combat_,     INTERFACE_COMBAT );
@@ -61,14 +70,19 @@ void Game::main_loop( void )
 {
     window_.update();
 
+    unsigned goto_if = INTERFACE_MENU;
+    current_interface_ = INTERFACE_MENU;
+
     while( !events_.quit() )
     {
         window_.clear();
 
-        //text_system_->render( &txt );
+        goto_if = interface_[ current_interface_ ]->run();
+        if( goto_if != current_interface_ )
+        {
 
-        menu_.run();
-        //Main game loop goes here.
+        }
+        
         events_();
 
         window_.update();
