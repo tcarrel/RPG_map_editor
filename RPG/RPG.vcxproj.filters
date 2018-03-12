@@ -296,11 +296,11 @@
     <None Include="Settings\keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
     </None>
-    <None Include="LICENSE.md5">
-      <Filter>Resource Files\github</Filter>
-    </None>
     <None Include="Graphics\text_normal.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
+    </None>
+    <None Include="..\LICENSE.md5">
+      <Filter>Resource Files\github</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

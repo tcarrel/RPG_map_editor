@@ -222,9 +222,9 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\LICENSE.md5" />
     <None Include="..\README.md5" />
     <None Include="Graphics\text_normal.xcf" />
-    <None Include="LICENSE.md5" />
     <None Include="packages.config" />
     <None Include="Settings\keyboard.mapping.bin" />
   </ItemGroup>
