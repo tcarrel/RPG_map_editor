@@ -201,6 +201,9 @@
     <ClInclude Include="pause.h">
       <Filter>Header Files\Interfaces\Types\Pause</Filter>
     </ClInclude>
+    <ClInclude Include="screen_texture.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -292,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="pause.cpp">
       <Filter>Source Files\Interfaces\Types\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="screen_texture.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
