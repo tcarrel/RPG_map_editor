@@ -12,4 +12,6 @@ public:
     Interface_enum run( void );
 private:
 
+    /*virtual*/ void do_controls( void );
+
 };

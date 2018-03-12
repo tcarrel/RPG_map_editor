@@ -10,9 +10,10 @@ Menu::Menu( Console* c ) :
 
 
 
-void Menu::register_money( unsigned* money_ptr )
+void Menu::register_data_store( Play_Data* pd )
 {
-    funds_ = new Money_Display( money_ptr );
+    game_data_ = pd;
+    funds_ = new Money_Display( game_data_->money_addr() );
     funds_box_ = new Text_Box( funds_ );
 }
 
@@ -27,9 +28,30 @@ Interface_enum Menu::run( void )
 }
 
 
+void Menu::do_controls( void )
+{
+    for( unsigned u = 0; u < ALL_CTRL; u++ )
+    {
+        if( ctrl_previous_[ u ] && !ctrl_[ u ] )
+        {
+            switch( u )
+            {
+            case CTRL_START:
+                game_data_->add_money( 5076543 );
+                break;
+            default:
+                break;
+            }
+        }
+        ctrl_previous_[ u ] = ctrl_[ u ];
+    }
+}
+
+
 
 void Menu::__update( void )
 {
+    do_controls();
     funds_->update();
 }
 

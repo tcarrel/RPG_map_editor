@@ -14,4 +14,6 @@ public:
 
 private:
 
+    /*virtual*/ void do_controls( void );
+
 };

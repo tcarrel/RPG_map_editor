@@ -15,3 +15,10 @@ Interface_enum Combat::run( void )
 
     return type_;
 }
+
+
+
+void Combat::do_controls( void )
+{
+
+}

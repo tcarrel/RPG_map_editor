@@ -16,6 +16,8 @@ public:
     Interface_enum run( void );
 private:
 
+    /*virtual*/ void do_controls( void );
+
     Text* text_;
     Line_of_Text pause_;
     SDL_Rect screen_;

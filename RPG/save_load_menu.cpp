@@ -14,3 +14,8 @@ Interface_enum Save_Load_Menu::run( void )
 {
     return type_;
 }
+
+
+
+void Save_Load_Menu::do_controls( void )
+{}

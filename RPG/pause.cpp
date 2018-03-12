@@ -33,3 +33,8 @@ Interface_enum Pause::run( void )
 
     return type_;
 }
+
+
+
+void Pause::do_controls( void )
+{}

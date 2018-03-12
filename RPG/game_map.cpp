@@ -15,3 +15,8 @@ Interface_enum Game_Map::run( void )
 
     return type_;
 }
+
+
+
+void Game_Map::do_controls( void )
+{}

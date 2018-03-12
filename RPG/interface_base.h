@@ -27,10 +27,13 @@ public:
     ~Interface( void );
 protected:
 
+    virtual void do_controls( void ) = 0;
+
     static SDL_Renderer* renderer_;
 
     Console* console_;
     bool* ctrl_;
+    bool  ctrl_previous_[ ALL_CTRL ];
     Interface_enum type_;
     Interface_enum came_from_;
 

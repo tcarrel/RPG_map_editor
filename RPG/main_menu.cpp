@@ -15,3 +15,8 @@ Interface_enum Main_Menu::run( void )
 
     return type_;
 }
+
+
+
+void Main_Menu::do_controls( void )
+{}

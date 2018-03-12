@@ -7,6 +7,7 @@
 /*static*/ SDL_Renderer* Interface::renderer_ = NULL;
 
 
+
 void Interface::register_ctrl( bool* c )
 {
     if( ctrl_ && console_ && console_->verbose() )
@@ -19,6 +20,10 @@ void Interface::register_ctrl( bool* c )
     }
 
     ctrl_ = c;
+    for( unsigned u = 0; u < ALL_CTRL; u++ )
+    {
+        ctrl_previous_[ u ] = ctrl_[ u ];
+    }
 }
 
 

@@ -15,3 +15,8 @@ Interface_enum Game_Over::run( void )
 
     return type_;
 }
+
+
+
+void Game_Over::do_controls( void )
+{}

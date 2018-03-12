@@ -15,3 +15,8 @@ Interface_enum Item_Creation::run( void )
 
     return type_;
 }
+
+
+
+void Item_Creation::do_controls( void )
+{}
