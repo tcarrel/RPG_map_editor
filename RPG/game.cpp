@@ -28,6 +28,7 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
 
     Interface::set_renderer( renderer_ );
     Sprite_Sheet::set_renderer( renderer_ );
+    Screen_Texture::init( &window_ );
 
     interface_[ INTERFACE_START_MENU ] = &start_menu_;
     interface_[ INTERFACE_MAP ] = &on_map_;
@@ -81,6 +82,7 @@ void Game::main_loop( void )
 
         if( goto_if != current_interface_ )
         {
+            Screen_Texture::update();
             interface_[ goto_if ]->set_source( current_interface_ );
             current_interface_ = goto_if;
         }

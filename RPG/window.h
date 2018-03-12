@@ -15,6 +15,7 @@ public:
     ~Window();
 
     SDL_Renderer* get_renderer( void ) { return renderer_; }
+    SDL_Surface* get_surface( void ) { return surface_; }
     SDL_Rect get_dimensions( void );
 
 private:
