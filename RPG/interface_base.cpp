@@ -34,7 +34,7 @@ void Interface::register_ctrl( bool* c )
 }
 
 
-void Interface::set_source( Interface_enum source )
+void Interface::set_source( Interface_t source )
 {
     came_from_ = source;
 }

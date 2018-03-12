@@ -4,7 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Main_Menu::type_ = INTERFACE_START_MENU;
+/*static*/ const Interface_t Main_Menu::type_ = INTERFACE_START_MENU;
 
 
 
@@ -14,7 +14,7 @@ Main_Menu::Main_Menu( Console* c ) :
 
 
 
-Interface_enum Main_Menu::run( void )
+Interface_t Main_Menu::run( void )
 {
 
     return type_;
@@ -60,4 +60,13 @@ void Main_Menu::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Main_Menu::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

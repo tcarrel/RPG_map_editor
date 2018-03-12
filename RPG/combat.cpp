@@ -4,7 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Combat::type_ = INTERFACE_COMBAT;
+/*static*/ const Interface_t Combat::type_ = INTERFACE_COMBAT;
 
 
 
@@ -14,7 +14,7 @@ Combat::Combat( Console* c ) :
 
 
 
-Interface_enum Combat::run( void )
+Interface_t Combat::run( void )
 {
 
     return type_;
@@ -60,4 +60,13 @@ void Combat::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Combat::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

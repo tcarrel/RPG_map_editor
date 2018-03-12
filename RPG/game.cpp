@@ -70,7 +70,7 @@ void Game::main_loop( void )
 {
     window_.update();
 
-    unsigned goto_if = INTERFACE_MENU;
+    Interface_t goto_if = INTERFACE_MENU;
     current_interface_ = INTERFACE_MENU;
 
     while( !events_.quit() )
@@ -78,9 +78,11 @@ void Game::main_loop( void )
         window_.clear();
 
         goto_if = interface_[ current_interface_ ]->run();
+
         if( goto_if != current_interface_ )
         {
-
+            interface_[ goto_if ]->set_source( current_interface_ );
+            current_interface_ = goto_if;
         }
         
         events_();

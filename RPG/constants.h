@@ -36,7 +36,7 @@ const unsigned TEXT_ROWS =
 
 #define MAX_MONEY (99999999)
 
-enum Interface_enum
+enum Interface_t
 {
     INTERFACE_START_MENU,
     INTERFACE_MAP,

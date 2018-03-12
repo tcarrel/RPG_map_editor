@@ -4,8 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Game_Map::type_ = INTERFACE_MAP;
-
+/*static*/ const Interface_t Game_Map::type_ = INTERFACE_MAP;
 
 
 
@@ -15,7 +14,7 @@ Game_Map::Game_Map( Console* c ) :
 
 
 
-Interface_enum Game_Map::run( void )
+Interface_t Game_Map::run( void )
 {
 
     return type_;
@@ -61,4 +60,13 @@ void Game_Map::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Game_Map::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

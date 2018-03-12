@@ -4,7 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Item_Creation::type_ = INTERFACE_ITEM;
+/*static*/ const Interface_t Item_Creation::type_ = INTERFACE_ITEM;
 
 
 
@@ -14,7 +14,7 @@ Item_Creation::Item_Creation( Console* c ) :
 
 
 
-Interface_enum Item_Creation::run( void )
+Interface_t Item_Creation::run( void )
 {
 
     return type_;
@@ -60,4 +60,13 @@ void Item_Creation::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Item_Creation::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

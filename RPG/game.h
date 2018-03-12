@@ -49,5 +49,5 @@ private:
     SDL_Renderer*  renderer_;
     Text*          text_system_;
 
-    unsigned       current_interface_;
+    Interface_t current_interface_;
 };

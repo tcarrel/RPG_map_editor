@@ -4,8 +4,9 @@
 
 
 
-/*static*/ const Interface_enum Save_Load_Menu::type_ =
+/*static*/ const Interface_t Save_Load_Menu::type_ =
 INTERFACE_SAVE_LOAD_MENU;
+
 
 
 Save_Load_Menu::Save_Load_Menu( Console* c ) :
@@ -14,7 +15,7 @@ Save_Load_Menu::Save_Load_Menu( Console* c ) :
 
 
 
-Interface_enum Save_Load_Menu::run( void )
+Interface_t Save_Load_Menu::run( void )
 {
     return type_;
 }
@@ -59,4 +60,13 @@ void Save_Load_Menu::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Save_Load_Menu::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

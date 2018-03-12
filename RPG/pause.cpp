@@ -4,8 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Pause::type_ = INTERFACE_PAUSE;
-
+/*static*/ const Interface_t Pause::type_ = INTERFACE_PAUSE;
 
 
 
@@ -22,61 +21,51 @@ void Pause::init( Text* t, Window* w )
     renderer_ = w->get_renderer();
 
     pause_.text = "PAUSED";
-    pause_.x =
-        ( screen_.w / 2 ) -
-        ( ( pause_.text.size() * TEXT_CHARACTER_WIDTH ) / 2 );
-    pause_.y = ( screen_.h / 2 ) - ( TEXT_CHARACTER_HEIGHT / 2 );
+
+    pause_.x = ( SCREEN_X_PIXELS / 2 ) - ( 3 * TEXT_CHARACTER_WIDTH );
+    pause_.y = ( SCREEN_Y_PIXELS / 2 ) - ( ( 1 * TEXT_CHARACTER_HEIGHT ) / 2 );
+
+    console_->vb_variable_value( "Pause", "pause_.text", pause_.text );
+    console_->vb_variable_value( "Pause", "pause_.x", pause_.x );
+    console_->vb_variable_value( "Pause", "pause_.y", pause_.y );
 }
 
 
 
-Interface_enum Pause::run( void )
+Interface_t Pause::run( void )
 {
-    SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 0x7f );
+    SDL_SetRenderDrawColor( renderer_, 0, 0, 63, 0x7f );
     SDL_RenderFillRect( renderer_, &screen_ );
     text_->render( TEXT_HIGHLIGHT_TYPE_NORMAL, &pause_ );
 
-    return type_;
+    do_controls();
+
+    return exit( next_ );
 }
 
 
 
 void Pause::do_controls( void )
 {
+    if( ctrl_previous_[ CTRL_START ] && !ctrl_[ CTRL_START ] )
+    {
+        next_ = came_from_;
+    }
+    else
+    {
+        next_ = type_;
+    }
     for( unsigned u = 0; u < ALL_CTRL; u++ )
     {
-        if( ctrl_previous_[ u ] && !ctrl_[ u ] )
-        {
-            switch( u )
-            {
-            case CTRL_A:
-                break;
-            case CTRL_B:
-                break;
-            case CTRL_Y:
-                break;
-            case CTRL_X:
-                break;
-            case CTRL_L:
-                break;
-            case CTRL_R:
-                break;
-            case CTRL_UP:
-                break;
-            case CTRL_DOWN:
-                break;
-            case CTRL_LEFT:
-                break;
-            case CTRL_RIGHT:
-                break;
-            case CTRL_SELECT:
-                break;
-            case CTRL_START:
-                break;
-            default:
-                break;
-            }
-        }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Pause::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

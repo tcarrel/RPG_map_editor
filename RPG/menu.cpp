@@ -4,13 +4,13 @@
 
 
 
-/*static*/ const Interface_enum Menu::type_ = INTERFACE_MENU;
-
+/*static*/ const Interface_t Menu::type_ = INTERFACE_MENU;
 
 
 
 Menu::Menu( Console* c ) :
-    Interface( c, INTERFACE_MENU )
+    Interface( c, INTERFACE_MENU ),
+    next_( type_ )
 {}
 
 
@@ -24,12 +24,12 @@ void Menu::register_data_store( Play_Data* pd )
 
 
 
-Interface_enum Menu::run( void )
+Interface_t Menu::run( void )
 {
     __update();
     __render();
 
-    return type_;
+    return exit( next_ );
 }
 
 
@@ -42,28 +42,40 @@ void Menu::do_controls( void )
             switch( u )
             {
             case CTRL_A:
+                next_ = type_;
                 break;
             case CTRL_B:
+                next_ = type_;
                 break;
             case CTRL_Y:
+                next_ = type_;
                 break;
             case CTRL_X:
+                next_ = type_;
                 break;
             case CTRL_L:
+                next_ = type_;
                 break;
             case CTRL_R:
+                next_ = type_;
                 break;
             case CTRL_UP:
+                next_ = type_;
                 break;
             case CTRL_DOWN:
+                next_ = type_;
                 break;
             case CTRL_LEFT:
+                next_ = type_;
                 break;
             case CTRL_RIGHT:
+                next_ = type_;
                 break;
             case CTRL_SELECT:
+                next_ = type_;
                 break;
             case CTRL_START:
+                next_ = INTERFACE_PAUSE;
                 break;
             default:
                 break;
@@ -71,6 +83,15 @@ void Menu::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Menu::exit( Interface_t& rv )
+{
+    Interface_t ret = rv;
+    rv = type_;
+    return ret;
 }
 
 

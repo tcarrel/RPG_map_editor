@@ -4,7 +4,7 @@
 
 
 
-/*static*/ const Interface_enum Game_Over::type_ = INTERFACE_GAME_OVER;
+/*static*/ const Interface_t Game_Over::type_ = INTERFACE_GAME_OVER;
 
 
 
@@ -14,7 +14,7 @@ Game_Over::Game_Over( Console* c ) :
 
 
 
-Interface_enum Game_Over::run( void )
+Interface_t Game_Over::run( void )
 {
 
     return type_;
@@ -60,4 +60,13 @@ void Game_Over::do_controls( void )
         }
         ctrl_previous_[ u ] = ctrl_[ u ];
     }
+}
+
+
+
+Interface_t Game_Over::exit( Interface_t& var )
+{
+    Interface_t return_value = var;
+    var = type_;
+    return return_value;
 }

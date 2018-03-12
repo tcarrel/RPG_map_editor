@@ -3,7 +3,7 @@
 class Interface;
 class Console;
 
-enum Interface_enum;
+enum Interface_t;
 
 
 class Game_Map : public Interface
@@ -11,13 +11,14 @@ class Game_Map : public Interface
 public:
     Game_Map( Console* );
 
-    Interface_enum run( void );
+    Interface_t run( void );
 
-    Interface_enum which( void ) { return type_; }
+    Interface_t which( void ) { return type_; }
 
 private:
 
     /*virtual*/ void do_controls( void );
+    Interface_t exit( Interface_t& );
 
-    static const Interface_enum type_;
+    static const Interface_t type_;
 };
