@@ -82,7 +82,15 @@ void Game::main_loop( void )
 
         if( goto_if != current_interface_ )
         {
-            Screen_Texture::update();
+            switch( goto_if )
+            {
+            case INTERFACE_PAUSE:
+                Screen_Texture::update();
+                break;
+            default:
+                ;
+            }
+
             interface_[ goto_if ]->set_source( current_interface_ );
             current_interface_ = goto_if;
         }
