@@ -36,8 +36,29 @@ void Menu::do_controls( void )
         {
             switch( u )
             {
+            case CTRL_A:
+                break;
+            case CTRL_B:
+                break;
+            case CTRL_Y:
+                break;
+            case CTRL_X:
+                break;
+            case CTRL_L:
+                break;
+            case CTRL_R:
+                break;
+            case CTRL_UP:
+                break;
+            case CTRL_DOWN:
+                break;
+            case CTRL_LEFT:
+                break;
+            case CTRL_RIGHT:
+                break;
+            case CTRL_SELECT:
+                break;
             case CTRL_START:
-                game_data_->add_money( 5076543 );
                 break;
             default:
                 break;
