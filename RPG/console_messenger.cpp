@@ -26,13 +26,8 @@ Console::Console( void )
 *   Can, optionally, activate a verbose output more for sending messages to the
 *  console.
 */
-Console::Console( bool v )
+Console::Console( bool v ) : Console()
 {
-    if( first_ )
-    {
-        printf( ".\n" );
-        first_ = false;
-    }
     verbose_ = v;
     no_error( "Console", "Verbose:\tno", "Verbose:\tyes" );
 }
@@ -51,7 +46,8 @@ Console::Console( bool v )
         val_previous_ = false;
     }
 #endif
-
+//    fprintf( stderr, "\033[1;33m" );
+    fprintf( stderr, "\n %s\n", string( 78, 'X' ).c_str() );
     fprintf(
         stderr,
         "(%u)\n"
@@ -63,7 +59,10 @@ Console::Console( bool v )
         source.c_str(),
         (verbose_ ? long_msg : shrt_msg).c_str()
     );
+    fprintf( stderr, " %s\n", string( 78, 'X' ).c_str() );
     hline();
+
+    //fprintf( stderr, "\033[0m" );
 }
 
 
@@ -289,3 +288,4 @@ Console::Console( bool v )
     }
     printf( "\n" );
 }
+
