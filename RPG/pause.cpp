@@ -24,6 +24,7 @@ void Pause::init( Text* t, Window* w )
 
     pause_.x = ( SCREEN_X_PIXELS / 2 ) - ( 3 * TEXT_CHARACTER_WIDTH );
     pause_.y = ( SCREEN_Y_PIXELS / 2 ) - ( ( 1 * TEXT_CHARACTER_HEIGHT ) / 2 );
+    pause_.hl = TEXT_HIGHLIGHT_TYPE_BRIGHT;
 
     console_->vb_variable_value( "Pause", "pause_.text", pause_.text );
     console_->vb_variable_value( "Pause", "pause_.x", pause_.x );
@@ -34,9 +35,11 @@ void Pause::init( Text* t, Window* w )
 
 Interface_t Pause::run( void )
 {
+    Screen_Texture screen;
+
     SDL_SetRenderDrawColor( renderer_, 0, 0, 63, 0x7f );
     SDL_RenderFillRect( renderer_, &screen_ );
-    text_->render( TEXT_HIGHLIGHT_TYPE_NORMAL, &pause_ );
+    text_->render( pause_.hl, &pause_ );
 
     do_controls();
 

@@ -14,9 +14,15 @@ public:
 
     ~Window();
 
-    SDL_Renderer* get_renderer( void ) { return renderer_; }
-    SDL_Surface* get_surface( void ) { return surface_; }
+    SDL_Renderer* get_renderer( void )
+    { return renderer_; }
+    SDL_Surface* get_surface( void )
+    { return SDL_GetWindowSurface( window_ ); }
     SDL_Rect get_dimensions( void );
+    int bpp(void)
+    { return bpp_; }
+    Uint32 format( void )
+    { return mode_.format; }
 
 private:
     void splash( struct Splash_screen*, unsigned );
