@@ -9,6 +9,7 @@ class Sprite_Sheet
 {
 public:
     Sprite_Sheet( void );
+    Sprite_Sheet( const string&, transparent_color* color_key = NULL );
     ~Sprite_Sheet( void );
 
     bool load( const string&, transparent_color* color_key = NULL );
@@ -18,6 +19,8 @@ public:
     int get_height( void );
 
     void render( int, int, SDL_Rect* clip = NULL );
+
+    bool ready( void ) { return ready_; }
 
     static void set_renderer( SDL_Renderer* );
     SDL_Renderer* get_renderer( void ) { return renderer_; }
@@ -30,6 +33,8 @@ protected:
     SDL_Texture* sheet_;
     int width_;
     int height_;
+
+    bool ready_;
 
 
     static Console* console_;

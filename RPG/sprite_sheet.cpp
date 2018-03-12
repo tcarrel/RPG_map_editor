@@ -14,7 +14,8 @@
 Sprite_Sheet::Sprite_Sheet( void ) :
     sheet_( NULL ),
     width_( 0 ),
-    height_( 0 )
+    height_( 0 ),
+    ready_(false)
 {
     if( self_count_ == 0 )
     {
@@ -23,6 +24,13 @@ Sprite_Sheet::Sprite_Sheet( void ) :
     self_count_++;
 }
 
+
+
+Sprite_Sheet::Sprite_Sheet( const string& path, transparent_color* ck ) :
+    Sprite_Sheet()
+{
+    ready_ = load( path, ck );
+}
 
 
 
@@ -51,7 +59,7 @@ bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
         string long_msg(
             "Unable to load sprite sheet <" +
             path +
-            ">." +
+            ">: " +
             SDL_GetError() );
 
         console_->error( "SDL2", "Unable to load sprite sheet.", long_msg );
@@ -96,7 +104,7 @@ bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
     console_->vb_only_no_err( "Sprite_Sheet", "Sheet " + path + ", loaded." );
     console_->vb_variable_value( "Sprite_Sheet", "SDL_Texture*", sheet_ );
 
-    return !sheet_;
+    return true;
 }
 
 

@@ -14,6 +14,7 @@ Money_Display::Money_Display( unsigned* money_addr ) :
     size_.x = TEXT_COLUMNS - 11;
     size_.y = TEXT_ROWS - 1;
 
+    text_[ 0 ].hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
 }
 
 

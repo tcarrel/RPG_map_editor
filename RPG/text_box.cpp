@@ -15,7 +15,7 @@ Text_Box::Text_Box( Box_Contents* content ) :
     if( !Text_Box::initialized_ )
     {
         initialized_ = true;
-        renderer_ = text_.get_renderer();
+        renderer_ = text_[ 0 ].get_renderer();
     }
 
     box_ = content_->size();
@@ -52,16 +52,16 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 void Text_Box::render_fill( void )
 {
     SDL_Rect fill = box_;
-    fill.x += text_.get_x_offset();
-    fill.y += text_.get_y_offset();
+    fill.x += text_[0].get_x_offset();
+    fill.y += text_[0].get_y_offset();
 
     SDL_SetRenderDrawColor(
-        text_.get_renderer(),
+        renderer_,
         fill_color_[ 0 ],
         fill_color_[ 1 ],
         fill_color_[ 2 ],
         fill_color_[ 3 ] );
-    SDL_RenderFillRect( text_.get_renderer(), &fill );
+    SDL_RenderFillRect( renderer_, &fill );
 }
 
 
@@ -87,15 +87,15 @@ void Text_Box::render( Line_of_Text* txt)
         (ltr < w_) && ( ltr < txt->text.size() );
         ltr++ )
     {
-        render_char( ltr, letter_[ txt->text[ ltr ] ].clip() );
+        render_char( ltr, letter_[ txt->text[ ltr ] ].clip(), txt->hl );
     }
 }
 
 
 
-void Text_Box::render_char( unsigned u, SDL_Rect* clip )
+void Text_Box::render_char( unsigned u, SDL_Rect* clip, unsigned hl )
 {
-    text_.render(
+    text_[ hl ].render(
         box_.x + ( u * TEXT_CHARACTER_WIDTH ),
         box_.y + ( line_rendering_ * TEXT_ROW_HEIGHT ),
         clip );
@@ -107,34 +107,34 @@ void Text_Box::render_border( void )
 {
     //Corners
     // Top left
-    text_.render(
+    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
         box_.x - TEXT_CHARACTER_WIDTH,
         box_.y - TEXT_CHARACTER_HEIGHT,
         letter_[ CHAR_BOX_TOP_LEFT ].clip() );
 
     // Top right
-    text_.render(
+    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
         box_.x + box_.w,
         box_.y - TEXT_CHARACTER_HEIGHT,
         letter_[ CHAR_BOX_TOP_RIGHT ].clip() );
     // Bottom left
-    text_.render(
+    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
         box_.x - TEXT_CHARACTER_WIDTH,
         box_.y + box_.h,
         letter_[ CHAR_BOX_BOTTOM_LEFT].clip() );
     // Bottom right
-    text_.render(
+    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
         box_.x + box_.w,
         box_.y + box_.h,
         letter_[ CHAR_BOX_BOTTOM_RIGHT ].clip() );
     // Top and bottom.
     for( unsigned i = 0; i < w_; i++ )
     {
-        text_.render(
+        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
             box_.x + ( i * TEXT_CHARACTER_WIDTH ),
             box_.y - TEXT_CHARACTER_HEIGHT,
             letter_[ CHAR_BOX_TOP ].clip() );
-        text_.render(
+        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
             box_.x + ( i * TEXT_CHARACTER_WIDTH ),
             box_.y + box_.h,
             letter_[ CHAR_BOX_BOTTOM ].clip() );
@@ -143,12 +143,12 @@ void Text_Box::render_border( void )
     for( unsigned i = 0; i < h_; i++ )
     {
         //Left
-        text_.render(
+        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
             box_.x - TEXT_CHARACTER_WIDTH,
             box_.y + ( i * TEXT_ROW_HEIGHT ),
             letter_[ CHAR_BOX_LEFT ].clip() );
         //Right
-        text_.render(
+        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
             box_.x + box_.w,
             box_.y + ( i * TEXT_ROW_HEIGHT ),
             letter_[ CHAR_BOX_RIGHT ].clip() );

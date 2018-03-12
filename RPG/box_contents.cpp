@@ -9,9 +9,8 @@
 
 
 Box_Contents::Box_Contents( void ) :
-    size_{ 0,0,0,0 },
-    text_(NULL),
-    text_qty_(0)
+    size_{ 0, 0, 0, 0 },
+    text_(NULL)
 {
     if( !text_system_ )
     {
@@ -22,17 +21,22 @@ Box_Contents::Box_Contents( void ) :
 
 
 Box_Contents::Box_Contents( const unsigned& cu ) :
-    size_{ 0,0,0,0 },
-    text_( new Line_of_Text[ cu ] ),
-    text_qty_( cu )
+    size_{ 0, 0, 0, 0 },
+    text_( new Line_of_Text[ cu ] )
 {
     size_.h = cu;
 }
 
 
 
+Box_Contents::Box_Contents( const string& str ) :
+    Box_Contents( Uint8_t_String( str ) )
+{}
+
+
+
 Box_Contents::Box_Contents( const char cstr[] ) :
-    Box_Contents( Uint8_t_String(cstr) )
+    Box_Contents( Uint8_t_String( cstr ) )
 {}
 
 
@@ -48,27 +52,29 @@ Box_Contents::Box_Contents( const Uint8_t_String& str ) :
     {
         text_ = new Line_of_Text( str );
     }
-    text_qty_ = 1;
+    size_.h = 1;
 
     update_width();
 }
 
 
 
-Box_Contents& Box_Contents::operator+( const Uint8_t_String& rhs )
+Box_Contents& Box_Contents::add_text( const char ccstr[] )
 {
-    Line_of_Text* newl = new Line_of_Text[ ++text_qty_ ];
-    for( unsigned u = 0; u < ( text_qty_ - 1 ); u++ )
-    {
-        newl[ u ] = text_[ u ];
-    }
-    newl[ text_qty_ - 1 ] = rhs;
+    return add_text( Uint8_t_String( ccstr ) );
+}
 
-    delete[] text_;
-    text_ = newl;
-    text_ = NULL;
 
-    update_width();
+
+Box_Contents& Box_Contents::add_text( const string& str )
+{
+    return add_text( Uint8_t_String( str ) );
+}
+
+
+
+Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
+{
 
     return *this;
 }
@@ -114,20 +120,27 @@ SDL_Rect& Box_Contents::size( void )
 
 
 
-unsigned& Box_Contents::lines( void )
+unsigned Box_Contents::lines( void )
 {
-    return text_qty_;
+    return (unsigned)size_.h;
 }
 
 
 
 void Box_Contents::update_width( void )
 {
-    for( unsigned u = 0; u < text_qty_; u++ )
+    for( int i = 0; i < size_.h; i++ )
     {
-        if( size_.w < (int)text_[ u ].text.size() )
+        if( size_.w < (int)text_[ i ].text.size() )
         {
-            size_.w = (int)text_[ u ].text.size();
+            size_.w = (int)text_[ i ].text.size();
         }
     }
+}
+
+
+
+void Box_Contents::enlarge_by_one( void )
+{
+    
 }

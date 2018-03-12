@@ -17,7 +17,10 @@ private:
 
     void render_fill( void );
     void render_border( void );
-    void render_char( unsigned, SDL_Rect* );
+    void render_char(
+        unsigned,
+        SDL_Rect*,
+        unsigned = TEXT_HIGHLIGHT_TYPE_NORMAL );
 
     unsigned w_;
     unsigned h_;

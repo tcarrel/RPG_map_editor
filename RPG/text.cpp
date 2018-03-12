@@ -5,13 +5,14 @@
 
 
 /*static*/ Text_Character Text::letter_[ 256 ];
-/*static*/ Sprite_Sheet Text::text_;
+/*static*/ Sprite_Sheet Text::text_[ ALL_TEXT_HIGHLIGHT_TYPES ];
 /*static*/ bool Text::initialized_ = false;
 
 
-
+/*
 Text::Text( void ) : Text( TEXT_NORMAL_SPRITE_SHEET_FILE_NAME )
 {}
+*/
 
 
 
@@ -22,22 +23,31 @@ Text::Text( void ) : Text( TEXT_NORMAL_SPRITE_SHEET_FILE_NAME )
 #define H (TEXT_CHARACTER_HEIGHT)
 #define X(x) ((x % 16) * W)
 #define Y(x) ((x % 16) * H)
-Text::Text( const string& sheet_path )
+Text::Text( void )
+//Text::Text( const string& sheet_path )
 {
     if( !initialized_ )
     {
         initialized_ = true;
-        Console::vb_variable_value( "Text", "renderer_", text_.get_renderer() );
-        /*
-        transparent_color magic_pink;
-        magic_pink.b = magic_pink.r = 0xFF;
-        magic_pink.g = 0x00;
-        */
+        Console::vb_variable_value( "Text", "renderer_", text_[ 0 ].get_renderer() );
 
-        //letter_ = new Text_Character[ ALL_CHARS ];
 
-        //text_.load( sheet_path, &magic_pink );
-        text_.load( sheet_path );
+        if( !text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].ready() )
+        {
+            text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].load(
+                TEXT_NORMAL_SPRITE_SHEET_FILE_NAME );
+        }
+        if( !text_[ TEXT_HIGHLIGHT_TYPE_GRAYED ].ready() )
+        {
+            text_[ TEXT_HIGHLIGHT_TYPE_GRAYED ].load(
+                TEXT_GRAYED_SPRITE_SHEET_FILE_NAME );
+        }
+        if( !text_[ TEXT_HIGHLIGHT_TYPE_BRIGHT].ready() )
+        {
+            text_[ TEXT_HIGHLIGHT_TYPE_BRIGHT ].load(
+                TEXT_HIGHLIGHT_SPRITE_SHEET_FILE_NAME );
+        }
+
 
         // Set the offsets for each text sprite.
         letter_[ '!' ].set( X( 0 ), Y( 0 ), W, H );
@@ -173,7 +183,9 @@ Text::Text( const string& sheet_path )
 *
 *  text    : The text to be rendered in the appropriate data structure.
 */
-void Text::render( Line_of_Text* text )
+void Text::render( 
+    unsigned u,
+    Line_of_Text* text )
 {
     if( !text )
     {
@@ -189,7 +201,7 @@ void Text::render( Line_of_Text* text )
 //            printf( " Breaking on char(%c, %i", c, c );
             break;
         }
-        text_.render(
+        text_[ u ].render(
             text->x + ( c * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET,
             text->y + TEXT_Y_OFFSET,
             letter_[ text->text[ c ] ].clip() );

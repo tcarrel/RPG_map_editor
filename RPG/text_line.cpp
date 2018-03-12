@@ -8,6 +8,7 @@ Line_of_Text::Line_of_Text( void )
 {
     this->x = this->y = 0;
     this->text = "";
+    hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
 }
 
 
@@ -16,6 +17,7 @@ Line_of_Text::Line_of_Text( const Uint8_t_String& str )
 {
     this->x = this->y = 0;
     this->text = str;
+    hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
 }
 
 
@@ -52,6 +54,7 @@ Line_of_Text& Line_of_Text::operator=( const char cstr[] )
 
 Line_of_Text& Line_of_Text::operator=( const Line_of_Text& rhs )
 {
+    this->hl = rhs.hl;
     this->x = rhs.x;
     this->y = rhs.y;
     this->text = rhs.text;

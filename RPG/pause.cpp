@@ -29,7 +29,7 @@ Interface_enum Pause::run( void )
 {
     SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 0x7f );
     SDL_RenderFillRect( renderer_, &screen_ );
-    text_->render( &pause_ );
+    text_->render( TEXT_HIGHLIGHT_TYPE_NORMAL, &pause_ );
 
     return type_;
 }
