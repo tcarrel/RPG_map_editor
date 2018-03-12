@@ -51,15 +51,15 @@ Console::Console( bool v ) : Console()
     fprintf(
         stderr,
         "(%u)\n"
-        "\tMessage:\n"
-        "\t\tSource\t%s\n"
-        "\t\tError\tyes\n"
-        "\t\t\t%s\n",
+        "X\tMessage:\n"
+        "X\t\tSource\t%s\n"
+        "X\t\tError\tyes\n"
+        "X\t\t\t%s\n",
         message_num_++,
         source.c_str(),
         (verbose_ ? long_msg : shrt_msg).c_str()
     );
-    fprintf( stderr, " %s\n", string( 78, 'X' ).c_str() );
+    fprintf( stderr, "%s\n", string( 79, 'X' ).c_str() );
     hline();
 
     //fprintf( stderr, "\033[0m" );
