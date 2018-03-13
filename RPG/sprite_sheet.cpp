@@ -143,6 +143,13 @@ void Sprite_Sheet::set_renderer( SDL_Renderer* r )
 
 
 
+SDL_Renderer * Sprite_Sheet::get_renderer( void )
+{
+    return renderer_;
+}
+
+
+
 void Sprite_Sheet::render( int x, int y, SDL_Rect* clip )
 {
     SDL_Rect quad = { x + offset_x_, y + offset_y_, width_, height_ };
@@ -158,8 +165,27 @@ void Sprite_Sheet::render( int x, int y, SDL_Rect* clip )
 
 
 
+bool Sprite_Sheet::ready( void )
+{
+    return ready_;
+}
+
+
+
 /*static*/ void Sprite_Sheet::set_offsets( int w, int h )
 {
     offset_x_ = w;
     offset_y_ = h;
+}
+
+
+
+int Sprite_Sheet::get_x_offset( void )
+{
+    return offset_x_;
+}
+
+int Sprite_Sheet::get_y_offset( void )
+{
+    return offset_y_;
 }

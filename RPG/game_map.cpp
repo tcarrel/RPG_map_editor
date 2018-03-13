@@ -22,6 +22,13 @@ Interface_t Game_Map::run( void )
 
 
 
+inline Interface_t Game_Map::which( void )
+{
+    return type_;
+}
+
+
+
 void Game_Map::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

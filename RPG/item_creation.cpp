@@ -22,6 +22,13 @@ Interface_t Item_Creation::run( void )
 
 
 
+inline Interface_t Item_Creation::which( void )
+{
+    return type_;
+}
+
+
+
 void Item_Creation::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

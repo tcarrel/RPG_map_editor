@@ -280,6 +280,13 @@ Console::Console( bool v ) : Console()
 
 
 
+const bool& Console::verbose( void )
+{
+    return verbose_;
+}
+
+
+
 /*static*/ void Console::hline( void )
 {
     for( unsigned i = 0; i < 80; i++ )

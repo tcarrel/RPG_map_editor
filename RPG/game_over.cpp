@@ -22,6 +22,13 @@ Interface_t Game_Over::run( void )
 
 
 
+inline Interface_t Game_Over::which( void )
+{
+    return type_;
+}
+
+
+
 void Game_Over::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

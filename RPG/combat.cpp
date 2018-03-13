@@ -22,6 +22,13 @@ Interface_t Combat::run( void )
 
 
 
+inline Interface_t Combat::which( void )
+{
+    return type_;
+}
+
+
+
 void Combat::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

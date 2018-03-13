@@ -22,6 +22,13 @@ Interface_t Main_Menu::run( void )
 
 
 
+inline Interface_t Main_Menu::which( void )
+{
+    return type_;
+}
+
+
+
 void Main_Menu::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

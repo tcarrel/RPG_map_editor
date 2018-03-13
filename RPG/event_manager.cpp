@@ -194,6 +194,13 @@ void Event_Manager::operator()( void )
 
 
 
+inline void Event_Manager::process( void )
+{
+    this->operator()();
+}
+
+
+
 const bool& Event_Manager::quit( void )
 {
     return quit_;

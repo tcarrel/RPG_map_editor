@@ -88,6 +88,14 @@ Window::Window( void ) :
 }
 
 
+
+inline bool Window::good( void )
+{
+    return is_good_;
+}
+
+
+
 /**
 *  Clears the screen.
 */
@@ -145,6 +153,20 @@ Window::~Window( void )
 
 
 
+SDL_Renderer* Window::get_renderer( void )
+{
+    return renderer_;
+}
+
+
+
+inline SDL_Surface* Window::get_surface( void )
+{
+    return SDL_GetWindowSurface( window_ );
+}
+
+
+
 SDL_Rect Window::get_dimensions( void )
 {
     SDL_Rect output;
@@ -155,6 +177,20 @@ SDL_Rect Window::get_dimensions( void )
     output.h = height_;
 
     return output;
+}
+
+
+
+inline int Window::bpp( void )
+{
+    return bpp_;
+}
+
+
+
+Uint32 Window::format( void )
+{
+    return mode_.format;
 }
 
 

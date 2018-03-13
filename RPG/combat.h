@@ -13,7 +13,7 @@ public:
 
     Interface_t run( void );
 
-    Interface_t which( void ) { return type_; }
+    Interface_t which( void );
 
 private:
 

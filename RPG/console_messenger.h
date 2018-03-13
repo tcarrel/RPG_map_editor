@@ -26,7 +26,7 @@ public:
     
     static void video_info( const SDL_DisplayMode& );
 
-    static const bool& verbose( void ) { return verbose_; }
+    static const bool& verbose( void );
 
 private:
     

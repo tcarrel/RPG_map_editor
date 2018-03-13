@@ -20,14 +20,14 @@ public:
 
     void render( int, int, SDL_Rect* clip = NULL );
 
-    bool ready( void ) { return ready_; }
+    bool ready( void );
 
     static void set_renderer( SDL_Renderer* );
-    SDL_Renderer* get_renderer( void ) { return renderer_; }
+    SDL_Renderer* get_renderer( void );
 
     static void set_offsets( int, int );
-    static int  get_x_offset( void ) { return offset_x_; }
-    static int  get_y_offset( void ) { return offset_y_; }
+    static int  get_x_offset( void );
+    static int  get_y_offset( void );
 
 protected:
     SDL_Texture* sheet_;

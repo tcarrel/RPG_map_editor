@@ -22,6 +22,13 @@ Interface_t Save_Load_Menu::run( void )
 
 
 
+inline Interface_t Save_Load_Menu::which( void )
+{
+    return type_;
+}
+
+
+
 void Save_Load_Menu::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )

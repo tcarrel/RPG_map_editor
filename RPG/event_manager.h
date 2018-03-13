@@ -23,7 +23,7 @@ public:
 //    bool** get_joys( void ) { return joys_; }
 
     void operator() ( void );
-    inline void process( void ) { this->operator()();  }
+    void process( void );
     const bool& quit( void );
 
     bool register_interface( Interface*, unsigned );
