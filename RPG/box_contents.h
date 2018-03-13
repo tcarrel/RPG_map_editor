@@ -16,6 +16,7 @@ public:
     Box_Contents( const char[] );
     Box_Contents( const string& );
     Box_Contents( const Uint8_t_String& );
+    Box_Contents( const Passage& );
 
     ~Box_Contents( void );
 
@@ -28,6 +29,9 @@ public:
     Box_Contents& add_text( const char[] );
     Box_Contents& add_text( const string& );
     Box_Contents& add_text( const Uint8_t_String& );
+
+    void set_position( int, int );
+    void set_width( int );
 
     SDL_Rect& size( void );
     Passage* get_text( void );
