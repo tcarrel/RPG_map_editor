@@ -4,6 +4,17 @@
 
 
 
+Passage::Passage( void )
+{}
+
+
+
+Passage::Passage( const Passage& source ) :
+    text_( source.text_ )
+{}
+
+
+
 void Passage::add( Line_of_Text* lot )
 {
     text_.push_back( lot );
@@ -47,6 +58,4 @@ size_t Passage::size( void )
 
 
 Passage::~Passage( void )
-{
-    text_.clear();
-}
+{}

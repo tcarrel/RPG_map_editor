@@ -9,6 +9,9 @@ using std::vector;
 class Passage
 {
 public:
+    Passage( void );
+    Passage( const Passage& );
+
     void add( Line_of_Text* );
 
     Line_of_Text* operator[]( const unsigned& );
