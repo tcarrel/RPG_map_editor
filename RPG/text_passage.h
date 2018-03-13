@@ -13,6 +13,10 @@ public:
 
     Line_of_Text* operator[]( const unsigned& );
     Line_of_Text* operator[]( const int& );
+    Line_of_Text* get_line( const unsigned& );
+    Line_of_Text* get_line( const int& );
+
+    size_t size( void );
 
     ~Passage( void );
 

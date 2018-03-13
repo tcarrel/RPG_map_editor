@@ -9,22 +9,13 @@
 
 
 Box_Contents::Box_Contents( void ) :
-    size_{ 0, 0, 0, 0 },
-    text_(NULL)
+    size_{ 0, 0, 0, 0 }
 {
     if( !text_system_ )
     {
         text_system_ = new Text;
     }
-}
-
-
-
-Box_Contents::Box_Contents( const unsigned& cu ) :
-    size_{ 0, 0, 0, 0 },
-    text_( new Line_of_Text[ cu ] )
-{
-    size_.h = cu;
+    size_.h = text_.size();
 }
 
 
@@ -44,15 +35,8 @@ Box_Contents::Box_Contents( const char cstr[] ) :
 Box_Contents::Box_Contents( const Uint8_t_String& str ) :
     Box_Contents()
 {
-    if( text_ )
-    {
-        *text_ = str;
-    }
-    else
-    {
-        text_ = new Line_of_Text( str );
-    }
-    size_.h = 1;
+    text_.add( new Line_of_Text( str ) );
+    size_.h = text_.size();
 
     update_width();
 }
@@ -75,15 +59,16 @@ Box_Contents& Box_Contents::add_text( const string& str )
 
 Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
 {
-    text_[ size_.h - 1 ] = u8str;
+    text_.add( new Line_of_Text( u8str ) );
+    update_width();
     return *this;
 }
 
 
 
-Line_of_Text* Box_Contents::get_text( void )
+Passage* Box_Contents::get_text( void )
 {
-    return text_;
+    return &text_;
 }
 
 
@@ -91,24 +76,34 @@ Line_of_Text* Box_Contents::get_text( void )
 Box_Contents::~Box_Contents( void )
 {
     text_system_ = NULL;
-    if( text_ )
-    {
-        delete[] text_;
-    }
+}
+
+
+
+inline void Box_Contents::set_fixed_width( void )
+{
+    fixed_width_ = true;
+}
+
+
+
+inline void Box_Contents::unset_fixed_width( void )
+{
+    fixed_width_ = false;
 }
 
 
 
 Uint8_t_String& Box_Contents::operator[]( const unsigned& u )
 {
-    return text_[ u ].text;
+    return text_[ u ]->text;
 }
 
 
 
 Uint8_t_String& Box_Contents::operator[]( const int& i )
 {
-    return text_[ i ].text;
+    return text_[ i ]->text;
 }
 
 
@@ -129,11 +124,16 @@ unsigned Box_Contents::lines( void )
 
 void Box_Contents::update_width( void )
 {
-    for( int i = 0; i < size_.h; i++ )
+    if( fixed_width_ )
     {
-        if( size_.w < (int)text_[ i ].text.size() )
+        return;
+    }
+
+    for( int i = 0; i < text_.size(); i++ )
+    {
+        if( size_.w < (int)text_[ i ]->text.size() )
         {
-            size_.w = (int)text_[ i ].text.size();
+            size_.w = (int)text_[ i ]->text.size();
         }
     }
 }
@@ -143,18 +143,4 @@ void Box_Contents::update_width( void )
 void Box_Contents::init( Text* t )
 {
     text_system_ = t;
-}
-
-
-
-void Box_Contents::enlarge_by_one( void )
-{
-    Line_of_Text* nwl = new Line_of_Text[ size_.h + 1 ];
-    for( int i = 0; i <= size_.h; i++ )
-    {
-        nwl[ i ] = text_[ i ];
-    }
-    delete[] text_;
-    text_ = nwl;
-    ++size_.h;
 }

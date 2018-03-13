@@ -14,7 +14,7 @@ Money_Display::Money_Display( unsigned* money_addr ) :
     size_.x = TEXT_COLUMNS - 11;
     size_.y = TEXT_ROWS - 1;
 
-    text_[ 0 ].hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
+    text_[ 0 ]->hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
 }
 
 
@@ -40,7 +40,7 @@ void Money_Display::update( void*, const unsigned& )
             CHAR_COIN,
             *money_
         );
-        text_[ 0 ] = str;
+        *text_[ 0 ] = str;
         return;
     }
 
@@ -54,7 +54,7 @@ void Money_Display::update( void*, const unsigned& )
             *money_ / 1000,
             *money_ % 1000
         );
-        text_[ 0 ] = str;
+        *text_[ 0 ] = str;
         return;
     }
 
@@ -66,7 +66,7 @@ void Money_Display::update( void*, const unsigned& )
         *money_ / 1000000,
         ( *money_ % 1000000 ) / 1000,
         *money_ % 1000 );
-    text_[ 0 ] = str;
+    *text_[ 0 ] = str;
 }
 
 

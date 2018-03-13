@@ -81,7 +81,7 @@ void Text_Box::render( void )
     for( unsigned u = 0; u < h_; u++ )
     {
         line_rendering_ = u;
-        render( content_->get_text() + u );
+        render( content_->get_text()->get_line( u ) );
     }
 }
 

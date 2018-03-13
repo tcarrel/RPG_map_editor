@@ -1,21 +1,26 @@
 #pragma once
 
 #include<SDL.h>
+#include "text_passage.h"
 #include "text_line.h"
 
 class Text;
+class Passage;
+
 
 
 class Box_Contents
 {
 public:
     Box_Contents( void );
-    Box_Contents( const unsigned& );
     Box_Contents( const char[] );
     Box_Contents( const string& );
     Box_Contents( const Uint8_t_String& );
 
     ~Box_Contents( void );
+
+    void set_fixed_width( void );
+    void unset_fixed_width( void );
 
     Uint8_t_String& operator[]( const unsigned& );
     Uint8_t_String& operator[]( const int& );
@@ -25,7 +30,7 @@ public:
     Box_Contents& add_text( const Uint8_t_String& );
 
     SDL_Rect& size( void );
-    Line_of_Text* get_text( void );
+    Passage* get_text( void );
     unsigned lines( void );
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
@@ -35,10 +40,10 @@ public:
     static void init( Text* );
 
 protected:
-    void enlarge_by_one( void );
 
     SDL_Rect size_; // Stores values in terms of text row and column numbers.
-    Line_of_Text* text_;
+    Passage text_;
+    bool fixed_width_;
 
     static Text* text_system_;
 
