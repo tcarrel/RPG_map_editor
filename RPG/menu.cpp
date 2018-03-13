@@ -29,7 +29,7 @@ Interface_t Menu::run( void )
     __update();
     __render();
 
-    return exit( next_ );
+    return exit();
 }
 
 
@@ -43,39 +43,51 @@ void Menu::do_controls( void )
             {
             case CTRL_A:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_B:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_Y:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_X:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_L:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_R:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_UP:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_DOWN:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_LEFT:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_RIGHT:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_SELECT:
                 next_ = type_;
+                exit_ = false;
                 break;
             case CTRL_START:
                 next_ = INTERFACE_PAUSE;
+                exit_ = true;
                 break;
             default:
                 break;
@@ -87,10 +99,10 @@ void Menu::do_controls( void )
 
 
 
-Interface_t Menu::exit( Interface_t& rv )
+Interface_t Menu::exit( void )
 {
-    Interface_t ret = rv;
-    rv = type_;
+    Interface_t ret = exit_ ? next_ : type_;
+    next_ = type_;
     return ret;
 }
 

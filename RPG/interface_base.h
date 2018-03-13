@@ -31,7 +31,8 @@ public:
 protected:
 
     virtual void do_controls( void ) = 0;
-    virtual Interface_t exit( Interface_t& ) = 0;
+    virtual Interface_t exit( void ) = 0;
+    bool exit_;
 
     static SDL_Renderer* renderer_;
 

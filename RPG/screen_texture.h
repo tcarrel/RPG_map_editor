@@ -10,6 +10,7 @@ class Screen_Texture
 public:
     Screen_Texture( void );
     
+    void render( void );
     static void update( void );
     static void init( Window* );
 

@@ -5,6 +5,7 @@
 
 
 /*static*/ const Interface_t Pause::type_ = INTERFACE_PAUSE;
+/*static*/ Screen_Texture Pause::screen_image_;
 
 
 
@@ -35,15 +36,15 @@ void Pause::init( Text* t, Window* w )
 
 Interface_t Pause::run( void )
 {
-    Screen_Texture screen;
+    screen_image_.render();
 
-    SDL_SetRenderDrawColor( renderer_, 0, 0, 63, 0x7f );
+    SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 204 );
     SDL_RenderFillRect( renderer_, &screen_ );
     text_->render( pause_.hl, &pause_ );
 
     do_controls();
 
-    return exit( next_ );
+    return exit();
 }
 
 
@@ -52,11 +53,13 @@ void Pause::do_controls( void )
 {
     if( ctrl_previous_[ CTRL_START ] && !ctrl_[ CTRL_START ] )
     {
-        next_ = came_from_;
+        //next_ = came_from_;
+        exit_ = true;
     }
     else
     {
-        next_ = type_;
+        //next_ = type_;
+        exit_ = false;
     }
     for( unsigned u = 0; u < ALL_CTRL; u++ )
     {
@@ -66,9 +69,14 @@ void Pause::do_controls( void )
 
 
 
-Interface_t Pause::exit( Interface_t& var )
+Interface_t Pause::exit( void )
 {
-    Interface_t return_value = var;
-    var = type_;
-    return return_value;
+    if( exit_ )
+    {
+        return came_from_;
+    }
+    else
+    {
+        return INTERFACE_PAUSE;
+    }
 }

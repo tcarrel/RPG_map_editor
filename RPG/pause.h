@@ -4,6 +4,7 @@
 class Interface;
 class Console;
 class Text;
+class Screen_Texture;
 
 enum Interface_t;
 
@@ -21,11 +22,12 @@ public:
 private:
 
     /*virtual*/ void do_controls( void );
-    Interface_t exit( Interface_t& );
+    Interface_t exit( void );
 
     Text* text_;
     Line_of_Text pause_;
     SDL_Rect screen_;
+    static Screen_Texture screen_image_;
 
     SDL_Renderer* renderer_;
 

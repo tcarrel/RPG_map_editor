@@ -64,9 +64,9 @@ void Save_Load_Menu::do_controls( void )
 
 
 
-Interface_t Save_Load_Menu::exit( Interface_t& var )
+Interface_t Save_Load_Menu::exit( void )
 {
-    Interface_t return_value = var;
-    var = type_;
-    return return_value;
+    Interface_t ret = exit_ ? next_ : type_;
+    next_ = type_;
+    return ret;
 }

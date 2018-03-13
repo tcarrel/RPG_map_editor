@@ -14,13 +14,17 @@
 
 
 Screen_Texture::Screen_Texture( void )
+{}
+
+
+
+void Screen_Texture::render( void )
 {
     if( ready_ )
     {
         SDL_RenderCopy( renderer_, texture_, NULL, NULL );
     }
 }
-
 
 
 /*static*/ void Screen_Texture::update( void )

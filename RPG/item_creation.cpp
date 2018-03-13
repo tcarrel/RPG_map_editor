@@ -64,9 +64,9 @@ void Item_Creation::do_controls( void )
 
 
 
-Interface_t Item_Creation::exit( Interface_t& var )
+Interface_t Item_Creation::exit( void )
 {
-    Interface_t return_value = var;
-    var = type_;
-    return return_value;
+    Interface_t ret = exit_ ? next_ : type_;
+    next_ = type_;
+    return ret;
 }

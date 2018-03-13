@@ -94,6 +94,7 @@
 
 #include<string>
 #include<vector>
+#include<stack>
 #include<ctime>
 #include<cmath>
 #include<cassert>
