@@ -151,7 +151,6 @@
     <ClInclude Include="box_contents.h" />
     <ClInclude Include="color_key.h" />
     <ClInclude Include="combat.h" />
-    <ClInclude Include="command_base.h" />
     <ClInclude Include="console_messenger.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="event_manager.h" />
