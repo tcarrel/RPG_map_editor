@@ -201,6 +201,9 @@
     <ClInclude Include="screen_texture.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="text_passage.h">
+      <Filter>Header Files\Interfaces\Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -295,6 +298,9 @@
     </ClCompile>
     <ClCompile Include="screen_texture.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="text_passage.cpp">
+      <Filter>Source Files\Interfaces\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

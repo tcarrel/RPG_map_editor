@@ -68,3 +68,10 @@ void Money_Display::update( void*, const unsigned& )
         *money_ % 1000 );
     text_[ 0 ] = str;
 }
+
+
+/**
+*  Takes no commands.
+*/
+void Money_Display::command( Control_t )
+{}

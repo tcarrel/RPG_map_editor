@@ -180,6 +180,7 @@
     <ClInclude Include="text_box.h" />
     <ClInclude Include="text_character.h" />
     <ClInclude Include="text_line.h" />
+    <ClInclude Include="text_passage.h" />
     <ClInclude Include="text_selectable_list.h" />
     <ClInclude Include="uint8_t_string.h" />
     <ClInclude Include="window.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="text_character.cpp" />
     <ClCompile Include="text_line.cpp" />
+    <ClCompile Include="text_passage.cpp" />
     <ClCompile Include="text_selectable_list.cpp" />
     <ClCompile Include="uint8_t_string.cpp" />
     <ClCompile Include="window.cpp" />

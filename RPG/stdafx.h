@@ -70,6 +70,7 @@
 
 #include "text_character.h"
 #include "text_line.h"
+#include "text_passage.h"
 #include "text_box.h"
 #include "text_selectable_list.h"
 #include "text.h"

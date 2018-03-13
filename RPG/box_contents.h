@@ -30,7 +30,7 @@ public:
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
 
-    virtual void command( )
+    virtual void command( Control_t ) = 0;
 
     static void init( Text* );
 
