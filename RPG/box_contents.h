@@ -30,7 +30,7 @@ public:
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
 
-    static void init( Text* t ) { text_system_ = t; }
+    static void init( Text* );
 
 protected:
     void enlarge_by_one( void );

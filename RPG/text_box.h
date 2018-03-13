@@ -13,6 +13,9 @@ public:
     void render( void );
     void render( Line_of_Text* text );
     static void set_fill( uint8_t, uint8_t, uint8_t, uint8_t );
+
+    Box_Contents* contents( void );
+
 private:
 
     void render_fill( void );

@@ -140,6 +140,13 @@ void Box_Contents::update_width( void )
 
 
 
+void Box_Contents::init( Text* t )
+{
+    text_system_ = t;
+}
+
+
+
 void Box_Contents::enlarge_by_one( void )
 {
     Line_of_Text* nwl = new Line_of_Text[ size_.h + 1 ];

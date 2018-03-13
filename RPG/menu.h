@@ -1,5 +1,7 @@
 #pragma once
 
+#include<vector>
+
 class Interface;
 class Console;
 
@@ -10,6 +12,7 @@ class Play_Data;
 
 enum Interface_t;
 
+using std::vector;
 
 class Menu : public Interface
 {
@@ -29,7 +32,13 @@ private:
     void __render( void );
 
     Money_Display* funds_;
-    Text_Box* funds_box_;
+    struct
+    {
+        Text_Box* funds_box;
+    } base_menu_;
+
+    vector<Text_Box*> open_windows_;
+    Text_Box* active_window_;
 
     Play_Data* game_data_;
 

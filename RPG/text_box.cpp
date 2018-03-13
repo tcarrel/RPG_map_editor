@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 
-/*static*/ uint8_t Text_Box::fill_color_[ 4 ] = { 0x0,0x0,0xff,0x3f };
+/*static*/ uint8_t Text_Box::fill_color_[ 4 ] = { 0x0,0x20,0x3f,0xcc };
 /*static*/ SDL_Renderer* Text_Box::renderer_ = NULL;
 /*static*/ bool Text_Box::initialized_ = false;
 
@@ -45,6 +45,13 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
     fill_color_[ 1 ] = g;
     fill_color_[ 2 ] = b;
     fill_color_[ 3 ] = a;
+}
+
+
+
+Box_Contents* Text_Box::contents( void )
+{
+    return content_;
 }
 
 

@@ -19,7 +19,7 @@ void Menu::register_data_store( Play_Data* pd )
 {
     game_data_ = pd;
     funds_ = new Money_Display( game_data_->money_addr() );
-    funds_box_ = new Text_Box( funds_ );
+    base_menu_.funds_box = new Text_Box( funds_ );
 }
 
 
@@ -118,5 +118,12 @@ void Menu::__update( void )
 
 void Menu::__render( void )
 {
-    funds_box_->render();
+    //render base menu
+    base_menu_.funds_box->render();
+
+    //render additional windows.
+    for( unsigned u = 0; u < open_windows_.size(); u++ )
+    {
+        open_windows_[ u ]->render();
+    }
 }
