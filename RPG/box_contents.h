@@ -30,6 +30,8 @@ public:
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
 
+    virtual void command( )
+
     static void init( Text* );
 
 protected:

@@ -6,7 +6,7 @@ struct Line_of_Text
 {
     int x;
     int y;
-    Text_Highlighting_Type hl;
+    Text_Highlighting_t hl;
     Uint8_t_String text;
 
     Line_of_Text( void );

@@ -62,7 +62,7 @@ enum Interface_t
 //     LEFT    RIGHT    SELECT  START    Y   A
 //         DOWN                            B
 //
-enum Joy_enum
+enum Joy_t
 {
     JOY_X_BUTTON,       // 0
     JOY_A_BUTTON,
@@ -85,7 +85,7 @@ enum Joy_enum
 
 
 
-enum Control_enum
+enum Control_t
 {
     CTRL_X,
     CTRL_A,
@@ -109,7 +109,7 @@ enum Control_enum
 
 
 
-enum Special_Character
+enum Special_Character_t
 {
     CHAR_COIN = 128U,
     CHAR_HAND__LEFT = 129U,
@@ -135,7 +135,7 @@ enum Special_Character
 
 
 
-enum Text_Highlighting_Type
+enum Text_Highlighting_t
 {
     TEXT_HIGHLIGHT_TYPE_NORMAL,
     TEXT_HIGHLIGHT_TYPE_GRAYED,
