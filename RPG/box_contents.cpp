@@ -8,6 +8,9 @@
 
 
 
+/**
+*   Initializes all variable to 'safe' values.
+*/
 Box_Contents::Box_Contents( void ) :
     size_{ 0, 0, 0, 0 }
 {
@@ -21,18 +24,27 @@ Box_Contents::Box_Contents( void ) :
 
 
 
+/**
+*   Initializes and stores a single string.
+*/
 Box_Contents::Box_Contents( const string& str ) :
     Box_Contents( Uint8_t_String( str ) )
 {}
 
 
 
+/**
+*   Initializes and stores a single string.
+*/
 Box_Contents::Box_Contents( const char cstr[] ) :
     Box_Contents( Uint8_t_String( cstr ) )
 {}
 
 
 
+/**
+*   Initializes and stores a single string.
+*/
 Box_Contents::Box_Contents( const Uint8_t_String& str ) :
     Box_Contents()
 {
@@ -44,6 +56,9 @@ Box_Contents::Box_Contents( const Uint8_t_String& str ) :
 
 
 
+/**
+*   Initializes and stores a copy of an entire Passage.
+*/
 Box_Contents::Box_Contents( const Passage& cp ) :
     text_( cp )
 {
@@ -54,6 +69,9 @@ Box_Contents::Box_Contents( const Passage& cp ) :
 
 
 
+/**
+*   Adds one line of text.
+*/
 Box_Contents& Box_Contents::add_text( const char ccstr[] )
 {
     return add_text( Uint8_t_String( ccstr ) );
@@ -61,6 +79,9 @@ Box_Contents& Box_Contents::add_text( const char ccstr[] )
 
 
 
+/**
+*   Adds one line of text.
+*/
 Box_Contents& Box_Contents::add_text( const string& str )
 {
     return add_text( Uint8_t_String( str ) );
@@ -68,6 +89,9 @@ Box_Contents& Box_Contents::add_text( const string& str )
 
 
 
+/**
+*   Adds one line of text.
+*/
 Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
 {
     text_.add( new Line_of_Text( u8str ) );
@@ -79,6 +103,9 @@ Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
 
 
 
+/**
+*   Sets the position of the text box.
+*/
 void Box_Contents::set_position( int x, int y )
 {
     size_.x = x;
@@ -87,6 +114,9 @@ void Box_Contents::set_position( int x, int y )
 
 
 
+/**
+*   Sets the width of the text box.
+*/
 void Box_Contents::set_width( int w )
 {
     size_.w = w;
@@ -94,16 +124,27 @@ void Box_Contents::set_width( int w )
 
 
 
+/**
+*   Activates the text box.  (For use with text boxes that can be commanded by
+*  the player.
+*/
 void Box_Contents::activate( void )
 {}
 
 
 
+/**
+*   Deactivates the text box.  (For use with text boxes that can be commanded by
+*  the player.
+*/
 void Box_Contents::deactivate( void )
 {}
 
 
 
+/**
+*   Returns the text box's text.
+*/
 Passage* Box_Contents::get_text( void )
 {
     return &text_;
@@ -111,6 +152,9 @@ Passage* Box_Contents::get_text( void )
 
 
 
+/**
+*   Dtor.
+*/
 Box_Contents::~Box_Contents( void )
 {
     text_system_ = NULL;
@@ -118,6 +162,9 @@ Box_Contents::~Box_Contents( void )
 
 
 
+/**
+*   Prevents the text box from resizing itself when new text is added.
+*/
 void Box_Contents::set_fixed_width( void )
 {
     fixed_width_ = true;
@@ -125,6 +172,9 @@ void Box_Contents::set_fixed_width( void )
 
 
 
+/**
+*   Allows the text box to resize itself when new text is added.
+*/
 void Box_Contents::unset_fixed_width( void )
 {
     fixed_width_ = false;
@@ -132,6 +182,10 @@ void Box_Contents::unset_fixed_width( void )
 
 
 
+/**
+*   Array-style access to the contained text.  It is left to the user to avoid
+*  seg faults.
+*/
 Uint8_t_String& Box_Contents::operator[]( const unsigned& u )
 {
     return text_[ u ]->text;
@@ -139,6 +193,10 @@ Uint8_t_String& Box_Contents::operator[]( const unsigned& u )
 
 
 
+/**
+*   Array-style access to the contained text.  It is left to the user to avoid
+*  seg faults.
+*/
 Uint8_t_String& Box_Contents::operator[]( const int& i )
 {
     return text_[ i ]->text;
@@ -146,6 +204,9 @@ Uint8_t_String& Box_Contents::operator[]( const int& i )
 
 
 
+/**
+*   Returns an SDL_Rect containing the size and position of the text box.
+*/
 SDL_Rect& Box_Contents::size( void )
 {
     return size_;
@@ -153,6 +214,9 @@ SDL_Rect& Box_Contents::size( void )
 
 
 
+/**
+*   Return how many line of text are in the current text box.
+*/
 unsigned Box_Contents::lines( void )
 {
     return (unsigned)size_.h;
@@ -160,6 +224,10 @@ unsigned Box_Contents::lines( void )
 
 
 
+/**
+*   If fixed_width_ is not set, this updates the width of the text box to fit
+*  the longest line of text that has currently been provided.
+*/
 void Box_Contents::update_width( void )
 {
     if( fixed_width_ )
@@ -178,11 +246,19 @@ void Box_Contents::update_width( void )
 
 
 
+/**
+*   Initializes the text-box-system.
+*/
 void Box_Contents::init( Text* t )
 {
     text_system_ = t;
 }
 
+
+
+/**
+*   Returns the enum value representing this text box type.
+*/
 Box_Contents_t Box_Contents::type( void )
 {
     return BOX_BOX_CONTENTS_BASE_TYPE;

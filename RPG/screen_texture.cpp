@@ -18,6 +18,10 @@ Screen_Texture::Screen_Texture( void )
 
 
 
+/**
+*   Renders the saved texture.  This should be called before any other
+*  rendering is done by any of the interfaces that need it.
+*/
 void Screen_Texture::render( void )
 {
     if( ready_ )
@@ -27,6 +31,11 @@ void Screen_Texture::render( void )
 }
 
 
+
+/**
+*   Updates the stored texture to the currently rendered screen.  This is very
+*  slow and should called as little as possible.
+*/
 /*static*/ void Screen_Texture::update( void )
 {
     if( ready_ )
@@ -43,6 +52,10 @@ void Screen_Texture::render( void )
 
 
 
+/**
+*   Initialization function.  Noteably: sets the actual destructor to be called
+*  atexit() for all of the static data.
+*/
 /*static*/ void Screen_Texture::init( Window * w )
 {
     if( !ready_ )
@@ -81,6 +94,9 @@ Screen_Texture::~Screen_Texture( void )
 
 
 
+/**
+*   This is the actual destructor for this function is called by atexit().
+*/
 void Screen_Texture::destroy( void )
 {
     SDL_DestroyTexture( texture_ );

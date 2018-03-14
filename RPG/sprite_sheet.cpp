@@ -5,27 +5,33 @@
 
 
 /*static*/ Console* Sprite_Sheet::console_ = NULL;
-/*static*/ unsigned Sprite_Sheet::self_count_ = 0;
 /*static*/ SDL_Renderer* Sprite_Sheet::renderer_ = NULL;
 /*static*/ int Sprite_Sheet::offset_x_ = 0;
 /*static*/ int Sprite_Sheet::offset_y_ = 0;
 
 
+
+/**
+*   Initializes all internals.
+*/
 Sprite_Sheet::Sprite_Sheet( void ) :
     sheet_( NULL ),
     width_( 0 ),
     height_( 0 ),
     ready_(false)
 {
-    if( self_count_ == 0 )
+    if( !console_ )
     {
         console_ = new Console;
+        atexit( ultimate_dtor );
     }
-    self_count_++;
 }
 
 
 
+/**
+*   Ctor that also loads the bitmap image to be used as a sprite sheet.
+*/
 Sprite_Sheet::Sprite_Sheet( const string& path, transparent_color* ck ) :
     Sprite_Sheet()
 {
@@ -34,19 +40,19 @@ Sprite_Sheet::Sprite_Sheet( const string& path, transparent_color* ck ) :
 
 
 
+/**
+*   Instance dtor.
+*/
 Sprite_Sheet::~Sprite_Sheet( void )
 {
     this->free();
-    --self_count_;
-    if( self_count_ == 0 )
-    {
-        delete console_;
-        console_ = NULL;
-    }
 }
 
 
 
+/**
+*   Loads the bitmap image to be used as a sprite sheet.
+*/
 bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
 {
     this->free();
@@ -109,6 +115,10 @@ bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
 
 
 
+/**
+*   Frees the current texture, called either from the dtor or when loading a
+*  new texture.
+*/
 void Sprite_Sheet::free( void )
 {
     if( sheet_ )
@@ -121,6 +131,9 @@ void Sprite_Sheet::free( void )
 
 
 
+/**
+*   Returns the height, in pixels, of the currently stored sprite sheet.
+*/
 int Sprite_Sheet::get_height( void )
 {
     return height_;
@@ -128,6 +141,9 @@ int Sprite_Sheet::get_height( void )
 
 
 
+/**
+*   Returns the width, in pixels, of the currently stored sprite sheet.
+*/
 int Sprite_Sheet::get_width( void )
 {
     return width_;
@@ -135,6 +151,9 @@ int Sprite_Sheet::get_width( void )
 
 
 
+/**
+*   Stores the renderer for it's own uses.
+*/
 void Sprite_Sheet::set_renderer( SDL_Renderer* r )
 {
     Console::vb_variable_value( "Sprite_Sheet", "set_renderer()", r );
@@ -143,6 +162,9 @@ void Sprite_Sheet::set_renderer( SDL_Renderer* r )
 
 
 
+/**
+*   Returns the current renderer.
+*/
 SDL_Renderer * Sprite_Sheet::get_renderer( void )
 {
     return renderer_;
@@ -150,6 +172,9 @@ SDL_Renderer * Sprite_Sheet::get_renderer( void )
 
 
 
+/**
+*   Renders the entire image or just a sprite from it, if clip is provided.
+*/
 void Sprite_Sheet::render( int x, int y, SDL_Rect* clip )
 {
     SDL_Rect quad = { x + offset_x_, y + offset_y_, width_, height_ };
@@ -165,6 +190,9 @@ void Sprite_Sheet::render( int x, int y, SDL_Rect* clip )
 
 
 
+/**
+*   If the sprite sheet is ready for use.
+*/
 bool Sprite_Sheet::ready( void )
 {
     return ready_;
@@ -172,6 +200,10 @@ bool Sprite_Sheet::ready( void )
 
 
 
+/**
+*   Offsets.  For simplifying rendering to screens that are not 16:9 aspect
+*  ratio.
+*/
 /*static*/ void Sprite_Sheet::set_offsets( int w, int h )
 {
     offset_x_ = w;
@@ -180,12 +212,31 @@ bool Sprite_Sheet::ready( void )
 
 
 
+/**
+*   Returns the horizontal offset.
+*/
 int Sprite_Sheet::get_x_offset( void )
 {
     return offset_x_;
 }
 
+
+
+/**
+*   Returns the vertical offset.
+*/
 int Sprite_Sheet::get_y_offset( void )
 {
     return offset_y_;
+}
+
+
+
+/**
+*   Final dtor to be called once atexit().
+*/
+void Sprite_Sheet::ultimate_dtor( void )
+{
+    delete console_;
+    console_ = NULL;
 }

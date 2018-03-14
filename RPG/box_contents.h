@@ -9,6 +9,9 @@ class Passage;
 
 
 
+/**
+*   For storing the content of any text box.
+*/
 class Box_Contents
 {
 public:

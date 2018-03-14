@@ -4,6 +4,10 @@
 
 
 
+/**
+*   A type of text box, mainly to be used for display common text, like when
+*  talking to NPC's.
+*/
 class Generic_Text : public Box_Contents
 {
 public:

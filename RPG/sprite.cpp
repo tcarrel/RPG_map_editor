@@ -8,18 +8,19 @@
 
 
 
+/**
+*   Sets all variables.
+*/
 Sprite::Sprite( int x, int y, int w, int h )
 {
-    clip_.x = x;
-    clip_.y = y;
-    clip_.h = h;
-    clip_.w = w;
-
+    set( x, y, w, h );
     id_ = count_++;
 }
 
 
-
+/**
+*   Horizontal (x) position on the sprite sheet.
+*/
 inline int& Sprite::x( void )
 {
     return clip_.x;
@@ -27,6 +28,9 @@ inline int& Sprite::x( void )
 
 
 
+/**
+*   Vertical (y) position on the sprite sheet.
+*/
 inline int& Sprite::y( void )
 {
     return clip_.y;
@@ -34,6 +38,9 @@ inline int& Sprite::y( void )
 
 
 
+/**
+*   The width of the sprite.
+*/
 inline int& Sprite::w( void )
 {
     return clip_.w;
@@ -41,6 +48,9 @@ inline int& Sprite::w( void )
 
 
 
+/**
+*   The height of the sprite.
+*/
 inline int& Sprite::h( void )
 {
     return clip_.h;
@@ -48,6 +58,9 @@ inline int& Sprite::h( void )
 
 
 
+/**
+*  The SDL_Rect containing the sprite's size and position on the sprite sheet.
+*/
 SDL_Rect* Sprite::clip( void )
 {
     return &clip_;
@@ -55,6 +68,9 @@ SDL_Rect* Sprite::clip( void )
 
 
 
+/**
+*  Performs the same function as the basic constructor.
+*/
 void Sprite::set( int x, int y, int w, int h )
 {
     clip_.x = x;

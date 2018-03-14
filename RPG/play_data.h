@@ -3,7 +3,10 @@
 
 
 
-
+/**
+*    Resposible for store all gameplay data and some functions for allow this
+*   data to be adjusted as necessary.
+*/
 class Play_Data
 {
 public:

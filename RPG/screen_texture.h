@@ -5,6 +5,10 @@
 
 
 
+/**
+*   A class for storing the entire contents of the screen, necessary for
+*  displaying a screen generated from other interfaces behind the current one.
+*/
 class Screen_Texture
 {
 public:

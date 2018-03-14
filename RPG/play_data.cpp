@@ -4,6 +4,9 @@
 
 
 
+/**
+*   Sets all variables accordingly for the start of a new game.
+*/
 Play_Data::Play_Data( void )
 {
     Random random;
@@ -13,7 +16,10 @@ Play_Data::Play_Data( void )
 }
 
 
-
+/**
+*   Returns the address of the money variable.  Mostly for use with functions
+*  displaying it.
+*/
 unsigned* Play_Data::money_addr( void )
 {
     return &money_;
@@ -21,6 +27,9 @@ unsigned* Play_Data::money_addr( void )
 
 
 
+/**
+*   Adds a specified amount of money.
+*/
 void Play_Data::money_add( unsigned amt )
 {
     money_ += amt;
@@ -29,6 +38,9 @@ void Play_Data::money_add( unsigned amt )
 
 
 
+/**
+*   Adds a random amount of money between min and max.
+*/
 unsigned Play_Data::money_add( unsigned min, unsigned max )
 {
     Random r;

@@ -4,6 +4,10 @@
 
 
 
+/**
+*   A wrapper for SDL_Rect to be used for rendering sprites that are part of a
+*  sprite sheet.
+*/
 class Sprite
 {
 public:

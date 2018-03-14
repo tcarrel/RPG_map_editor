@@ -4,6 +4,10 @@
 
 
 
+
+/**
+*   Ctor.
+*/
 Selectable_List::Selectable_List( void ) :
     Box_Contents()
 {
@@ -13,6 +17,10 @@ Selectable_List::Selectable_List( void ) :
 
 
 
+/**
+*   Allows for headings to be displayed for the text box that the user can not
+*  move the cursor to.
+*/
 void Selectable_List::set_heading_count( unsigned count )
 {
     heading_qty_ = count;
@@ -21,6 +29,10 @@ void Selectable_List::set_heading_count( unsigned count )
 
 
 
+/**
+*   Allows an array of values to be provided that will be return instead of
+*  the generic options when the user activates a selection.
+*/
 void Selectable_List::set_return_values( int* value_array )
 {
     return_values_ = value_array;
@@ -28,6 +40,10 @@ void Selectable_List::set_return_values( int* value_array )
 
 
 
+/**
+*   Activates the text box.  (For use with text boxes that can be commanded by
+*  the player.
+*/
 void Selectable_List::activate( void )
 {
     active_ = true;
@@ -35,6 +51,10 @@ void Selectable_List::activate( void )
 
 
 
+/**
+*   Deactivates the text box.  (For use with text boxes that can be commanded by
+*  the player.
+*/
 void Selectable_List::deactivate( void )
 {
     active_ = false;
@@ -42,6 +62,10 @@ void Selectable_List::deactivate( void )
 
 
 
+/**
+*   Adds options or headings to the selection box.  No ordering is performed,
+*  so they must be added in the order in which they are to appear.
+*/
 Box_Contents& Selectable_List::add_text( const Uint8_t_String& u8str )
 {
     text_.add( new Line_of_Text( u8str ) );
@@ -55,11 +79,17 @@ Box_Contents& Selectable_List::add_text( const Uint8_t_String& u8str )
 
 
 
+/**
+*   Does nothing.
+*/
 void Selectable_List::update( void*, const unsigned& )
 {}
 
 
 
+/**
+*   Ignores or reacts to user input.
+*/
 int Selectable_List::command( Control_t control )
 {
     switch( control )
@@ -98,6 +128,9 @@ int Selectable_List::command( Control_t control )
 
 
 
+/**
+*   Returns the enum value representing this text box type.
+*/
 Box_Contents_t Selectable_List::type( void )
 {
     return BOX_TEXT_SELECTABLE_LIST;
@@ -105,6 +138,9 @@ Box_Contents_t Selectable_List::type( void )
 
 
 
+/**
+*   moves the cursor about.
+*/
 void Selectable_List::update_text( void )
 {
     for( unsigned u = heading_qty_; u < text_.size(); u++ )

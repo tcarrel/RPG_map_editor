@@ -9,12 +9,6 @@
 /*static*/ bool Text::initialized_ = false;
 
 
-/*
-Text::Text( void ) : Text( TEXT_NORMAL_SPRITE_SHEET_FILE_NAME )
-{}
-*/
-
-
 
 /**
 *   Initializes the text rendering system.
@@ -47,7 +41,6 @@ Text::Text( void )
             text_[ TEXT_HIGHLIGHT_TYPE_BRIGHT ].load(
                 TEXT_HIGHLIGHT_SPRITE_SHEET_FILE_NAME );
         }
-
 
         // Set the offsets for each text sprite.
         letter_[ '!' ].set( X( 0 ), Y( 0 ), W, H );

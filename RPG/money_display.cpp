@@ -3,6 +3,11 @@
 #include "stdafx.h"
 
 
+
+
+/**
+*   Ctor.
+*/
 Money_Display::Money_Display( unsigned* money_addr ) :
     Box_Contents( "$99,999,999" ),
     money_( money_addr )
@@ -19,6 +24,11 @@ Money_Display::Money_Display( unsigned* money_addr ) :
 
 
 
+/**
+*   If the amount of money in the player's possession has changed since the
+*  last time this was called, it will update the display string for to match
+*  the current money amount.
+*/
 void Money_Display::update( void*, const unsigned& )
 {
     assert( money_ != NULL );
@@ -71,25 +81,22 @@ void Money_Display::update( void*, const unsigned& )
 
 
 /**
-*  Takes no commands.
+*  These functions do nothing for this type of text box.
 */
 int Money_Display::command( Control_t )
 {
     return 0;
 }
-
-
-
 void Money_Display::activate( void )
 {}
-
-
-
 void Money_Display::deactivate( void )
 {}
 
 
 
+/**
+*   Returns the enum value representing this text box type.
+*/
 Box_Contents_t Money_Display::type( void )
 {
     return BOX_MONEY_DISPLAY;

@@ -7,6 +7,13 @@ using std::vector;
 #include "box_contents.h"
 
 
+
+
+
+/**
+*   A text box contents type that displays options that the player can choose
+*  from in a vertical list.
+*/
 class Selectable_List : public Box_Contents
 {
 public:

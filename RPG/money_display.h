@@ -4,6 +4,10 @@
 
 
 
+/**
+*   A text box for displaying the amount of money currently in the player's
+*  possession.  Will mainly be used by the game's menu system and by shops.
+*/
 class Money_Display : public Box_Contents
 {
 public:

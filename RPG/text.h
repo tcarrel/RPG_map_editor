@@ -7,7 +7,10 @@ struct Line_of_Text;
 
 
 
-
+/**
+*   A class for managing the minimum requirements for displaying on-screen
+*  sprite-based text.
+*/
 class Text
 {
 public:

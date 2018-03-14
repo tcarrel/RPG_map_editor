@@ -1,10 +1,13 @@
 #pragma once
 
-
 #include "stdafx.h"
 class Console;
 
 
+
+/**
+*  A wrapper for SDL_Texture for using and manipulating sprite sheet images.
+*/
 class Sprite_Sheet
 {
 public:
@@ -38,9 +41,12 @@ protected:
 
 
     static Console* console_;
-    static unsigned self_count_;
+    static unsigned reference_count_;
     static SDL_Renderer* renderer_;
 
     static int  offset_x_;
     static int  offset_y_;
+
+private:
+    static void ultimate_dtor( void );
 };
