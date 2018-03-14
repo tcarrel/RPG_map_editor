@@ -32,6 +32,7 @@ void Menu::register_data_store( Play_Data* pd )
     base_menu_.main_selections->add_text( " Quit" );
 
     active_window_ = base_menu_.main_selections;
+    active_window_->contents()->activate();
 }
 
 

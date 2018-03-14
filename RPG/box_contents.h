@@ -33,6 +33,9 @@ public:
     void set_position( int, int );
     void set_width( int );
 
+    virtual void activate( void );
+    virtual void deactivate( void );
+
     SDL_Rect& size( void );
     Passage* get_text( void );
     unsigned lines( void );

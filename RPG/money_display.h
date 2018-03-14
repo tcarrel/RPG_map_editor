@@ -11,6 +11,8 @@ public:
 
     void update( void* = NULL, const unsigned& = 0);
     int command( Control_t );
+    void activate( void );
+    void deactivate( void );
 
     Box_Contents_t type( void );
 

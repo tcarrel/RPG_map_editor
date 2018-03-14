@@ -94,6 +94,16 @@ void Box_Contents::set_width( int w )
 
 
 
+void Box_Contents::activate( void )
+{}
+
+
+
+void Box_Contents::deactivate( void )
+{}
+
+
+
 Passage* Box_Contents::get_text( void )
 {
     return &text_;

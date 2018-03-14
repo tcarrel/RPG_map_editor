@@ -50,8 +50,6 @@ Box_Contents& Selectable_List::add_text( const Uint8_t_String& u8str )
     size_.h = text_.size();
     update_width();
 
-
-
     return *this;
 }
 

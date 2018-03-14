@@ -78,6 +78,18 @@ int Money_Display::command( Control_t )
     return 0;
 }
 
+
+
+void Money_Display::activate( void )
+{}
+
+
+
+void Money_Display::deactivate( void )
+{}
+
+
+
 Box_Contents_t Money_Display::type( void )
 {
     return BOX_MONEY_DISPLAY;
