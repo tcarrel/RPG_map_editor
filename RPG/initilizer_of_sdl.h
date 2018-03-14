@@ -19,6 +19,6 @@ public:
 private:
 
     static Console* console_;
-    static Uint32   count_of_these_;
+    static Uint32   reference_count_;
     static bool error_;    
 };
