@@ -6,21 +6,24 @@ class Console;
 enum Interface_t;
 
 
+
+/**
+*   The item creation loop.
+*/
 class Item_Creation : public Interface
 {
 public:
 
-    Item_Creation( Console* );
+    Item_Creation( Console* ); //Ctor.
 
-    Interface_t run( void );
+    Interface_t run( void ); //Runs the item creation menu loop.
 
-    Interface_t which( void );
+    Interface_t type( void ); //Returns the type.
 
 private:
 
-    /*virtual*/ void do_controls( void );
-    Interface_t exit( void );
+    /*virtual*/ void do_controls( void ); //React to player input.
+    Interface_t exit( void ); //Exits the loop.
 
-    static const Interface_t type_;
     Interface_t next_;
 };

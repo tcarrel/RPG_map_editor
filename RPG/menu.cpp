@@ -4,18 +4,16 @@
 
 
 
-/*static*/ const Interface_t Menu::type_ = INTERFACE_MENU;
 
 
 
 Menu::Menu( Console* c ) :
-    Interface( c, INTERFACE_MENU ),
-    next_( type_ )
+    Interface( c, INTERFACE_MENU )
 {}
 
 
 
-void Menu::register_data_store( Play_Data* pd )
+void Menu::init( Play_Data* pd )
 {
     game_data_ = pd;
     funds_ = new Money_Display( game_data_->money_addr() );
@@ -46,6 +44,20 @@ Interface_t Menu::run( void )
 }
 
 
+
+/**
+*   Returns the type.
+*/
+inline Interface_t Menu::type( void )
+{
+    return INTERFACE_MENU;
+}
+
+
+
+/**
+*   Responds to player inputs.
+*/
 void Menu::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )
@@ -55,49 +67,50 @@ void Menu::do_controls( void )
             switch( u )
             {
             case CTRL_A:
-                next_ = type_;
+                active_window_->command( CTRL_A );
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_B:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_Y:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_X:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_L:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_R:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_UP:
                 active_window_->command( CTRL_UP );
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_DOWN:
                 active_window_->command( CTRL_DOWN );
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_LEFT:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_RIGHT:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_SELECT:
-                next_ = type_;
+                next_ = type();
                 exit_ = false;
                 break;
             case CTRL_START:
@@ -114,15 +127,21 @@ void Menu::do_controls( void )
 
 
 
+/**
+*   Exits the menu's loop
+*/
 Interface_t Menu::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }
 
 
 
+/**
+*   Updates the internal status before rendering.
+*/
 void Menu::__update( void )
 {
     do_controls();
@@ -131,6 +150,9 @@ void Menu::__update( void )
 
 
 
+/**
+*   Actually performs rendering.
+*/
 void Menu::__render( void )
 {
     //render base menu

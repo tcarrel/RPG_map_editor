@@ -4,7 +4,6 @@
 
 
 
-/*static*/ const Interface_t Combat::type_ = INTERFACE_COMBAT;
 
 
 
@@ -16,19 +15,22 @@ Combat::Combat( Console* c ) :
 
 Interface_t Combat::run( void )
 {
-
-    return type_;
+    // Not implemented
+    return type();
 }
 
 
 
-inline Interface_t Combat::which( void )
+inline Interface_t Combat::type( void )
 {
-    return type_;
+    return INTERFACE_COMBAT;
 }
 
 
 
+/**
+*   Responds to user input.
+*/
 void Combat::do_controls( void )
 {
     for( unsigned u = 0; u < ALL_CTRL; u++ )
@@ -71,9 +73,12 @@ void Combat::do_controls( void )
 
 
 
+/**
+*  Exits combat, either to the map or to the game over screen.
+*/
 Interface_t Combat::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }

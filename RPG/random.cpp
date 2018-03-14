@@ -9,6 +9,9 @@
 
 
 
+/**
+*   Ctor seeds the RNG the first time it is called.
+*/
 Random::Random( void )
 {
     if( !seeded_ )
@@ -21,13 +24,18 @@ Random::Random( void )
 
 
 
+/**
+*   Returns a random number in the range [ 0, max ).
+*/
 unsigned Random::get( unsigned max )
 {
     return rand() % ( max + 1 );
 }
 
 
-
+/**
+*   Returns a random number between v1 and v2, inclusive.
+*/
 unsigned Random::get( unsigned v1, unsigned v2 )
 {
     if( v1 == v2 )
@@ -53,6 +61,10 @@ unsigned Random::get( unsigned v1, unsigned v2 )
 
 
 
+/**
+*   Return the number used to seed the RNG so it can be stored as part of a saved
+*  game.
+*/
 unsigned Random::get_seed( void )
 {
     return seed_;
@@ -60,6 +72,9 @@ unsigned Random::get_seed( void )
 
 
 
+/**
+*   For reseeding the RNG when a saved game is loaded.
+*/
 void Random::seed( int s )
 {
     srand( (unsigned)time( NULL ) );

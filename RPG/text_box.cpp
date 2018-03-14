@@ -9,6 +9,9 @@
 
 
 
+/**
+*   Sets up the basic settings for a text box based the contents passed in.
+*/
 Text_Box::Text_Box( Box_Contents* bcp ) :
     content_( bcp )
 {
@@ -24,6 +27,9 @@ Text_Box::Text_Box( Box_Contents* bcp ) :
 
 
 
+/**
+*   Sets the fill color for all text boxes.
+*/
 void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 {
     fill_color_[ 0 ] = r;
@@ -34,6 +40,10 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 
 
 
+/**
+*   Adds additional lines of text to the text box.  This will probably have to
+*  be changed later to allow for images to be displayed withing textboxes.
+*/
 void Text_Box::add_text( const char cca[] )
 {
     content_->add_text( cca );
@@ -42,6 +52,10 @@ void Text_Box::add_text( const char cca[] )
 
 
 
+/**
+*   Adds additional lines of text to the text box.  This will probably have to
+*  be changed later to allow for images to be displayed withing textboxes.
+*/
 void Text_Box::add_text( const string& csr )
 {
     content_->add_text( csr );
@@ -50,6 +64,10 @@ void Text_Box::add_text( const string& csr )
 
 
 
+/**
+*   Adds additional lines of text to the text box.  This will probably have to
+*  be changed later to allow for images to be displayed withing textboxes.
+*/
 void Text_Box::add_text( const Uint8_t_String& cu8sr )
 {
     content_->add_text( cu8sr );
@@ -58,6 +76,9 @@ void Text_Box::add_text( const Uint8_t_String& cu8sr )
 
 
 
+/**
+*   Returns a pointer to the contents of the text box.
+*/
 Box_Contents* Text_Box::contents( void )
 {
     return content_;
@@ -65,6 +86,9 @@ Box_Contents* Text_Box::contents( void )
 
 
 
+/**
+*   Passes commands on to the text box's contents.
+*/
 int Text_Box::command( Control_t c )
 {
     return content_->command( c );
@@ -72,6 +96,10 @@ int Text_Box::command( Control_t c )
 
 
 
+/**
+*   Updates the text box's size, usually only called when adding additional
+*  lines of text.
+*/
 void Text_Box::update_size( void )
 {
     box_ = content_->size();
@@ -90,6 +118,9 @@ void Text_Box::update_size( void )
 
 
 
+/**
+*   Render's the text box fill.
+*/
 void Text_Box::render_fill( void )
 {
     SDL_Rect fill = box_;
@@ -107,6 +138,9 @@ void Text_Box::render_fill( void )
 
 
 
+/**
+*   Begins the rendering process.
+*/
 void Text_Box::render( void )
 {
     render_border();
@@ -121,6 +155,9 @@ void Text_Box::render( void )
 
 
 
+/**
+*   Render's the box's text.
+*/
 void Text_Box::render( Line_of_Text* txt)
 {
     for(
@@ -134,6 +171,9 @@ void Text_Box::render( Line_of_Text* txt)
 
 
 
+/**
+*   Renders each individual character.
+*/
 void Text_Box::render_char( unsigned u, SDL_Rect* clip, unsigned hl )
 {
     text_[ hl ].render(
@@ -144,6 +184,9 @@ void Text_Box::render_char( unsigned u, SDL_Rect* clip, unsigned hl )
 
 
 
+/**
+*   Renders the text box border.
+*/
 void Text_Box::render_border( void )
 {
     //Corners

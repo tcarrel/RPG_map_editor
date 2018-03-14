@@ -248,7 +248,9 @@ Console::Console( bool v ) : Console()
 
 
 
-
+/**
+*   Displays video mode info.
+*/
 /*static*/ void Console::video_info( const SDL_DisplayMode& mode )
 {
     if( !verbose_ )

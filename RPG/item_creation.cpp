@@ -4,7 +4,6 @@
 
 
 
-/*static*/ const Interface_t Item_Creation::type_ = INTERFACE_ITEM;
 
 
 
@@ -17,14 +16,14 @@ Item_Creation::Item_Creation( Console* c ) :
 Interface_t Item_Creation::run( void )
 {
 
-    return type_;
+    return type();
 }
 
 
 
-inline Interface_t Item_Creation::which( void )
+inline Interface_t Item_Creation::type( void )
 {
-    return type_;
+    return INTERFACE_ITEM;
 }
 
 
@@ -73,7 +72,7 @@ void Item_Creation::do_controls( void )
 
 Interface_t Item_Creation::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }

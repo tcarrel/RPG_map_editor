@@ -4,6 +4,9 @@
 
 
 
+/**
+*   Ctor.
+*/
 Line_of_Text::Line_of_Text( void )
 {
     this->x = this->y = 0;
@@ -13,6 +16,9 @@ Line_of_Text::Line_of_Text( void )
 
 
 
+/**
+*   Ctor for converting from a Uint8_t_String.
+*/
 Line_of_Text::Line_of_Text( const Uint8_t_String& str )
 {
     this->x = this->y = 0;
@@ -22,6 +28,9 @@ Line_of_Text::Line_of_Text( const Uint8_t_String& str )
 
 
 
+/**
+*   Ctor for converting from a c-string.
+*/
 Line_of_Text::Line_of_Text( const char cstr[] )
 {
     *this = cstr;
@@ -29,6 +38,9 @@ Line_of_Text::Line_of_Text( const char cstr[] )
 
 
 
+/**
+*   Copy ctor.
+*/
 Line_of_Text::Line_of_Text( const Line_of_Text& copy_from )
 {
     *this = copy_from;
@@ -36,6 +48,9 @@ Line_of_Text::Line_of_Text( const Line_of_Text& copy_from )
 
 
 
+/**
+*   Assignment operator from Uint8_t_String.
+*/
 Line_of_Text& Line_of_Text::operator=( const Uint8_t_String& str )
 {
     this->text = str;
@@ -44,6 +59,9 @@ Line_of_Text& Line_of_Text::operator=( const Uint8_t_String& str )
 
 
 
+/**
+*   Assignment operator from c-string.
+*/
 Line_of_Text& Line_of_Text::operator=( const char cstr[] )
 {
     this->text = cstr;
@@ -52,6 +70,9 @@ Line_of_Text& Line_of_Text::operator=( const char cstr[] )
 
 
 
+/**
+*   Assignment operator from another Line_of_Text.
+*/
 Line_of_Text& Line_of_Text::operator=( const Line_of_Text& rhs )
 {
     this->hl = rhs.hl;

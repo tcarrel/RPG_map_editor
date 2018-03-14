@@ -5,6 +5,10 @@ class Uint8_t_String;
 
 
 
+/**
+*   Abstracts text boxes and is responsible for drawing their borders and
+*  fill.
+*/
 class Text_Box : public Text
 {
 public:

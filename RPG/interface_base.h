@@ -8,26 +8,21 @@ class Interface
 {
 public:
 
-    /*
-    Interface( Console* c ) :
-        Interface( c, _INTERFACE_BASE )
-    {}*/
-
     Interface( Console* c, Interface_t t ) :
         console_( c ),
         ctrl_( NULL ),
         came_from_( t )
     {}
 
-    static void set_renderer( SDL_Renderer* );
+    static void set_renderer( SDL_Renderer* ); //Sets the renderer.
 
-    virtual Interface_t run( void ) = 0;
+    virtual Interface_t run( void ) = 0; //For supplying the necessary loop
 
     void set_source( Interface_t );
-    void register_ctrl( bool* );
-    virtual Interface_t which( void ) = 0;
+    void register_ctrl( bool* ); //Registers the input registers.
+    virtual Interface_t type( void ); //Returns the type.
 
-    ~Interface( void );
+    ~Interface( void ); //Dtor.
 protected:
 
     virtual void do_controls( void ) = 0;

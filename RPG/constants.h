@@ -3,6 +3,12 @@
 #include "stdafx.h"
 #include<cmath>
 
+/**
+*   Define all global constants here.
+*/
+
+
+
 
 #define SCREEN_X_PIXELS (1920)
 #define SCREEN_Y_PIXELS (1080)
@@ -21,7 +27,6 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_CHARACTER_WIDTH (32)
 #define TEXT_CHARACTER_HEIGHT (32)
 #define TEXT_ROW_HEIGHT (32)
-//#define TEXT_CHARACTERS_PER_ROW (50)
 #define TEXT_X_OFFSET ( TEXT_CHARACTER_WIDTH / 2 )
 #define TEXT_Y_OFFSET ( TEXT_CHARACTER_HEIGHT / 2)
 

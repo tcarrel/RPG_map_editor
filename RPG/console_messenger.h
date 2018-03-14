@@ -7,16 +7,25 @@ class Uint8_t_String;
 
 using std::string;
 
+
+
+/**
+*   For outputing messages to the console.
+*/
 class Console
 {
 public:
-    Console( void );
-    Console( bool );
-    static void error( string, string, string );
-    static void no_error( string, string, string );
+    Console( void ); //Ctor
+    Console( bool ); //Ctor, sets verbose_.
+    static void error( string, string, string ); //Error message.
+    static void no_error( string, string, string ); //Non-error message.
 
     static void vb_only_no_err( string, string );
 
+    /**
+    *   These functions all do nothing in the release version but can provide
+    *  useful information for debugging.
+    */
     static void vb_variable_value( string, string, unsigned );
     static void vb_variable_value( string, string, int );
     static void vb_variable_value( string, string, float );

@@ -4,12 +4,16 @@
 
 
 
+/**
+*   My own version of the c++-style strings.  Used because it is necessary to
+*  force their content to be unsigned chars.
+*/
 class Uint8_t_String
 {
 public:
     Uint8_t_String( void );
     Uint8_t_String( const Uint8_t_String& );
-    Uint8_t_String( const char*& );
+    Uint8_t_String( const char[] );
     Uint8_t_String( const string& );
     Uint8_t_String( const unsigned&, const uint8_t& );
 

@@ -4,7 +4,6 @@
 
 
 
-/*static*/ const Interface_t Pause::type_ = INTERFACE_PAUSE;
 /*static*/ Screen_Texture Pause::screen_image_;
 
 
@@ -34,6 +33,9 @@ void Pause::init( Text* t, Window* w )
 
 
 
+/**
+*   Runs the pause screen 'loop.'
+*/
 Interface_t Pause::run( void )
 {
     screen_image_.render();
@@ -49,6 +51,16 @@ Interface_t Pause::run( void )
 
 
 
+inline Interface_t Pause::type( void )
+{
+    return INTERFACE_PAUSE;
+}
+
+
+
+/**
+*   Responds to player inpuet.  (Just unpausing.)
+*/
 void Pause::do_controls( void )
 {
     if( ctrl_previous_[ CTRL_START ] && !ctrl_[ CTRL_START ] )
@@ -69,6 +81,9 @@ void Pause::do_controls( void )
 
 
 
+/**
+*   Exits the pause screen 'loop.'
+*/
 Interface_t Pause::exit( void )
 {
     if( exit_ )

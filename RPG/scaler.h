@@ -2,6 +2,11 @@
 
 
 
+/**
+*   For scaling the rendered output.
+*
+*   TODO:  Complete implementation.
+*/
 class Scaler
 {
 public:

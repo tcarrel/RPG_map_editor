@@ -14,15 +14,20 @@ enum Interface_t;
 
 using std::vector;
 
+
+
+/**
+*   The in-game menu system.
+*/
 class Menu : public Interface
 {
 public:
-    Menu( Console* );
+    Menu( Console* );  // Ctor.
 
-    void register_data_store( Play_Data* );
-    Interface_t run( void );
+    void init( Play_Data* );  //Initializes the menuing system. 
+    Interface_t run( void );  //Run's the menu's main-loop.
 
-    Interface_t which( void ) { return type_; }
+    Interface_t type( void );
 
 private:
     /*virtual*/ void do_controls( void );
@@ -43,6 +48,5 @@ private:
 
     Play_Data* game_data_;
 
-    static const Interface_t type_;
     Interface_t next_;
 };

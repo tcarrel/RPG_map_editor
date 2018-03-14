@@ -6,20 +6,23 @@ class Console;
 enum Interface_t;
 
 
+
+/**
+*   The Game Over screen.
+*/
 class Game_Over : public Interface
 {
 public:
-    Game_Over( Console* );
+    Game_Over( Console* ); //Ctor.
 
-    Interface_t run( void );
+    Interface_t run( void ); //Runs the loop for the game over screen.
 
-    Interface_t which( void );
+    Interface_t type( void ); //Returns the type.
 
 private:
 
-    /*virtual*/ void do_controls( void );
-    Interface_t exit( void );
+    /*virtual*/ void do_controls( void ); //Responds to player input.
+    Interface_t exit( void ); //Exits the game over screen's loop.
 
-    static const Interface_t type_;
-    Interface_t next_;
+    Interface_t next_; //Where to return to.
 };

@@ -4,6 +4,10 @@
 
 
 
+/**
+*   For requesting random numbers.  Auto seeds the RNG and ensures it only
+*  gets seeded once.
+*/
 class Random
 {
 public:

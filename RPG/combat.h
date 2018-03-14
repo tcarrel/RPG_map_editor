@@ -6,20 +6,23 @@ class Console;
 enum Interface_t;
 
 
+
+/**
+*   The battle screen.
+*/
 class Combat : public Interface
 {
 public:
-    Combat( Console* );
+    Combat( Console* ); //Ctor.
 
-    Interface_t run( void );
+    Interface_t run( void ); //Runs the battle loop.
 
-    Interface_t which( void );
+    Interface_t type( void ); //Returns the type.
 
 private:
 
     /*virtual*/ void do_controls( void );
     Interface_t exit( void );
 
-    static const Interface_t type_;
     Interface_t next_;
 };

@@ -191,7 +191,6 @@ void Text::render(
     {
         if( iscntrl( text->text[ c ] ) )
         {
-//            printf( " Breaking on char(%c, %i", c, c );
             break;
         }
         text_[ u ].render(

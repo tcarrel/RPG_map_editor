@@ -2,6 +2,12 @@
 
 #include "uint8_t_string.h"
 
+
+
+/**
+*   A struct with a copy ctor and assignment operators for storing single
+*  lines of text.
+*/
 struct Line_of_Text
 {
     int x;

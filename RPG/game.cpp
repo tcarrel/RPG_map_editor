@@ -49,20 +49,13 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     events_.register_interface( &save_load_,  INTERFACE_SAVE_LOAD_MENU );
 
     play_data_ = new Play_Data;
-    menu_.register_data_store( play_data_ );
+    menu_.init( play_data_ );
 
     text_system_ = new Text;
 
     pause_.init( text_system_, w );
     Box_Contents::init( text_system_ );
 
-}
-
-
-
-Play_Data* Game::get_play_data( void )
-{
-    return play_data_;
 }
 
 

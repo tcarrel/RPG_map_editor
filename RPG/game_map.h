@@ -6,20 +6,23 @@ class Console;
 enum Interface_t;
 
 
+
+/**
+*   Interface for wandering the game world.
+*/
 class Game_Map : public Interface
 {
 public:
-    Game_Map( Console* );
+    Game_Map( Console* ); //Ctor.
 
-    Interface_t run( void );
+    Interface_t run( void ); //Runs the loop for this interface.
 
-    Interface_t which( void );
+    Interface_t type( void ); //Returns the type.
 
 private:
 
-    /*virtual*/ void do_controls( void );
-    Interface_t exit( void );
+    /*virtual*/ void do_controls( void ); //Responds to player input.
+    Interface_t exit( void ); //Exits the loop.
 
-    static const Interface_t type_;
     Interface_t next_;
 };

@@ -3,9 +3,14 @@
 #include "text_line.h"
 #include<vector>
 
-
 using std::vector;
 
+
+
+
+/**
+*   A wrapper for vectors of Line_of_Texts.
+*/
 class Passage
 {
 public:

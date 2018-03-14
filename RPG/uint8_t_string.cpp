@@ -4,6 +4,9 @@
 
 
 
+/**
+*   Generic ctor.
+*/
 Uint8_t_String::Uint8_t_String( void ) :
     string_( new uint8_t[17] ),
     length_( 0 ),
@@ -14,6 +17,9 @@ Uint8_t_String::Uint8_t_String( void ) :
 
 
 
+/**
+*   Copy ctor.
+*/
 Uint8_t_String::Uint8_t_String( const Uint8_t_String& u )
 {
     *this = u;
@@ -21,7 +27,10 @@ Uint8_t_String::Uint8_t_String( const Uint8_t_String& u )
 
 
 
-Uint8_t_String::Uint8_t_String( const char*& c ) :
+/**
+*   Ctor to convert from a c-string.
+*/
+Uint8_t_String::Uint8_t_String( const char c[] ) :
     Uint8_t_String()
 {
     unsigned u;
@@ -36,6 +45,9 @@ Uint8_t_String::Uint8_t_String( const char*& c ) :
 
 
 
+/**
+*   Ctor to convert from a c++-style string.
+*/
 Uint8_t_String::Uint8_t_String( const string& str ) 
 {
     capacity_ = length_ = str.size();
@@ -54,6 +66,9 @@ Uint8_t_String::Uint8_t_String( const string& str )
 
 
 
+/**
+*   Copies from a unsigned char string with a known length.
+*/
 Uint8_t_String::Uint8_t_String( const unsigned& qty, const uint8_t& chr )
 {
     length_ = capacity_ = qty;
@@ -72,6 +87,9 @@ Uint8_t_String::Uint8_t_String( const unsigned& qty, const uint8_t& chr )
 
 
 
+/**
+*   Copy assignment operator.
+*/
 Uint8_t_String& Uint8_t_String::operator=( const Uint8_t_String& right_side )
 {
     delete[] this->string_;
@@ -89,6 +107,9 @@ Uint8_t_String& Uint8_t_String::operator=( const Uint8_t_String& right_side )
 
 
 
+/**
+*   Assignment operator from c++-string.
+*/
 Uint8_t_String& Uint8_t_String::operator=( const string& rhs )
 {
     if( string_ )
@@ -114,6 +135,9 @@ Uint8_t_String& Uint8_t_String::operator=( const string& rhs )
 
 
 
+/**
+*   Assignment operator copies from c-string.
+*/
 Uint8_t_String& Uint8_t_String::operator=( const char right_side[] )
 {
     delete[] this->string_;
@@ -136,6 +160,9 @@ Uint8_t_String& Uint8_t_String::operator=( const char right_side[] )
 
 
 
+/**
+*   Array-like element access.
+*/
 uint8_t& Uint8_t_String::operator[]( const unsigned& subscript )
 {
     return string_[ subscript ];
@@ -143,6 +170,9 @@ uint8_t& Uint8_t_String::operator[]( const unsigned& subscript )
 
 
 
+/**
+*   Array-like element access.
+*/
 uint8_t& Uint8_t_String::operator[]( const int& subscript )
 {
     return string_[ subscript ];
@@ -150,6 +180,9 @@ uint8_t& Uint8_t_String::operator[]( const int& subscript )
 
 
 
+/**
+*   Returns the internal unsigned char array.
+*/
 uint8_t* Uint8_t_String::c_str( void )
 {
     return string_;
@@ -157,6 +190,9 @@ uint8_t* Uint8_t_String::c_str( void )
 
 
 
+/**
+*   Returns the length of the string.
+*/
 unsigned Uint8_t_String::size( void )
 {
     return length_;
@@ -164,6 +200,9 @@ unsigned Uint8_t_String::size( void )
 
 
 
+/**
+*   Internal use only.  Increases the string's capacity.
+*/
 void Uint8_t_String::grow( unsigned u )
 {
     if( u < capacity_ )
@@ -198,6 +237,9 @@ void Uint8_t_String::grow( unsigned u )
 
 
 
+/**
+*   Dtor.
+*/
 Uint8_t_String::~Uint8_t_String( void )
 {
     if( string_ )

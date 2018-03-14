@@ -2,6 +2,10 @@
 #include "stdafx.h"
 
 
+
+/**
+*   Ctor.
+*/
 Event_Manager::Event_Manager( Console* c ) :
     console_( c ),
     ev_mgr_init_( SDL_INIT_EVENTS ),
@@ -66,9 +70,6 @@ Event_Manager::Event_Manager( Console* c ) :
                 "Controller Attached: " + string( SDL_JoystickName( gamepad_ ) ) );
             break;
         }
-        
-        // 79001100000000000000504944564944
-        // 03000000790000001100000000000000
     }
 
     if( gamepad_ )
@@ -152,8 +153,20 @@ Event_Manager::Event_Manager( Console* c ) :
 
 
 
-
+/**
+*   Polls the event manager.
+*/
 void Event_Manager::operator()( void )
+{
+    process();
+}
+
+
+
+/**
+*   Polls the event manager.
+*/
+inline void Event_Manager::process( void )
 {
     while( SDL_PollEvent( &e_ ) )
     {
@@ -171,7 +184,7 @@ void Event_Manager::operator()( void )
                 }
             }
             key_down( e_.key.keysym.scancode );
-            break; 
+            break;
         case SDL_KEYUP:
             key_up( e_.key.keysym.scancode );
             break;
@@ -194,13 +207,9 @@ void Event_Manager::operator()( void )
 
 
 
-inline void Event_Manager::process( void )
-{
-    this->operator()();
-}
-
-
-
+/**
+*  Quit the game.
+*/
 const bool& Event_Manager::quit( void )
 {
     return quit_;
@@ -208,6 +217,9 @@ const bool& Event_Manager::quit( void )
 
 
 
+/**
+*   Connects the various game interfaces.
+*/
 bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
 {
     if( !ix )
@@ -315,6 +327,9 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
 
 
 
+/**
+*   Dtor.
+*/
 Event_Manager::~Event_Manager( void )
 {
     if( console_ )
@@ -333,6 +348,9 @@ Event_Manager::~Event_Manager( void )
 
 
 
+/**
+*   Loads controller mappings.
+*/
 void Event_Manager::load_mappings( void )
 {
     int qty = SDL_GameControllerAddMappingsFromRW(
@@ -357,6 +375,9 @@ void Event_Manager::load_mappings( void )
 
 
 
+/**
+*   Keyboard button down events.
+*/
 void Event_Manager::key_down( SDL_Scancode i )
 {
     ctrl_[ key_to_ctrl[ i ] ] = true;
@@ -364,6 +385,9 @@ void Event_Manager::key_down( SDL_Scancode i )
 
 
 
+/**
+*   Keyboard button up events.
+*/
 void Event_Manager::key_up( SDL_Scancode i )
 {
     ctrl_[ key_to_ctrl[ i ] ] = false;
@@ -371,6 +395,9 @@ void Event_Manager::key_up( SDL_Scancode i )
 
 
 
+/**
+*   Joystick and gamepad button down events.
+*/
 void Event_Manager::joy_down( int i )
 {
     ctrl_[ joy_to_ctrl[ i ] ] = true;
@@ -378,6 +405,9 @@ void Event_Manager::joy_down( int i )
 
 
 
+/**
+*   Joystick and gamepad button up events.
+*/
 void Event_Manager::joy_up( int i )
 {
     ctrl_[ joy_to_ctrl[ i ] ] = false;
@@ -385,6 +415,9 @@ void Event_Manager::joy_up( int i )
 
 
 
+/**
+*   Joystick and gamepad axis movement events.
+*/
 void Event_Manager::joy_axis( Uint8 axis, Sint16 v )
 {
     signed char value;
@@ -447,7 +480,9 @@ void Event_Manager::joy_axis( Uint8 axis, Sint16 v )
 
 
 
-
+/**
+*   Tests if all game interfaces have been registered.
+*/
 void Event_Manager::all_registered( void )
 {
     bool all = true;
@@ -461,20 +496,3 @@ void Event_Manager::all_registered( void )
         console_->vb_only_no_err( "Event_Manager", "All interfaces registered." );
     }
 }
-
-
-/*
-key_down( KEY_F4 );
-if( ctrl_[ CTRL_ALT ] )
-{
-    quit_ = 1;
-    if( console_ )
-    {
-        console_->no_error(
-            "Event Manager",
-            "",
-            "Alt+F4 (Quit)"
-        );
-    }
-}
-*/

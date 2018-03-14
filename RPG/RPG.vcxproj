@@ -156,7 +156,7 @@
     <ClInclude Include="event_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="generic_text.h" />
-    <ClInclude Include="helper_functions.h" />
+    <ClInclude Include="helper_template_functions.h" />
     <ClInclude Include="money_display.h" />
     <ClInclude Include="play_data.h" />
     <ClInclude Include="game_over.h" />

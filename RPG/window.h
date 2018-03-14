@@ -2,6 +2,11 @@
 
 #include "stdafx.h"
 
+
+
+/**
+*   A wrapper for the SDL Window.
+*/
 class Window
 {
 

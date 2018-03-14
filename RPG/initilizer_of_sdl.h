@@ -2,6 +2,11 @@
 
 class Console;
 
+
+
+/**
+*   Initializes and quits the various SDL components.
+*/
 class Start_SDL
 {
 public:
@@ -13,12 +18,10 @@ public:
     bool good( void );
 
     void show_errors( void );
-
-    ~Start_SDL( void );
-
+    
 private:
 
     static Console* console_;
-    static Uint32   reference_count_;
+    static bool     exit_set_;
     static bool error_;    
 };

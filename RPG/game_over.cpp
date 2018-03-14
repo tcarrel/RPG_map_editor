@@ -4,7 +4,6 @@
 
 
 
-/*static*/ const Interface_t Game_Over::type_ = INTERFACE_GAME_OVER;
 
 
 
@@ -17,14 +16,14 @@ Game_Over::Game_Over( Console* c ) :
 Interface_t Game_Over::run( void )
 {
 
-    return type_;
+    return type();
 }
 
 
 
-inline Interface_t Game_Over::which( void )
+inline Interface_t Game_Over::type( void )
 {
-    return type_;
+    return INTERFACE_MAP;
 }
 
 
@@ -73,7 +72,7 @@ void Game_Over::do_controls( void )
 
 Interface_t Game_Over::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }

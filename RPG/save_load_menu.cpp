@@ -4,8 +4,6 @@
 
 
 
-/*static*/ const Interface_t Save_Load_Menu::type_ =
-INTERFACE_SAVE_LOAD_MENU;
 
 
 
@@ -17,14 +15,14 @@ Save_Load_Menu::Save_Load_Menu( Console* c ) :
 
 Interface_t Save_Load_Menu::run( void )
 {
-    return type_;
+    return type();
 }
 
 
 
-inline Interface_t Save_Load_Menu::which( void )
+inline Interface_t Save_Load_Menu::type( void )
 {
-    return type_;
+    return INTERFACE_SAVE_LOAD_MENU;
 }
 
 
@@ -73,7 +71,7 @@ void Save_Load_Menu::do_controls( void )
 
 Interface_t Save_Load_Menu::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }

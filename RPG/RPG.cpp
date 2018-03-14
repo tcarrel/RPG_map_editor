@@ -8,6 +8,9 @@
 using namespace std;
 
 #undef main
+/**
+*   Entry point.
+*/
 int main( int argc, char* argv[] )
 {
     bool verbose = false;

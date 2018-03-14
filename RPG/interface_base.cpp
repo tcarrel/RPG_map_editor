@@ -28,12 +28,24 @@ void Interface::register_ctrl( bool* c )
 
 
 
+Interface_t Interface::type( void )
+{
+    return _INTERFACE_BASE;
+}
+
+
+
 /*static*/ void Interface::set_renderer( SDL_Renderer* r )
 {
     renderer_ = r;
 }
 
 
+
+/**
+*   For storing the previous interface for so it can be returned to when
+*  necessary.
+*/
 void Interface::set_source( Interface_t source )
 {
     came_from_ = source;

@@ -11,16 +11,18 @@ class Combat;
 class Menu;
 class Pause;
 
+
+
+/**
+*   Responds to user inputs and allows the current interface to react to it.
+*
+*   TODO: Get gamepad and joystick controls to work correctly.
+*/
 class Event_Manager
 {
 public:
 
-    Event_Manager( void ) : Event_Manager( (Console*)NULL )
-    {}
-    Event_Manager( Console* );
-
-//    bool** get_keys( void ) { return  keys_; }
-//    bool** get_joys( void ) { return joys_; }
+    Event_Manager( Console* = new Console );
 
     void operator() ( void );
     void process( void );

@@ -209,11 +209,11 @@ void Window::splash( Splash_screen* files, unsigned qty )
         {
             SDL_Delay( 500 );
         }
-        image = SDL_LoadBMP( files[i].filename.c_str() );
+        image = SDL_LoadBMP( files[i].path.c_str() );
         size = get_splash_screen_image_size( image, surface_ );
         SDL_BlitScaled( image, NULL, surface_, size );
         SDL_UpdateWindowSurface( window_ );
-        SDL_Delay( files[i].pause );
+        SDL_Delay( files[i].time );
         SDL_FillRect( surface_, NULL, SDL_MapRGB( surface_->format, 0x0, 0x0, 0x0 ) );
         delete size;
         size = NULL;

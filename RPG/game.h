@@ -15,16 +15,20 @@ class Interface;
 
 struct SDL_Renderer;
 
+
+
+/**
+*   Organizes, manages, and initializes the game's interfaces and various
+*  other components.
+*/
 class Game
 {
 public:
-    Game( Console*, Window*, Event_Manager* );
+    Game( Console*, Window*, Event_Manager* ); //Ctor.
 
-    void main_loop( void );
+    void main_loop( void ); //The game loop.
 
-    Play_Data* get_play_data( void );
-
-    ~Game( void );
+    ~Game( void ); //Dtor.
 
 private:
     Start_SDL      sdl_init_;

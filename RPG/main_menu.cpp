@@ -4,7 +4,6 @@
 
 
 
-/*static*/ const Interface_t Main_Menu::type_ = INTERFACE_START_MENU;
 
 
 
@@ -17,14 +16,14 @@ Main_Menu::Main_Menu( Console* c ) :
 Interface_t Main_Menu::run( void )
 {
 
-    return type_;
+    return type();
 }
 
 
 
-inline Interface_t Main_Menu::which( void )
+inline Interface_t Main_Menu::type( void )
 {
-    return type_;
+    return INTERFACE_START_MENU;
 }
 
 
@@ -73,7 +72,7 @@ void Main_Menu::do_controls( void )
 
 Interface_t Main_Menu::exit( void )
 {
-    Interface_t ret = exit_ ? next_ : type_;
-    next_ = type_;
+    Interface_t ret = exit_ ? next_ : type();
+    next_ = type();
     return ret;
 }

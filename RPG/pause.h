@@ -9,15 +9,19 @@ class Screen_Texture;
 enum Interface_t;
 
 
+
+/**
+*   The pause screen.
+*/
 class Pause : public Interface
 {
 public:
-    Pause( Console* );
+    Pause( Console* );  //  Ctor.
 
-    void init( Text*, Window* );
-    Interface_t run( void );
+    void init( Text*, Window* ); // Initialization.
+    Interface_t run( void ); // Runs the pause screen 'loop.'
 
-    Interface_t which( void ) { return type_; }
+    Interface_t type( void ); // Returns the type.
 
 private:
 
@@ -31,6 +35,5 @@ private:
 
     SDL_Renderer* renderer_;
 
-    static const Interface_t type_;
     Interface_t next_;
 };
