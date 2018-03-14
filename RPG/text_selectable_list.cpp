@@ -6,13 +6,17 @@
 
 Selectable_List::Selectable_List( void ) :
     Box_Contents()
-{}
+{
+    text_.add( new Line_of_Text( "" ) );
+    selected_ = heading_qty_ = 0;
+}
 
 
 
 void Selectable_List::set_heading_count( unsigned count )
 {
     heading_qty_ = count;
+    selected_ = heading_qty_;
 }
 
 
@@ -38,6 +42,21 @@ void Selectable_List::deactivate( void )
 
 
 
+Box_Contents& Selectable_List::add_text( const Uint8_t_String& u8str )
+{
+    text_.add( new Line_of_Text( u8str ) );
+    text_.add( new Line_of_Text( "" ) );
+
+    size_.h = text_.size();
+    update_width();
+
+
+
+    return *this;
+}
+
+
+
 void Selectable_List::update( void*, const unsigned& )
 {}
 
@@ -52,10 +71,10 @@ int Selectable_List::command( Control_t control )
             return_values_[ selected_ ] :
             selected_ - heading_qty_;
     case CTRL_DOWN:
-        ++selected_;
+        selected_ += 2;
         while( text_[selected_]->hl == TEXT_HIGHLIGHT_TYPE_GRAYED )
         {
-            ++selected_;
+            selected_ += 2;
         }
         if( selected_ > text_.size() )
         {
@@ -63,14 +82,14 @@ int Selectable_List::command( Control_t control )
         }
         break;
     case CTRL_UP:
-        --selected_;
+        selected_ -= 2;
         while( text_[ selected_ ]->hl == TEXT_HIGHLIGHT_TYPE_GRAYED )
         {
-            --selected_;
+            selected_ -= 2;
         }
         if( selected_ < heading_qty_ )
         {
-            selected_ = text_.size() - 1;
+            selected_ = text_.size() - 2;
         }
     default:
         ;

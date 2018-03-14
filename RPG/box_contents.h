@@ -28,7 +28,7 @@ public:
 
     Box_Contents& add_text( const char[] );
     Box_Contents& add_text( const string& );
-    Box_Contents& add_text( const Uint8_t_String& );
+    virtual Box_Contents& add_text( const Uint8_t_String& );
 
     void set_position( int, int );
     void set_width( int );
@@ -53,8 +53,6 @@ protected:
     static Text* text_system_;
 
     bool fixed_width_;
-
-private:
 
     void update_width( void );
 };

@@ -17,6 +17,10 @@ public:
     void activate( void );
     void deactivate( void );
 
+    //Box_Contents& add_text( const char[] );
+   // Box_Contents& add_text( const string& );
+    Box_Contents& add_text( const Uint8_t_String& );
+
     void update( void* = NULL, const unsigned& = 0 );
 
     int command( Control_t );
