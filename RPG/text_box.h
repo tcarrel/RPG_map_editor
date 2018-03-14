@@ -1,7 +1,7 @@
 #pragma once
 
 #include "text.h"
-
+class Uint8_t_String;
 
 
 
@@ -14,9 +14,16 @@ public:
     void render( Line_of_Text* text );
     static void set_fill( uint8_t, uint8_t, uint8_t, uint8_t );
 
+    void add_text( const char[] );
+    void add_text( const string& );
+    void add_text( const Uint8_t_String& );
     Box_Contents* contents( void );
 
+    int command( Control_t );
+
 private:
+
+    void update_size( void );
 
     void render_fill( void );
     void render_border( void );
@@ -30,6 +37,7 @@ private:
     SDL_Rect box_;
 
     Box_Contents* content_;
+    Box_Contents_t type_;
     unsigned line_rendering_;
 
     static uint8_t        fill_color_[4];

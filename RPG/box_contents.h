@@ -39,18 +39,22 @@ public:
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
 
-    virtual void command( Control_t ) = 0;
+    virtual int command( Control_t ) = 0;
 
     static void init( Text* );
+
+    virtual Box_Contents_t type( void );
 
 protected:
 
     SDL_Rect size_; // Stores values in terms of text row and column numbers.
     Passage text_;
-    bool fixed_width_;
 
     static Text* text_system_;
 
+    bool fixed_width_;
+
 private:
+
     void update_width( void );
 };

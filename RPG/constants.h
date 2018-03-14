@@ -36,6 +36,8 @@ const unsigned TEXT_ROWS =
 
 #define MAX_MONEY (99999999)
 
+#define LIST_RETURN__NO_RETURN (-1)
+
 enum Interface_t
 {
     INTERFACE_START_MENU,
@@ -143,4 +145,15 @@ enum Text_Highlighting_t
     TEXT_HIGHLIGHT_TYPE_BRIGHT,
 
     ALL_TEXT_HIGHLIGHT_TYPES
+};
+
+
+
+enum Box_Contents_t
+{
+    BOX_GENERIC_TEXT,
+    BOX_MONEY_DISPLAY,
+    BOX_TEXT_SELECTABLE_LIST,
+
+    BOX_BOX_CONTENTS_BASE_TYPE
 };

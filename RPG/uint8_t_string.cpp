@@ -136,14 +136,14 @@ Uint8_t_String& Uint8_t_String::operator=( const char right_side[] )
 
 
 
-uint8_t Uint8_t_String::operator[]( const unsigned& subscript )
+uint8_t& Uint8_t_String::operator[]( const unsigned& subscript )
 {
     return string_[ subscript ];
 }
 
 
 
-uint8_t Uint8_t_String::operator[]( const int& subscript )
+uint8_t& Uint8_t_String::operator[]( const int& subscript )
 {
     return string_[ subscript ];
 }

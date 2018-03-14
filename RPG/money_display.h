@@ -10,9 +10,11 @@ public:
     Money_Display( unsigned* );
 
     void update( void* = NULL, const unsigned& = 0);
-    void command( Control_t );
+    int command( Control_t );
+
+    Box_Contents_t type( void );
 
 private:
     unsigned* money_;
-    unsigned money_prev_;
+    unsigned  money_prev_;
 };

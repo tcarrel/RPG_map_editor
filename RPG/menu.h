@@ -34,6 +34,7 @@ private:
     Money_Display* funds_;
     struct
     {
+        Text_Box* main_selections;
         Text_Box* funds_box;
     } base_menu_;
 

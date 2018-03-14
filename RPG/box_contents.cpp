@@ -16,6 +16,7 @@ Box_Contents::Box_Contents( void ) :
         text_system_ = new Text;
     }
     size_.h = text_.size();
+    fixed_width_ = false;
 }
 
 
@@ -70,6 +71,8 @@ Box_Contents& Box_Contents::add_text( const string& str )
 Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
 {
     text_.add( new Line_of_Text( u8str ) );
+    
+    size_.h = text_.size();
     update_width();
     return *this;
 }
@@ -84,7 +87,7 @@ void Box_Contents::set_position( int x, int y )
 
 
 
-inline void Box_Contents::set_width( int w )
+void Box_Contents::set_width( int w )
 {
     size_.w = w;
 }
@@ -105,14 +108,14 @@ Box_Contents::~Box_Contents( void )
 
 
 
-inline void Box_Contents::set_fixed_width( void )
+void Box_Contents::set_fixed_width( void )
 {
     fixed_width_ = true;
 }
 
 
 
-inline void Box_Contents::unset_fixed_width( void )
+void Box_Contents::unset_fixed_width( void )
 {
     fixed_width_ = false;
 }
@@ -168,4 +171,9 @@ void Box_Contents::update_width( void )
 void Box_Contents::init( Text* t )
 {
     text_system_ = t;
+}
+
+Box_Contents_t Box_Contents::type( void )
+{
+    return BOX_BOX_CONTENTS_BASE_TYPE;
 }

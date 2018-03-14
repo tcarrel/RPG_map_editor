@@ -9,8 +9,8 @@
 
 
 
-Text_Box::Text_Box( Box_Contents* content ) :
-    content_( content )
+Text_Box::Text_Box( Box_Contents* bcp ) :
+    content_( bcp )
 {
     if( !Text_Box::initialized_ )
     {
@@ -18,23 +18,8 @@ Text_Box::Text_Box( Box_Contents* content ) :
         renderer_ = text_[ 0 ].get_renderer();
     }
 
-    box_ = content_->size();
-    w_ = box_.w;
-    h_ = content_->lines();
-
-    box_.x *= TEXT_CHARACTER_WIDTH;
-    box_.x += TEXT_X_OFFSET;
-
-    box_.y *= TEXT_CHARACTER_HEIGHT;
-    box_.y += TEXT_Y_OFFSET;
-
-    box_.h *= TEXT_ROW_HEIGHT;
-    box_.w *= TEXT_CHARACTER_WIDTH;
-
-    Console::vb_variable_value( "Text_Box", "w_", w_ );
-    Console::vb_variable_value( "Text_Box", "h_", h_ );
-    Console::vb_variable_value( "Text_Box", "box_", box_ );
-    Console::vb_variable_value( "Text_Box", "content_->size()", content_->size() );
+    type_ = content_->type();
+    update_size();
 }
 
 
@@ -49,9 +34,58 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 
 
 
+void Text_Box::add_text( const char cca[] )
+{
+    content_->add_text( cca );
+    update_size();
+}
+
+
+
+void Text_Box::add_text( const string& csr )
+{
+    content_->add_text( csr );
+    update_size();
+}
+
+
+
+void Text_Box::add_text( const Uint8_t_String& cu8sr )
+{
+    content_->add_text( cu8sr );
+    update_size();
+}
+
+
+
 Box_Contents* Text_Box::contents( void )
 {
     return content_;
+}
+
+
+
+int Text_Box::command( Control_t c )
+{
+    return content_->command( c );
+}
+
+
+
+void Text_Box::update_size( void )
+{
+    box_ = content_->size();
+    w_ = box_.w;
+    h_ = content_->lines();
+
+    box_.x *= TEXT_CHARACTER_WIDTH;
+    box_.x += TEXT_X_OFFSET;
+
+    box_.y *= TEXT_CHARACTER_HEIGHT;
+    box_.y += TEXT_Y_OFFSET;
+
+    box_.h *= TEXT_ROW_HEIGHT;
+    box_.w *= TEXT_CHARACTER_WIDTH;
 }
 
 

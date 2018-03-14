@@ -20,6 +20,18 @@ void Menu::register_data_store( Play_Data* pd )
     game_data_ = pd;
     funds_ = new Money_Display( game_data_->money_addr() );
     base_menu_.funds_box = new Text_Box( funds_ );
+
+    base_menu_.main_selections = new Text_Box( new Selectable_List );
+    ( (Selectable_List*)base_menu_.main_selections->contents() )->set_heading_count( 0 );
+    base_menu_.main_selections->add_text( " Item" );
+    base_menu_.main_selections->add_text( " Magic" );
+    base_menu_.main_selections->add_text( " Equip" );
+    base_menu_.main_selections->add_text( " Status" );
+    base_menu_.main_selections->add_text( " Settings" );
+    base_menu_.main_selections->add_text( " Exit" );
+    base_menu_.main_selections->add_text( " Quit" );
+
+    active_window_ = base_menu_.main_selections;
 }
 
 
@@ -66,10 +78,12 @@ void Menu::do_controls( void )
                 exit_ = false;
                 break;
             case CTRL_UP:
+                active_window_->command( CTRL_UP );
                 next_ = type_;
                 exit_ = false;
                 break;
             case CTRL_DOWN:
+                active_window_->command( CTRL_DOWN );
                 next_ = type_;
                 exit_ = false;
                 break;
@@ -120,6 +134,7 @@ void Menu::__render( void )
 {
     //render base menu
     base_menu_.funds_box->render();
+    base_menu_.main_selections->render();
 
     //render additional windows.
     for( unsigned u = 0; u < open_windows_.size(); u++ )

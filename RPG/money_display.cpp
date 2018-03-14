@@ -73,5 +73,12 @@ void Money_Display::update( void*, const unsigned& )
 /**
 *  Takes no commands.
 */
-void Money_Display::command( Control_t )
-{}
+int Money_Display::command( Control_t )
+{
+    return 0;
+}
+
+Box_Contents_t Money_Display::type( void )
+{
+    return BOX_MONEY_DISPLAY;
+}
