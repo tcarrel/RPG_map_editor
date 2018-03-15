@@ -88,6 +88,9 @@
     <Filter Include="Header Files\Interfaces\Types\Pause">
       <UniqueIdentifier>{0ebfef8e-5ff7-4b9b-9279-76eeb9ed849c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Start Screen">
+      <UniqueIdentifier>{2c9dab29-7f56-4e40-bc01-e07aedea0d66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -324,7 +327,7 @@
       <Filter>Resource Files\Graphics\Text</Filter>
     </None>
     <None Include="Graphics\start_screen_image.xcf">
-      <Filter>Resource Files\Graphics</Filter>
+      <Filter>Resource Files\Start Screen</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -356,7 +359,7 @@
       <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
     <Image Include="Graphics\start_screen_image.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
+      <Filter>Resource Files\Start Screen</Filter>
     </Image>
   </ItemGroup>
 </Project>
