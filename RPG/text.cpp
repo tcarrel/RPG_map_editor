@@ -29,17 +29,17 @@ Text::Text( void )
         if( !text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].ready() )
         {
             text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].load(
-                TEXT_NORMAL_SPRITE_SHEET_FILE_NAME );
+                TEXT_NORMAL_SPRITE_SHEET_FILENAME );
         }
         if( !text_[ TEXT_HIGHLIGHT_TYPE_GRAYED ].ready() )
         {
             text_[ TEXT_HIGHLIGHT_TYPE_GRAYED ].load(
-                TEXT_GRAYED_SPRITE_SHEET_FILE_NAME );
+                TEXT_GRAYED_SPRITE_SHEET_FILENAME );
         }
         if( !text_[ TEXT_HIGHLIGHT_TYPE_BRIGHT].ready() )
         {
             text_[ TEXT_HIGHLIGHT_TYPE_BRIGHT ].load(
-                TEXT_HIGHLIGHT_SPRITE_SHEET_FILE_NAME );
+                TEXT_HIGHLIGHT_SPRITE_SHEET_FILENAME );
         }
 
         // Set the offsets for each text sprite.
