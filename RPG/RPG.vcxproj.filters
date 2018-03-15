@@ -323,6 +323,9 @@
     <None Include="Graphics\text_highlight.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
     </None>
+    <None Include="Graphics\start_screen_image.xcf">
+      <Filter>Resource Files\Graphics</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="splash1_test.bmp">
@@ -350,6 +353,9 @@
       <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
     <Image Include="Graphics\text_highlight.bmp">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\start_screen_image.bmp">
       <Filter>Resource Files\Graphics\Text</Filter>
     </Image>
   </ItemGroup>

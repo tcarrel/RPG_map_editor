@@ -227,6 +227,7 @@
   <ItemGroup>
     <None Include="..\LICENSE.md5" />
     <None Include="..\README.md5" />
+    <None Include="Graphics\start_screen_image.xcf" />
     <None Include="Graphics\text_grayed.xcf" />
     <None Include="Graphics\text_highlight.xcf" />
     <None Include="Graphics\text_normal.xcf" />
@@ -237,6 +238,7 @@
     <Image Include="Graphics\Icon.bmp" />
     <Image Include="Graphics\splash1_test.bmp" />
     <Image Include="Graphics\splash2_test.bmp" />
+    <Image Include="Graphics\start_screen_image.bmp" />
     <Image Include="Graphics\text_grayed.bmp" />
     <Image Include="Graphics\text_highlight.bmp" />
     <Image Include="Graphics\text_normal.bmp" />
