@@ -1,7 +1,16 @@
 
 
 
-This is a game I'm working on creating as a personal project.  I'm using SDL2 for graphics,
-but everything else is my own C++ code.
+This is a game I'm working on creating as a personal project.  I'm using SDL2
+for graphics, but everything else is my own C++ code.
 
 I am also using this project to learn Visual Studio.
+
+(14/03/2018) Although I should have realized it before I even began working on
+this project, I recently realized that the way I was handling the state machine
+that the game is running inside of was overly complicated when I could have
+just used a stack instead.  As a result, I'm having to change quite a bit that
+I've already written to utilize the normal program stack frame to manage a
+large part the state machine functionality for me...  Live and Learn.  I'm
+going to hold of on pushing more updates until I've got these changes working,
+which may be a while.
