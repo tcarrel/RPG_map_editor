@@ -7,16 +7,19 @@
 
 
 
-Item_Creation::Item_Creation( Console* c ) :
-    Interface( c, INTERFACE_ITEM )
+Item_Creation::Item_Creation( Event_Manager* em, Window* w, Console* c ) :
+    Interface( em, c, w, INTERFACE_ITEM )
 {}
 
 
 
-Interface_t Item_Creation::run( void )
+void Item_Creation::run( void )
 {
 
-    return type();
+    for( ; !( exit_ || em_->quit() ); em_->process( this ) )
+    {
+
+    }
 }
 
 
@@ -28,51 +31,46 @@ inline Interface_t Item_Creation::type( void )
 
 
 
-void Item_Creation::do_controls( void )
+void Item_Creation::add_state_machine_nodes( Pause* p )
 {
-    for( unsigned u = 0; u < ALL_CTRL; u++ )
-    {
-        if( ctrl_previous_[ u ] && !ctrl_[ u ] )
-        {
-            switch( u )
-            {
-            case CTRL_A:
-                break;
-            case CTRL_B:
-                break;
-            case CTRL_Y:
-                break;
-            case CTRL_X:
-                break;
-            case CTRL_L:
-                break;
-            case CTRL_R:
-                break;
-            case CTRL_UP:
-                break;
-            case CTRL_DOWN:
-                break;
-            case CTRL_LEFT:
-                break;
-            case CTRL_RIGHT:
-                break;
-            case CTRL_SELECT:
-                break;
-            case CTRL_START:
-                break;
-            default:
-                break;
-            }
-        }
-        ctrl_previous_[ u ] = ctrl_[ u ];
-    }
+    pause_screen_ = p;
 }
 
 
 
-Interface_t Item_Creation::exit( void )
+void Item_Creation::do_controls( unsigned u )
 {
-    Interface_t ret = exit_ ? next_ : type();
-    next_ = type();
-    return ret;
+    if( ctrl_previous_[ u ] && !ctrl_current_[ u ] )
+    {
+        switch( u )
+        {
+        case CTRL_A:
+            break;
+        case CTRL_B:
+            break;
+        case CTRL_Y:
+            break;
+        case CTRL_X:
+            break;
+        case CTRL_L:
+            break;
+        case CTRL_R:
+            break;
+        case CTRL_UP:
+            break;
+        case CTRL_DOWN:
+            break;
+        case CTRL_LEFT:
+            break;
+        case CTRL_RIGHT:
+            break;
+        case CTRL_SELECT:
+            break;
+        case CTRL_START:
+            break;
+        default:
+            break;
+        }
+    }
+    ctrl_previous_[ u ] = ctrl_current_[ u ];
 }

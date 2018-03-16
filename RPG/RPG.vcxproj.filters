@@ -28,14 +28,8 @@
     <Filter Include="Header Files\System Management">
       <UniqueIdentifier>{db1accae-4fa7-40fb-aef9-7550e8cc7d51}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interfaces\Text">
-      <UniqueIdentifier>{81eaef16-5cb3-4c9b-b13b-6bc0c1cab679}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Interfaces">
       <UniqueIdentifier>{1feb3c29-0db3-4ee3-b845-e7de229a3fad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces\Text">
-      <UniqueIdentifier>{d50eaa4b-4681-4d5d-a756-5a5af65bfa59}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\System Management">
       <UniqueIdentifier>{8030fd4b-a6ed-49d2-ba55-bd45208af029}</UniqueIdentifier>
@@ -64,12 +58,6 @@
     <Filter Include="Resource Files\Graphics\Text">
       <UniqueIdentifier>{2a95021b-3032-4800-9ca3-bb670d837030}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interfaces\Text\Box Contents">
-      <UniqueIdentifier>{1f55c720-f9c4-4878-ab43-9fec91aa952f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces\Text\Box Contents">
-      <UniqueIdentifier>{48bbc93f-40c1-4b7d-ba5f-e476449f873c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interfaces\Types">
       <UniqueIdentifier>{9be5d744-334c-4924-81f6-9b52238c4798}</UniqueIdentifier>
     </Filter>
@@ -90,6 +78,24 @@
     </Filter>
     <Filter Include="Resource Files\Start Screen">
       <UniqueIdentifier>{2c9dab29-7f56-4e40-bc01-e07aedea0d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Types\Start Screen">
+      <UniqueIdentifier>{38ab0151-2681-4a21-98d4-6d47d45beb06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Types\Start Screen">
+      <UniqueIdentifier>{4d068563-4905-442e-a485-0aceee520c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Text">
+      <UniqueIdentifier>{81eaef16-5cb3-4c9b-b13b-6bc0c1cab679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Text\Box Contents">
+      <UniqueIdentifier>{1f55c720-f9c4-4878-ab43-9fec91aa952f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Text">
+      <UniqueIdentifier>{d50eaa4b-4681-4d5d-a756-5a5af65bfa59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Text\Box Contents">
+      <UniqueIdentifier>{48bbc93f-40c1-4b7d-ba5f-e476449f873c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,16 +142,16 @@
       <Filter>Header Files\System Management</Filter>
     </ClInclude>
     <ClInclude Include="text_character.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="text_line.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="text.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="text_box.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="play_data.h">
       <Filter>Header Files\Data</Filter>
@@ -157,13 +163,13 @@
       <Filter>Header Files\Windowing</Filter>
     </ClInclude>
     <ClInclude Include="uint8_t_string.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="box_contents.h">
-      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
     <ClInclude Include="text_selectable_list.h">
-      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
     <ClInclude Include="save_load_menu.h">
       <Filter>Header Files\Interfaces\Types</Filter>
@@ -183,17 +189,14 @@
     <ClInclude Include="item_creation.h">
       <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
-    <ClInclude Include="main_menu.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
     <ClInclude Include="menu.h">
       <Filter>Header Files\Interfaces\Types\Menu</Filter>
     </ClInclude>
     <ClInclude Include="money_display.h">
-      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
     <ClInclude Include="generic_text.h">
-      <Filter>Header Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
     <ClInclude Include="pause.h">
       <Filter>Header Files\Interfaces\Types\Pause</Filter>
@@ -202,10 +205,19 @@
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="text_passage.h">
-      <Filter>Header Files\Interfaces\Text</Filter>
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
     <ClInclude Include="helper_template_functions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="start_screen.h">
+      <Filter>Header Files\Interfaces\Types\Start Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="helper_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="settings_menu.h">
+      <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,13 +249,13 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="text_character.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="text.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="text_box.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="play_data.cpp">
       <Filter>Source Files\Data</Filter>
@@ -255,16 +267,16 @@
       <Filter>Source Files\Windowing</Filter>
     </ClCompile>
     <ClCompile Include="uint8_t_string.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="box_contents.cpp">
-      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Source Files\Text\Box Contents</Filter>
     </ClCompile>
     <ClCompile Include="text_selectable_list.cpp">
-      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Source Files\Text\Box Contents</Filter>
     </ClCompile>
     <ClCompile Include="text_line.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="save_load_menu.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
@@ -284,17 +296,14 @@
     <ClCompile Include="item_creation.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
     </ClCompile>
-    <ClCompile Include="main_menu.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
     <ClCompile Include="menu.cpp">
       <Filter>Source Files\Interfaces\Types\Menu</Filter>
     </ClCompile>
     <ClCompile Include="money_display.cpp">
-      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Source Files\Text\Box Contents</Filter>
     </ClCompile>
     <ClCompile Include="generic_text.cpp">
-      <Filter>Source Files\Interfaces\Text\Box Contents</Filter>
+      <Filter>Source Files\Text\Box Contents</Filter>
     </ClCompile>
     <ClCompile Include="pause.cpp">
       <Filter>Source Files\Interfaces\Types\Pause</Filter>
@@ -303,7 +312,16 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="text_passage.cpp">
-      <Filter>Source Files\Interfaces\Text</Filter>
+      <Filter>Source Files\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="start_screen.cpp">
+      <Filter>Source Files\Interfaces\Types\Start Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="helper_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="settings_menu.cpp">
+      <Filter>Source Files\Interfaces\Types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

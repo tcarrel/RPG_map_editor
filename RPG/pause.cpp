@@ -8,17 +8,18 @@
 
 
 
-Pause::Pause( Console* c ) :
-    Interface( c, INTERFACE_PAUSE )
-{}
-
-
-
-void Pause::init( Text* t, Window* w )
+Pause::Pause( Event_Manager* em, Window* w, Console* c ) :
+    Interface( em, c, w, INTERFACE_PAUSE )
 {
-    text_ = t;
     screen_ = w->get_dimensions();
     renderer_ = w->get_renderer();
+}
+
+
+
+void Pause::init( Text* t )
+{
+    text_ = t;
 
     pause_.text = "PAUSED";
 
@@ -36,17 +37,16 @@ void Pause::init( Text* t, Window* w )
 /**
 *   Runs the pause screen 'loop.'
 */
-Interface_t Pause::run( void )
+void Pause::run( void )
 {
     screen_image_.render();
 
     SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 204 );
     SDL_RenderFillRect( renderer_, &screen_ );
-    text_->render( pause_.hl, &pause_ );
+    text_->render( &pause_ );
 
-    do_controls();
-
-    return exit();
+    for( ; !( exit_ || em_->quit() ); em_->process( this ) )
+        ;
 }
 
 
@@ -61,9 +61,9 @@ inline Interface_t Pause::type( void )
 /**
 *   Responds to player inpuet.  (Just unpausing.)
 */
-void Pause::do_controls( void )
+void Pause::do_controls( unsigned u )
 {
-    if( ctrl_previous_[ CTRL_START ] && !ctrl_[ CTRL_START ] )
+    if( ctrl_previous_[ CTRL_START ] && !ctrl_current_[ CTRL_START ] )
     {
         //next_ = came_from_;
         exit_ = true;
@@ -73,25 +73,5 @@ void Pause::do_controls( void )
         //next_ = type_;
         exit_ = false;
     }
-    for( unsigned u = 0; u < ALL_CTRL; u++ )
-    {
-        ctrl_previous_[ u ] = ctrl_[ u ];
-    }
-}
-
-
-
-/**
-*   Exits the pause screen 'loop.'
-*/
-Interface_t Pause::exit( void )
-{
-    if( exit_ )
-    {
-        return came_from_;
-    }
-    else
-    {
-        return INTERFACE_PAUSE;
-    }
+    ctrl_previous_[ u ] = ctrl_current_[ u ];
 }

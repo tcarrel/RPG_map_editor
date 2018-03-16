@@ -5,15 +5,13 @@
 
 
 
-
-
-Save_Load_Menu::Save_Load_Menu( Event_Manager* em, Window* w, Console* c ) :
-    Interface( em, c, w, INTERFACE_SAVE_LOAD_MENU )
+Settings_Menu::Settings_Menu( Event_Manager* e, Window* w, Console* c ) :
+    Interface( e, c, w, INTERFACE_SETTINGS )
 {}
 
 
 
-void Save_Load_Menu::run( void )
+void Settings_Menu::run( void )
 {
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
@@ -23,14 +21,14 @@ void Save_Load_Menu::run( void )
 
 
 
-inline Interface_t Save_Load_Menu::type( void )
+Interface_t Settings_Menu::type( void )
 {
-    return INTERFACE_SAVE_LOAD_MENU;
+    return INTERFACE_SETTINGS;
 }
 
 
 
-void Save_Load_Menu::do_controls( unsigned u )
+void Settings_Menu::do_controls( unsigned u )
 {
     if( ctrl_previous_[ u ] && !ctrl_current_[ u ] )
     {

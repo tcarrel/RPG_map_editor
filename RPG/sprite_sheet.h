@@ -48,5 +48,5 @@ protected:
     static int  offset_y_;
 
 private:
-    static void ultimate_dtor( void );
+    static void dtor( void );
 };

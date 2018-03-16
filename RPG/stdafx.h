@@ -41,7 +41,7 @@
 
 
 #include "interface_base.h"
-#include "main_menu.h"
+#include "start_screen.h"
 #include "game_map.h"
 #include "combat.h"
 #include "menu.h"
@@ -49,6 +49,7 @@
 #include "pause.h"
 #include "item_creation.h"
 #include "save_load_menu.h"
+#include "settings_menu.h"
 
 
 
@@ -85,6 +86,7 @@
 
 
 
+#include "helper_functions.h"
 #include "helper_template_functions.h"
 
 

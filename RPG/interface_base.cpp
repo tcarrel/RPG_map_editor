@@ -5,12 +5,13 @@
 
 
 /*static*/ SDL_Renderer* Interface::renderer_ = NULL;
+/*static*/ bool Interface::goto_start_menu_ = true;
 
 
 
-void Interface::register_ctrl( bool* c )
+void Interface::register_ctrl( bool* cc, bool* cp )
 {
-    if( ctrl_ && console_ && console_->verbose() )
+    if( ctrl_current_ && console_ && console_->verbose() )
     {
         console_->error(
             "Interface",
@@ -19,11 +20,8 @@ void Interface::register_ctrl( bool* c )
         return;
     }
 
-    ctrl_ = c;
-    for( unsigned u = 0; u < ALL_CTRL; u++ )
-    {
-        ctrl_previous_[ u ] = ctrl_[ u ];
-    }
+    ctrl_current_ = cc;
+    ctrl_previous_ = cp;
 }
 
 
@@ -32,6 +30,17 @@ Interface_t Interface::type( void )
 {
     return _INTERFACE_BASE;
 }
+
+
+
+Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_t t ) :
+    console_( c ),
+    ctrl_current_( NULL ),
+    came_from_( t ),
+    em_( em ),
+    window_( w ),
+    exit_( false )
+{}
 
 
 
@@ -55,5 +64,5 @@ void Interface::set_source( Interface_t source )
 
 Interface::~Interface( void )
 {
-    ctrl_ = NULL;
+    ctrl_current_ = NULL;
 }

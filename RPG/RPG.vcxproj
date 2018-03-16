@@ -156,6 +156,7 @@
     <ClInclude Include="event_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="generic_text.h" />
+    <ClInclude Include="helper_functions.h" />
     <ClInclude Include="helper_template_functions.h" />
     <ClInclude Include="money_display.h" />
     <ClInclude Include="play_data.h" />
@@ -163,7 +164,8 @@
     <ClInclude Include="initilizer_of_sdl.h" />
     <ClInclude Include="interface_base.h" />
     <ClInclude Include="item_creation.h" />
-    <ClInclude Include="main_menu.h" />
+    <ClInclude Include="settings_menu.h" />
+    <ClInclude Include="start_screen.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="pause.h" />
@@ -192,6 +194,7 @@
     <ClCompile Include="event_manager.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="generic_text.cpp" />
+    <ClCompile Include="helper_functions.cpp" />
     <ClCompile Include="money_display.cpp" />
     <ClCompile Include="play_data.cpp" />
     <ClCompile Include="game_map.cpp" />
@@ -199,7 +202,8 @@
     <ClCompile Include="initializer_of_sdl.cpp" />
     <ClCompile Include="interface_base.cpp" />
     <ClCompile Include="item_creation.cpp" />
-    <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="settings_menu.cpp" />
+    <ClCompile Include="start_screen.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="pause.cpp" />
     <ClCompile Include="random.cpp" />

@@ -176,26 +176,27 @@ Text::Text( void )
 *
 *  text    : The text to be rendered in the appropriate data structure.
 */
-void Text::render( 
-    unsigned u,
-    Line_of_Text* text )
+void Text::render( Line_of_Text* text )
 {
     if( !text )
     {
         return;
     }
 
-    int length = ( 90 > text->text.size() ) ? 90 : text->text.size();
+    int length =
+        ( TEXT_COLUMNS < text->text.size() ) ?
+        TEXT_COLUMNS :
+        text->text.size();
 
-    for( int c = 0; c < length; c++ )
+    for( int c = 0; ( c < length ) && ( text->text[ c ] ); c++ )
     {
         if( iscntrl( text->text[ c ] ) )
         {
             break;
         }
-        text_[ u ].render(
+        text_[ text->hl ].render(
             text->x + ( c * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET,
-            text->y + TEXT_Y_OFFSET,
+            (text->y * TEXT_CHARACTER_HEIGHT) + TEXT_Y_OFFSET,
             letter_[ text->text[ c ] ].clip() );
     }
 }

@@ -6,7 +6,7 @@ class Event_Manager;
 class Combat;
 class Game_Map;
 class Menu;
-class Main_Menu;
+class Start_Screen;
 class Pause;
 class Item_Creation;
 class Play_Data;
@@ -37,7 +37,7 @@ private:
     Window&        window_;
     Event_Manager& events_;
 
-    Main_Menu      start_menu_;
+    Start_Screen      start_menu_;
     Combat         combat_;
     Game_Map       on_map_;
     Menu           menu_;

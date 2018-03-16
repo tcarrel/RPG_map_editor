@@ -38,6 +38,34 @@ Line_of_Text::Line_of_Text( const char cstr[] )
 
 
 
+Line_of_Text::Line_of_Text(
+    const int& xpos,
+    const int& ypos,
+    const Text_Highlighting_t& hi,
+    const Uint8_t_String& ui8s ) :
+    text( ui8s )
+{
+    x = xpos;
+    y = ypos;
+    hl = hi;
+}
+
+
+
+Line_of_Text::Line_of_Text(
+    const int& xpos,
+    const int& ypos,
+    const Text_Highlighting_t& hi,
+    const char cc[] ) :
+    text(cc)
+{
+    x = xpos;
+    y = ypos;
+    hl = hi;
+}
+
+
+
 /**
 *   Copy ctor.
 */

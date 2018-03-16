@@ -49,6 +49,13 @@ const unsigned TEXT_ROWS =
 
 #define LIST_RETURN__NO_RETURN (-1)
 
+#define DRAW_BORDERS (true)
+
+
+#define KEY_IS_PRESSED (true)
+#define KEY_IS_NOT_PRESSED (false)
+
+
 enum Interface_t
 {
     INTERFACE_START_MENU,
@@ -59,6 +66,7 @@ enum Interface_t
     INTERFACE_ITEM,
     INTERFACE_GAME_OVER,
     INTERFACE_SAVE_LOAD_MENU,
+    INTERFACE_SETTINGS,
     INTERFACE_NEW_GAME_SETUP,
 
     ALL_INTERFACES,

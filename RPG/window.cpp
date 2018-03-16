@@ -84,6 +84,7 @@ Window::Window( void ) :
     }
 
     set_scale( (float)mode_.w, (float)mode_.h );
+    Sprite_Sheet::set_renderer( renderer_ );
     Sprite_Sheet::set_offsets( draw_offset.x_, draw_offset.y_ );
 }
 
@@ -121,21 +122,13 @@ void Window::update( void )
         console_->vb_variable_value(
             "Window", "draw_offset.y_", draw_offset.y_ );
 
-        for( unsigned i = 0; i < 2; i++ )
-        {
-            char number[ 2 ];
-            snprintf( number, 2, "%i", i );
-
-            string var( "border[" );
-            var = var + number + "]";
-
-            console_->vb_variable_value(
-                "Window", var, borders_[ i ] );
-        }
     }
 
-    SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 0xff );
-    SDL_RenderFillRects( renderer_, borders_, 2 );
+    if( DRAW_BORDERS )
+    {
+        SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 0xff );
+        SDL_RenderFillRects( renderer_, borders_, 2 );
+    }
 
     SDL_RenderPresent( renderer_ );
 }
@@ -169,19 +162,12 @@ inline SDL_Surface* Window::get_surface( void )
 
 SDL_Rect Window::get_dimensions( void )
 {
-    SDL_Rect output;
-
-    output.x = pos.x_;
-    output.y = pos.y_;
-    output.w = width_;
-    output.h = height_;
-
-    return output;
+    return{ pos.x_, pos.y_, width_, height_ };
 }
 
 
 
-inline int Window::bpp( void )
+int Window::bpp( void )
 {
     return bpp_;
 }
@@ -191,6 +177,20 @@ inline int Window::bpp( void )
 Uint32 Window::format( void )
 {
     return mode_.format;
+}
+
+
+
+int Window::width( void )
+{
+    return width_;
+}
+
+
+
+int Window::height( void )
+{
+    return height_;
 }
 
 
@@ -244,7 +244,7 @@ SDL_Rect* get_splash_screen_image_size( SDL_Surface* image, SDL_Surface* window 
     if( target_ar > image_ar )
     {
         out->h = window->h;
-        out->w = (int) floor(out->h * image_ar);
+        out->w = ftoi( itof( out->h ) * image_ar );
 
         out->y = 0;
         out->x = ( window->w - out->w ) / 2;
@@ -253,7 +253,7 @@ SDL_Rect* get_splash_screen_image_size( SDL_Surface* image, SDL_Surface* window 
     }
 
     out->w = window->w;
-    out->h = (int) floor(out->w / image_ar);
+    out->h = ftoi( itof( out->w ) / image_ar );
 
     out->x = 0;
     out->y = ( window->h - out->h ) / 2;

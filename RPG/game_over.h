@@ -2,6 +2,8 @@
 
 class Interface;
 class Console;
+class Window;
+class Event_Manager;
 
 enum Interface_t;
 
@@ -13,16 +15,17 @@ enum Interface_t;
 class Game_Over : public Interface
 {
 public:
-    Game_Over( Console* ); //Ctor.
+    Game_Over( Event_Manager*, Window*, Console* ); //Ctor.
 
-    Interface_t run( void ); //Runs the loop for the game over screen.
+    void run( void ); //Runs the loop for the game over screen.
 
     Interface_t type( void ); //Returns the type.
 
+    friend class Event_Manager;
+
 private:
 
-    /*virtual*/ void do_controls( void ); //Responds to player input.
-    Interface_t exit( void ); //Exits the game over screen's loop.
+    void do_controls( unsigned ); //Responds to player input.
 
     Interface_t next_; //Where to return to.
 };

@@ -6,6 +6,15 @@ for graphics, but everything else is my own C++ code.
 
 I am also using this project to learn Visual Studio.
 
+
+==============================================================================
+
+
+
+(16/03/2018) Changing the state machine implimentation, done.  Also added the
+"Line Ending Unifier" plug-in to Visual Studio, so an additional file was
+added by it.
+
 (14/03/2018) Although I should have realized it before I even began working on
 this project, I recently realized that the way I was handling the state machine
 that the game is running inside of was overly complicated when I could have

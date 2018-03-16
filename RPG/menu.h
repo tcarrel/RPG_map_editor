@@ -4,6 +4,12 @@
 
 class Interface;
 class Console;
+class Window;
+class Event_Manager;
+
+class Pause;
+class Item_Creation;
+class Save_Load_Menu;
 
 class Money_Display;
 class Text_Box;
@@ -22,16 +28,19 @@ using std::vector;
 class Menu : public Interface
 {
 public:
-    Menu( Console* );  // Ctor.
+    Menu( Event_Manager*, Window*, Console* );  // Ctor.
 
     void init( Play_Data* );  //Initializes the menuing system. 
-    Interface_t run( void );  //Run's the menu's main-loop.
+    void run( void );  //Run's the menu's main-loop.
 
     Interface_t type( void );
 
+    void add_state_machine_nodes( Pause*, Item_Creation*, Save_Load_Menu* );
+
+    friend class Event_Manager;
+
 private:
-    /*virtual*/ void do_controls( void );
-    Interface_t exit( void );
+    void do_controls( unsigned );
 
     void __update( void );
     void __render( void );
@@ -47,6 +56,7 @@ private:
     Text_Box* active_window_;
 
     Play_Data* game_data_;
-
-    Interface_t next_;
+    Pause* pause_screen_;
+    Item_Creation* item_creation_screen_;
+    Save_Load_Menu* save_load_screen_;
 };

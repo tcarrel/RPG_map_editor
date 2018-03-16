@@ -40,6 +40,7 @@ Uint8_t_String::Uint8_t_String( const char c[] ) :
         string_[ u ] = c[ u ];
         ++length_;
     }
+    grow( u );
     string_[ u ] = 0;
 }
 

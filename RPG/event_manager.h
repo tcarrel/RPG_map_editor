@@ -4,12 +4,17 @@
 #include "constants.h"
 
 class Console;
+
 class Interface;
-class Main_Menu;
-class Game_Map;
-class Combat;
+
 class Menu;
 class Pause;
+class Start_Screen;
+class Combat;
+class Game_Map;
+class Game_Over;
+class Item_Creation;
+class Save_Load_Menu;
 
 
 
@@ -24,9 +29,10 @@ public:
 
     Event_Manager( Console* = new Console );
 
-    void operator() ( void );
-    void process( void );
+    void operator() ( Interface* );
+    void process( Interface* );
     const bool& quit( void );
+    void quit_game( void );
 
     bool register_interface( Interface*, unsigned );
 
@@ -35,11 +41,11 @@ public:
 private:
 
     void load_mappings( void );
-    void key_down( SDL_Scancode );
-    void key_up( SDL_Scancode );
-    void joy_down( int );
-    void joy_up( int );
-    void joy_axis( Uint8, Sint16 );
+    void key_down( SDL_Scancode, Interface* );
+    void key_up( SDL_Scancode, Interface* );
+    void joy_down( int, Interface* );
+    void joy_up( int, Interface* );
+    void joy_axis( Uint8, Sint16, Interface* );
 
     void all_registered( void );
 
@@ -54,7 +60,8 @@ private:
     int current_ixs_;
     Interface* ixs_[ALL_INTERFACES];
 
-    bool ctrl_[ ALL_CTRL ];
+    bool ctrl_current_[ ALL_CTRL ];
+    bool ctrl_previous_[ ALL_CTRL ];
 
     int joy_to_ctrl[ ALL_JOYS ];
     int key_to_ctrl[ ALL_KEYS ];

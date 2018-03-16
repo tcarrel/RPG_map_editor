@@ -17,9 +17,8 @@ public:
     Text( void );
    // Text( const string& );
 
-    virtual void render(
-        unsigned u = TEXT_HIGHLIGHT_TYPE_NORMAL,
-        Line_of_Text* text = NULL );
+    virtual void render( Line_of_Text* text = NULL );
+
 protected:
     //Character Dimensions: 20 x 38
 

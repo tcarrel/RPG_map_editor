@@ -7,8 +7,8 @@
 
 
 
-Menu::Menu( Console* c ) :
-    Interface( c, INTERFACE_MENU )
+Menu::Menu( Event_Manager* em, Window* w, Console* c ) :
+    Interface( em, c, w, INTERFACE_MENU )
 {}
 
 
@@ -35,12 +35,14 @@ void Menu::init( Play_Data* pd )
 
 
 
-Interface_t Menu::run( void )
+void Menu::run( void )
 {
-    __update();
-    __render();
+    for( ; !( exit_ || em_->quit() ); em_->process( this ) )
+    {
 
-    return exit();
+        __update();
+        __render();
+    }
 }
 
 
@@ -55,86 +57,80 @@ inline Interface_t Menu::type( void )
 
 
 
-/**
-*   Responds to player inputs.
-*/
-void Menu::do_controls( void )
+void Menu::add_state_machine_nodes( Pause* p, Item_Creation* ic , Save_Load_Menu* slm )
 {
-    for( unsigned u = 0; u < ALL_CTRL; u++ )
-    {
-        if( ctrl_previous_[ u ] && !ctrl_[ u ] )
-        {
-            switch( u )
-            {
-            case CTRL_A:
-                active_window_->command( CTRL_A );
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_B:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_Y:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_X:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_L:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_R:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_UP:
-                active_window_->command( CTRL_UP );
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_DOWN:
-                active_window_->command( CTRL_DOWN );
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_LEFT:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_RIGHT:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_SELECT:
-                next_ = type();
-                exit_ = false;
-                break;
-            case CTRL_START:
-                next_ = INTERFACE_PAUSE;
-                exit_ = true;
-                break;
-            default:
-                break;
-            }
-        }
-        ctrl_previous_[ u ] = ctrl_[ u ];
-    }
+    pause_screen_ = p;
+    item_creation_screen_ = ic;
+    save_load_screen_ = slm;
 }
 
 
 
 /**
-*   Exits the menu's loop
+*   Responds to player inputs.
 */
-Interface_t Menu::exit( void )
+void Menu::do_controls( unsigned u )
 {
-    Interface_t ret = exit_ ? next_ : type();
-    next_ = type();
-    return ret;
+    if( ctrl_previous_[ u ] && !ctrl_current_[ u ] )
+    {
+        switch( u )
+        {
+        case CTRL_A:
+            active_window_->command( CTRL_A );
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_B:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_Y:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_X:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_L:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_R:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_UP:
+            active_window_->command( CTRL_UP );
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_DOWN:
+            active_window_->command( CTRL_DOWN );
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_LEFT:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_RIGHT:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_SELECT:
+            came_from_ = type();
+            exit_ = false;
+            break;
+        case CTRL_START:
+            came_from_ = INTERFACE_PAUSE;
+            exit_ = true;
+            break;
+        default:
+            break;
+        }
+    }
+    ctrl_previous_[ u ] = ctrl_current_[ u ];
 }
 
 
@@ -144,7 +140,6 @@ Interface_t Menu::exit( void )
 */
 void Menu::__update( void )
 {
-    do_controls();
     funds_->update();
 }
 
@@ -164,4 +159,5 @@ void Menu::__render( void )
     {
         open_windows_[ u ]->render();
     }
+
 }

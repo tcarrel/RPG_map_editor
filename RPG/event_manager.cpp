@@ -32,7 +32,8 @@ Event_Manager::Event_Manager( Console* c ) :
 
     for( unsigned i = 0; i < ALL_CTRL; i++ )
     {
-        *( ctrl_ + i ) = false;
+        *( ctrl_current_ + i ) = false;
+        *( ctrl_previous_ + i ) = false;
     }
 
     //Setup gamepad, if connected.
@@ -156,9 +157,9 @@ Event_Manager::Event_Manager( Console* c ) :
 /**
 *   Polls the event manager.
 */
-void Event_Manager::operator()( void )
+void Event_Manager::operator()( Interface* i )
 {
-    process();
+    process( i );
 }
 
 
@@ -166,7 +167,7 @@ void Event_Manager::operator()( void )
 /**
 *   Polls the event manager.
 */
-inline void Event_Manager::process( void )
+inline void Event_Manager::process( Interface* ix )
 {
     while( SDL_PollEvent( &e_ ) )
     {
@@ -178,26 +179,26 @@ inline void Event_Manager::process( void )
         case SDL_KEYDOWN:
             if( e_.key.keysym.scancode == SDL_SCANCODE_F4 )
             {
-                if( ctrl_[ CTRL_ALT ] )
+                if( ctrl_current_[ CTRL_ALT ] )
                 {
                     quit_ = true;
                 }
             }
-            key_down( e_.key.keysym.scancode );
+            key_down( e_.key.keysym.scancode, ix );
             break;
         case SDL_KEYUP:
-            key_up( e_.key.keysym.scancode );
+            key_up( e_.key.keysym.scancode, ix );
             break;
         case SDL_JOYBUTTONDOWN:
-            joy_down( e_.jbutton.button );
+            joy_down( e_.jbutton.button, ix );
             printf( "Button down: %i\n", e_.jbutton.button );
             break;
         case SDL_JOYBUTTONUP:
-            joy_up( e_.jbutton.button );
+            joy_up( e_.jbutton.button, ix );
             printf( "Button up  : %i\n", e_.jbutton.button );
             break;
         case SDL_JOYAXISMOTION:
-            joy_axis( e_.jaxis.axis, e_.jaxis.value );
+            joy_axis( e_.jaxis.axis, e_.jaxis.value, ix );
             break;
         default:
             ;
@@ -217,6 +218,13 @@ const bool& Event_Manager::quit( void )
 
 
 
+void Event_Manager::quit_game( void )
+{
+    quit_ = true;
+}
+
+
+
 /**
 *   Connects the various game interfaces.
 */
@@ -230,8 +238,9 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
     switch( ixe )
     {
     case INTERFACE_START_MENU:
-        ixs_[ INTERFACE_START_MENU ] = (Main_Menu*)ix;
-        ixs_[ INTERFACE_START_MENU ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_START_MENU ] = (Start_Screen*)ix;
+        ixs_[ INTERFACE_START_MENU ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Start menu interface, registered." );
@@ -242,7 +251,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MAP:
         ixs_[ INTERFACE_MAP ] = (Game_Map*)ix;
-        ixs_[ INTERFACE_MAP ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_MAP ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "On-Map interface, registered." );
@@ -253,7 +262,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MENU:
         ixs_[ INTERFACE_MENU ] = (Menu*)ix;
-        ixs_[ INTERFACE_MENU ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "In-game menu interface, registered." );
@@ -264,7 +273,8 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_COMBAT:
         ixs_[ INTERFACE_COMBAT ] = (Combat*)ix;
-        ixs_[ INTERFACE_COMBAT ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_COMBAT ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Combat interface, registered." );
@@ -275,7 +285,8 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_PAUSE:
         ixs_[ INTERFACE_PAUSE ] = (Pause*)ix;
-        ixs_[ INTERFACE_PAUSE ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_PAUSE ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Pause screen interface, registered." );
@@ -286,7 +297,8 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_SAVE_LOAD_MENU:
         ixs_[ INTERFACE_SAVE_LOAD_MENU ] = (Save_Load_Menu*)ix;
-        ixs_[ INTERFACE_SAVE_LOAD_MENU ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_SAVE_LOAD_MENU ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Save/Load interface, registered." );
@@ -297,7 +309,8 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_ITEM:
         ixs_[ INTERFACE_ITEM ] = (Item_Creation*)ix;
-        ixs_[ INTERFACE_ITEM ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_ITEM ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Item creation interface, registered." );
@@ -308,7 +321,8 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_GAME_OVER:
         ixs_[ INTERFACE_GAME_OVER ] = (Game_Over*)ix;
-        ixs_[ INTERFACE_GAME_OVER ]->register_ctrl( ctrl_ );
+        ixs_[ INTERFACE_GAME_OVER ]->register_ctrl(
+            ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "\"Game Over\" screen interface, registered." );
@@ -378,9 +392,14 @@ void Event_Manager::load_mappings( void )
 /**
 *   Keyboard button down events.
 */
-void Event_Manager::key_down( SDL_Scancode i )
+void Event_Manager::key_down( SDL_Scancode i, Interface* ix )
 {
-    ctrl_[ key_to_ctrl[ i ] ] = true;
+    ctrl_previous_[ key_to_ctrl[ i ] ] = ctrl_current_[ key_to_ctrl[ i ] ];
+    ctrl_current_[ key_to_ctrl[ i ] ] = true;
+    if( ix )
+    {
+        ix->do_controls( key_to_ctrl[ i ] );
+    }
 }
 
 
@@ -388,9 +407,14 @@ void Event_Manager::key_down( SDL_Scancode i )
 /**
 *   Keyboard button up events.
 */
-void Event_Manager::key_up( SDL_Scancode i )
+void Event_Manager::key_up( SDL_Scancode i, Interface* ix )
 {
-    ctrl_[ key_to_ctrl[ i ] ] = false;
+    ctrl_previous_[ key_to_ctrl[ i ] ] = ctrl_current_[ key_to_ctrl[ i ] ];
+    ctrl_current_[ key_to_ctrl[ i ] ] = false;
+    if( ix )
+    {
+        ix->do_controls( key_to_ctrl[ i ] );
+    }
 } 
 
 
@@ -398,9 +422,14 @@ void Event_Manager::key_up( SDL_Scancode i )
 /**
 *   Joystick and gamepad button down events.
 */
-void Event_Manager::joy_down( int i )
+void Event_Manager::joy_down( int i, Interface* ix )
 {
-    ctrl_[ joy_to_ctrl[ i ] ] = true;
+    ctrl_previous_[ joy_to_ctrl[ i ] ] = ctrl_current_[ joy_to_ctrl[ i ] ];
+    ctrl_current_[ joy_to_ctrl[ i ] ] = true;
+    if( ix )
+    {
+        ix->do_controls( joy_to_ctrl[ i ] );
+    }
 }
 
 
@@ -408,9 +437,14 @@ void Event_Manager::joy_down( int i )
 /**
 *   Joystick and gamepad button up events.
 */
-void Event_Manager::joy_up( int i )
+void Event_Manager::joy_up( int i, Interface* ix )
 {
-    ctrl_[ joy_to_ctrl[ i ] ] = false;
+    ctrl_previous_[ joy_to_ctrl[ i ] ] = ctrl_current_[ joy_to_ctrl[ i ] ];
+    ctrl_current_[ joy_to_ctrl[ i ] ] = false;
+    if( ix )
+    {
+        ix->do_controls( joy_to_ctrl[ i ] );
+    }
 }
 
 
@@ -418,7 +452,7 @@ void Event_Manager::joy_up( int i )
 /**
 *   Joystick and gamepad axis movement events.
 */
-void Event_Manager::joy_axis( Uint8 axis, Sint16 v )
+void Event_Manager::joy_axis( Uint8 axis, Sint16 v, Interface* ix )
 {
     signed char value;
     if( JOY_DEAD_ZONE < v  )
@@ -446,15 +480,15 @@ void Event_Manager::joy_axis( Uint8 axis, Sint16 v )
             break;
         case 1: //Right
             printf( "Axis 0, right   (%i)\n", v );
-            joy_down( JOY_RIGHT );
+            joy_down( JOY_RIGHT, ix );
             break;
         case 0: //Neutral
-            joy_up( JOY_LEFT );
-            joy_up( JOY_RIGHT );
+            joy_up( JOY_LEFT, ix );
+            joy_up( JOY_RIGHT, ix );
             break;
         case -1: //Left
             printf( "Axis 0, left    (%i)\n", v );
-            joy_down( JOY_LEFT );
+            joy_down( JOY_LEFT, ix );
         }
         break;
     case 1:   // UP and DOWN
@@ -464,15 +498,15 @@ void Event_Manager::joy_axis( Uint8 axis, Sint16 v )
             break;
         case 1: //Down
             printf( "Axis 1, down    (%i)\n", v );
-            joy_down( JOY_DOWN );
+            joy_down( JOY_DOWN, ix );
             break;
         case 0: //Neutral
-            joy_up( JOY_UP );
-            joy_up( JOY_DOWN );
+            joy_up( JOY_UP, ix );
+            joy_up( JOY_DOWN, ix );
             break;
         case -1: //Up
             printf( "Axis 1, up      (%i)\n", v );
-            joy_down( JOY_UP );
+            joy_down( JOY_UP, ix );
         }
     }
 

@@ -25,6 +25,9 @@ public:
     int bpp( void );
     Uint32 format( void );
 
+    int width( void );
+    int height( void );
+
 private:
     void splash( struct Splash_screen*, unsigned );
     void set_scale( float, float );

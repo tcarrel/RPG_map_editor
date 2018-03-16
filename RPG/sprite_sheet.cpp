@@ -23,7 +23,7 @@ Sprite_Sheet::Sprite_Sheet( void ) :
     if( !console_ )
     {
         console_ = new Console;
-        atexit( ultimate_dtor );
+        atexit( dtor );
     }
 }
 
@@ -235,7 +235,7 @@ int Sprite_Sheet::get_y_offset( void )
 /**
 *   Final dtor to be called once atexit().
 */
-void Sprite_Sheet::ultimate_dtor( void )
+void Sprite_Sheet::dtor( void )
 {
     delete console_;
     console_ = NULL;

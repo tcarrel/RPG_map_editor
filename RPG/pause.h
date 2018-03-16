@@ -3,6 +3,9 @@
 #include "text_line.h"
 class Interface;
 class Console;
+class Window;
+class Event_Manager;
+
 class Text;
 class Screen_Texture;
 
@@ -16,17 +19,18 @@ enum Interface_t;
 class Pause : public Interface
 {
 public:
-    Pause( Console* );  //  Ctor.
+    Pause( Event_Manager*, Window*, Console* );  //  Ctor.
 
-    void init( Text*, Window* ); // Initialization.
-    Interface_t run( void ); // Runs the pause screen 'loop.'
+    void init( Text* ); // Initialization.
+    void run( void ); // Runs the pause screen 'loop.'
 
     Interface_t type( void ); // Returns the type.
 
+    friend class Event_Manager;
+
 private:
 
-    /*virtual*/ void do_controls( void );
-    Interface_t exit( void );
+    void do_controls( unsigned );
 
     Text* text_;
     Line_of_Text pause_;

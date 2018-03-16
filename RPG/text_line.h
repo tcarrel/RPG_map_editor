@@ -20,6 +20,17 @@ struct Line_of_Text
     Line_of_Text( const Line_of_Text& );
     Line_of_Text( const char[] );
 
+    Line_of_Text(
+        const int&,
+        const int&,
+        const Text_Highlighting_t&,
+        const Uint8_t_String& );
+    Line_of_Text(
+        const int&,
+        const int&,
+        const Text_Highlighting_t&,
+        const char[] );
+
     Line_of_Text& operator=( const Uint8_t_String& );
     Line_of_Text& operator=( const char[] );
     Line_of_Text& operator=( const Line_of_Text& );
