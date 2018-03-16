@@ -2,12 +2,14 @@
 
 
 This is a game I'm working on creating as a personal project.  I'm using SDL2
-for graphics, but everything else is my own C++ code.
+for graphics, but everything else is my own C++ code.  At this point, I'm still
+building the engine.  I haven't yet bothered naming anything related to it,
+hence, the reason why I'm just calling it RPG for now.
 
 I am also using this project to learn Visual Studio.
 
 
-==============================================================================
+==DEVELOPMENT NOTES============================================================
 
 
 
