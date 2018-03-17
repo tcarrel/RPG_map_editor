@@ -72,9 +72,9 @@ Box_Contents::Box_Contents( const Passage& cp ) :
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const char ccstr[] )
+Box_Contents& Box_Contents::add_text( const char ccstr[], int i )
 {
-    return add_text( Uint8_t_String( ccstr ) );
+    return add_text( Uint8_t_String( ccstr ), i );
 }
 
 
@@ -82,9 +82,9 @@ Box_Contents& Box_Contents::add_text( const char ccstr[] )
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const string& str )
+Box_Contents& Box_Contents::add_text( const string& str, int i )
 {
-    return add_text( Uint8_t_String( str ) );
+    return add_text( Uint8_t_String( str ), i );
 }
 
 
@@ -92,7 +92,7 @@ Box_Contents& Box_Contents::add_text( const string& str )
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str )
+Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str, int )
 {
     text_.add( new Line_of_Text( u8str ) );
     
@@ -259,7 +259,7 @@ void Box_Contents::init( Text* t )
 /**
 *   Returns the enum value representing this text box type.
 */
-Box_Contents_t Box_Contents::type( void )
+Box_Contents_enum_t Box_Contents::type( void )
 {
     return BOX_BOX_CONTENTS_BASE_TYPE;
 }

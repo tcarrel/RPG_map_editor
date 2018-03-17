@@ -23,7 +23,7 @@ void Save_Load_Menu::run( void )
 
 
 
-inline Interface_t Save_Load_Menu::type( void )
+inline Interface_enum_t Save_Load_Menu::type( void )
 {
     return INTERFACE_SAVE_LOAD_MENU;
 }

@@ -23,7 +23,7 @@ void Game_Map::run( void )
 
 
 
-inline Interface_t Game_Map::type( void )
+inline Interface_enum_t Game_Map::type( void )
 {
     return INTERFACE_MAP;
 }

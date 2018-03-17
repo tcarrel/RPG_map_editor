@@ -9,7 +9,7 @@ class Event_Manager;
 class Text;
 class Screen_Texture;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -24,7 +24,7 @@ public:
     void init( Text* ); // Initialization.
     void run( void ); // Runs the pause screen loop.
 
-    Interface_t type( void ); // Returns the type.
+    Interface_enum_t type( void ); // Returns the type.
 
     friend class Event_Manager;
 
@@ -39,5 +39,5 @@ private:
 
     SDL_Renderer* renderer_;
 
-    Interface_t next_;
+    Interface_enum_t next_;
 };

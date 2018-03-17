@@ -17,29 +17,33 @@ using std::vector;
 class Selectable_List : public Box_Contents
 {
 public:
-    Selectable_List( void );
+    Selectable_List( unsigned = 0 );
 
-    void set_heading_count( unsigned );
-    void set_return_values( int* );
     void activate( void );
     void deactivate( void );
 
-    Box_Contents& add_text( const Uint8_t_String& );
+    Box_Contents& add_text( const Uint8_t_String&, int );
 
     void update( void* = NULL, const unsigned& = 0 );
 
-    int command( Control_t );
+    int command( Control_enum_t );
 
-    Box_Contents_t type( void );
+    Box_Contents_enum_t type( void );
+
+    ~Selectable_List( void );
 
 private:
 
     void update_text( void );
+    void down( void );
+    void up( void );
 
-    unsigned heading_qty_;
-    unsigned selected_;
-    bool allow_loop_;
-    bool active_;
+    unsigned              spacing_;
+    unsigned              selected_;
+    bool                  allow_loop_;
+    bool                  active_;
 
-    int* return_values_;
+    vector<Line_of_Text*> selection_;
+    vector<int>           return_values_;
+
 };

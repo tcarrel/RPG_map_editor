@@ -4,7 +4,7 @@ class Console;
 class Window;
 class Event_Manager;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -12,15 +12,15 @@ class Interface
 {
 public:
 
-    Interface( Event_Manager*, Console*, Window*, Interface_t );
+    Interface( Event_Manager*, Console*, Window*, Interface_enum_t );
 
     static void set_renderer( SDL_Renderer* ); //Sets the renderer.
 
     virtual void run( void ) = 0; //For supplying the necessary loop
 
-    virtual void set_source( Interface_t );
+    virtual void set_source( Interface_enum_t );
     void register_ctrl( bool*, bool* ); //Connects the input registers.
-    virtual Interface_t type( void ); //Returns the type.
+    virtual Interface_enum_t type( void ); //Returns the type.
 
     ~Interface( void ); //Dtor.
 
@@ -34,7 +34,7 @@ protected:
     Console* console_;
     bool* ctrl_current_;
     bool* ctrl_previous_;
-    Interface_t came_from_;
+    Interface_enum_t came_from_;
 
     Event_Manager* em_;
     Window* window_;

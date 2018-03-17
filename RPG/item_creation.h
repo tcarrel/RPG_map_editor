@@ -5,7 +5,7 @@ class Console;
 class Window;
 class Event_Manager;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -20,7 +20,7 @@ public:
 
     void run( void ); //Runs the item creation menu loop.
 
-    Interface_t type( void ); //Returns the type.
+    Interface_enum_t type( void ); //Returns the type.
 
     void add_state_machine_nodes( Pause* );
 
@@ -30,6 +30,6 @@ private:
 
     void do_controls( unsigned ); //React to player input.
 
-    Interface_t next_;
+    Interface_enum_t next_;
     Pause* pause_screen_;
 };

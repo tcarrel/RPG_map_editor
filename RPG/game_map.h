@@ -10,7 +10,7 @@ class Combat;
 class Menu;
 class Item_Creation;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -24,7 +24,7 @@ public:
 
     void run( void ); //Runs the loop for this interface.
 
-    Interface_t type( void ); //Returns the type.
+    Interface_enum_t type( void ); //Returns the type.
 
     void add_state_machine_nodes( Pause*, Combat*, Menu*, Item_Creation* );
 
@@ -34,7 +34,7 @@ private:
 
     void do_controls( unsigned ); //Responds to player input.
 
-    Interface_t next_;
+    Interface_enum_t next_;
     Pause* pause_screen_;
     Combat* battle_;
     Menu* menu_screen_;

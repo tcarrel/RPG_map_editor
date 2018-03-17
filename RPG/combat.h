@@ -9,7 +9,7 @@ class Pause;
 class Game_Map;
 class Game_Over;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -23,7 +23,7 @@ public:
 
     void run( void ); //Runs the battle loop.
 
-    Interface_t type( void ); //Returns the type.
+    Interface_enum_t type( void ); //Returns the type.
 
     void add_state_machine_nodes( Pause*, Game_Map*, Game_Over* );
 
@@ -33,7 +33,7 @@ private:
 
     void do_controls( unsigned );
 
-    Interface_t next_;
+    Interface_enum_t next_;
     Pause* pause_screen_;
     Game_Map* map_screen_;
     Game_Over* game_over_screen_;

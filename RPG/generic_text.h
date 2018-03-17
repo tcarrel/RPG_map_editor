@@ -16,7 +16,7 @@ public:
     void activate( void );
     void deactivate( void );
 
-    Box_Contents_t type( void );
+    Box_Contents_enum_t type( void );
 
 private:
 

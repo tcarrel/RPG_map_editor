@@ -11,7 +11,7 @@ class Text;
 #include "text_line.h"
 #include "text_passage.h"
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 /**
@@ -26,7 +26,7 @@ public:
 
     void run( void ); //Runs the loop for this menu.
 
-    Interface_t type( void ); //Returns the type.
+    Interface_enum_t type( void ); //Returns the type.
 
     void add_state_machine_nodes( Save_Load_Menu* );
 
@@ -42,7 +42,7 @@ private:
     void adjust_highlight( void );
     void select( void );
 
-    Interface_t     next_; //Where to return to.
+    Interface_enum_t     next_; //Where to return to.
     Save_Load_Menu* save_load_screen_;
     SDL_Texture*    bg_image_;
 

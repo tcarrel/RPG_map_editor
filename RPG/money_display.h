@@ -14,11 +14,13 @@ public:
     Money_Display( unsigned* );
 
     void update( void* = NULL, const unsigned& = 0);
-    int command( Control_t );
+    int command( Control_enum_t );
     void activate( void );
     void deactivate( void );
 
-    Box_Contents_t type( void );
+    Box_Contents& add_text( const Uint8_t_String&, int = -1 );
+
+    Box_Contents_enum_t type( void );
 
 private:
     unsigned* money_;

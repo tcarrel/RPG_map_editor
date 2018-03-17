@@ -26,14 +26,14 @@ void Interface::register_ctrl( bool* cc, bool* cp )
 
 
 
-Interface_t Interface::type( void )
+Interface_enum_t Interface::type( void )
 {
     return _INTERFACE_BASE;
 }
 
 
 
-Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_t t ) :
+Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_enum_t t ) :
     console_( c ),
     ctrl_current_( NULL ),
     came_from_( t ),
@@ -55,7 +55,7 @@ Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_t t 
 *   For storing the previous interface for so it can be returned to when
 *  necessary.
 */
-void Interface::set_source( Interface_t source )
+void Interface::set_source( Interface_enum_t source )
 {
     came_from_ = source;
 }

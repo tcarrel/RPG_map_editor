@@ -6,7 +6,7 @@ class Interface;
 class Window;
 class Event_Manager;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 
 
@@ -21,7 +21,7 @@ public:
 
     void run( void ); //Save menu loop.
 
-    Interface_t type( void ); //Returns the type.
+    Interface_enum_t type( void ); //Returns the type.
 
     friend class Event_Manager;
 
@@ -29,5 +29,5 @@ private:
 
     void do_controls( unsigned ); //Responds to user input.
 
-    Interface_t next_;
+    Interface_enum_t next_;
 };

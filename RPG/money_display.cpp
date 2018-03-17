@@ -83,7 +83,7 @@ void Money_Display::update( void*, const unsigned& )
 /**
 *  These functions do nothing for this type of text box.
 */
-int Money_Display::command( Control_t )
+int Money_Display::command( Control_enum_t )
 {
     return 0;
 }
@@ -94,10 +94,17 @@ void Money_Display::deactivate( void )
 
 
 
+Box_Contents & Money_Display::add_text( const Uint8_t_String&, int )
+{
+    return *this;
+}
+
+
+
 /**
 *   Returns the enum value representing this text box type.
 */
-Box_Contents_t Money_Display::type( void )
+Box_Contents_enum_t Money_Display::type( void )
 {
     return BOX_MONEY_DISPLAY;
 }

@@ -23,7 +23,7 @@ void Combat::run( void )
 
 
 
-inline Interface_t Combat::type( void )
+inline Interface_enum_t Combat::type( void )
 {
     return INTERFACE_COMBAT;
 }

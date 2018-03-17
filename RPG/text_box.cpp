@@ -44,9 +44,9 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 *   Adds additional lines of text to the text box.  This will probably have to
 *  be changed later to allow for images to be displayed withing textboxes.
 */
-void Text_Box::add_text( const char cca[] )
+void Text_Box::add_text( const char cca[], int i )
 {
-    content_->add_text( cca );
+    content_->add_text( cca, i );
     update_size();
 }
 
@@ -56,9 +56,9 @@ void Text_Box::add_text( const char cca[] )
 *   Adds additional lines of text to the text box.  This will probably have to
 *  be changed later to allow for images to be displayed withing textboxes.
 */
-void Text_Box::add_text( const string& csr )
+void Text_Box::add_text( const string& csr, int i )
 {
-    content_->add_text( csr );
+    content_->add_text( csr, i );
     update_size();
 }
 
@@ -68,9 +68,9 @@ void Text_Box::add_text( const string& csr )
 *   Adds additional lines of text to the text box.  This will probably have to
 *  be changed later to allow for images to be displayed withing textboxes.
 */
-void Text_Box::add_text( const Uint8_t_String& cu8sr )
+void Text_Box::add_text( const Uint8_t_String& cu8sr, int i )
 {
-    content_->add_text( cu8sr );
+    content_->add_text( cu8sr, i );
     update_size();
 }
 
@@ -89,7 +89,7 @@ Box_Contents* Text_Box::contents( void )
 /**
 *   Passes commands on to the text box's contents.
 */
-int Text_Box::command( Control_t c )
+int Text_Box::command( Control_enum_t c )
 {
     return content_->command( c );
 }

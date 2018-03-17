@@ -53,5 +53,5 @@ private:
     SDL_Renderer*  renderer_;
     Text*          text_system_;
 
-    Interface_t current_interface_;
+    Interface_enum_t current_interface_;
 };

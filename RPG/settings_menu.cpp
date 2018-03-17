@@ -21,7 +21,7 @@ void Settings_Menu::run( void )
 
 
 
-Interface_t Settings_Menu::type( void )
+Interface_enum_t Settings_Menu::type( void )
 {
     return INTERFACE_SETTINGS;
 }

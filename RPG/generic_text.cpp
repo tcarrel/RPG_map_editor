@@ -23,7 +23,7 @@ void Generic_Text::deactivate( void )
 /**
 *   Returns the enum value representing this text box type.
 */
-Box_Contents_t Generic_Text::type( void )
+Box_Contents_enum_t Generic_Text::type( void )
 {
     return BOX_GENERIC_TEXT;
 }

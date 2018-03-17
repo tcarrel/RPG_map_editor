@@ -91,7 +91,7 @@ void Start_Screen::run( void )
 
 
  
-inline Interface_t Start_Screen::type( void )
+inline Interface_enum_t Start_Screen::type( void )
 {
     return INTERFACE_START_MENU;
 }

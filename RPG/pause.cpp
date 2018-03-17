@@ -54,7 +54,7 @@ void Pause::run( void )
 
 
 
-inline Interface_t Pause::type( void )
+inline Interface_enum_t Pause::type( void )
 {
     return INTERFACE_PAUSE;
 }

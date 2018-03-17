@@ -24,7 +24,7 @@ void Game_Over::run( void )
 
 
 
-inline Interface_t Game_Over::type( void )
+inline Interface_enum_t Game_Over::type( void )
 {
     return INTERFACE_MAP;
 }

@@ -16,7 +16,7 @@ class Text_Box;
 
 class Play_Data;
 
-enum Interface_t;
+enum Interface_enum_t;
 
 using std::vector;
 
@@ -33,7 +33,7 @@ public:
     void init( Play_Data* );  //Initializes the menuing system. 
     void run( void );  //Run's the menu's main-loop.
 
-    Interface_t type( void );
+    Interface_enum_t type( void );
 
     void add_state_machine_nodes( Pause*, Item_Creation*, Save_Load_Menu* );
 
@@ -45,7 +45,6 @@ private:
     void __update( void );
     void __render( void );
 
-    Money_Display* funds_;
     struct
     {
         Text_Box* main_selections;
@@ -60,5 +59,5 @@ private:
     Item_Creation* item_creation_screen_;
     Save_Load_Menu* save_load_screen_;
 
-    Interface_t goto_interface_;
+    Interface_enum_t goto_interface_;
 };

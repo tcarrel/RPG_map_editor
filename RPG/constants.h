@@ -47,8 +47,6 @@ const unsigned TEXT_ROWS =
 
 #define MAX_MONEY (99999999)
 
-#define LIST_RETURN__NO_RETURN (-1)
-
 #define DRAW_BORDERS (true)
 
 
@@ -56,7 +54,7 @@ const unsigned TEXT_ROWS =
 #define KEY_IS_NOT_PRESSED (false)
 
 
-enum Interface_t
+enum Interface_enum_t
 {
     INTERFACE_START_MENU,
     INTERFACE_MAP,
@@ -84,7 +82,7 @@ enum Interface_t
 //     LEFT    RIGHT    SELECT  START    Y   A
 //         DOWN                            B
 //
-enum Joy_t
+enum Joy_enum_t
 {
     JOY_X_BUTTON,       // 0
     JOY_A_BUTTON,
@@ -107,7 +105,7 @@ enum Joy_t
 
 
 
-enum Control_t
+enum Control_enum_t
 {
     CTRL_X,
     CTRL_A,
@@ -131,7 +129,7 @@ enum Control_t
 
 
 
-enum Special_Character_t
+enum Special_Character_enum_t
 {
     CHAR_COIN = 128U,
     CHAR_HAND__LEFT = 129U,
@@ -157,7 +155,7 @@ enum Special_Character_t
 
 
 
-enum Text_Highlighting_t
+enum Text_Highlighting_enum_t
 {
     TEXT_HIGHLIGHT_TYPE_NORMAL,
     TEXT_HIGHLIGHT_TYPE_GRAYED,
@@ -169,11 +167,30 @@ enum Text_Highlighting_t
 
 
 
-enum Box_Contents_t
+enum Box_Contents_enum_t
 {
     BOX_GENERIC_TEXT,
     BOX_MONEY_DISPLAY,
     BOX_TEXT_SELECTABLE_LIST,
 
     BOX_BOX_CONTENTS_BASE_TYPE
+};
+
+
+
+enum Menu_Return_Values_enum_t
+{
+    MENU_RETURN_VALUE__NO_VALUES_TO_BE_USED = -1337,
+    MENU_RETURN_VALUE__NO_RETURN = -1,
+
+    MENU_RETURN_VALUE__OPEN_ITEM_INVENTORY,
+    MENU_RETURN_VALUE__OPEN_MAGIC_MENU,
+    MENU_RETURN_VALUE__OPEN_EQUIP_MENU,
+    MENU_RETURN_VALUE__OPEN_STATUS,
+    MENU_RETURN_VALUE__OPEN_SETTINGS_MENU,
+
+    MENU_RETURN_VALUE__EXIT_MENU,
+    MENU_RETURN_VALUE__EXIT_CURRENT_MENU = MENU_RETURN_VALUE__EXIT_MENU,
+
+    MENU_RETURN_VALUE__QUIT_GAME
 };

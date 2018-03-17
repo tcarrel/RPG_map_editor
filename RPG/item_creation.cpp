@@ -24,7 +24,7 @@ void Item_Creation::run( void )
 
 
 
-inline Interface_t Item_Creation::type( void )
+inline Interface_enum_t Item_Creation::type( void )
 {
     return INTERFACE_ITEM;
 }

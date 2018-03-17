@@ -5,8 +5,6 @@
 
 
 
-
-
 Menu::Menu( Event_Manager* em, Window* w, Console* c ) :
     Interface( em, c, w, INTERFACE_MENU )
 {}
@@ -16,18 +14,32 @@ Menu::Menu( Event_Manager* em, Window* w, Console* c ) :
 void Menu::init( Play_Data* pd )
 {
     game_data_ = pd;
-    funds_ = new Money_Display( game_data_->money_addr() );
-    base_menu_.funds_box = new Text_Box( funds_ );
+    base_menu_.funds_box =
+        new Text_Box(
+            new Money_Display( game_data_->money_addr() ) );
 
-    base_menu_.main_selections = new Text_Box( new Selectable_List );
-    ( (Selectable_List*)base_menu_.main_selections->contents() )->set_heading_count( 0 );
-    base_menu_.main_selections->add_text( " Item" );
-    base_menu_.main_selections->add_text( " Magic" );
-    base_menu_.main_selections->add_text( " Equip" );
-    base_menu_.main_selections->add_text( " Status" );
-    base_menu_.main_selections->add_text( " Settings" );
-    base_menu_.main_selections->add_text( " Exit" );
-    base_menu_.main_selections->add_text( " Quit" );
+    base_menu_.main_selections = new Text_Box( new Selectable_List( 2 ) );
+    base_menu_.main_selections->add_text(
+        " Inventory",
+        MENU_RETURN_VALUE__OPEN_ITEM_INVENTORY );
+    base_menu_.main_selections->add_text(
+        " Magic",
+        MENU_RETURN_VALUE__OPEN_MAGIC_MENU );
+    base_menu_.main_selections->add_text(
+        " Equipment ",
+        MENU_RETURN_VALUE__OPEN_EQUIP_MENU );
+    base_menu_.main_selections->add_text(
+        " Status",
+        MENU_RETURN_VALUE__OPEN_STATUS );
+    base_menu_.main_selections->add_text(
+        " Settings",
+        MENU_RETURN_VALUE__OPEN_SETTINGS_MENU );
+    base_menu_.main_selections->add_text(
+        " Exit",
+        MENU_RETURN_VALUE__EXIT_MENU );
+    base_menu_.main_selections->add_text(
+        " Quit",
+        MENU_RETURN_VALUE__QUIT_GAME );
 
     active_window_ = base_menu_.main_selections;
     active_window_->contents()->activate();
@@ -62,7 +74,7 @@ void Menu::run( void )
 /**
 *   Returns the type.
 */
-inline Interface_t Menu::type( void )
+inline Interface_enum_t Menu::type( void )
 {
     return INTERFACE_MENU;
 }
@@ -88,27 +100,7 @@ void Menu::do_controls( unsigned u )
         switch( u )
         {
         case CTRL_A:
-            active_window_->command( CTRL_A );
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_B:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_Y:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_X:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_L:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_R:
+            printf( "Selection:\t%i\n", active_window_->command( CTRL_A ) );
             goto_interface_ = type();
             exit_ = false;
             break;
@@ -122,23 +114,13 @@ void Menu::do_controls( unsigned u )
             goto_interface_ = type();
             exit_ = false;
             break;
-        case CTRL_LEFT:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_RIGHT:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
-        case CTRL_SELECT:
-            goto_interface_ = type();
-            exit_ = false;
-            break;
         case CTRL_START:
             goto_interface_ = INTERFACE_PAUSE;
             exit_ = false;
             break;
         default:
+            goto_interface_ = type();
+            exit_ = false;
             break;
         }
     }
@@ -151,7 +133,8 @@ void Menu::do_controls( unsigned u )
 */
 void Menu::__update( void )
 {
-    funds_->update();
+    base_menu_.funds_box->contents()->update();
+    base_menu_.main_selections->contents()->update();
 }
 
 

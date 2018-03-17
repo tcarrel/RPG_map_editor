@@ -12,7 +12,7 @@ struct Line_of_Text
 {
     int x;
     int y;
-    Text_Highlighting_t hl;
+    Text_Highlighting_enum_t hl;
     Uint8_t_String text;
 
     Line_of_Text( void );
@@ -23,12 +23,12 @@ struct Line_of_Text
     Line_of_Text(
         const int&,
         const int&,
-        const Text_Highlighting_t&,
+        const Text_Highlighting_enum_t&,
         const Uint8_t_String& );
     Line_of_Text(
         const int&,
         const int&,
-        const Text_Highlighting_t&,
+        const Text_Highlighting_enum_t&,
         const char[] );
 
     Line_of_Text& operator=( const Uint8_t_String& );
