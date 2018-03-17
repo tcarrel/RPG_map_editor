@@ -17,19 +17,16 @@ Event_Manager::Event_Manager( Console* c ) :
     {
         ixs_[ i ] = NULL;
     }
-
     if( !ev_mgr_init_.good() )
     {
         quit_ = true;
         ev_mgr_init_.show_errors();
     }
-
     if( !ev_mgr_init_.init( SDL_INIT_GAMECONTROLLER ) )
     {
         quit_ = true;
         ev_mgr_init_.show_errors();
     }
-
     for( unsigned i = 0; i < ALL_CTRL; i++ )
     {
         *( ctrl_current_ + i ) = false;
@@ -157,9 +154,9 @@ Event_Manager::Event_Manager( Console* c ) :
 /**
 *   Polls the event manager.
 */
-void Event_Manager::operator()( Interface* i )
+void Event_Manager::operator()( Interface* ix )
 {
-    process( i );
+    process( ix );
 }
 
 
@@ -182,6 +179,7 @@ inline void Event_Manager::process( Interface* ix )
                 if( ctrl_current_[ CTRL_ALT ] )
                 {
                     quit_ = true;
+                    return;
                 }
             }
             key_down( e_.key.keysym.scancode, ix );
@@ -396,10 +394,8 @@ void Event_Manager::key_down( SDL_Scancode i, Interface* ix )
 {
     ctrl_previous_[ key_to_ctrl[ i ] ] = ctrl_current_[ key_to_ctrl[ i ] ];
     ctrl_current_[ key_to_ctrl[ i ] ] = true;
-    if( ix )
-    {
-        ix->do_controls( key_to_ctrl[ i ] );
-    }
+    ix->do_controls( key_to_ctrl[ i ] );
+    
 }
 
 
@@ -411,11 +407,8 @@ void Event_Manager::key_up( SDL_Scancode i, Interface* ix )
 {
     ctrl_previous_[ key_to_ctrl[ i ] ] = ctrl_current_[ key_to_ctrl[ i ] ];
     ctrl_current_[ key_to_ctrl[ i ] ] = false;
-    if( ix )
-    {
-        ix->do_controls( key_to_ctrl[ i ] );
-    }
-} 
+    ix->do_controls( key_to_ctrl[ i ] );
+}
 
 
 
@@ -426,7 +419,7 @@ void Event_Manager::joy_down( int i, Interface* ix )
 {
     ctrl_previous_[ joy_to_ctrl[ i ] ] = ctrl_current_[ joy_to_ctrl[ i ] ];
     ctrl_current_[ joy_to_ctrl[ i ] ] = true;
-    if( ix )
+    if( ix != NULL )
     {
         ix->do_controls( joy_to_ctrl[ i ] );
     }

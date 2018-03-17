@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 
 
 
@@ -24,7 +25,7 @@ public:
     uint8_t& operator[]( const unsigned& );
     uint8_t& operator[]( const int& );
 
-    uint8_t* c_str( void );
+    unsigned char* c_str( void );
 
     unsigned size( void );
 

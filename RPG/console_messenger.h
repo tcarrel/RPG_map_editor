@@ -4,6 +4,7 @@
 #include<string>
 
 class Uint8_t_String;
+struct Line_of_Text;
 
 using std::string;
 
@@ -30,6 +31,7 @@ public:
     static void vb_variable_value( string, string, int );
     static void vb_variable_value( string, string, float );
     static void vb_variable_value( string, string, Uint8_t_String& );
+    static void vb_variable_value( string, string, Line_of_Text& );
     static void vb_variable_value( string, string, void* );
     static void vb_variable_value( string, string, SDL_Rect& );
     

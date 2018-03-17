@@ -59,4 +59,6 @@ private:
     Pause* pause_screen_;
     Item_Creation* item_creation_screen_;
     Save_Load_Menu* save_load_screen_;
+
+    Interface_t goto_interface_;
 };

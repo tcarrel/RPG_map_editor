@@ -2,6 +2,9 @@
 
 
 #include<SDL.h>
+#include<stack>
+
+using std::stack;
 
 
 

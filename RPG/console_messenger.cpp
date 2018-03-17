@@ -47,7 +47,7 @@ Console::Console( bool v ) : Console()
     }
 #endif
 //    fprintf( stderr, "\033[1;33m" );
-    fprintf( stderr, "\n %s\n", string( 78, 'X' ).c_str() );
+    fprintf( stderr, "\n%s\n", string( 80, 'X' ).c_str() );
     fprintf(
         stderr,
         "(%u)\n"
@@ -59,7 +59,7 @@ Console::Console( bool v ) : Console()
         source.c_str(),
         (verbose_ ? long_msg : shrt_msg).c_str()
     );
-    fprintf( stderr, "%s\n", string( 79, 'X' ).c_str() );
+    fprintf( stderr, "%s\n", string( 80, 'X' ).c_str() );
     hline();
 
     //fprintf( stderr, "\033[0m" );
@@ -199,6 +199,44 @@ Console::Console( bool v ) : Console()
             object.c_str(),
             var.c_str(),
             str.c_str() );
+}
+
+
+
+void Console::vb_variable_value( string obj, string name, Line_of_Text& line )
+{
+    if( !verbose_ )
+    {
+        return;
+    }
+
+    if( !val_previous_ )
+    {
+        printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+        val_previous_ = true;
+    }
+
+    printf( "\t      \tLine_of_Text %s::%s {\n", obj.c_str(), name.c_str() );
+    printf( "\t      \t\taddr        = %p\n", &line );
+    printf( "\t      \t\ttext        = %s\n", line.text.c_str() );
+    printf( "\t      \t\ttext.size() = %i\n", line.text.size() );
+    printf( "\t      \t\tx           = %i\n", line.x );
+    printf( "\t      \t\ty           = %i\n", line.y );
+    printf( "\t      \t\thl          = " );
+
+    switch( line.hl )
+    {
+    case TEXT_HIGHLIGHT_TYPE_BRIGHT:
+        printf( "TEXT_HIGHLIGHT_TYPE_BRIGHT }\n" );
+        break;
+    case TEXT_HIGHLIGHT_TYPE_GRAYED:
+        printf( "TEXT_HIGHLIGHT_TYPE_GRAYED }\n" );
+        break;
+    case TEXT_HIGHLIGHT_TYPE_NORMAL:
+        printf( "TEXT_HIGHLIGHT_TYPE_NORMAL }\n" );
+    default:
+        break;
+    }
 }
 
 

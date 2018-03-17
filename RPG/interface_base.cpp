@@ -65,4 +65,5 @@ void Interface::set_source( Interface_t source )
 Interface::~Interface( void )
 {
     ctrl_current_ = NULL;
+    ctrl_previous_ = NULL;
 }

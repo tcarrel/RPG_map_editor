@@ -188,15 +188,12 @@ void Text::render( Line_of_Text* text )
         TEXT_COLUMNS :
         text->text.size();
 
-    for( int c = 0; ( c < length ) && ( text->text[ c ] ); c++ )
+    for( int c = 0; ( c < length ) && ( !iscntrl( text->text[ c ] ) ); c++ )
     {
-        if( iscntrl( text->text[ c ] ) )
-        {
-            break;
-        }
+
         text_[ text->hl ].render(
             text->x + ( c * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET,
-            (text->y * TEXT_CHARACTER_HEIGHT) + TEXT_Y_OFFSET,
+            text->y + TEXT_Y_OFFSET,
             letter_[ text->text[ c ] ].clip() );
     }
 }

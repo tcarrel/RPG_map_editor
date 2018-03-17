@@ -37,9 +37,21 @@ void Menu::init( Play_Data* pd )
 
 void Menu::run( void )
 {
+    Console::vb_variable_value( " Menu", "this", this );
+
+    goto_interface_ = type();
+
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
-
+        switch( goto_interface_ )
+        {
+        case INTERFACE_PAUSE:
+            pause_screen_->run();
+            goto_interface_ = type();
+            break;
+        default:
+            ;
+        }
         __update();
         __render();
     }
@@ -77,60 +89,59 @@ void Menu::do_controls( unsigned u )
         {
         case CTRL_A:
             active_window_->command( CTRL_A );
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_B:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_Y:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_X:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_L:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_R:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_UP:
             active_window_->command( CTRL_UP );
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_DOWN:
             active_window_->command( CTRL_DOWN );
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_LEFT:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_RIGHT:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_SELECT:
-            came_from_ = type();
+            goto_interface_ = type();
             exit_ = false;
             break;
         case CTRL_START:
-            came_from_ = INTERFACE_PAUSE;
-            exit_ = true;
+            goto_interface_ = INTERFACE_PAUSE;
+            exit_ = false;
             break;
         default:
             break;
         }
     }
-    ctrl_previous_[ u ] = ctrl_current_[ u ];
 }
 
 
@@ -150,6 +161,8 @@ void Menu::__update( void )
 */
 void Menu::__render( void )
 {
+    window_->clear();
+
     //render base menu
     base_menu_.funds_box->render();
     base_menu_.main_selections->render();
@@ -160,4 +173,5 @@ void Menu::__render( void )
         open_windows_[ u ]->render();
     }
 
+    window_->update();
 }

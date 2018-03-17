@@ -22,7 +22,7 @@ public:
     Pause( Event_Manager*, Window*, Console* );  //  Ctor.
 
     void init( Text* ); // Initialization.
-    void run( void ); // Runs the pause screen 'loop.'
+    void run( void ); // Runs the pause screen loop.
 
     Interface_t type( void ); // Returns the type.
 
