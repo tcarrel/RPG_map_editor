@@ -97,6 +97,15 @@
     <Filter Include="Source Files\Text\Box Contents">
       <UniqueIdentifier>{48bbc93f-40c1-4b7d-ba5f-e476449f873c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Entities">
+      <UniqueIdentifier>{cfae72af-d9f2-45e0-a1f9-d0b180b72a0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Entities">
+      <UniqueIdentifier>{f37a8b92-9995-437c-9a55-963bc1844a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Headers">
+      <UniqueIdentifier>{2951d533-5262-43de-94c5-06a1d7b14672}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -105,15 +114,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="window.h">
       <Filter>Header Files\Windowing</Filter>
     </ClInclude>
@@ -201,9 +201,6 @@
     <ClInclude Include="text_passage.h">
       <Filter>Header Files\Text</Filter>
     </ClInclude>
-    <ClInclude Include="helper_template_functions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="start_screen.h">
       <Filter>Header Files\Interfaces\Types\Start Screen</Filter>
     </ClInclude>
@@ -223,7 +220,19 @@
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="actor_base.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="helper_template_functions.h">
+      <Filter>Header Files\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="confirm_quit.cpp">
       <Filter>Source Files\Interfaces\Types\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="actor_base.cpp">
+      <Filter>Source Files\Game Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

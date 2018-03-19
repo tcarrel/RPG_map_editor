@@ -22,18 +22,12 @@
 
 
 
-#include "console_messenger.h"
-#include "random.h"
-
-
-
-#include "initilizer_of_sdl.h"
-
-
-
 #include "window.h"
 #include "splash_screen.h"
 #include "scaler.h"
+#include "console_messenger.h"
+#include "random.h"
+#include "initilizer_of_sdl.h"
 
 
 
