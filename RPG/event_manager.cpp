@@ -293,17 +293,17 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
             "ixs_[ INTERFACE_PAUSE ]",
             ixs_[ INTERFACE_PAUSE ] );
         break;
-    case INTERFACE_SAVE_LOAD_MENU:
-        ixs_[ INTERFACE_SAVE_LOAD_MENU ] = (Save_Load_Menu*)ix;
-        ixs_[ INTERFACE_SAVE_LOAD_MENU ]->register_ctrl(
+    case INTERFACE_LOAD_MENU:
+        ixs_[ INTERFACE_LOAD_MENU ] = (Load_Menu*)ix;
+        ixs_[ INTERFACE_LOAD_MENU ]->register_ctrl(
             ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Save/Load interface, registered." );
         console_->vb_variable_value(
             "Event_Manager",
-            "ixs_[ INTERFACE_SAVE_LOAD_MENU ]",
-            ixs_[ INTERFACE_SAVE_LOAD_MENU ] );
+            "ixs_[ INTERFACE_LOAD_MENU ]",
+            ixs_[ INTERFACE_LOAD_MENU ] );
         break;
     case INTERFACE_ITEM:
         ixs_[ INTERFACE_ITEM ] = (Item_Creation*)ix;

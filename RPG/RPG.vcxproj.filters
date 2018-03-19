@@ -171,9 +171,6 @@
     <ClInclude Include="text_selectable_list.h">
       <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
-    <ClInclude Include="save_load_menu.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
     <ClInclude Include="combat.h">
       <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
@@ -217,6 +214,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="settings_menu.h">
+      <Filter>Header Files\Interfaces\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="load_menu.h">
       <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
   </ItemGroup>
@@ -278,9 +278,6 @@
     <ClCompile Include="text_line.cpp">
       <Filter>Source Files\Text</Filter>
     </ClCompile>
-    <ClCompile Include="save_load_menu.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
     <ClCompile Include="combat.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
     </ClCompile>
@@ -321,6 +318,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="settings_menu.cpp">
+      <Filter>Source Files\Interfaces\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="load_menu.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
     </ClCompile>
   </ItemGroup>

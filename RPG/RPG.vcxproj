@@ -170,7 +170,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="pause.h" />
     <ClInclude Include="random.h" />
-    <ClInclude Include="save_load_menu.h" />
+    <ClInclude Include="load_menu.h" />
     <ClInclude Include="scaler.h" />
     <ClInclude Include="screen_texture.h" />
     <ClInclude Include="splash_screen.h" />
@@ -208,7 +208,7 @@
     <ClCompile Include="pause.cpp" />
     <ClCompile Include="random.cpp" />
     <ClCompile Include="RPG.cpp" />
-    <ClCompile Include="save_load_menu.cpp" />
+    <ClCompile Include="load_menu.cpp" />
     <ClCompile Include="scaler.cpp" />
     <ClCompile Include="screen_texture.cpp" />
     <ClCompile Include="sprite.cpp" />

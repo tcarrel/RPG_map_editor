@@ -7,13 +7,13 @@
 
 
 
-Save_Load_Menu::Save_Load_Menu( Event_Manager* em, Window* w, Console* c ) :
-    Interface( em, c, w, INTERFACE_SAVE_LOAD_MENU )
+Load_Menu::Load_Menu( Event_Manager* em, Window* w, Console* c ) :
+    Interface( em, c, w, INTERFACE_LOAD_MENU )
 {}
 
 
 
-void Save_Load_Menu::run( void )
+void Load_Menu::run( void )
 {
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
@@ -23,14 +23,14 @@ void Save_Load_Menu::run( void )
 
 
 
-inline Interface_enum_t Save_Load_Menu::type( void )
+inline Interface_enum_t Load_Menu::type( void )
 {
-    return INTERFACE_SAVE_LOAD_MENU;
+    return INTERFACE_LOAD_MENU;
 }
 
 
 
-void Save_Load_Menu::do_controls( unsigned u )
+void Load_Menu::do_controls( unsigned u )
 {
     if( ctrl_previous_[ u ] && !ctrl_current_[ u ] )
     {

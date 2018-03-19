@@ -19,7 +19,7 @@ void Menu::init( Play_Data* pd )
     base_menu_.funds_box =
         new Text_Box( new Money_Display( game_data_->money_addr() ), dims );
 
-    dims = { 0, 0, 12, 17 };
+    dims = { 0, 0, 11, 17 };
     base_menu_.main_selections = new Text_Box(
         new Selectable_List( 2 ), dims );
     base_menu_.main_selections->add_text(
@@ -44,7 +44,7 @@ void Menu::init( Play_Data* pd )
         " Return",
         MENU_RETURN_VALUE__EXIT_MENU );
     base_menu_.main_selections->add_text(
-        " Quit",
+        " Quit Game",
         MENU_RETURN_VALUE__QUIT_GAME_REQUEST );
 
     active_window_stack_.push( base_menu_.main_selections );
@@ -56,6 +56,14 @@ void Menu::init( Play_Data* pd )
 void Menu::run( void )
 {
     goto_interface_ = type();
+    exit_ = false;
+
+    while( active_window_stack_.top() != base_menu_.main_selections )
+    {
+        active_window_stack_.pop();
+    }
+
+    open_windows_.clear();
 
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
@@ -86,7 +94,7 @@ inline Interface_enum_t Menu::type( void )
 
 
 
-void Menu::add_state_machine_nodes( Pause* p, Item_Creation* ic , Save_Load_Menu* slm )
+void Menu::add_state_machine_nodes( Pause* p, Item_Creation* ic , Load_Menu* slm )
 {
     pause_screen_ = p;
     item_creation_screen_ = ic;
@@ -135,6 +143,7 @@ void Menu::do_controls( unsigned u )
 
 void Menu::react( int menu_selection )
 {
+    auto iter = open_windows_.begin();
     switch( menu_selection )
     {
     case MENU_RETURN_VALUE__QUIT_GAME_REQUEST:
@@ -143,7 +152,16 @@ void Menu::react( int menu_selection )
     case MENU_RETURN_VALUE__QUIT_GAME:
         em_->quit_game();
         return;
+    case MENU_RETURN_VALUE__EXIT_MENU:
+        exit_ = true;
+        return;
     case MENU_RETURN_VALUE__EXIT_CURRENT_WINDOW:
+        while( *iter != active_window_stack_.top() )
+        {
+            ++iter;
+        }
+        *iter = NULL;
+        open_windows_.erase( iter );
         delete active_window_stack_.top();
         active_window_stack_.top() = NULL;
         active_window_stack_.pop();
@@ -165,10 +183,10 @@ void Menu::confirm_quit( void )
 
     Selectable_List* yes_no = new Selectable_List(2);
     yes_no->add_text(
-        "   Are you sure you want to quit?",
+        "  Are you sure you want to quit?",
         MENU_UNSELECTABLE_ITEM );
     yes_no->add_text(
-        " All unsaved progress will be lost.",
+        "All unsaved progress will be lost.",
         MENU_UNSELECTABLE_ITEM );
     yes_no->add_text(
         "   No",
@@ -178,7 +196,7 @@ void Menu::confirm_quit( void )
         MENU_RETURN_VALUE__QUIT_GAME );
     yes_no->activate();
 
-    SDL_Rect coords = { ( TEXT_COLUMNS - 37 ) / 2,( TEXT_ROWS - 9 ) / 2, 36, 8 };
+    SDL_Rect coords = { ( TEXT_COLUMNS - 34 ) / 2,( TEXT_ROWS - 9 ) / 2, 34, 8 };
 
     Text_Box* confirm_quit = new Text_Box( yes_no, coords );
 

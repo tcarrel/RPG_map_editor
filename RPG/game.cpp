@@ -49,8 +49,8 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     events_.register_interface( &creation_, INTERFACE_ITEM );
     interface_[ INTERFACE_GAME_OVER ] = &over_;
     events_.register_interface( &over_, INTERFACE_GAME_OVER );
-    interface_[ INTERFACE_SAVE_LOAD_MENU ] = &save_load_;
-    events_.register_interface( &save_load_,  INTERFACE_SAVE_LOAD_MENU );
+    interface_[ INTERFACE_LOAD_MENU ] = &save_load_;
+    events_.register_interface( &save_load_,  INTERFACE_LOAD_MENU );
 
     //pause_.add_state_machine_nodes(); //Unnecessary
     start_menu_.add_state_machine_nodes( &save_load_ );
@@ -81,7 +81,22 @@ void Game::main_loop( void )
 
     while( !events_.quit() )
     {
-        menu_.run();
+        start_menu_.run();
+        switch( start_menu_.picked() )
+        {
+        case INTERFACE_NEW_GAME_SETUP:
+            Console::vb_only_no_err( "Start_Screen", "New Game not implemented." );
+            menu_.run();
+            break;
+        case INTERFACE_LOAD_MENU:
+            Console::vb_only_no_err( "Start_Screen", "Continue not implemented." );
+            break;
+        case INTERFACE_SETTINGS:
+            Console::vb_only_no_err( "Start_Screen", "Settings not implemented." );
+            break;
+        default:
+            ;
+        }
     }
 
 }

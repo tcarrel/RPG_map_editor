@@ -122,7 +122,20 @@ Console::Console( bool v ) : Console()
 
 
 
+//*static*/ void Console::vb_variable_value( string type, string& o, string& v, char* c )
 #ifdef _DEBUG
+void Console::vb_variable_value( string object, string var, bool value)
+{
+    if( !verbose_ )
+    {
+        return;
+    }
+
+    vb_variable_value( "bool", object, var, value ? "true" : "false" );
+}
+
+
+
 /*static*/ void Console::vb_variable_value( string object, string var, unsigned value)
 {
     if( !verbose_ )

@@ -10,7 +10,7 @@ class Event_Manager;
 
 class Pause;
 class Item_Creation;
-class Save_Load_Menu;
+class Load_Menu;
 
 class Money_Display;
 class Text_Box;
@@ -37,7 +37,7 @@ public:
 
     Interface_enum_t type( void );
 
-    void add_state_machine_nodes( Pause*, Item_Creation*, Save_Load_Menu* );
+    void add_state_machine_nodes( Pause*, Item_Creation*, Load_Menu* );
 
     friend class Event_Manager;
 
@@ -61,7 +61,7 @@ private:
     Play_Data* game_data_;
     Pause* pause_screen_;
     Item_Creation* item_creation_screen_;
-    Save_Load_Menu* save_load_screen_;
+    Load_Menu* save_load_screen_;
 
     Interface_enum_t goto_interface_;
 };

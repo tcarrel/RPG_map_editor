@@ -39,7 +39,6 @@ private:
 
     unsigned              spacing_;
     unsigned              selected_;
-    bool                  allow_loop_;
     bool                  active_;
 
     vector<Line_of_Text*>  selection_;

@@ -47,10 +47,20 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
     SDL_FreeSurface( new_image );
     new_image = NULL;
 
-    options_.add( new Line_of_Text( 0, 0, TEXT_HIGHLIGHT_TYPE_BRIGHT, "New Game" ) );
-    options_.add( new Line_of_Text( 0, 1, TEXT_HIGHLIGHT_TYPE_NORMAL, "Continue" ) );
-    options_.add( new Line_of_Text( 0, 2, TEXT_HIGHLIGHT_TYPE_NORMAL, "Settings" ) );
-    options_.add( new Line_of_Text( 0, 3, TEXT_HIGHLIGHT_TYPE_NORMAL, "Quit" ) );
+    options_.add(
+        new Line_of_Text(
+            0, 0, TEXT_HIGHLIGHT_TYPE_BRIGHT, "New Game" ) );
+    options_.add(
+        new Line_of_Text(
+            0, 48, TEXT_HIGHLIGHT_TYPE_NORMAL, "Continue" ) );
+    options_.add(
+        new Line_of_Text(
+            0, 96, TEXT_HIGHLIGHT_TYPE_NORMAL, "Settings" ) );
+    options_.add(
+        new Line_of_Text(
+            0, 144, TEXT_HIGHLIGHT_TYPE_NORMAL, "Quit" ) );
+
+    exit_interface_loop_ = false;
 }
 
 
@@ -67,8 +77,12 @@ void Start_Screen::run( void )
     needs_redraw_ = true;
     current_selection_ = 0;
     adjust_highlight();
+    exit_interface_loop_ = false;
+    next_ = type();
+
+    Console::vb_variable_value( "Start_Screen::run()", "exit_interface_loop_", exit_interface_loop_ );
     
-    for( ; !em_->quit(); em_->process( this ) )
+    for( ; !( exit_interface_loop_ || em_->quit() ); em_->process( this ) )
     {
         if( needs_redraw_ )
         {
@@ -98,9 +112,16 @@ inline Interface_enum_t Start_Screen::type( void )
 
 
 
-void Start_Screen::add_state_machine_nodes( Save_Load_Menu* slm )
+void Start_Screen::add_state_machine_nodes( Load_Menu* slm )
 {
     save_load_screen_ = slm;
+}
+
+
+
+Interface_enum_t Start_Screen::picked( void )
+{
+    return next_;
 }
 
 
@@ -140,8 +161,6 @@ void Start_Screen::do_controls( unsigned u )
 
 void Start_Screen::down( void )
 {
-    printf( " DOWN" );
-
     ++current_selection_;
     if( current_selection_ >= SELECTION_QTY )
     {
@@ -154,21 +173,21 @@ void Start_Screen::down( void )
 
 void Start_Screen::up( void )
 {
-    printf( " UP" );
-
-    --current_selection_;
-    if( 0 > current_selection_ )
+    if( current_selection_ == 0 )
     {
-      current_selection_ = options_.size() - 1;
+        current_selection_ = options_.size() - 1;
     }
-    adjust_highlight();}
+    else
+    {
+        --current_selection_;
+    }
+    adjust_highlight();
+}
 
 
 
 void Start_Screen::adjust_highlight( void )
 {
-    printf( "   current_selection_ = %3i\n", current_selection_ );
-
     needs_redraw_ = true;
     for( int i = 0; i < SELECTION_QTY; i++ )
     {
@@ -191,13 +210,16 @@ void Start_Screen::select( void )
     switch( current_selection_ )
     {
     case NEWGAME:
-        Console::vb_only_no_err( "Start_Screen", "New Game not implemented." );
+        next_ = INTERFACE_NEW_GAME_SETUP;
+        exit_interface_loop_ = true;
         return;
     case CONTINUE:
-        Console::vb_only_no_err( "Start_Screen", "Continue not implemented." );
+        next_ = INTERFACE_LOAD_MENU;
+        exit_interface_loop_ = true;
         return;
     case SETTINGS:
-        Console::vb_only_no_err( "Start_Screen", "Settings not implemented." );
+        next_ = INTERFACE_SETTINGS;
+        exit_interface_loop_ = true;
         return;
     case QUIT:
         em_->quit_game();

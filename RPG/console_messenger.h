@@ -27,6 +27,7 @@ public:
     *   These functions all do nothing in the release version but can provide
     *  useful information for debugging.
     */
+    static void vb_variable_value( string, string, bool );
     static void vb_variable_value( string, string, unsigned );
     static void vb_variable_value( string, string, int );
     static void vb_variable_value( string, string, float );

@@ -5,7 +5,7 @@ class Console;
 class Window;
 class Event_Manager;
 
-class Save_Load_Menu;
+class Load_Menu;
 
 class Text;
 #include "text_line.h"
@@ -25,10 +25,10 @@ public:
     void init( Text* );
 
     void run( void ); //Runs the loop for this menu.
-
     Interface_enum_t type( void ); //Returns the type.
+    void add_state_machine_nodes( Load_Menu* );
 
-    void add_state_machine_nodes( Save_Load_Menu* );
+    Interface_enum_t picked( void );
 
     ~Start_Screen();
 
@@ -42,16 +42,16 @@ private:
     void adjust_highlight( void );
     void select( void );
 
-    Interface_enum_t     next_; //Where to return to.
-    Save_Load_Menu* save_load_screen_;
-    SDL_Texture*    bg_image_;
+    Interface_enum_t next_; //Where to return to.
+    Load_Menu*       save_load_screen_;
+    SDL_Texture*     bg_image_;
 
-    bool            needs_redraw_;
-    SDL_Rect        bg_scale_pos_;
+    bool             needs_redraw_;
+    SDL_Rect         bg_scale_pos_;
 
-    Passage         options_;
-    int             current_selection_;
-    Text*           writter_;
+    Passage          options_;
+    int              current_selection_;
+    Text*            writter_;
 
-    bool*           quit_;
+    bool             exit_interface_loop_;
 };

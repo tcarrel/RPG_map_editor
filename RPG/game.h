@@ -44,7 +44,7 @@ private:
     Item_Creation  creation_;
     Game_Over      over_;
     Pause          pause_;
-    Save_Load_Menu save_load_;
+    Load_Menu save_load_;
     
     Interface*     interface_[ ALL_INTERFACES ];
 

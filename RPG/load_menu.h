@@ -14,10 +14,10 @@ enum Interface_enum_t;
 *   The save and load screens.  This may need to be split into seperate
 *  interfaces for saving and loading.
 */
-class Save_Load_Menu : public Interface
+class Load_Menu : public Interface
 {
 public:
-    Save_Load_Menu( Event_Manager*, Window*, Console* ); //Ctor.
+    Load_Menu( Event_Manager*, Window*, Console* ); //Ctor.
 
     void run( void ); //Save menu loop.
 

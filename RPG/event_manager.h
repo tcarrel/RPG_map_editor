@@ -14,7 +14,7 @@ class Combat;
 class Game_Map;
 class Game_Over;
 class Item_Creation;
-class Save_Load_Menu;
+class Load_Menu;
 
 
 

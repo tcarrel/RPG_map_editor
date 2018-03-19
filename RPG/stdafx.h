@@ -16,9 +16,6 @@
 
 
 
-#ifdef _DEBUG
-#include <crtdbg.h>
-#endif
 
 #include "constants.h"
 #include "color_key.h"
@@ -52,7 +49,7 @@
 #include "game_over.h"
 #include "pause.h"
 #include "item_creation.h"
-#include "save_load_menu.h"
+#include "load_menu.h"
 #include "settings_menu.h"
 
 
