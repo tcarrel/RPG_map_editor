@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 
+enum Control_enum_t;
 
 
 
@@ -74,4 +75,45 @@ inline int ftoi( float f )
 inline float itof( int i )
 {
     return (float)i;
+}
+
+
+
+Control_enum_t uint_to_cntlt( unsigned u )
+{
+
+    switch( u )
+    {
+    case CTRL_X:
+        return CTRL_X;
+    case CTRL_A:
+        return CTRL_A;
+    case CTRL_B:
+        return CTRL_B;
+    case CTRL_Y:
+        return CTRL_Y;
+    case CTRL_L:
+        return CTRL_L;
+    case CTRL_R:
+        return CTRL_R;
+    case CTRL_UP:
+        return CTRL_UP;
+    case CTRL_DOWN:
+        return CTRL_DOWN;
+    case CTRL_LEFT:
+        return CTRL_LEFT;
+    case CTRL_RIGHT:
+        return CTRL_RIGHT;
+    case CTRL_START:
+        return CTRL_START;
+    case CTRL_SELECT:
+        return CTRL_SELECT;
+    case CTRL_ALT:
+        return CTRL_ALT;
+    case CTRL_F4:
+        return CTRL_F4;
+
+    default:
+        return CTRL_NULL;
+    }
 }

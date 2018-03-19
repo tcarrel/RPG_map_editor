@@ -219,6 +219,9 @@
     <ClInclude Include="load_menu.h">
       <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
+    <ClInclude Include="confirm_quit.h">
+      <Filter>Header Files\Interfaces\Types\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -322,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="load_menu.cpp">
       <Filter>Source Files\Interfaces\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="confirm_quit.cpp">
+      <Filter>Source Files\Interfaces\Types\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

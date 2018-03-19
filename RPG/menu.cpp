@@ -55,15 +55,9 @@ void Menu::init( Play_Data* pd )
 
 void Menu::run( void )
 {
-    goto_interface_ = type();
-    exit_ = false;
+    reset();
 
-    while( active_window_stack_.top() != base_menu_.main_selections )
-    {
-        active_window_stack_.pop();
-    }
-
-    open_windows_.clear();
+    Interface* temp = NULL;
 
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
@@ -73,6 +67,17 @@ void Menu::run( void )
             pause_screen_->run();
             goto_interface_ = type();
             break;
+        case INTERFACE_MENU__CONFIRM_QUIT:
+            base_menu_.main_selections->contents()->deactivate();
+            __update();
+            __render();
+            temp = new Confirm_Quit( em_, window_, console_, renderer_ );
+            ((Confirm_Quit*)temp)->run();
+            delete temp;
+            temp = NULL;
+            goto_interface_ = type();
+            base_menu_.main_selections->contents()->activate();
+            break;
         default:
             ;
         }
@@ -80,6 +85,7 @@ void Menu::run( void )
         __update();
         __render();
     }
+    window_->clear();
 }
 
 
@@ -114,7 +120,7 @@ void Menu::do_controls( unsigned u )
         {
         case CTRL_A:
             react( active_window_stack_.top()->command( CTRL_A ) );
-            goto_interface_ = type();
+            //goto_interface_ = type();
             exit_ = false;
             return;
         case CTRL_UP:
@@ -147,7 +153,8 @@ void Menu::react( int menu_selection )
     switch( menu_selection )
     {
     case MENU_RETURN_VALUE__QUIT_GAME_REQUEST:
-        confirm_quit();
+        //confirm_quit();
+        goto_interface_ = INTERFACE_MENU__CONFIRM_QUIT;
         break;
     case MENU_RETURN_VALUE__QUIT_GAME:
         em_->quit_game();
@@ -176,34 +183,16 @@ void Menu::react( int menu_selection )
 
 
 
-void Menu::confirm_quit( void )
+void Menu::reset( void )
 {
-
-    active_window_stack_.top()->contents()->deactivate();
-
-    Selectable_List* yes_no = new Selectable_List(2);
-    yes_no->add_text(
-        "  Are you sure you want to quit?",
-        MENU_UNSELECTABLE_ITEM );
-    yes_no->add_text(
-        "All unsaved progress will be lost.",
-        MENU_UNSELECTABLE_ITEM );
-    yes_no->add_text(
-        "   No",
-        MENU_RETURN_VALUE__EXIT_CURRENT_WINDOW );
-    yes_no->add_text(
-        "   Yes",
-        MENU_RETURN_VALUE__QUIT_GAME );
-    yes_no->activate();
-
-    SDL_Rect coords = { ( TEXT_COLUMNS - 34 ) / 2,( TEXT_ROWS - 9 ) / 2, 34, 8 };
-
-    Text_Box* confirm_quit = new Text_Box( yes_no, coords );
-
-    open_windows_.push_back( confirm_quit );
-    active_window_stack_.push( confirm_quit );
-    confirm_quit = NULL;
-    yes_no = NULL;
+    open_windows_.clear();
+    while( !active_window_stack_.empty() )
+    {
+        active_window_stack_.top() = NULL;
+        active_window_stack_.pop();
+    }
+    active_window_stack_.push( base_menu_.main_selections );
+    exit_ = false;
 }
 
 

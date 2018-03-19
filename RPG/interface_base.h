@@ -19,7 +19,7 @@ public:
     virtual void run( void ) = 0; //For supplying the necessary loop
 
     virtual void set_source( Interface_enum_t );
-    void register_ctrl( bool*, bool* ); //Connects the input registers.
+    static void register_ctrl( bool*, bool* ); //Connects the input registers.
     virtual Interface_enum_t type( void ); //Returns the type.
 
     ~Interface( void ); //Dtor.
@@ -32,8 +32,8 @@ protected:
     static SDL_Renderer* renderer_;
 
     Console* console_;
-    bool* ctrl_current_;
-    bool* ctrl_previous_;
+    static bool* ctrl_current_;
+    static bool* ctrl_previous_;
     Interface_enum_t came_from_;
 
     Event_Manager* em_;

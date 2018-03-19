@@ -42,9 +42,11 @@ public:
     friend class Event_Manager;
 
 private:
+
     void do_controls( unsigned );
     void react( int );
     void confirm_quit( void );
+    void reset( void );
 
     void __update( void );
     void __render( void );

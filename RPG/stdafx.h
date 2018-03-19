@@ -46,6 +46,7 @@
 #include "game_map.h"
 #include "combat.h"
 #include "menu.h"
+#include "confirm_quit.h"
 #include "game_over.h"
 #include "pause.h"
 #include "item_creation.h"

@@ -33,6 +33,8 @@ Event_Manager::Event_Manager( Console* c ) :
         *( ctrl_previous_ + i ) = false;
     }
 
+    Interface::register_ctrl( ctrl_current_, ctrl_previous_ );
+
     //Setup gamepad, if connected.
     int controller_qty = SDL_NumJoysticks();
     console_->vb_variable_value( "Event_Manager", "controller_qty", controller_qty );
@@ -237,8 +239,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
     {
     case INTERFACE_START_MENU:
         ixs_[ INTERFACE_START_MENU ] = (Start_Screen*)ix;
-        ixs_[ INTERFACE_START_MENU ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+  //      ixs_[ INTERFACE_START_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Start menu interface, registered." );
@@ -249,7 +250,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MAP:
         ixs_[ INTERFACE_MAP ] = (Game_Map*)ix;
-        ixs_[ INTERFACE_MAP ]->register_ctrl( ctrl_current_, ctrl_previous_ );
+ //       ixs_[ INTERFACE_MAP ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "On-Map interface, registered." );
@@ -260,7 +261,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MENU:
         ixs_[ INTERFACE_MENU ] = (Menu*)ix;
-        ixs_[ INTERFACE_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
+  //      ixs_[ INTERFACE_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "In-game menu interface, registered." );
@@ -271,8 +272,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_COMBAT:
         ixs_[ INTERFACE_COMBAT ] = (Combat*)ix;
-        ixs_[ INTERFACE_COMBAT ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+ //       ixs_[ INTERFACE_COMBAT ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Combat interface, registered." );
@@ -283,8 +283,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_PAUSE:
         ixs_[ INTERFACE_PAUSE ] = (Pause*)ix;
-        ixs_[ INTERFACE_PAUSE ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+   //     ixs_[ INTERFACE_PAUSE ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Pause screen interface, registered." );
@@ -295,8 +294,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_LOAD_MENU:
         ixs_[ INTERFACE_LOAD_MENU ] = (Load_Menu*)ix;
-        ixs_[ INTERFACE_LOAD_MENU ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+    //    ixs_[ INTERFACE_LOAD_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Save/Load interface, registered." );
@@ -307,8 +305,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_ITEM:
         ixs_[ INTERFACE_ITEM ] = (Item_Creation*)ix;
-        ixs_[ INTERFACE_ITEM ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+  //      ixs_[ INTERFACE_ITEM ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Item creation interface, registered." );
@@ -319,8 +316,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_GAME_OVER:
         ixs_[ INTERFACE_GAME_OVER ] = (Game_Over*)ix;
-        ixs_[ INTERFACE_GAME_OVER ]->register_ctrl(
-            ctrl_current_, ctrl_previous_ );
+ //       ixs_[ INTERFACE_GAME_OVER ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "\"Game Over\" screen interface, registered." );

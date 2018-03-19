@@ -42,6 +42,8 @@ private:
     void adjust_highlight( void );
     void select( void );
 
+    void conf_quit( void );
+
     Interface_enum_t next_; //Where to return to.
     Load_Menu*       save_load_screen_;
     SDL_Texture*     bg_image_;

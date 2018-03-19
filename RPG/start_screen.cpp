@@ -222,11 +222,20 @@ void Start_Screen::select( void )
         exit_interface_loop_ = true;
         return;
     case QUIT:
-        em_->quit_game();
+        conf_quit();
+        //em_->quit_game();
         return;
     default:
         return;
     }
+}
+
+
+
+void Start_Screen::conf_quit( void )
+{
+    Confirm_Quit window( em_, window_, console_, renderer_ );
+    window.run();
 }
 
 

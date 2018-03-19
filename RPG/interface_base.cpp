@@ -6,19 +6,22 @@
 
 /*static*/ SDL_Renderer* Interface::renderer_ = NULL;
 /*static*/ bool Interface::goto_start_menu_ = true;
+/*static*/ bool* Interface::ctrl_current_ = NULL;
+/*static*/ bool* Interface::ctrl_previous_ = NULL;
 
 
 
-void Interface::register_ctrl( bool* cc, bool* cp )
+/*static*/ void Interface::register_ctrl( bool* cc, bool* cp )
 {
-    if( ctrl_current_ && console_ && console_->verbose() )
+    /*
+    if( ctrl_current_ && Console::verbose() )
     {
-        console_->error(
+        Console::error(
             "Interface",
             "",
             "Multiple registrations of control flags attempted." );
         return;
-    }
+    }*/
 
     ctrl_current_ = cc;
     ctrl_previous_ = cp;
@@ -35,7 +38,7 @@ Interface_enum_t Interface::type( void )
 
 Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_enum_t t ) :
     console_( c ),
-    ctrl_current_( NULL ),
+    //ctrl_current_( NULL ),
     came_from_( t ),
     em_( em ),
     window_( w ),
@@ -63,7 +66,4 @@ void Interface::set_source( Interface_enum_t source )
 
 
 Interface::~Interface( void )
-{
-    ctrl_current_ = NULL;
-    ctrl_previous_ = NULL;
-}
+{}
