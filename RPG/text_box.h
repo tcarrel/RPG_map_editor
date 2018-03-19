@@ -43,7 +43,7 @@ private:
     void render_border( void );
     void render_char(
         unsigned,
-        SDL_Rect*,
+        unsigned,
         unsigned = TEXT_HIGHLIGHT_TYPE_NORMAL );
 
     SDL_Rect dimensions_;

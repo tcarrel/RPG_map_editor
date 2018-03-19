@@ -22,7 +22,7 @@ public:
 protected:
     //Character Dimensions: 20 x 38
 
-    static Text_Character  letter_[ 256 ];
+    static Text_Character  letter_[ ALL_TEXT_HIGHLIGHT_TYPES ][ 256 ];
     static Sprite_Sheet    text_[ ALL_TEXT_HIGHLIGHT_TYPES ];
 
 private:

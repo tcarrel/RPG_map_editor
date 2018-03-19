@@ -5,15 +5,20 @@
 
 
 /*static*/ unsigned Sprite::count_ = 0;
+/*static*/ SDL_Renderer* Sprite::renderer_ = NULL;
 
 
 
 /**
 *   Sets all variables.
 */
-Sprite::Sprite( int x, int y, int w, int h )
+Sprite::Sprite( int x, int y, int w, int h, Sprite_Sheet* sheet )
 {
-    set( x, y, w, h );
+    set( x, y, w, h, sheet );
+    if( sheet )
+    {
+        sprite_sheet_ = sheet->sheet_;
+    }
     id_ = count_++;
 }
 
@@ -71,11 +76,38 @@ SDL_Rect* Sprite::clip( void )
 /**
 *  Performs the same function as the basic constructor.
 */
-void Sprite::set( int x, int y, int w, int h )
+void Sprite::set( int x, int y, int w, int h, Sprite_Sheet* sheet )
 {
-    clip_.x = x;
-    clip_.y = y;
-    clip_.h = h;
-    clip_.w = w;
+    clip_ = { x, y, w, h };
+    if( !sheet )
+    {
+        sprite_sheet_ = NULL;
+        offset_x_ = offset_y_ = 0;
+        return;
+    }
+    sprite_sheet_ = sheet->sheet_;
+    offset_x_ = sheet->get_x_offset();
+    offset_y_ = sheet->get_y_offset();
+    if( !renderer_ )
+    {
+        renderer_ = sheet->renderer_;
+    }
 }
 
+
+
+void Sprite::render( int x, int y )
+{
+    if( sprite_sheet_ )
+    {
+        SDL_Rect quad = { x + offset_x_, y + offset_y_, clip_.w, clip_.h };
+        SDL_RenderCopy( renderer_, sprite_sheet_, &clip_, &quad );
+    }
+}
+
+
+
+void Sprite::set_renderer( SDL_Renderer* r )
+{
+    renderer_ = r;
+}

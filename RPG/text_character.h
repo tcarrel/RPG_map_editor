@@ -2,6 +2,7 @@
 
 
 class Sprite;
+class Sprite_Sheet;
 
 
 

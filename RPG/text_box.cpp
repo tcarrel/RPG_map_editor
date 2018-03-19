@@ -225,10 +225,7 @@ void Text_Box::render( Line_of_Text* txt)
         (ltr < (unsigned) dimensions_.w ) && ( ltr < txt->text.size() );
         ltr++ )
     {
-        render_char(
-            ltr,
-            letter_[ txt->text[ ltr ] ].clip(),
-            txt->hl );
+        render_char( txt->text[ ltr ], ltr, txt->hl );
     }
 }
 
@@ -237,12 +234,13 @@ void Text_Box::render( Line_of_Text* txt)
 /**
 *   Renders each individual character.
 */
-void Text_Box::render_char( unsigned u, SDL_Rect* clip, unsigned hl )
+void Text_Box::render_char( unsigned l, unsigned u, unsigned hl )
 {
-    text_[ hl ].render(
-        calculate_in_pixels__x_pos( dimensions_.x ) + ( u * TEXT_CHARACTER_WIDTH ),
-        calculate_in_pixels__y_pos( dimensions_.y ) + ( line_rendering_ * TEXT_ROW_HEIGHT ),
-        clip );
+    letter_[ hl ][ l ].render(
+        calculate_in_pixels__x_pos( dimensions_.x ) +
+        ( u * TEXT_CHARACTER_WIDTH ),
+        calculate_in_pixels__y_pos( dimensions_.y ) +
+        ( line_rendering_ * TEXT_ROW_HEIGHT ) );
 }
 
 
@@ -254,63 +252,57 @@ void Text_Box::render_border( void )
 {
     //Corners
     // Top left
-    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+    letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_TOP_LEFT ].render(
         calculate_in_pixels__x_pos( dimensions_.x ) - TEXT_CHARACTER_WIDTH,
-        calculate_in_pixels__y_pos( dimensions_.y ) - TEXT_CHARACTER_HEIGHT,
-        letter_[ CHAR_BOX_TOP_LEFT ].clip() );
+        calculate_in_pixels__y_pos( dimensions_.y ) - TEXT_CHARACTER_HEIGHT );
 
     // Top right
-    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        calculate_in_pixels__x_pos(dimensions_.x) +
-        calculate_in_pixels__width(dimensions_.w),
-        calculate_in_pixels__y_pos(dimensions_.y) - TEXT_CHARACTER_HEIGHT,
-        letter_[ CHAR_BOX_TOP_RIGHT ].clip() );
+    letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_TOP_RIGHT ].render(
+        calculate_in_pixels__x_pos( dimensions_.x ) +
+        calculate_in_pixels__width( dimensions_.w ),
+        calculate_in_pixels__y_pos( dimensions_.y ) - TEXT_CHARACTER_HEIGHT );
+
     // Bottom left
-    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        calculate_in_pixels__x_pos(dimensions_.x) - TEXT_CHARACTER_WIDTH,
-        calculate_in_pixels__y_pos(dimensions_.y) +
-        calculate_in_pixels__height(dimensions_.h),
-        letter_[ CHAR_BOX_BOTTOM_LEFT].clip() );
+    letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_BOTTOM_LEFT ].render(
+        calculate_in_pixels__x_pos( dimensions_.x ) - TEXT_CHARACTER_WIDTH,
+        calculate_in_pixels__y_pos( dimensions_.y ) +
+        calculate_in_pixels__height( dimensions_.h ) );
+
     // Bottom right
-    text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+    letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_BOTTOM_RIGHT ].render(
         calculate_in_pixels__x_pos( dimensions_.x ) +
         calculate_in_pixels__width( dimensions_.w ),
         calculate_in_pixels__y_pos( dimensions_.y ) +
-        calculate_in_pixels__height( dimensions_.h ),
-        letter_[ CHAR_BOX_BOTTOM_RIGHT ].clip() );
+        calculate_in_pixels__height( dimensions_.h ) );
+
     // Top and bottom.
     for( int i = 0; i < dimensions_.w; i++ )
     {
-        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+        letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_TOP ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) +
             ( i * TEXT_CHARACTER_WIDTH ),
             calculate_in_pixels__y_pos( dimensions_.y ) -
-            TEXT_CHARACTER_HEIGHT,
-            letter_[ CHAR_BOX_TOP ].clip() );
+            TEXT_CHARACTER_HEIGHT );
 
-        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+        letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_BOTTOM ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) +
             ( i * TEXT_CHARACTER_WIDTH ),
             calculate_in_pixels__y_pos( dimensions_.y ) +
-            calculate_in_pixels__height( dimensions_.h ),
-            letter_[ CHAR_BOX_BOTTOM ].clip() );
+            calculate_in_pixels__height( dimensions_.h ) );
     }
     // Sides
     for( int i = 0; i < dimensions_.h; i++ )
     {
-        //Left
-        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+        letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_LEFT ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) -
             TEXT_CHARACTER_WIDTH,
             calculate_in_pixels__y_pos( dimensions_.y ) +
-            ( i * TEXT_ROW_HEIGHT ),
-            letter_[ CHAR_BOX_LEFT ].clip() );
-        //Right
-        text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
+            ( i * TEXT_ROW_HEIGHT ) );
+
+        letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_RIGHT ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) +
             calculate_in_pixels__width( dimensions_.w ),
             calculate_in_pixels__y_pos( dimensions_.y ) +
-            ( i * TEXT_ROW_HEIGHT ),
-            letter_[ CHAR_BOX_RIGHT ].clip() );
+            ( i * TEXT_ROW_HEIGHT ) );
     }
 }

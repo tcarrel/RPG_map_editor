@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 class Console;
+class Sprite;
+class Text_Character;
 
 
 
@@ -11,6 +13,7 @@ class Console;
 class Sprite_Sheet
 {
 public:
+
     Sprite_Sheet( void );
     Sprite_Sheet( const string&, transparent_color* color_key = NULL );
     ~Sprite_Sheet( void );
@@ -32,13 +35,16 @@ public:
     static int  get_x_offset( void );
     static int  get_y_offset( void );
 
+    friend class Sprite;
+    friend class Text_Character;
+
 protected:
+
     SDL_Texture* sheet_;
     int width_;
     int height_;
 
     bool ready_;
-
 
     static Console* console_;
     static unsigned reference_count_;
@@ -48,5 +54,6 @@ protected:
     static int  offset_y_;
 
 private:
+
     static void dtor( void );
 };
