@@ -29,7 +29,7 @@ Random::Random( void )
 */
 unsigned Random::get( unsigned max )
 {
-    return rand() % ( max + 1 );
+    return rand() % max;
 }
 
 

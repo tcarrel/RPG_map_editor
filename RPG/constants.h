@@ -53,31 +53,29 @@ const int  JOY_DEAD_ZONE = 9000;
 #define KEY_IS_NOT_PRESSED (false)
 
 
+#define TILE_WIDTH (32)
+#define TILE_HEIGHT (32)
+const int SCREEN_X_TILES =
+( (int)ceil( ( (double)SCREEN_X_PIXELS ) / ( (double)TILE_WIDTH ) ) );
+const int SCREEN_Y_TILES =
+( (int)ceil( ( (double)SCREEN_Y_PIXELS ) / ( (double)TILE_HEIGHT ) ) );
+
+
 enum Interface_enum_t
 {
     INTERFACE_START_MENU,
-
     INTERFACE_MAP,
-
     INTERFACE_PAUSE,
-
     INTERFACE_COMBAT,
-
-    // In-game menu screen.
     INTERFACE_MENU,
-    INTERFACE_MENU__CONFIRM_QUIT,
-
     INTERFACE_ITEM,
-
     INTERFACE_GAME_OVER,
-
     INTERFACE_LOAD_MENU,
-
     INTERFACE_SAVE_MENU,
-
     INTERFACE_SETTINGS,
-
     INTERFACE_NEW_GAME_SETUP,
+    INTERFACE_CONFIRM_QUIT,
+    INTERFACE_NAME_CHARACTER,
 
     ALL_INTERFACES,
 
@@ -212,4 +210,22 @@ enum Menu_Return_Values_enum_t
 
     MENU_RETURN_VALUE__QUIT_GAME_REQUEST,
     MENU_RETURN_VALUE__QUIT_GAME
+};
+
+
+
+enum Cardinal_Directions_enum_t
+{
+    INVALID_DIRECTION = -1,
+
+    UP,
+    UP_RIGHT,
+    RIGHT,
+    DOWN_RIGHT,
+    DOWN,
+    DOWN_LEFT,
+    LEFT,
+    UP_LEFT,
+
+    ALL_DIRECTIONS
 };

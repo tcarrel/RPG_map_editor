@@ -148,6 +148,7 @@
     <Text Include="Settings\gamecontrollerdb.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="actor_base.h" />
     <ClInclude Include="box_contents.h" />
     <ClInclude Include="color_key.h" />
     <ClInclude Include="combat.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="interface_base.h" />
     <ClInclude Include="item_creation.h" />
     <ClInclude Include="settings_menu.h" />
+    <ClInclude Include="sprite_coord.h" />
     <ClInclude Include="start_screen.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="menu.h" />

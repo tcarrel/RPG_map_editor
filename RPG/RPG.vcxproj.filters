@@ -219,6 +219,12 @@
     <ClInclude Include="confirm_quit.h">
       <Filter>Header Files\Interfaces\Types\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="sprite_coord.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="actor_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -10,7 +10,7 @@
 
 Confirm_Quit::Confirm_Quit(
     Event_Manager* em, Window* w, Console* c, SDL_Renderer* r ) :
-    Interface( em, c, w, INTERFACE_MENU__CONFIRM_QUIT )
+    Interface( em, c, w, INTERFACE_CONFIRM_QUIT )
 {
     renderer_ = r;
 
@@ -55,7 +55,7 @@ void Confirm_Quit::run( void )
 
 Interface_enum_t Confirm_Quit::type( void )
 {
-    return INTERFACE_MENU__CONFIRM_QUIT;
+    return INTERFACE_CONFIRM_QUIT;
 }
 
 

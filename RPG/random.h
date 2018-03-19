@@ -23,3 +23,5 @@ private:
     static bool seeded_;
     static unsigned  seed_;
 };
+
+#define RANDOM_DIRECTION int_to_cardinal( (int)Random::get( ALL_DIRECTIONS ) )

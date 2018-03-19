@@ -117,3 +117,32 @@ Control_enum_t uint_to_cntlt( unsigned u )
         return CTRL_NULL;
     }
 }
+
+
+
+Cardinal_Directions_enum_t int_to_cardinal( int dir )
+{
+    switch( dir )
+    {
+    default:
+        return INVALID_DIRECTION;
+
+    case UP:
+        return UP;
+    case UP_RIGHT:
+        return UP_RIGHT;
+    case RIGHT:
+        return RIGHT;
+    case DOWN_RIGHT:
+        return DOWN_RIGHT;
+
+    case DOWN:
+        return DOWN;
+    case DOWN_LEFT:
+        return DOWN_LEFT;
+    case LEFT:
+        return LEFT;
+    case UP_LEFT:
+        return UP_LEFT;
+    }
+}

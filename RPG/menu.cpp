@@ -67,7 +67,7 @@ void Menu::run( void )
             pause_screen_->run();
             goto_interface_ = type();
             break;
-        case INTERFACE_MENU__CONFIRM_QUIT:
+        case INTERFACE_CONFIRM_QUIT:
             base_menu_.main_selections->contents()->deactivate();
             __update();
             __render();
@@ -154,7 +154,7 @@ void Menu::react( int menu_selection )
     {
     case MENU_RETURN_VALUE__QUIT_GAME_REQUEST:
         //confirm_quit();
-        goto_interface_ = INTERFACE_MENU__CONFIRM_QUIT;
+        goto_interface_ = INTERFACE_CONFIRM_QUIT;
         break;
     case MENU_RETURN_VALUE__QUIT_GAME:
         em_->quit_game();

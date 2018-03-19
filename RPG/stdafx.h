@@ -56,6 +56,7 @@
 
 
 #include "sprite.h"
+#include "sprite_coord.h"
 #include "sprite_sheet.h"
 #include "screen_texture.h"
 
