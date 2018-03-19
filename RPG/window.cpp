@@ -16,7 +16,7 @@ SDL_Rect* get_splash_screen_image_size( SDL_Surface*, SDL_Surface* );
 Window::Window( void ) :
     subsys_init_( SDL_INIT_VIDEO ),
     is_good_(true),
-    flags_( SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI )
+    flags_( /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_ALLOW_HIGHDPI )
 {
     if( !console_ )
     {

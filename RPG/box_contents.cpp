@@ -72,9 +72,9 @@ Box_Contents::Box_Contents( const Passage& cp ) :
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const char ccstr[], int i )
+void Box_Contents::add_text( const char ccstr[], int i )
 {
-    return add_text( Uint8_t_String( ccstr ), i );
+    add_text( Uint8_t_String( ccstr ), i );
 }
 
 
@@ -82,9 +82,9 @@ Box_Contents& Box_Contents::add_text( const char ccstr[], int i )
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const string& str, int i )
+void Box_Contents::add_text( const string& str, int i )
 {
-    return add_text( Uint8_t_String( str ), i );
+    add_text( Uint8_t_String( str ), i );
 }
 
 
@@ -92,13 +92,12 @@ Box_Contents& Box_Contents::add_text( const string& str, int i )
 /**
 *   Adds one line of text.
 */
-Box_Contents& Box_Contents::add_text( const Uint8_t_String& u8str, int )
+void Box_Contents::add_text( const Uint8_t_String& u8str, int )
 {
     text_.add( new Line_of_Text( u8str ) );
     
     size_.h = text_.size();
     update_width();
-    return *this;
 }
 
 

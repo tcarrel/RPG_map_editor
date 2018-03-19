@@ -29,15 +29,9 @@ public:
     Uint8_t_String& operator[]( const unsigned& );
     Uint8_t_String& operator[]( const int& );
 
-    Box_Contents& add_text(
-        const char[],
-        int = MENU_RETURN_VALUE__NO_VALUES_TO_BE_USED );
-    Box_Contents& add_text(
-        const string&,
-        int = MENU_RETURN_VALUE__NO_VALUES_TO_BE_USED );
-    virtual Box_Contents& add_text(
-        const Uint8_t_String&,
-        int = MENU_RETURN_VALUE__NO_VALUES_TO_BE_USED );
+    virtual void add_text( const char[], int );
+    virtual void add_text( const string&, int );
+    virtual void add_text( const Uint8_t_String&, int );
 
     void set_position( int, int );
     void set_width( int );

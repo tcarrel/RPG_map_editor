@@ -18,7 +18,7 @@ public:
     void activate( void );
     void deactivate( void );
 
-    Box_Contents& add_text( const Uint8_t_String&, int = -1 );
+    void add_text( const Uint8_t_String&, int = -1 );
 
     Box_Contents_enum_t type( void );
 

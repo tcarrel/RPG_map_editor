@@ -1,6 +1,7 @@
 #pragma once
 
 #include<vector>
+#include<stack>
 
 class Interface;
 class Console;
@@ -19,6 +20,7 @@ class Play_Data;
 enum Interface_enum_t;
 
 using std::vector;
+using std::stack;
 
 
 
@@ -41,6 +43,8 @@ public:
 
 private:
     void do_controls( unsigned );
+    void react( int );
+    void confirm_quit( void );
 
     void __update( void );
     void __render( void );
@@ -52,7 +56,7 @@ private:
     } base_menu_;
 
     vector<Text_Box*> open_windows_;
-    Text_Box* active_window_;
+    stack<Text_Box*> active_window_stack_;
 
     Play_Data* game_data_;
     Pause* pause_screen_;

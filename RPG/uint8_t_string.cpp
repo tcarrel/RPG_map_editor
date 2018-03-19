@@ -10,9 +10,9 @@
 Uint8_t_String::Uint8_t_String( void ) :
     string_( new uint8_t[17] ),
     length_( 0 ),
-    capacity_( 16 )
+    capacity_( 17 )
 {
-    string_[ capacity_ ] = 0;
+    string_[ capacity_ - 1 ] = 0;
 }
 
 
@@ -30,18 +30,22 @@ Uint8_t_String::Uint8_t_String( const Uint8_t_String& u )
 /**
 *   Ctor to convert from a c-string.
 */
-Uint8_t_String::Uint8_t_String( const char c[] ) :
-    Uint8_t_String()
+Uint8_t_String::Uint8_t_String( const char c[] )
 {
     unsigned u;
+    capacity_ = length_ = cstrlen( c );
+    ++capacity_;
+
+    while( ( capacity_ % 16 ) != 1 )
+    {
+        ++capacity_;
+    }
+    string_ = new uint8_t[ capacity_ ];
     for( u = 0; c[u] != 0; u++ )
     {
-        grow( u );
-        string_[ u ] = c[ u ];
-        ++length_;
+        string_[ u ] = (uint8_t) c[ u ];
     }
-    grow( u );
-    string_[ u ] = 0;
+    string_[ length_ ] = 0;
 }
 
 
@@ -52,6 +56,8 @@ Uint8_t_String::Uint8_t_String( const char c[] ) :
 Uint8_t_String::Uint8_t_String( const string& str ) 
 {
     capacity_ = length_ = str.size();
+    ++capacity_;
+
     while( ( capacity_ % 16 ) != 1 )
     {
         ++capacity_;

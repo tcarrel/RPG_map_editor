@@ -172,7 +172,7 @@ inline void Event_Manager::process( Interface* ix )
         {
         case SDL_QUIT:
             quit_ = 1;
-            break;
+            return;
         case SDL_KEYDOWN:
             if( e_.key.keysym.scancode == SDL_SCANCODE_F4 )
             {
@@ -419,10 +419,7 @@ void Event_Manager::joy_down( int i, Interface* ix )
 {
     ctrl_previous_[ joy_to_ctrl[ i ] ] = ctrl_current_[ joy_to_ctrl[ i ] ];
     ctrl_current_[ joy_to_ctrl[ i ] ] = true;
-    if( ix != NULL )
-    {
-        ix->do_controls( joy_to_ctrl[ i ] );
-    }
+    ix->do_controls( joy_to_ctrl[ i ] );
 }
 
 
@@ -434,10 +431,7 @@ void Event_Manager::joy_up( int i, Interface* ix )
 {
     ctrl_previous_[ joy_to_ctrl[ i ] ] = ctrl_current_[ joy_to_ctrl[ i ] ];
     ctrl_current_[ joy_to_ctrl[ i ] ] = false;
-    if( ix )
-    {
-        ix->do_controls( joy_to_ctrl[ i ] );
-    }
+    ix->do_controls( joy_to_ctrl[ i ] );
 }
 
 

@@ -16,6 +16,10 @@
 
 
 
+#ifdef _DEBUG
+#include <crtdbg.h>
+#endif
+
 #include "constants.h"
 #include "color_key.h"
 

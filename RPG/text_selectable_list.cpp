@@ -43,41 +43,44 @@ void Selectable_List::deactivate( void )
 
 
 
+void Selectable_List::add_text( const char text[], int return_value )
+{
+    add_text( Uint8_t_String( text ), return_value );
+}
+
+
+
+void Selectable_List::add_text( const string& text, int return_value )
+{
+    add_text( Uint8_t_String( text ), return_value );
+}
+
+
+
 /**
 *   Adds options or headings to the selection box.  No ordering is performed,
 *  so they must be added in the order in which they are to appear.
 */
-Box_Contents& Selectable_List::add_text(
-    const Uint8_t_String& u8str,
-    int return_val )
+void Selectable_List::add_text( const Uint8_t_String& u8str, int return_val )
 {
-    static int incremental_return_value = ( return_val < 0 ) ? 0 : return_val;
+//    Console::vb_variable_value( "Selection_List", "this", this );
 
     Line_of_Text* lot = new Line_of_Text( u8str );
+//    Console::vb_variable_value( "Selection_List", "lot", *lot );
 
-    text_. add( lot );
-    selection_.push_back( lot );
-    
-    if( return_val < 0 )
+    text_.add( lot );
+//    Console::vb_variable_value( "Selection_List", "&text_", &text_ );
+    if( return_val != MENU_UNSELECTABLE_ITEM )
     {
-        return_values_.push_back( incremental_return_value++ );
-    }
-    else
-    {
+        selection_.push_back( lot );
         return_values_.push_back( return_val );
-        incremental_return_value = return_val + 1;
     }
 
     for( unsigned u = 0; u < spacing_ - 1; u++ )
     {
         text_.add( new Line_of_Text( "" ) );
     }
-
-    size_.h = text_.size();
-    update_width();
     update_text();
-
-    return *this;
 }
 
 
@@ -100,14 +103,15 @@ int Selectable_List::command( Control_enum_t control )
         return return_values_[ selected_ ];
     case CTRL_DOWN:
         down();
+        update_text();
         break;
     case CTRL_UP:
         up();
+        update_text();
         break;
     default:
         ;
     }
-    update_text();
     return MENU_RETURN_VALUE__NO_RETURN;
 }
 
@@ -127,6 +131,7 @@ Selectable_List::~Selectable_List( void )
 {
     for( unsigned u = 0; u < selection_.size(); u++ )
     {
+        //delete selection_[ u ];
         selection_[ u ] = NULL;
     }
     selection_.clear();
@@ -135,14 +140,14 @@ Selectable_List::~Selectable_List( void )
 
 
 /**
-*   moves the cursor about.
+*   Changes which text is highlighted.
 */
 void Selectable_List::update_text( void )
 {
-    for( unsigned u = 0; u < selection_.size(); u++ )
+    for( int i = 0; i < (int)selection_.size(); i++ )
     {
-        selection_[ u ]->hl =
-            ( active_ && ( u == selected_ ) ) ?
+        selection_[ i ]->hl =
+            ( active_ && ( i == selected_ ) ) ?
             TEXT_HIGHLIGHT_TYPE_BRIGHT :
             TEXT_HIGHLIGHT_TYPE_NORMAL;
     }

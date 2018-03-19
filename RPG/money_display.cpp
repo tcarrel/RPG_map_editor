@@ -87,17 +87,21 @@ int Money_Display::command( Control_enum_t )
 {
     return 0;
 }
+
+
+
 void Money_Display::activate( void )
 {}
+
+
+
 void Money_Display::deactivate( void )
 {}
 
 
 
-Box_Contents & Money_Display::add_text( const Uint8_t_String&, int )
-{
-    return *this;
-}
+void Money_Display::add_text( const Uint8_t_String&, int )
+{}
 
 
 

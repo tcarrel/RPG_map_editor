@@ -217,7 +217,7 @@ void Console::vb_variable_value( string obj, string name, Line_of_Text& line )
     }
 
     printf( "\t      \tLine_of_Text %s::%s {\n", obj.c_str(), name.c_str() );
-    printf( "\t      \t\taddr        = %p\n", &line );
+    printf( "\t      \t\taddr        = 0x%p\n", &line );
     printf( "\t      \t\ttext        = %s\n", line.text.c_str() );
     printf( "\t      \t\ttext.size() = %i\n", line.text.size() );
     printf( "\t      \t\tx           = %i\n", line.x );

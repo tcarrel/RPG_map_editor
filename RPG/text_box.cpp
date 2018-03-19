@@ -12,7 +12,8 @@
 /**
 *   Sets up the basic settings for a text box based the contents passed in.
 */
-Text_Box::Text_Box( Box_Contents* bcp ) :
+Text_Box::Text_Box( Box_Contents* bcp, const SDL_Rect& dims ) :
+    dimensions_( dims ),
     content_( bcp )
 {
     if( !Text_Box::initialized_ )
@@ -20,9 +21,7 @@ Text_Box::Text_Box( Box_Contents* bcp ) :
         initialized_ = true;
         renderer_ = text_[ 0 ].get_renderer();
     }
-
     type_ = content_->type();
-    update_size();
 }
 
 
@@ -40,14 +39,66 @@ void Text_Box::set_fill( uint8_t r, uint8_t g, uint8_t b, uint8_t a )
 
 
 
+void Text_Box::set_size( const int& w, const int& h )
+{
+    set_dimensions( dimensions_.x, dimensions_.y, w, h );
+}
+
+
+
+void Text_Box::set_pos( const int& x, const int& y )
+{
+    set_dimensions( x, y, dimensions_.w, dimensions_.h );
+}
+
+
+
+void Text_Box::set_width( const int& w )
+{
+    set_dimensions( dimensions_.x, dimensions_.y, w, dimensions_.h );
+}
+
+
+
+void Text_Box::set_height( const int& h )
+{
+    set_dimensions( dimensions_.x, dimensions_.y, dimensions_.w, h );
+}
+
+
+
+void Text_Box::set_x_coord( const int& x )
+{
+    set_dimensions( x, dimensions_.y, dimensions_.w, dimensions_.h );
+}
+
+
+
+void Text_Box::set_y_coord( const int& y )
+{
+    set_dimensions( dimensions_.x, y, dimensions_.w, dimensions_.h );
+}
+
+
+
+void Text_Box::set_dimensions(
+    const int& x,
+    const int& y,
+    const int& w,
+    const int& h )
+{
+    dimensions_ = { x, y, w, h };
+}
+
+
+
 /**
 *   Adds additional lines of text to the text box.  This will probably have to
 *  be changed later to allow for images to be displayed withing textboxes.
 */
 void Text_Box::add_text( const char cca[], int i )
 {
-    content_->add_text( cca, i );
-    update_size();
+    content_->add_text( Uint8_t_String( cca ), i );
 }
 
 
@@ -58,8 +109,7 @@ void Text_Box::add_text( const char cca[], int i )
 */
 void Text_Box::add_text( const string& csr, int i )
 {
-    content_->add_text( csr, i );
-    update_size();
+    content_->add_text( Uint8_t_String( csr ), i );
 }
 
 
@@ -71,7 +121,6 @@ void Text_Box::add_text( const string& csr, int i )
 void Text_Box::add_text( const Uint8_t_String& cu8sr, int i )
 {
     content_->add_text( cu8sr, i );
-    update_size();
 }
 
 
@@ -96,24 +145,30 @@ int Text_Box::command( Control_enum_t c )
 
 
 
-/**
-*   Updates the text box's size, usually only called when adding additional
-*  lines of text.
-*/
-void Text_Box::update_size( void )
+int Text_Box::calculate_in_pixels__x_pos( int x )
 {
-    box_ = content_->size();
-    w_ = box_.w;
-    h_ = content_->lines();
+    return ( x * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET;
+}
 
-    box_.x *= TEXT_CHARACTER_WIDTH;
-    box_.x += TEXT_X_OFFSET;
 
-    box_.y *= TEXT_CHARACTER_HEIGHT;
-    box_.y += TEXT_Y_OFFSET;
 
-    box_.h *= TEXT_ROW_HEIGHT;
-    box_.w *= TEXT_CHARACTER_WIDTH;
+int Text_Box::calculate_in_pixels__y_pos( int y )
+{
+    return ( y * TEXT_CHARACTER_HEIGHT ) + TEXT_Y_OFFSET;//+ text_[ 0 ].get_y_offset();
+}
+
+
+
+int Text_Box::calculate_in_pixels__width( int w )
+{
+    return w * TEXT_CHARACTER_WIDTH;
+}
+
+
+
+int Text_Box::calculate_in_pixels__height( int h )
+{
+    return h * TEXT_CHARACTER_HEIGHT;
 }
 
 
@@ -123,9 +178,14 @@ void Text_Box::update_size( void )
 */
 void Text_Box::render_fill( void )
 {
-    SDL_Rect fill = box_;
-    fill.x += text_[0].get_x_offset();
-    fill.y += text_[0].get_y_offset();
+
+    SDL_Rect fill =
+    { calculate_in_pixels__x_pos( dimensions_.x ) + text_[ 0 ].get_x_offset(),
+      calculate_in_pixels__y_pos( dimensions_.y ) + text_[ 0 ].get_y_offset(),
+      calculate_in_pixels__width( dimensions_.w ),
+      calculate_in_pixels__height( dimensions_.h )
+    };
+
 
     SDL_SetRenderDrawColor(
         renderer_,
@@ -146,10 +206,10 @@ void Text_Box::render( void )
     render_border();
     render_fill();
 
-    for( unsigned u = 0; u < h_; u++ )
+    for( int i = 0; i < dimensions_.h; i++ )
     {
-        line_rendering_ = u;
-        render( content_->get_text()->get_line( u ) );
+        line_rendering_ = i;
+        render( content_->get_text()->get_line( i ) );
     }
 }
 
@@ -162,10 +222,13 @@ void Text_Box::render( Line_of_Text* txt)
 {
     for(
         unsigned ltr = 0;
-        (ltr < w_) && ( ltr < txt->text.size() );
+        (ltr < (unsigned) dimensions_.w ) && ( ltr < txt->text.size() );
         ltr++ )
     {
-        render_char( ltr, letter_[ txt->text[ ltr ] ].clip(), txt->hl );
+        render_char(
+            ltr,
+            letter_[ txt->text[ ltr ] ].clip(),
+            txt->hl );
     }
 }
 
@@ -177,8 +240,8 @@ void Text_Box::render( Line_of_Text* txt)
 void Text_Box::render_char( unsigned u, SDL_Rect* clip, unsigned hl )
 {
     text_[ hl ].render(
-        box_.x + ( u * TEXT_CHARACTER_WIDTH ),
-        box_.y + ( line_rendering_ * TEXT_ROW_HEIGHT ),
+        calculate_in_pixels__x_pos( dimensions_.x ) + ( u * TEXT_CHARACTER_WIDTH ),
+        calculate_in_pixels__y_pos( dimensions_.y ) + ( line_rendering_ * TEXT_ROW_HEIGHT ),
         clip );
 }
 
@@ -192,49 +255,62 @@ void Text_Box::render_border( void )
     //Corners
     // Top left
     text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        box_.x - TEXT_CHARACTER_WIDTH,
-        box_.y - TEXT_CHARACTER_HEIGHT,
+        calculate_in_pixels__x_pos( dimensions_.x ) - TEXT_CHARACTER_WIDTH,
+        calculate_in_pixels__y_pos( dimensions_.y ) - TEXT_CHARACTER_HEIGHT,
         letter_[ CHAR_BOX_TOP_LEFT ].clip() );
 
     // Top right
     text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        box_.x + box_.w,
-        box_.y - TEXT_CHARACTER_HEIGHT,
+        calculate_in_pixels__x_pos(dimensions_.x) +
+        calculate_in_pixels__width(dimensions_.w),
+        calculate_in_pixels__y_pos(dimensions_.y) - TEXT_CHARACTER_HEIGHT,
         letter_[ CHAR_BOX_TOP_RIGHT ].clip() );
     // Bottom left
     text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        box_.x - TEXT_CHARACTER_WIDTH,
-        box_.y + box_.h,
+        calculate_in_pixels__x_pos(dimensions_.x) - TEXT_CHARACTER_WIDTH,
+        calculate_in_pixels__y_pos(dimensions_.y) +
+        calculate_in_pixels__height(dimensions_.h),
         letter_[ CHAR_BOX_BOTTOM_LEFT].clip() );
     // Bottom right
     text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-        box_.x + box_.w,
-        box_.y + box_.h,
+        calculate_in_pixels__x_pos( dimensions_.x ) +
+        calculate_in_pixels__width( dimensions_.w ),
+        calculate_in_pixels__y_pos( dimensions_.y ) +
+        calculate_in_pixels__height( dimensions_.h ),
         letter_[ CHAR_BOX_BOTTOM_RIGHT ].clip() );
     // Top and bottom.
-    for( unsigned i = 0; i < w_; i++ )
+    for( int i = 0; i < dimensions_.w; i++ )
     {
         text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-            box_.x + ( i * TEXT_CHARACTER_WIDTH ),
-            box_.y - TEXT_CHARACTER_HEIGHT,
+            calculate_in_pixels__x_pos( dimensions_.x ) +
+            ( i * TEXT_CHARACTER_WIDTH ),
+            calculate_in_pixels__y_pos( dimensions_.y ) -
+            TEXT_CHARACTER_HEIGHT,
             letter_[ CHAR_BOX_TOP ].clip() );
+
         text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-            box_.x + ( i * TEXT_CHARACTER_WIDTH ),
-            box_.y + box_.h,
+            calculate_in_pixels__x_pos( dimensions_.x ) +
+            ( i * TEXT_CHARACTER_WIDTH ),
+            calculate_in_pixels__y_pos( dimensions_.y ) +
+            calculate_in_pixels__height( dimensions_.h ),
             letter_[ CHAR_BOX_BOTTOM ].clip() );
     }
     // Sides
-    for( unsigned i = 0; i < h_; i++ )
+    for( int i = 0; i < dimensions_.h; i++ )
     {
         //Left
         text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-            box_.x - TEXT_CHARACTER_WIDTH,
-            box_.y + ( i * TEXT_ROW_HEIGHT ),
+            calculate_in_pixels__x_pos( dimensions_.x ) -
+            TEXT_CHARACTER_WIDTH,
+            calculate_in_pixels__y_pos( dimensions_.y ) +
+            ( i * TEXT_ROW_HEIGHT ),
             letter_[ CHAR_BOX_LEFT ].clip() );
         //Right
         text_[ TEXT_HIGHLIGHT_TYPE_NORMAL ].render(
-            box_.x + box_.w,
-            box_.y + ( i * TEXT_ROW_HEIGHT ),
+            calculate_in_pixels__x_pos( dimensions_.x ) +
+            calculate_in_pixels__width( dimensions_.w ),
+            calculate_in_pixels__y_pos( dimensions_.y ) +
+            ( i * TEXT_ROW_HEIGHT ),
             letter_[ CHAR_BOX_RIGHT ].clip() );
     }
 }
