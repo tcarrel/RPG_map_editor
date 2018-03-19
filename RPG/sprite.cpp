@@ -9,6 +9,12 @@
 
 
 
+Sprite::Sprite( void ) :
+    Sprite( 0, 0, 0, 0 )
+{}
+
+
+
 /**
 *   Sets all variables.
 */

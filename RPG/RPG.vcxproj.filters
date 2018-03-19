@@ -141,9 +141,6 @@
     <ClInclude Include="color_key.h">
       <Filter>Header Files\System Management</Filter>
     </ClInclude>
-    <ClInclude Include="text_character.h">
-      <Filter>Header Files\Text</Filter>
-    </ClInclude>
     <ClInclude Include="text_line.h">
       <Filter>Header Files\Text</Filter>
     </ClInclude>
@@ -250,9 +247,6 @@
     </ClCompile>
     <ClCompile Include="sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="text_character.cpp">
-      <Filter>Source Files\Text</Filter>
     </ClCompile>
     <ClCompile Include="text.cpp">
       <Filter>Source Files\Text</Filter>

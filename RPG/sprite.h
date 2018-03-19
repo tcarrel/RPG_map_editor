@@ -12,6 +12,7 @@ class Sprite_Sheet;
 class Sprite
 {
 public:
+    Sprite( void );
     Sprite( int, int, int, int, Sprite_Sheet* = NULL );
 
     int& x( void );

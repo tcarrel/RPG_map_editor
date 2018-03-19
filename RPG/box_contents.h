@@ -45,6 +45,7 @@ public:
 
     virtual void update( void* = NULL, const unsigned& = 0) = 0;
 
+    void render( int, int );
     virtual int command( Control_enum_t ) = 0;
 
     static void init( Text* );

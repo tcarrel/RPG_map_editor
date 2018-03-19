@@ -1,6 +1,7 @@
 #pragma once
 
-class Text_Character;
+//class Text_Character;
+class Sprite;
 class Sprite_Sheet;
 struct Line_of_Text;
 
@@ -22,7 +23,7 @@ public:
 protected:
     //Character Dimensions: 20 x 38
 
-    static Text_Character  letter_[ ALL_TEXT_HIGHLIGHT_TYPES ][ 256 ];
+    static Sprite          letter_[ ALL_TEXT_HIGHLIGHT_TYPES ][ 256 ];
     static Sprite_Sheet    text_[ ALL_TEXT_HIGHLIGHT_TYPES ];
 
 private:

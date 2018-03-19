@@ -4,7 +4,7 @@
 
 
 
-/*static*/ Text_Character Text::letter_[ ALL_TEXT_HIGHLIGHT_TYPES ][ 256 ];
+/*static*/ Sprite Text::letter_[ ALL_TEXT_HIGHLIGHT_TYPES ][ 256 ];
 /*static*/ Sprite_Sheet Text::text_[ ALL_TEXT_HIGHLIGHT_TYPES ];
 /*static*/ bool Text::initialized_ = false;
 
