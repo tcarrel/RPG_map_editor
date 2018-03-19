@@ -147,6 +147,7 @@ void Menu::react( int menu_selection )
         delete active_window_stack_.top();
         active_window_stack_.top() = NULL;
         active_window_stack_.pop();
+        active_window_stack_.top()->contents()->activate();
         break;
     default:
         return;
@@ -164,21 +165,20 @@ void Menu::confirm_quit( void )
 
     Selectable_List* yes_no = new Selectable_List(2);
     yes_no->add_text(
-        "Are you sure you want to quit?",
+        "   Are you sure you want to quit?",
         MENU_UNSELECTABLE_ITEM );
     yes_no->add_text(
         " All unsaved progress will be lost.",
         MENU_UNSELECTABLE_ITEM );
-
     yes_no->add_text(
-        "       NO!",
+        "   No",
         MENU_RETURN_VALUE__EXIT_CURRENT_WINDOW );
     yes_no->add_text(
-        "       Yes",
+        "   Yes",
         MENU_RETURN_VALUE__QUIT_GAME );
     yes_no->activate();
 
-    SDL_Rect coords = { ( TEXT_COLUMNS - 37 ) / 2,( TEXT_ROWS - 9 ) / 2, 37, 8 };
+    SDL_Rect coords = { ( TEXT_COLUMNS - 37 ) / 2,( TEXT_ROWS - 9 ) / 2, 36, 8 };
 
     Text_Box* confirm_quit = new Text_Box( yes_no, coords );
 
@@ -186,7 +186,6 @@ void Menu::confirm_quit( void )
     active_window_stack_.push( confirm_quit );
     confirm_quit = NULL;
     yes_no = NULL;
-    active_window_stack_.push( confirm_quit );
 }
 
 

@@ -63,13 +63,10 @@ void Selectable_List::add_text( const string& text, int return_value )
 */
 void Selectable_List::add_text( const Uint8_t_String& u8str, int return_val )
 {
-//    Console::vb_variable_value( "Selection_List", "this", this );
 
     Line_of_Text* lot = new Line_of_Text( u8str );
-//    Console::vb_variable_value( "Selection_List", "lot", *lot );
 
     text_.add( lot );
-//    Console::vb_variable_value( "Selection_List", "&text_", &text_ );
     if( return_val != MENU_UNSELECTABLE_ITEM )
     {
         selection_.push_back( lot );
