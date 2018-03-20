@@ -45,7 +45,6 @@ private:
 
     void do_controls( unsigned );
     void react( int );
-    void confirm_quit( void );
     void reset( void );
 
     void __update( void );
