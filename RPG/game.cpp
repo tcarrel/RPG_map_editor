@@ -38,7 +38,7 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     interface_[ INTERFACE_PAUSE ] = &pause_;
     events_.register_interface( &pause_, INTERFACE_PAUSE );
     interface_[ INTERFACE_START_MENU ] = &start_menu_;
-    events_.register_interface( &start_menu_, INTERFACE_START_MENU );
+    events_.register_interface( &start_menu_, INTERFACE_START_MENU );           
     interface_[ INTERFACE_MAP ] = &on_map_;
     events_.register_interface( &on_map_, INTERFACE_MAP );
     interface_[ INTERFACE_COMBAT ] = &combat_;
@@ -61,12 +61,9 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     //over_.add_state_machine_nodes(); //Unnecessary
     //save_load_.add_state_machine_nodes(); //Unnecessary
 
-    play_data_ = new Play_Data;
+    play_data_ = NULL;
 
-    start_menu_.init( text_system_ );
-    menu_.init( play_data_ );
-    pause_.init( text_system_ );
-
+    Interface::set_text( text_system_ );
 
     Box_Contents::init( text_system_ );
 
@@ -85,11 +82,16 @@ void Game::main_loop( void )
         switch( start_menu_.picked() )
         {
         case INTERFACE_NEW_GAME_SETUP:
-            Console::vb_only_no_err( "Start_Screen", "New Game not implemented." );
-            menu_.run();
+            Console::vb_only_no_err(
+                "Start_Screen",
+                "Work-In-Progress." );
+            newgame();
+            //menu_.run();
             break;
         case INTERFACE_LOAD_MENU:
-            Console::vb_only_no_err( "Start_Screen", "Continue not implemented." );
+            Console::vb_only_no_err(
+                "Start_Screen",
+                "Continue not implemented." );
             break;
         case INTERFACE_SETTINGS:
             Console::vb_only_no_err( "Start_Screen", "Settings not implemented." );
@@ -97,8 +99,20 @@ void Game::main_loop( void )
         default:
             ;
         }
+        if( play_data_ )
+        {
+            //Begin game.
+        }
     }
+}
 
+
+
+void Game::newgame( void )
+{
+    New_Game_Creation ngc( &events_, &window_, &console_, &start_menu_ );
+    ngc.run();
+    play_data_ = ngc.get_game();
 }
 
 

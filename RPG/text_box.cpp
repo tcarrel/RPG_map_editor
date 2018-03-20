@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 
-/*static*/ uint8_t Text_Box::fill_color_[ 4 ] = { 0x0,0x20,0x3f,0xcc };
+/*static*/ uint8_t Text_Box::fill_color_[ 4 ] = { 0x0, 0x20, 0x3f, 0xcc };
 /*static*/ SDL_Renderer* Text_Box::renderer_ = NULL;
 /*static*/ bool Text_Box::initialized_ = false;
 
@@ -145,28 +145,28 @@ int Text_Box::command( Control_enum_t c )
 
 
 
-int Text_Box::calculate_in_pixels__x_pos( int x )
+inline int Text_Box::calculate_in_pixels__x_pos( int x )
 {
     return ( x * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET;
 }
 
 
 
-int Text_Box::calculate_in_pixels__y_pos( int y )
+inline int Text_Box::calculate_in_pixels__y_pos( int y )
 {
-    return ( y * TEXT_CHARACTER_HEIGHT ) + TEXT_Y_OFFSET;//+ text_[ 0 ].get_y_offset();
+    return ( y * TEXT_CHARACTER_HEIGHT ) + TEXT_Y_OFFSET;
 }
 
 
 
-int Text_Box::calculate_in_pixels__width( int w )
+inline int Text_Box::calculate_in_pixels__width( int w )
 {
     return w * TEXT_CHARACTER_WIDTH;
 }
 
 
 
-int Text_Box::calculate_in_pixels__height( int h )
+inline int Text_Box::calculate_in_pixels__height( int h )
 {
     return h * TEXT_CHARACTER_HEIGHT;
 }
@@ -183,8 +183,7 @@ void Text_Box::render_fill( void )
     { calculate_in_pixels__x_pos( dimensions_.x ) + text_[ 0 ].get_x_offset(),
       calculate_in_pixels__y_pos( dimensions_.y ) + text_[ 0 ].get_y_offset(),
       calculate_in_pixels__width( dimensions_.w ),
-      calculate_in_pixels__height( dimensions_.h )
-    };
+      calculate_in_pixels__height( dimensions_.h ) };
 
 
     SDL_SetRenderDrawColor(

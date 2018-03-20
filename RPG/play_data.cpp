@@ -10,9 +10,14 @@
 Play_Data::Play_Data( void )
 {
     Random random;
-    random_seed_ = random.get_seed();
+    random_seed_ = random.seed();
 
     money_ = random.get( 500, 1500);
+
+    for( int i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH; i++ )
+    {
+        character_name_[ i ] = 0;
+    }
 }
 
 
@@ -47,4 +52,23 @@ unsigned Play_Data::money_add( unsigned min, unsigned max )
     unsigned amt = r.get( min, max );
     money_add( amt );
     return amt;
+}
+
+
+
+unsigned* Play_Data::seed_addr( void )
+{
+    return &random_seed_;
+}
+
+
+
+void Play_Data::set_main_char_name( char* name )
+{
+    int i;
+    for( i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH && name[ i ]; i++ )
+    {
+        character_name_[ i ] = name[ i ];
+    }
+    character_name_[ i ] = 0;
 }

@@ -18,4 +18,5 @@ protected:
 
     int frame_qty_;
     Sprite** sprites_;
+
 };

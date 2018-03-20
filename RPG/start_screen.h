@@ -22,7 +22,6 @@ class Start_Screen : public Interface
 {
 public:
     Start_Screen( Event_Manager*, Window*, Console* ); //Ctor
-    void init( Text* );
 
     void run( void ); //Runs the loop for this menu.
     Interface_enum_t type( void ); //Returns the type.
@@ -31,6 +30,8 @@ public:
     Interface_enum_t picked( void );
 
     ~Start_Screen();
+
+    void bg_image( SDL_Texture*&, SDL_Rect& );
 
     friend class Event_Manager;
 
@@ -53,7 +54,6 @@ private:
 
     Passage          options_;
     int              current_selection_;
-    Text*            writter_;
 
     bool             exit_interface_loop_;
 };

@@ -16,9 +16,10 @@ class Text
 {
 public:
     Text( void );
-   // Text( const string& );
 
     virtual void render( Line_of_Text* text = NULL );
+
+    Sprite& letter( int, int );
 
 protected:
     //Character Dimensions: 20 x 38

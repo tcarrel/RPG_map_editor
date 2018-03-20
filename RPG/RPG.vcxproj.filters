@@ -243,6 +243,9 @@
     <ClInclude Include="new_game.h">
       <Filter>Header Files\Interfaces\Types\New Game</Filter>
     </ClInclude>
+    <ClInclude Include="name_character.h">
+      <Filter>Header Files\Interfaces\Types\New Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -353,14 +356,14 @@
     <ClCompile Include="new_game.cpp">
       <Filter>Source Files\Interfaces\Types\New Game</Filter>
     </ClCompile>
+    <ClCompile Include="name_character.cpp">
+      <Filter>Source Files\Interfaces\Types\New Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="..\README.md5">
       <Filter>Resource Files\github</Filter>
-    </None>
-    <None Include="Settings\keyboard.mapping.bin">
-      <Filter>Resource Files\Settings</Filter>
     </None>
     <None Include="Graphics\text_normal.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
@@ -376,6 +379,9 @@
     </None>
     <None Include="Graphics\start_screen_image.xcf">
       <Filter>Resource Files\Start Screen</Filter>
+    </None>
+    <None Include="Settings\keyboard.mapping.bin">
+      <Filter>Resource Files\Settings</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

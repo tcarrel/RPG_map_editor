@@ -49,6 +49,7 @@
 #include "load_menu.h"
 #include "settings_menu.h"
 #include "new_game.h"
+#include "name_character.h"
 
 
 

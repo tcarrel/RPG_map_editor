@@ -65,13 +65,6 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
 
 
 
-void Start_Screen::init( Text* text )
-{
-    writter_ = text;
-}
-
-
-
 void Start_Screen::run( void )
 {
     needs_redraw_ = true;
@@ -96,7 +89,7 @@ void Start_Screen::run( void )
             
             for( unsigned u = 0; u < 4; u++ )
             {
-                writter_->render( options_[ u ] );
+                text_->render( options_[ u ] );
             }
             window_->update();
         }
@@ -130,6 +123,14 @@ Start_Screen::~Start_Screen()
 {
     SDL_DestroyTexture( bg_image_ );
     bg_image_ = NULL;
+}
+
+
+
+void Start_Screen::bg_image( SDL_Texture*& texture, SDL_Rect& pos )
+{
+    texture = bg_image_;
+    pos = bg_scale_pos_;
 }
 
 

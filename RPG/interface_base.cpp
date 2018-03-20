@@ -4,6 +4,7 @@
 
 
 
+/*static*/ Text* Interface::text_ = NULL;
 /*static*/ SDL_Renderer* Interface::renderer_ = NULL;
 /*static*/ bool Interface::goto_start_menu_ = true;
 /*static*/ bool* Interface::ctrl_current_ = NULL;
@@ -50,6 +51,13 @@ Interface::Interface( Event_Manager* em, Console * c, Window * w, Interface_enum
 /*static*/ void Interface::set_renderer( SDL_Renderer* r )
 {
     renderer_ = r;
+}
+
+
+
+void Interface::set_text( Text* t )
+{
+    text_ = t;
 }
 
 

@@ -29,7 +29,7 @@ Confirm_Quit::Confirm_Quit(
         MENU_RETURN_VALUE__YES );
     yes_no->activate();
 
-    SDL_Rect coords = { ( TEXT_COLUMNS - 34 ) / 2,( TEXT_ROWS - 9 ) / 2, 34, 8 };
+    SDL_Rect coords = { ( TEXT_COLUMNS - 34 ) / 2,( TEXT_ROWS - 9 ) / 2, 34, 9 };
 
     box_ = new Text_Box( yes_no, coords );
 

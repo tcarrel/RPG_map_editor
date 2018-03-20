@@ -1,5 +1,7 @@
 #pragma once
 
+class Text;
+
 class Console;
 class Window;
 class Event_Manager;
@@ -15,6 +17,7 @@ public:
     Interface( Event_Manager*, Console*, Window*, Interface_enum_t );
 
     static void set_renderer( SDL_Renderer* ); //Sets the renderer.
+    static void set_text( Text* );
 
     virtual void run( void ) = 0; //For supplying the necessary loop
 
@@ -31,16 +34,17 @@ protected:
 
     static SDL_Renderer* renderer_;
 
-    Console* console_;
-    static bool* ctrl_current_;
-    static bool* ctrl_previous_;
+    Console*         console_;
+    static bool*     ctrl_current_;
+    static bool*     ctrl_previous_;
     Interface_enum_t came_from_;
 
-    Event_Manager* em_;
-    Window* window_;
+    Event_Manager*   em_;
+    Window*          window_;
 
-    bool exit_;
-    static bool goto_start_menu_;
+    static Text* text_;
+    bool         exit_;
+    static bool  goto_start_menu_;
 
 
 private:

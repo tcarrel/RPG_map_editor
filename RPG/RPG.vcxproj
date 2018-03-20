@@ -161,6 +161,7 @@
     <ClInclude Include="helper_functions.h" />
     <ClInclude Include="helper_template_functions.h" />
     <ClInclude Include="money_display.h" />
+    <ClInclude Include="name_character.h" />
     <ClInclude Include="new_game.h" />
     <ClInclude Include="play_data.h" />
     <ClInclude Include="game_over.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="generic_text.cpp" />
     <ClCompile Include="helper_functions.cpp" />
     <ClCompile Include="money_display.cpp" />
+    <ClCompile Include="name_character.cpp" />
     <ClCompile Include="new_game.cpp" />
     <ClCompile Include="play_data.cpp" />
     <ClCompile Include="game_map.cpp" />

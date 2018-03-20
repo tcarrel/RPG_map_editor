@@ -118,10 +118,11 @@ void Menu::do_controls( unsigned u )
     {
         switch( u )
         {
+        case CTRL_B:
+            exit_ = true;
+            return;
         case CTRL_A:
             react( active_window_stack_.top()->command( CTRL_A ) );
-            //goto_interface_ = type();
-            exit_ = false;
             return;
         case CTRL_UP:
             active_window_stack_.top()->command( CTRL_UP );
@@ -133,13 +134,13 @@ void Menu::do_controls( unsigned u )
             goto_interface_ = type();
             exit_ = false;
             return;
+        case CTRL_PAUSE:
         case CTRL_START:
             goto_interface_ = INTERFACE_PAUSE;
             exit_ = false;
             return;
         default:
             goto_interface_ = type();
-            exit_ = false;
             return;
         }
     }
@@ -149,11 +150,10 @@ void Menu::do_controls( unsigned u )
 
 void Menu::react( int menu_selection )
 {
-    auto iter = open_windows_.begin();
+//    auto iter = open_windows_.begin();
     switch( menu_selection )
     {
     case MENU_RETURN_VALUE__QUIT_GAME_REQUEST:
-        //confirm_quit();
         goto_interface_ = INTERFACE_CONFIRM_QUIT;
         break;
     case MENU_RETURN_VALUE__QUIT_GAME:
@@ -163,12 +163,14 @@ void Menu::react( int menu_selection )
         exit_ = true;
         return;
     case MENU_RETURN_VALUE__EXIT_CURRENT_WINDOW:
+/*
         while( *iter != active_window_stack_.top() )
         {
             ++iter;
         }
         *iter = NULL;
         open_windows_.erase( iter );
+*/
         delete active_window_stack_.top();
         active_window_stack_.top() = NULL;
         active_window_stack_.pop();
@@ -185,13 +187,13 @@ void Menu::react( int menu_selection )
 
 void Menu::reset( void )
 {
-    open_windows_.clear();
+//    open_windows_.clear();
     while( !active_window_stack_.empty() )
     {
         active_window_stack_.top() = NULL;
         active_window_stack_.pop();
     }
-    active_window_stack_.push( base_menu_.main_selections );
+    active_window_stack_.push( base_menu_.main_selections );                    
     exit_ = false;
 }
 
@@ -220,10 +222,12 @@ void Menu::__render( void )
     base_menu_.main_selections->render();
 
     //render additional windows.
+    /*
     for( unsigned u = 0; u < open_windows_.size(); u++ )
     {
         open_windows_[ u ]->render();
     }
+    */
 
     window_->update();
 }

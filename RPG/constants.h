@@ -23,7 +23,6 @@ const int  JOY_DEAD_ZONE = 9000;
 #define KEYBOARD_MAPPING_SETTINGS_FILE_PATH \
 "Settings\\keyboard.mapping.bin"
 
-
 #define TEXT_CHARACTER_WIDTH (32)
 #define TEXT_CHARACTER_HEIGHT (32)
 #define TEXT_ROW_HEIGHT (32)
@@ -60,6 +59,8 @@ const int SCREEN_X_TILES =
 ( (int)ceil( ( (double)SCREEN_X_PIXELS ) / ( (double)TILE_WIDTH ) ) );
 const int SCREEN_Y_TILES =
 ( (int)ceil( ( (double)SCREEN_Y_PIXELS ) / ( (double)TILE_HEIGHT ) ) );
+
+#define PLAYER_CHARACTER_NAME_MAX_LENGTH (10)
 
 
 enum Interface_enum_t
@@ -130,6 +131,7 @@ enum Control_enum_t
     CTRL_RIGHT,
     CTRL_START,
     CTRL_SELECT,
+    CTRL_PAUSE,
     CTRL_ALT,
     CTRL_F4,
 
@@ -160,6 +162,13 @@ enum Special_Character_enum_t
     CHAR_ARROW_DOWN = 143U,
     CHAR_ARROW_LEFT = 144U,
     CHAR_ARROW_RIGHT = 145U,
+    CHAR_BOX_CENTERED_HORIZONTAL = 146U,
+    CHAR_BOX_CENTERED_VERTICAL = 147U,
+    CHAR_BOX_T_BOTTOM = 148U,
+    CHAR_BOX_T_TOP = 149U,
+    CHAR_BOX_T_LEFT = 150U,
+    CHAR_BOX_T_RIGHT = 151U,
+    CHAR_BOX_CENTERED_INTERSECTION = 152U,
     CHAR_INVERTED_QUESTION_MARK = 168U,
     CHAR_INVERTED_EXCLAMATION_MARK = 173U
 };

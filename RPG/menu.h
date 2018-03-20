@@ -56,7 +56,8 @@ private:
         Text_Box* funds_box;
     } base_menu_;
 
-    vector<Text_Box*> open_windows_;
+    //I've left stuff related to these in case they're needed later.
+//  vector<Text_Box*> open_windows_;
     stack<Text_Box*> active_window_stack_;
 
     Play_Data* game_data_;

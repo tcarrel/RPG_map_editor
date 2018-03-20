@@ -16,9 +16,8 @@ Random::Random( void )
 {
     if( !seeded_ )
     {
-        seed_ = (unsigned)time( NULL );
+        seed();
         seeded_ = true;
-        srand( seed_ );
     }
 }
 
@@ -62,26 +61,33 @@ unsigned Random::get( unsigned v1, unsigned v2 )
 
 
 /**
-*   Return the number used to seed the RNG so it can be stored as part of a saved
-*  game.
-*/
-unsigned Random::get_seed( void )
-{
-    return seed_;
-}
-
-
-
-/**
 *   For reseeding the RNG when a saved game is loaded.
 */
-void Random::seed( int s )
+unsigned Random::seed( unsigned s )
 {
+    if( seeded_ )
+    {
+        return seed_;
+    }
+
+    if( s != 0 && s == seed_ )
+    {
+        return seed_;
+    }
+
+    if( s == 0 )
+    {
+        seed_ = (unsigned)time( NULL );
+        srand( seed_ );
+        return seed_;
+    }
+
     srand( (unsigned)time( NULL ) );
     unsigned x = rand() % 243;
 
     srand( s );
     seeded_ = true;
+
 
     for( unsigned i = 0; i < x; i++ )
     {
@@ -89,4 +95,5 @@ void Random::seed( int s )
     }
 
     seed_ = s;
+    return seed_;
 }

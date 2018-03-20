@@ -31,6 +31,8 @@ public:
     ~Game( void ); //Dtor.
 
 private:
+    void newgame( void );
+
     Start_SDL      sdl_init_;
 
     Console&       console_;

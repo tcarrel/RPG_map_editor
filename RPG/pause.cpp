@@ -14,20 +14,20 @@ Pause::Pause( Event_Manager* em, Window* w, Console* c ) :
     screen_ = w->get_dimensions();
     renderer_ = w->get_renderer();
     exit_ = false;
-}
-
-
-
-void Pause::init( Text* t )
-{
-    text_ = t;
-
     pause_.text = "PAUSED";
 
     pause_.x = ( SCREEN_X_PIXELS / 2 ) - ( 3 * TEXT_CHARACTER_WIDTH );
     pause_.y = ( SCREEN_Y_PIXELS / 2 ) - ( ( 1 * TEXT_CHARACTER_HEIGHT ) / 2 );
     pause_.hl = TEXT_HIGHLIGHT_TYPE_BRIGHT;
 }
+
+
+
+/*
+void Pause::init( Text* t )
+{
+}
+*/
 
 
 

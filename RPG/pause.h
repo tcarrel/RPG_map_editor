@@ -21,7 +21,6 @@ class Pause : public Interface
 public:
     Pause( Event_Manager*, Window*, Console* );  //  Ctor.
 
-    void init( Text* ); // Initialization.
     void run( void ); // Runs the pause screen loop.
 
     Interface_enum_t type( void ); // Returns the type.
@@ -32,7 +31,6 @@ private:
 
     void do_controls( unsigned );
 
-    Text* text_;
     Line_of_Text pause_;
     SDL_Rect screen_;
     static Screen_Texture screen_image_;

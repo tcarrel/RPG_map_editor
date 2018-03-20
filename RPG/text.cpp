@@ -164,6 +164,14 @@ Text::Text( void )
             letter_[ u ][ CHAR_ARROW_DOWN ].set( X( 1 ), Y( 7 ), W, H, text_ + u );
             letter_[ u ][ CHAR_ARROW_LEFT ].set( X( 2 ), Y( 7 ), W, H, text_ + u );
             letter_[ u ][ CHAR_ARROW_RIGHT ].set( X( 3 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_CENTERED_HORIZONTAL ].set( X( 4 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_CENTERED_VERTICAL ].set( X( 5 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_T_BOTTOM ].set( X( 6 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_T_TOP ].set( X( 7 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_T_LEFT ].set( X( 8 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_T_RIGHT ].set( X( 9 ), Y( 7 ), W, H, text_ + u );
+            letter_[ u ][ CHAR_BOX_CENTERED_INTERSECTION ].set(
+                X( 10 ), Y( 7 ), W, H, text_ + u );
         }
     }
 }
@@ -203,4 +211,9 @@ void Text::render( Line_of_Text* text )
             letter_[ text->text[ c ] ].clip() );
             */
     }
+}
+
+Sprite& Text::letter( int hl, int ascii )
+{
+    return letter_[ hl ][ ascii ];
 }

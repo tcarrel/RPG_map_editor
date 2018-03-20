@@ -114,20 +114,22 @@ Event_Manager::Event_Manager( Console* c ) :
         key_to_ctrl[ SDL_SCANCODE_LEFT ]  = CTRL_LEFT;
         key_to_ctrl[ SDL_SCANCODE_RIGHT ] = CTRL_RIGHT;
 
-        key_to_ctrl[ SDL_SCANCODE_V ] = CTRL_A;
-        key_to_ctrl[ SDL_SCANCODE_C ] = CTRL_B;
-        key_to_ctrl[ SDL_SCANCODE_D ] = CTRL_X;
-        key_to_ctrl[ SDL_SCANCODE_X ] = CTRL_Y;
-        key_to_ctrl[ SDL_SCANCODE_A ] = CTRL_L;
-        key_to_ctrl[ SDL_SCANCODE_S ] = CTRL_R;
+        key_to_ctrl[ SDL_SCANCODE_SPACE ]    = CTRL_A;
+        key_to_ctrl[ SDL_SCANCODE_KP_SPACE ] = CTRL_A;
+        key_to_ctrl[ SDL_SCANCODE_LCTRL ]    = CTRL_B;
+
+        key_to_ctrl[ SDL_SCANCODE_X ] = CTRL_X;
+        key_to_ctrl[ SDL_SCANCODE_C ] = CTRL_Y;
+        key_to_ctrl[ SDL_SCANCODE_Z ] = CTRL_L;
+        key_to_ctrl[ SDL_SCANCODE_V ] = CTRL_R;
 
         key_to_ctrl[ SDL_SCANCODE_RETURN ]  = CTRL_START;
         key_to_ctrl[ SDL_SCANCODE_RETURN2 ] = CTRL_START;
 
-        key_to_ctrl[ SDL_SCANCODE_KP_SPACE ] = CTRL_SELECT;
-        key_to_ctrl[ SDL_SCANCODE_SPACE ]    = CTRL_SELECT;
+        key_to_ctrl[ SDL_SCANCODE_RSHIFT ] = CTRL_SELECT;
 
-        key_to_ctrl[ SDL_SCANCODE_ESCAPE ] = CTRL_START;
+        key_to_ctrl[ SDL_SCANCODE_ESCAPE ] = CTRL_B;
+        key_to_ctrl[ SDL_SCANCODE_PAUSE ]  = CTRL_PAUSE;
 
         key_to_ctrl[ SDL_SCANCODE_RALT ]  = CTRL_ALT;
         key_to_ctrl[ SDL_SCANCODE_LALT ]  = CTRL_ALT;
@@ -326,7 +328,7 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
             ixs_[ INTERFACE_GAME_OVER ] );
         break;
     default:
-        return false;
+        return false; 
     }
 
     all_registered();
