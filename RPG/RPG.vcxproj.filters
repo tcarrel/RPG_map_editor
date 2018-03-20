@@ -106,6 +106,12 @@
     <Filter Include="Header Files\Headers">
       <UniqueIdentifier>{2951d533-5262-43de-94c5-06a1d7b14672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Interfaces\Types\New Game">
+      <UniqueIdentifier>{b0b6aab0-3aa3-4ecf-91f8-3d716d630277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Types\New Game">
+      <UniqueIdentifier>{85bd016b-058f-4632-9a97-a1f4b11c0046}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -234,6 +240,9 @@
     <ClInclude Include="helper_template_functions.h">
       <Filter>Header Files\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="new_game.h">
+      <Filter>Header Files\Interfaces\Types\New Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -340,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="actor_base.cpp">
       <Filter>Source Files\Game Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="new_game.cpp">
+      <Filter>Source Files\Interfaces\Types\New Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

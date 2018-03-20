@@ -21,14 +21,16 @@
 #include "color_key.h"
 
 
+#include "console_messenger.h"
+#include "random.h"
+
+#include "initilizer_of_sdl.h"
+
+
 
 #include "window.h"
 #include "splash_screen.h"
 #include "scaler.h"
-#include "console_messenger.h"
-#include "random.h"
-#include "initilizer_of_sdl.h"
-
 
 
 #include "event_manager.h"
@@ -46,6 +48,7 @@
 #include "item_creation.h"
 #include "load_menu.h"
 #include "settings_menu.h"
+#include "new_game.h"
 
 
 
@@ -84,6 +87,10 @@
 
 #include "helper_functions.h"
 #include "helper_template_functions.h"
+
+
+
+#include "actor_base.h"
 
 
 

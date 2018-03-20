@@ -33,6 +33,7 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_COLUMNS (( SCREEN_X_PIXELS / TEXT_CHARACTER_WIDTH ) - 1)
 #define TEXT_ROWS (( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT ) - 1)
 
+//Strings longer than TEXT_COLUMNS are unnecessary for display.
 #define cstrlen(x) strnlen(x, TEXT_COLUMNS)
 
 /**
@@ -75,7 +76,7 @@ enum Interface_enum_t
     INTERFACE_SETTINGS,
     INTERFACE_NEW_GAME_SETUP,
     INTERFACE_CONFIRM_QUIT,
-    INTERFACE_NAME_CHARACTER,
+    INTERFACE_CHARACTER_NAMING,
 
     ALL_INTERFACES,
 
