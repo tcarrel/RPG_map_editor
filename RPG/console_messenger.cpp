@@ -288,10 +288,12 @@ void Console::vb_variable_value( string obj, string name, Line_of_Text& line )
         type.c_str(), o.c_str(), v.c_str(), c );
 }
 #else
+
+/*static*/ void Console::vb_variable_value( string, string, bool ) {}
 /*static*/ void Console::vb_variable_value( string, string, unsigned ) {}
 /*static*/ void Console::vb_variable_value( string, string, int ) {}
 /*static*/ void Console::vb_variable_value( string, string, float ) {}
-/*static*/ void vb_variable_value( string, string, Uint8_t_String& ) {}
+/*static*/ void Console::vb_variable_value( string, string, Uint8_t_String& ) {}
 /*static*/ void Console::vb_variable_value( string, string, SDL_Rect& ) {}
 /*static*/ void Console::vb_variable_value( string, string, void* ) {}
 /*static*/ void Console::vb_variable_value( string, string&, string&, char* ) {}

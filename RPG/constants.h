@@ -12,6 +12,7 @@
 
 #define SCREEN_X_PIXELS (1920)
 #define SCREEN_Y_PIXELS (1080)
+#define FRAMES_PER_SECOND (60)
 
 const char GAME_TITLE[] = "RPG";
 const int  JOY_DEAD_ZONE = 9000;
@@ -60,7 +61,7 @@ const int SCREEN_X_TILES =
 const int SCREEN_Y_TILES =
 ( (int)ceil( ( (double)SCREEN_Y_PIXELS ) / ( (double)TILE_HEIGHT ) ) );
 
-#define PLAYER_CHARACTER_NAME_MAX_LENGTH (10)
+#define MAX_CHARACTER_NAME_LENGTH (11)
 
 
 enum Interface_enum_t

@@ -64,6 +64,8 @@ private:
     void cursor_down( void );
     void cursor_up( void );
 
+    void blink_cursor( void );
+
     void letter_right( void );
     void letter_left( bool );
 
@@ -74,7 +76,7 @@ private:
     void cancel( void );
     void reset_name( void );
 
-    char name_[ PLAYER_CHARACTER_NAME_MAX_LENGTH ];
+    char name_[ MAX_CHARACTER_NAME_LENGTH - 1 ];
     unsigned current_letter_;
 
     SDL_Rect box_;
@@ -86,4 +88,7 @@ private:
     SDL_Rect        background_pos_;
     Line_of_Text    selections_[ ALL_LETTERS ];
     int             cursor_;
+
+    bool            cursor_is_on_;
+    char            blink_count_;
 };

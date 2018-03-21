@@ -21,6 +21,8 @@ public:
 
     void set_main_char_name( Name_Character& );
 
+    void debug_print( void );
+
 private:
 
     //Party info.
@@ -29,7 +31,7 @@ private:
 
     //Character info.
     //TODO: Make objects for these, but this will have to do for now.
-    char  character_name_[ PLAYER_CHARACTER_NAME_MAX_LENGTH + 1];
+    char  character_name_[ MAX_CHARACTER_NAME_LENGTH + 1];
     int   character_name_length_;
     int   character_name_storage_size_; //probably unnecessary.
 };

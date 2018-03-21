@@ -39,7 +39,8 @@ void New_Game_Creation::run( void )
             character_name( &step );
             break;
         case 2:
-            //TODO
+            exit_ = true;
+            //TODO: maybe.
             break;
         default:
             exit_ = true;

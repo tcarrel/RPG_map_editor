@@ -14,12 +14,12 @@ Play_Data::Play_Data( void )
 
     money_ = random.get( 500, 1500);
 
-    for( int i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH; i++ )
+    for( int i = 0; i < MAX_CHARACTER_NAME_LENGTH; i++ )
     {
         character_name_[ i ] = 0;
     }
     character_name_storage_size_ =
-        character_name_length_ = PLAYER_CHARACTER_NAME_MAX_LENGTH + 1;
+        character_name_length_ = MAX_CHARACTER_NAME_LENGTH;
 }
 
 
@@ -68,4 +68,25 @@ unsigned* Play_Data::seed_addr( void )
 void Play_Data::set_main_char_name( Name_Character& namer )
 {
     namer.copy_name( character_name_, character_name_length_ );
+}
+
+
+
+void Play_Data::debug_print( void )
+{
+#ifdef _DEBUG
+    for( int i = 0; i < 80; i++ )
+    {
+        printf( "=" );
+    }
+    printf( "\nPlay Data printout :\n" );
+    char obj[] = "Play_Data";
+    Console::vb_variable_value( obj, "random_seed_", random_seed_ );
+    Console::vb_variable_value( obj, "money_", money_ );
+    printf( "\t      \tPlay_Data::character_name_ = %s\n", character_name_ );
+    Console::vb_variable_value(
+        obj, "character_name_length", character_name_length_ );
+    Console::vb_variable_value(
+        obj, "character_name_storage_size_", character_name_storage_size_ );
+#endif
 }

@@ -18,7 +18,9 @@ Name_Character::Name_Character(
     background_( t ),
     background_pos_( tclip )
 {
-    cursor_         = 0;
+    blink_count_ = 0;
+    cursor_is_on_ = true;
+    cursor_ = 0;
     box_ = {
     calculate_in_pixels__x_pos( 2 ) + Sprite_Sheet::get_x_offset(),
         calculate_in_pixels__y_pos( 2 ) + Sprite_Sheet::get_y_offset(),
@@ -271,29 +273,40 @@ Name_Character::Name_Character(
     // Row  9
     selections_[ LTR_space ].text = "SPACE";
     selections_[ LTR_space ].x = 880;
-    selections_[ LTR_space ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 29;
+    selections_[ LTR_space ].y = ( ( TEXT_CHARACTER_HEIGHT - 4 ) * 29 ) - 8;
     
 
     // Row 10
     selections_[ LTR_clear ].text = "CLEAR";
     selections_[ LTR_clear ].x = 352;
-    selections_[ LTR_clear ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
+    selections_[ LTR_clear ].y = 14 + ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
 
     selections_[ LTR_reset ].text = "RESET";
     selections_[ LTR_reset ].x = 704;
-    selections_[ LTR_reset ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
+    selections_[ LTR_reset ].y = 14 + ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
 
     selections_[ LTR_exit ].text = "EXIT";
     selections_[ LTR_exit ].x = 1072;
-    selections_[ LTR_exit ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
+    selections_[ LTR_exit ].y = 14 + ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
 
     selections_[ LTR_ok ].text = "CONFIRM";
     selections_[ LTR_ok ].x = 1376;
-    selections_[ LTR_ok ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
+    selections_[ LTR_ok ].y = 14 + ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
 
     if( run_immediately )
     {
         run();
+    }
+}
+
+
+void Name_Character::blink_cursor( void )
+{
+    blink_count_ = ( blink_count_ + 1 ) % FRAMES_PER_SECOND;
+
+    if( !blink_count_ )
+    {
+        cursor_is_on_ = !cursor_is_on_;
     }
 }
 
@@ -506,7 +519,7 @@ void Name_Character::cursor_up( void )
 
 void Name_Character::letter_right( void )
 {
-    if( current_letter_ == ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) )
+    if( current_letter_ == ( MAX_CHARACTER_NAME_LENGTH - 2 ) )
     {
         ++current_letter_;
         cursor_ = LTR_ok;
@@ -540,7 +553,7 @@ void Name_Character::select( void )
         cancel();
         return;
     case LTR_clear:
-        for( int i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH; i++ )
+        for( int i = 0; i < MAX_CHARACTER_NAME_LENGTH - 1; i++ )
         {
             name_[ i ] = 0;
         }
@@ -579,11 +592,11 @@ void Name_Character::del( bool back )
         return;
     }
 
-    if( current_letter_ == ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) )
+    if( current_letter_ == ( MAX_CHARACTER_NAME_LENGTH - 2 ) )
     {
-        if( name_[ ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) ] != 0 )
+        if( name_[ ( MAX_CHARACTER_NAME_LENGTH - 2 ) ] != 0 )
         {
-            name_[ ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) ] = 0;
+            name_[ ( MAX_CHARACTER_NAME_LENGTH - 2 ) ] = 0;
         }
         else
         {
@@ -632,13 +645,13 @@ void Name_Character::render_border( void )
 {
     int hl = TEXT_HIGHLIGHT_TYPE_NORMAL;
     text_->letter( hl, CHAR_BOX_TOP_LEFT ).render(
-        calculate_in_pixels__x_pos( 2 ) - TEXT_CHARACTER_WIDTH,
-        calculate_in_pixels__y_pos( 2 ) - TEXT_CHARACTER_HEIGHT );
+        calculate_in_pixels__x_pos( 1 ),
+        calculate_in_pixels__y_pos( 1 ) );
     text_->letter( hl, CHAR_BOX_TOP_RIGHT ).render(
         calculate_in_pixels__x_pos( 2 ) + box_.w,
-        calculate_in_pixels__y_pos( 2 ) - TEXT_CHARACTER_HEIGHT );
+        calculate_in_pixels__y_pos( 1 ) );
     text_->letter( hl, CHAR_BOX_BOTTOM_LEFT ).render(
-        calculate_in_pixels__x_pos( 2 ) - TEXT_CHARACTER_WIDTH,
+        calculate_in_pixels__x_pos( 1 ),
         calculate_in_pixels__y_pos( 2 ) + box_.h );
     text_->letter( hl, CHAR_BOX_BOTTOM_RIGHT ).render(
         calculate_in_pixels__x_pos( 2 ) + box_.w,
@@ -649,6 +662,12 @@ void Name_Character::render_border( void )
     text_->letter( hl, CHAR_BOX_T_RIGHT ).render(
         calculate_in_pixels__x_pos( 2 ) + box_.w,
         calculate_in_pixels__y_pos( 4 ) - TEXT_CHARACTER_HEIGHT );
+    text_->letter( hl, CHAR_BOX_T_LEFT ).render(
+        calculate_in_pixels__x_pos( 2 ) - TEXT_CHARACTER_WIDTH,
+        calculate_in_pixels__y_pos( TEXT_ROWS - 6 ) );
+    text_->letter( hl, CHAR_BOX_T_RIGHT ).render(
+        calculate_in_pixels__x_pos( 2 ) + box_.w,
+        calculate_in_pixels__y_pos( TEXT_ROWS - 6 ) );
     
     for( int i = 0; i < TEXT_COLUMNS - 4; i++ )
     {
@@ -663,15 +682,18 @@ void Name_Character::render_border( void )
             x,
             calculate_in_pixels__y_pos( 2 ) +
             calculate_in_pixels__height( 1 ) );
+        text_->letter( hl, CHAR_BOX_CENTERED_HORIZONTAL ).render(
+            x,
+            calculate_in_pixels__y_pos( 2 ) +
+            calculate_in_pixels__height( TEXT_ROWS - 8 ) );
         text_->letter( hl, CHAR_BOX_BOTTOM ).render(
             x,
             calculate_in_pixels__y_pos( 2 ) +
             calculate_in_pixels__height( TEXT_ROWS - 4 ) );
     }
-
     for( int i = 0; i < TEXT_ROWS - 4; i++ )
     {
-        if( i != 1 )
+        if( i != 1 && i != TEXT_ROWS - 8 )
         {
             text_->letter( hl, CHAR_BOX_LEFT ).render(
                 calculate_in_pixels__x_pos( 2 ) -
@@ -690,9 +712,19 @@ void Name_Character::render_border( void )
 
 void Name_Character::render_name( void )
 {
-    for( int i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH; i++ )
+    for( int i = 0; i < MAX_CHARACTER_NAME_LENGTH - 1; i++ )
     {
-        if( current_letter_ == ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) )
+        if( i != current_letter_ )
+        {
+            text_->letter( TEXT_HIGHLIGHT_TYPE_NORMAL, CHAR_50_PERCENT ).render( 
+                    calculate_in_pixels__width( TEXT_COLUMNS / 2 ) -
+                    ( ( 17 * TEXT_CHARACTER_WIDTH ) / 2 ) +
+                    ( 2 * i * TEXT_CHARACTER_WIDTH ),
+                    calculate_in_pixels__height( 3 ) -
+                    ( ( TEXT_CHARACTER_HEIGHT - 8 ) / 2 ) );
+        }
+
+        if( current_letter_ == ( MAX_CHARACTER_NAME_LENGTH - 2 ) )
         {
             text_->letter( TEXT_HIGHLIGHT_TYPE_NORMAL, name_[ i ] ).render(
                 calculate_in_pixels__width( TEXT_COLUMNS / 2 ) -
@@ -701,6 +733,7 @@ void Name_Character::render_name( void )
                 calculate_in_pixels__height( 3 ) -
                 ( ( TEXT_CHARACTER_HEIGHT - 8 ) / 2 ) );
         }
+
         if(  i < (int)current_letter_ )
         {
             text_->letter( TEXT_HIGHLIGHT_TYPE_NORMAL, name_[ i ] ).render(
@@ -710,18 +743,15 @@ void Name_Character::render_name( void )
                 calculate_in_pixels__height( 3 ) -
                 ( ( TEXT_CHARACTER_HEIGHT - 8 ) / 2 ) );
         }
-        else
+
+        if( i == current_letter_ && cursor_is_on_ )
         {
-            text_->letter(
-                i == current_letter_ ?
-                TEXT_HIGHLIGHT_TYPE_BRIGHT :
-                TEXT_HIGHLIGHT_TYPE_NORMAL,
-                CHAR_50_PERCENT ).render(
-                    calculate_in_pixels__width( TEXT_COLUMNS / 2 ) -
-                    ( ( 17 * TEXT_CHARACTER_WIDTH ) / 2 ) +
-                    ( 2 * i * TEXT_CHARACTER_WIDTH ),
-                    calculate_in_pixels__height( 3 ) -
-                    ( ( TEXT_CHARACTER_HEIGHT - 8 ) / 2 ) );
+            text_->letter( TEXT_HIGHLIGHT_TYPE_BRIGHT, CHAR_25_PERCENT ).render(
+                calculate_in_pixels__width( TEXT_COLUMNS / 2 ) -
+                ( ( 17 * TEXT_CHARACTER_WIDTH ) / 2 ) +
+                ( 2 * i * TEXT_CHARACTER_WIDTH ),
+                calculate_in_pixels__height( 3 ) -
+                ( ( TEXT_CHARACTER_HEIGHT - 8 ) / 2 ) );
         }
     }
 }

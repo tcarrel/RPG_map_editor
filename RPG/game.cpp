@@ -86,7 +86,7 @@ void Game::main_loop( void )
                 "Start_Screen",
                 "Work-In-Progress." );
             newgame();
-            //menu_.run();
+            //play_data_ = newgame.ge
             break;
         case INTERFACE_LOAD_MENU:
             Console::vb_only_no_err(
@@ -101,6 +101,7 @@ void Game::main_loop( void )
         }
         if( play_data_ )
         {
+            play_data_->debug_print();
             //Begin game.
         }
     }
