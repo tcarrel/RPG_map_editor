@@ -82,18 +82,12 @@ void New_Game_Creation::do_controls( unsigned u )
 
 void New_Game_Creation::character_name( int* step )
 {
-    Name_Character name(
+    new_game_->set_main_char_name( Name_Character(
         em_,
         window_,
         console_,
         background_,
         background_pos_,
-        step );
-
-    name.run();
-
-    if( *step == 2 )
-    {
-        new_game_->set_main_char_name( name.get_name() );
-    }
+        step,
+        true ) );
 }

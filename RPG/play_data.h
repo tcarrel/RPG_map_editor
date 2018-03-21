@@ -19,11 +19,17 @@ public:
 
     unsigned* seed_addr( void );
 
-    void set_main_char_name( char* );
+    void set_main_char_name( Name_Character& );
 
 private:
 
+    //Party info.
     unsigned random_seed_;
     unsigned money_;
-    char character_name_[ PLAYER_CHARACTER_NAME_MAX_LENGTH ];
+
+    //Character info.
+    //TODO: Make objects for these, but this will have to do for now.
+    char  character_name_[ PLAYER_CHARACTER_NAME_MAX_LENGTH + 1];
+    int   character_name_length_;
+    int   character_name_storage_size_; //probably unnecessary.
 };

@@ -22,10 +22,12 @@ public:
         Console*,
         SDL_Texture*,
         SDL_Rect&,
-        int* );
+        int*,
+        bool = false );
 
     void run( void );
     char* get_name( void );
+    void copy_name( char*, int& );
 
     friend class Event_Manager;
 
@@ -78,6 +80,7 @@ private:
     SDL_Rect box_;
 
     int*            step_;
+    int             name_length_;
     Sprite**        letters_;
     SDL_Texture*    background_;
     SDL_Rect        background_pos_;

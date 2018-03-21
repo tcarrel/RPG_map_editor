@@ -18,6 +18,8 @@ Play_Data::Play_Data( void )
     {
         character_name_[ i ] = 0;
     }
+    character_name_storage_size_ =
+        character_name_length_ = PLAYER_CHARACTER_NAME_MAX_LENGTH + 1;
 }
 
 
@@ -63,12 +65,7 @@ unsigned* Play_Data::seed_addr( void )
 
 
 
-void Play_Data::set_main_char_name( char* name )
+void Play_Data::set_main_char_name( Name_Character& namer )
 {
-    int i;
-    for( i = 0; i < PLAYER_CHARACTER_NAME_MAX_LENGTH && name[ i ]; i++ )
-    {
-        character_name_[ i ] = name[ i ];
-    }
-    character_name_[ i ] = 0;
+    namer.copy_name( character_name_, character_name_length_ );
 }

@@ -11,7 +11,8 @@ Name_Character::Name_Character(
     Console* c,
     SDL_Texture* t,
     SDL_Rect& tclip,
-    int* step ) :
+    int* step,
+    bool run_immediately ) :
     Interface( e, c, w, INTERFACE_CHARACTER_NAMING ),
     step_( step ),
     background_( t ),
@@ -289,6 +290,11 @@ Name_Character::Name_Character(
     selections_[ LTR_ok ].text = "CONFIRM";
     selections_[ LTR_ok ].x = 1376;
     selections_[ LTR_ok ].y = ( TEXT_CHARACTER_HEIGHT - 4 ) * 32;
+
+    if( run_immediately )
+    {
+        run();
+    }
 }
 
 
@@ -313,6 +319,21 @@ void Name_Character::run( void )
 char* Name_Character::get_name( void )
 {
     return name_;
+}
+
+
+
+void Name_Character::copy_name( char* name, int& max_length )
+{
+        for( int i = 0; i < name_length_; i++ )
+        {
+            name[ i ] = name_[ i ];
+        }
+        for( int i = name_length_; i <= max_length; i++ )
+        {
+            name[ i ] = 0;
+        }
+        max_length = name_length_;
 }
 
 
@@ -487,10 +508,12 @@ void Name_Character::letter_right( void )
 {
     if( current_letter_ == ( PLAYER_CHARACTER_NAME_MAX_LENGTH - 1 ) )
     {
+        ++current_letter_;
         cursor_ = LTR_ok;
         return;
     }
     ++current_letter_;
+    ++name_length_;
 }
 
 
@@ -500,10 +523,11 @@ void Name_Character::letter_left( bool loop )
     if( loop && current_letter_ == 0 )
     {
         cursor_ = LTR_exit;
+        --current_letter_;
         return;
     }
-
     --current_letter_;
+    --name_length_;
 }
 
 
@@ -583,7 +607,7 @@ void Name_Character::cancel( void )
 
 void Name_Character::reset_name( void )
 {
-    current_letter_ = 9;
+    name_length_ = current_letter_ = 9;
     name_[ 0 ] = 'H';
     name_[ 1 ] = name_[ 5 ] = 'e';
     name_[ 2 ] = 'n';
