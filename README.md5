@@ -13,6 +13,9 @@ I am also using this project to learn Visual Studio.
 
 
 
+(20/03/2018) After beginning work on the map/tiling engine, I realize it would
+be better to at least create some part of the actor class(es).
+
 (16/03/2018) Changing the state machine implimentation, done.  Also added the
 "Line Ending Unifier" plug-in to Visual Studio, so an additional file was
 added by it.
