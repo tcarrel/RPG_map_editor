@@ -388,6 +388,12 @@
     <None Include="Settings\keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
     </None>
+    <None Include="Graphics\character_sprite_base.xcf">
+      <Filter>Resource Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\henrietta.xcf">
+      <Filter>Resource Files\Graphics</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="splash1_test.bmp">
@@ -419,6 +425,9 @@
     </Image>
     <Image Include="Graphics\start_screen_image.bmp">
       <Filter>Resource Files\Start Screen</Filter>
+    </Image>
+    <Image Include="Graphics\skin-colors-palette.jpg">
+      <Filter>Resource Files\Graphics</Filter>
     </Image>
   </ItemGroup>
 </Project>
