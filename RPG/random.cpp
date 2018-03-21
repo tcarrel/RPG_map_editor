@@ -60,6 +60,17 @@ unsigned Random::get( unsigned v1, unsigned v2 )
 
 
 
+bool Random::get_bool( void )
+{
+    if( get( 2 ) )
+    {
+        return true;
+    }
+    return false;
+}
+
+
+
 /**
 *   For reseeding the RNG when a saved game is loaded.
 */

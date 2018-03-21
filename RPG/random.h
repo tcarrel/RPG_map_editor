@@ -15,6 +15,7 @@ public:
     
     unsigned get( unsigned );
     unsigned get( unsigned, unsigned );
+    bool     get_bool( void );
 
     static unsigned seed( unsigned = 0 );
 
