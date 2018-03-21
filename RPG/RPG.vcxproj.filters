@@ -246,6 +246,9 @@
     <ClInclude Include="name_character.h">
       <Filter>Header Files\Interfaces\Types\New Game</Filter>
     </ClInclude>
+    <ClInclude Include="area_map.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -358,6 +361,9 @@
     </ClCompile>
     <ClCompile Include="name_character.cpp">
       <Filter>Source Files\Interfaces\Types\New Game</Filter>
+    </ClCompile>
+    <ClCompile Include="area_map.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
