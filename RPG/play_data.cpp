@@ -81,12 +81,12 @@ void Play_Data::debug_print( void )
     }
     printf( "\nPlay Data printout :\n" );
     char obj[] = "Play_Data";
-    Console::vb_variable_value( obj, "random_seed_", random_seed_ );
-    Console::vb_variable_value( obj, "money_", money_ );
-    printf( "\t      \tPlay_Data::character_name_ = %s\n", character_name_ );
+    Console::vb_variable_value( obj, "random_seed_\t\t", random_seed_ );
+    Console::vb_variable_value( obj, "money_\t\t\t", money_ );
+    printf( "\t      \tPlay_Data::character_name_\t\t\t = %s\n", character_name_ );
     Console::vb_variable_value(
-        obj, "character_name_length", character_name_length_ );
+        obj, "character_name_length\t\t", character_name_length_ );
     Console::vb_variable_value(
-        obj, "character_name_storage_size_", character_name_storage_size_ );
+        obj, "character_name_storage_size_\t", character_name_storage_size_ );
 #endif
 }

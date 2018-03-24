@@ -20,7 +20,7 @@ Name_Character::Name_Character(
 {
     blink_count_ = 0;
     cursor_is_on_ = true;
-    cursor_ = 0;
+    cursor_ = LTR_ok;
     box_ = {
     calculate_in_pixels__x_pos( 2 ) + Sprite_Sheet::get_x_offset(),
         calculate_in_pixels__y_pos( 2 ) + Sprite_Sheet::get_y_offset(),
