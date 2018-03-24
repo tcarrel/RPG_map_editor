@@ -10,14 +10,23 @@
 
 
 
+const char GAME_TITLE[] = "RPG";
+const int  JOY_DEAD_ZONE = 9000;
+
+// Basic screen settings. /////////////////////////////////////////////////////
+
 #define SCREEN_X_PIXELS (1920)
 #define SCREEN_Y_PIXELS (1080)
 #define FRAMES_PER_SECOND (60)
 
-const char GAME_TITLE[] = "RPG";
-const int  JOY_DEAD_ZONE = 9000;
+#define DRAW_BORDERS (true)
+
+// Controls. //////////////////////////////////////////////////////////////////
 
 #define ALL_KEYS (0x11d)
+
+#define KEY_IS_PRESSED (true)
+#define KEY_IS_NOT_PRESSED (false)
 
 #define GAME_CONTROLLER_MAPPING_DATABASE_FILE_PATH \
 "Settings\\gamecontrollerdb.txt"
@@ -33,9 +42,6 @@ const int  JOY_DEAD_ZONE = 9000;
 #define TEXT_COLUMNS (( SCREEN_X_PIXELS / TEXT_CHARACTER_WIDTH ) - 1)
 #define TEXT_ROWS (( SCREEN_Y_PIXELS / TEXT_CHARACTER_HEIGHT ) - 1)
 
-//Strings longer than TEXT_COLUMNS are unnecessary for display.
-#define cstrlen(x) strnlen(x, TEXT_COLUMNS)
-
 /**
 *   Image paths.
 */
@@ -45,17 +51,18 @@ const int  JOY_DEAD_ZONE = 9000;
 #define START_SCREEN_BACKGROUND_IMAGE_FILENAME \
         "Graphics\\start_screen_image.bmp"
 
+// Gameplay info. /////////////////////////////////////////////////////////////
+
 #define MAX_MONEY (99999999)
 
-#define DRAW_BORDERS (true)
-
-
-#define KEY_IS_PRESSED (true)
-#define KEY_IS_NOT_PRESSED (false)
-
+// Graphics. //////////////////////////////////////////////////////////////////
 
 #define TILE_WIDTH (32)
 #define TILE_HEIGHT (32)
+
+#define CHARACTER_SPRITE_WIDTH (TILE_WIDTH)
+#define CHARACTER_SPRITE_HEIGHT (TILE_HEIGHT) // + (TILE_HEIGHT/2)
+
 const int SCREEN_X_TILES =
 ( (int)ceil( ( (double)SCREEN_X_PIXELS ) / ( (double)TILE_WIDTH ) ) );
 const int SCREEN_Y_TILES =
@@ -63,6 +70,11 @@ const int SCREEN_Y_TILES =
 
 #define MAX_CHARACTER_NAME_LENGTH (11)
 
+// Character sprite sheet file paths. /////////////////////////////////////////
+
+#define SPRITE_SHEET__HENRIETTA__MASK_OFF "Graphics\\henrietta.bmp"
+
+// Enumerations. //////////////////////////////////////////////////////////////
 
 enum Interface_enum_t
 {
