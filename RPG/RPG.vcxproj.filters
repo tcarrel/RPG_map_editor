@@ -248,6 +248,9 @@
     <ClInclude Include="area_map.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="cstrlen.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

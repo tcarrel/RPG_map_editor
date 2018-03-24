@@ -17,6 +17,8 @@
 
 
 
+#include "cstrlen.h"
+
 #include "constants.h"
 #include "color_key.h"
 

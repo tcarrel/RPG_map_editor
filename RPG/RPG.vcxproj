@@ -155,6 +155,7 @@
     <ClInclude Include="confirm_quit.h" />
     <ClInclude Include="console_messenger.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="cstrlen.h" />
     <ClInclude Include="event_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="generic_text.h" />
