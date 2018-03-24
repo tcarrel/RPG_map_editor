@@ -9,9 +9,27 @@ hence, the reason why I'm just calling it RPG for now.
 
 I am also using this project to learn Visual Studio.
 
+==RECRUITMENT==================================================================
+
+I'm trying to keep the number of people who work on this to an absolute
+minimum, but my artistic ability is unfortunately lacking for anything beyond
+some very basic terrain tiles.
+
+Therefore, I'm looking for one person to make me some animated sprite sheets.
+Be warned, although I'd love to; as things are for me right now I can't really
+afford to pay anyone and I can't promise I will be able to in the future.  So,
+for now, it would be completely voluntary.  However, if someone with some
+artistic skill needs some programming work done, I'd willing to do that as a
+trade.
+
 
 ==DEVELOPMENT NOTES============================================================
 
+
+(21/03/2018) I'm not very good a making character sprites...  For now, I'm
+borrowing part of a sprite sheet from RPG Maker VXace.  I'll replace this when
+I'm essentially closer to being done with the software portion of the game's
+development.
 
 
 (20/03/2018) After beginning work on the map/tiling engine, I realize it would

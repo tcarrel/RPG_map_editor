@@ -249,6 +249,7 @@
     <None Include="Settings\keyboard.mapping.bin" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Graphics\henrietta.bmp" />
     <Image Include="Graphics\Icon.bmp" />
     <Image Include="Graphics\skin-colors-palette.jpg" />
     <Image Include="Graphics\splash1_test.bmp" />

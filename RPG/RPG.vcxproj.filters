@@ -429,5 +429,8 @@
     <Image Include="Graphics\skin-colors-palette.jpg">
       <Filter>Resource Files\Graphics</Filter>
     </Image>
+    <Image Include="Graphics\henrietta.bmp">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
   </ItemGroup>
 </Project>
