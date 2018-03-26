@@ -415,6 +415,9 @@
     <None Include="Graphics\henrietta.xcf">
       <Filter>Resource Files\Graphics\Actros</Filter>
     </None>
+    <None Include="Graphics\test_terrain.xcf">
+      <Filter>Resource Files\Graphics\Terrain</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="splash1_test.bmp">
@@ -452,6 +455,9 @@
     </Image>
     <Image Include="Graphics\skin-colors-palette.jpg">
       <Filter>Resource Files\Graphics\Actros</Filter>
+    </Image>
+    <Image Include="Graphics\test_terrain.bmp">
+      <Filter>Resource Files\Graphics\Terrain</Filter>
     </Image>
   </ItemGroup>
 </Project>
