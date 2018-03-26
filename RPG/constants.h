@@ -241,14 +241,42 @@ enum Cardinal_Directions_enum_t
 {
     INVALID_DIRECTION = -1,
 
-    UP,
-    UP_RIGHT,
-    RIGHT,
-    DOWN_RIGHT,
     DOWN,
     DOWN_LEFT,
     LEFT,
+    DOWN_RIGHT,
+    RIGHT,
+    UP_RIGHT,
+    UP,
     UP_LEFT,
 
     ALL_DIRECTIONS
+};
+
+
+
+enum Character_ID_t
+{
+    CHARACTER_MAIN,
+    CHARACTER_HENRIETTA = CHARACTER_MAIN
+};
+
+
+
+enum Item_Type_t
+{
+    ITEM_KEY_ITEM,
+    ITEM_CONSUMABLE = 0x01,
+    ITEM_EQUIPABLE  = 0x01 << 1,
+    ITEM_WEAPON     = 0x01 << 2,
+    ITEM_ARMOR      = 0x01 << 3,
+    ITEM_SWORD      = 0x01 << 4,
+    ITEM_HAMMER     = 0x01 << 5
+};
+
+
+
+enum Item_ID_t
+{
+
 };
