@@ -403,9 +403,6 @@
     <None Include="Graphics\start_screen_image.xcf">
       <Filter>Resource Files\Start Screen</Filter>
     </None>
-    <None Include="Settings\keyboard.mapping.bin">
-      <Filter>Resource Files\Settings</Filter>
-    </None>
     <None Include="Graphics\terrain_tile_sheet_template.xcf">
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </None>
@@ -417,6 +414,9 @@
     </None>
     <None Include="Graphics\test_terrain.xcf">
       <Filter>Resource Files\Graphics\Terrain</Filter>
+    </None>
+    <None Include="Settings\controller.mapping.bin">
+      <Filter>Resource Files\Settings</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

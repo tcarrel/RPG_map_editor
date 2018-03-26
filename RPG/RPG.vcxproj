@@ -250,7 +250,7 @@
     <None Include="Graphics\text_highlight.xcf" />
     <None Include="Graphics\text_normal.xcf" />
     <None Include="packages.config" />
-    <None Include="Settings\keyboard.mapping.bin" />
+    <None Include="Settings\controller.mapping.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp" />
