@@ -112,6 +112,12 @@
     <Filter Include="Source Files\Interfaces\Types\New Game">
       <UniqueIdentifier>{85bd016b-058f-4632-9a97-a1f4b11c0046}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interfaces\Types\ZZZ TODO">
+      <UniqueIdentifier>{b75bb267-1e0e-4d66-aff4-b130a5c7ae84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Types\ZZZ TODO">
+      <UniqueIdentifier>{90289517-e436-4e1c-b90b-2dac14417466}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Settings\gamecontrollerdb.txt">
@@ -173,21 +179,6 @@
     <ClInclude Include="text_selectable_list.h">
       <Filter>Header Files\Text\Box Contents</Filter>
     </ClInclude>
-    <ClInclude Include="combat.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="game_map.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="game_over.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="interface_base.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="item_creation.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
     <ClInclude Include="menu.h">
       <Filter>Header Files\Interfaces\Types\Menu</Filter>
     </ClInclude>
@@ -211,12 +202,6 @@
     </ClInclude>
     <ClInclude Include="helper_functions.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="settings_menu.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="load_menu.h">
-      <Filter>Header Files\Interfaces\Types</Filter>
     </ClInclude>
     <ClInclude Include="confirm_quit.h">
       <Filter>Header Files\Interfaces\Types\Menu</Filter>
@@ -250,6 +235,27 @@
     </ClInclude>
     <ClInclude Include="cstrlen.h">
       <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="settings_menu.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="combat.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="game_map.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="game_over.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="interface_base.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="item_creation.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="load_menu.h">
+      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -307,21 +313,6 @@
     <ClCompile Include="text_line.cpp">
       <Filter>Source Files\Text</Filter>
     </ClCompile>
-    <ClCompile Include="combat.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
-    <ClCompile Include="game_map.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
-    <ClCompile Include="game_over.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
-    <ClCompile Include="interface_base.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
-    <ClCompile Include="item_creation.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
     <ClCompile Include="menu.cpp">
       <Filter>Source Files\Interfaces\Types\Menu</Filter>
     </ClCompile>
@@ -346,12 +337,6 @@
     <ClCompile Include="helper_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="settings_menu.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
-    <ClCompile Include="load_menu.cpp">
-      <Filter>Source Files\Interfaces\Types</Filter>
-    </ClCompile>
     <ClCompile Include="confirm_quit.cpp">
       <Filter>Source Files\Interfaces\Types\Menu</Filter>
     </ClCompile>
@@ -366,6 +351,27 @@
     </ClCompile>
     <ClCompile Include="area_map.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="combat.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="game_map.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="game_over.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="interface_base.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="item_creation.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="load_menu.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="settings_menu.cpp">
+      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
