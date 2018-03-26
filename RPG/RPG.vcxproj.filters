@@ -420,26 +420,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="splash1_test.bmp">
-      <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="splash2_test.bmp">
-      <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
     <Image Include="tech_splash.bmp">
       <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="Graphics\text_normal.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\text_grayed.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\text_highlight.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\start_screen_image.bmp">
-      <Filter>Resource Files\Start Screen</Filter>
     </Image>
     <Image Include="Graphics\henrietta.bmp">
       <Filter>Resource Files\Graphics\Actros</Filter>
@@ -447,16 +429,28 @@
     <Image Include="Graphics\Icon.bmp">
       <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
     </Image>
-    <Image Include="Graphics\splash1_test.bmp">
-      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
-    </Image>
-    <Image Include="Graphics\splash2_test.bmp">
-      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
-    </Image>
     <Image Include="Graphics\skin-colors-palette.jpg">
       <Filter>Resource Files\Graphics\Actros</Filter>
     </Image>
-    <Image Include="Graphics\test_terrain.bmp">
+    <Image Include="Graphics\start_screen_image.png">
+      <Filter>Resource Files\Start Screen</Filter>
+    </Image>
+    <Image Include="Graphics\text_grayed.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_highlight.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_normal.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\splash1_test.png">
+      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
+    </Image>
+    <Image Include="Graphics\splash2_test.png">
+      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
+    </Image>
+    <Image Include="Graphics\test_terrain.png">
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </Image>
   </ItemGroup>

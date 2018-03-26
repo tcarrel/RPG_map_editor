@@ -15,7 +15,7 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
     Interface( em, c, w, INTERFACE_START_MENU )
 {
     SDL_Surface* new_image =
-        SDL_LoadBMP( START_SCREEN_BACKGROUND_IMAGE_FILENAME );
+        IMG_Load( START_SCREEN_BACKGROUND_IMAGE_FILENAME );
     if( !new_image )
     {
         char msg[ 256 ];
@@ -143,17 +143,21 @@ void Start_Screen::do_controls( unsigned u )
         {
         case CTRL_UP:
             up();
-            break;
+            return;
         case CTRL_DOWN:
             down();
-            break;
+            return;
         case CTRL_A:
         case CTRL_SELECT:
         case CTRL_START:
             select();
-            break;
+            return;
+        case CTRL_B:
+            conf_quit();
+            needs_redraw_ = true; 
+            return;
         default:
-            break;
+            ;
         }
     }
 }
