@@ -118,6 +118,15 @@
     <Filter Include="Header Files\Interfaces\Types\ZZZ TODO">
       <UniqueIdentifier>{90289517-e436-4e1c-b90b-2dac14417466}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Graphics\Terrain">
+      <UniqueIdentifier>{72aff379-9779-462f-939f-ca8546da8c5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics\Actros">
+      <UniqueIdentifier>{8868073c-0519-4519-b60f-0d6770d16ff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics\ZZZ Misc">
+      <UniqueIdentifier>{08ebe16c-999c-4c9b-a7e6-92540e59a4b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Settings\gamecontrollerdb.txt">
@@ -397,11 +406,14 @@
     <None Include="Settings\keyboard.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
     </None>
-    <None Include="Graphics\character_sprite_base.xcf">
-      <Filter>Resource Files\Graphics</Filter>
+    <None Include="Graphics\terrain_tile_sheet_template.xcf">
+      <Filter>Resource Files\Graphics\Terrain</Filter>
+    </None>
+    <None Include="Graphics\character_sprite_template.xcf">
+      <Filter>Resource Files\Graphics\Actros</Filter>
     </None>
     <None Include="Graphics\henrietta.xcf">
-      <Filter>Resource Files\Graphics</Filter>
+      <Filter>Resource Files\Graphics\Actros</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -413,15 +425,6 @@
     </Image>
     <Image Include="tech_splash.bmp">
       <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="Graphics\Icon.bmp">
-      <Filter>Resource Files\Graphics</Filter>
-    </Image>
-    <Image Include="Graphics\splash2_test.bmp">
-      <Filter>Resource Files\Graphics</Filter>
-    </Image>
-    <Image Include="Graphics\splash1_test.bmp">
-      <Filter>Resource Files\Graphics</Filter>
     </Image>
     <Image Include="Graphics\text_normal.bmp">
       <Filter>Resource Files\Graphics\Text</Filter>
@@ -435,11 +438,20 @@
     <Image Include="Graphics\start_screen_image.bmp">
       <Filter>Resource Files\Start Screen</Filter>
     </Image>
-    <Image Include="Graphics\skin-colors-palette.jpg">
-      <Filter>Resource Files\Graphics</Filter>
-    </Image>
     <Image Include="Graphics\henrietta.bmp">
-      <Filter>Resource Files\Graphics</Filter>
+      <Filter>Resource Files\Graphics\Actros</Filter>
+    </Image>
+    <Image Include="Graphics\Icon.bmp">
+      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
+    </Image>
+    <Image Include="Graphics\splash1_test.bmp">
+      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
+    </Image>
+    <Image Include="Graphics\splash2_test.bmp">
+      <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
+    </Image>
+    <Image Include="Graphics\skin-colors-palette.jpg">
+      <Filter>Resource Files\Graphics\Actros</Filter>
     </Image>
   </ItemGroup>
 </Project>
