@@ -111,7 +111,7 @@ void Game::main_loop( void )
 
 void Game::newgame( void )
 {
-    New_Game_Creation ngc( &events_, &window_, &console_, &start_menu_ );
+    New_Map_Creation ngc( &events_, &window_, &console_, &start_menu_ );
     ngc.run();
     play_data_ = ngc.get_game();
 }

@@ -5,7 +5,7 @@
 
 
 
-New_Game_Creation::New_Game_Creation(
+New_Map_Creation::New_Map_Creation(
     Event_Manager* e,
     Window* w,
     Console* c,
@@ -18,14 +18,14 @@ New_Game_Creation::New_Game_Creation(
 
 
 
-Interface_enum_t New_Game_Creation::type( void )
+Interface_enum_t New_Map_Creation::type( void )
 {
     return INTERFACE_NEW_GAME_SETUP;
 }
 
 
 
-void New_Game_Creation::run( void )
+void New_Map_Creation::run( void )
 {
     exit_ = false;
 
@@ -50,14 +50,14 @@ void New_Game_Creation::run( void )
 
 
 
-Play_Data* New_Game_Creation::get_game( void )
+Play_Data* New_Map_Creation::get_game( void )
 {
     return new_game_;
 }
 
 
 
-New_Game_Creation::~New_Game_Creation( void )
+New_Map_Creation::~New_Map_Creation( void )
 {
     new_game_ = NULL;
     background_ = NULL;
@@ -65,7 +65,7 @@ New_Game_Creation::~New_Game_Creation( void )
 
 
 
-void New_Game_Creation::do_controls( unsigned u )
+void New_Map_Creation::do_controls( unsigned u )
 {
 
     switch( u )
@@ -81,7 +81,7 @@ void New_Game_Creation::do_controls( unsigned u )
 
 
 
-void New_Game_Creation::character_name( int* step )
+void New_Map_Creation::character_name( int* step )
 {
     new_game_->set_main_char_name( Name_Character(
         em_,

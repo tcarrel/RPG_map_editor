@@ -13,17 +13,17 @@ enum Interface_enum_t;
 
 
 
-class New_Game_Creation : public Interface
+class New_Map_Creation : public Interface
 {
 public:
-    New_Game_Creation( Event_Manager*, Window*, Console*, Start_Screen* );
+    New_Map_Creation( Event_Manager*, Window*, Console*, Start_Screen* );
 
     Interface_enum_t type( void );
 
     void run( void );
     Play_Data* get_game( void );
 
-    ~New_Game_Creation( void );
+    ~New_Map_Creation( void );
 
     friend class Event_Manager;
 
